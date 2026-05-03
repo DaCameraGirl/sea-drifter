@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 130" width="260" height="130">
+  <defs>
+    <style>
+      @keyframes breathe { 0%,100%{filter:drop-shadow(0 0 4px #f44336);opacity:1} 50%{filter:drop-shadow(0 0 18px #ff8a80);opacity:0.75} }
+      @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-3px)} }
+      @keyframes flicker { 0%,100%{opacity:1} 92%{opacity:1} 93%{opacity:0.3} 94%{opacity:1} 97%{opacity:0.5} 98%{opacity:1} }
+      .card{animation:breathe 2.4s ease-in-out infinite}
+      .em{animation:float 2s ease-in-out infinite 0.5s;font-size:22px}
+      .title{font-family:Georgia,serif;font-size:14px;font-weight:bold;fill:#ff8a80;text-anchor:middle;animation:flicker 4s infinite}
+      .tag{font-family:Georgia,serif;font-size:10px;fill:#f44336;text-anchor:middle;font-style:italic}
+      .body{font-family:Georgia,serif;font-size:10px;fill:#ffcdd2;text-anchor:middle}
+    </style>
+  </defs>
+  <rect class="card" width="260" height="130" fill="#0d0000" rx="14" stroke="#f44336" stroke-width="2"/>
+  <text class="em" x="130" y="32">💀</text>
+  <text class="title" x="130" y="52">DARK ENDING</text>
+  <text class="tag"   x="130" y="67">⚫ Lost Forever</text>
+  <text class="body"  x="130" y="85">"The train doors lock.</text>
+  <text class="body"  x="130" y="99">And never</text>
+  <text class="body"  x="130" y="113">open again."</text>
+</svg>

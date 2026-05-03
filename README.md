@@ -31,7 +31,9 @@
 
 <img src="assets/header-features.svg" width="100%" alt="Enchanted Ocean Features"/>
 
-<img src="assets/ending-badge.svg" width="100%" alt="endings"/>
+<img src="assets/ending-good.svg"  width="32%" alt="Bright Ending"/>
+<img src="assets/ending-mixed.svg" width="32%" alt="Mixed Ending"/>
+<img src="assets/ending-dark.svg"  width="32%" alt="Dark Ending"/>
 
 <br/>
 

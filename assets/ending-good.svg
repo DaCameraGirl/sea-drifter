@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 130" width="260" height="130">
+  <defs>
+    <style>
+      @keyframes breathe { 0%,100%{filter:drop-shadow(0 0 4px #4CAF50);opacity:1} 50%{filter:drop-shadow(0 0 18px #a5d6a7);opacity:0.85} }
+      @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+      @keyframes fadein { 0%{opacity:0} 100%{opacity:1} }
+      .card{animation:breathe 3s ease-in-out infinite}
+      .em{animation:float 2.5s ease-in-out infinite;font-size:22px}
+      .title{font-family:Georgia,serif;font-size:14px;font-weight:bold;fill:#a5d6a7;text-anchor:middle}
+      .tag{font-family:Georgia,serif;font-size:10px;fill:#4CAF50;text-anchor:middle;font-style:italic}
+      .body{font-family:Georgia,serif;font-size:10px;fill:#d4edda;text-anchor:middle}
+    </style>
+  </defs>
+  <rect class="card" width="260" height="130" fill="#0a2218" rx="14" stroke="#4CAF50" stroke-width="2"/>
+  <text class="em" x="130" y="32">🏖️</text>
+  <text class="title" x="130" y="52">BRIGHT ENDING</text>
+  <text class="tag"   x="130" y="67">✨ Good Fate</text>
+  <text class="body"  x="130" y="85">"Mia calls home and is</text>
+  <text class="body"  x="130" y="99">picked up safely.</text>
+  <text class="body"  x="130" y="113">The bells stop."</text>
+</svg>

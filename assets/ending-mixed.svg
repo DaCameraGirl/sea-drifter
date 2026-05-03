@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 130" width="260" height="130">
+  <defs>
+    <style>
+      @keyframes breathe { 0%,100%{filter:drop-shadow(0 0 4px #FF6B9D);opacity:1} 50%{filter:drop-shadow(0 0 18px #ffb3d1);opacity:0.85} }
+      @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+      .card{animation:breathe 2.8s ease-in-out infinite}
+      .em{animation:float 3s ease-in-out infinite 0.3s;font-size:22px}
+      .title{font-family:Georgia,serif;font-size:14px;font-weight:bold;fill:#ffb3d1;text-anchor:middle}
+      .tag{font-family:Georgia,serif;font-size:10px;fill:#FF6B9D;text-anchor:middle;font-style:italic}
+      .body{font-family:Georgia,serif;font-size:10px;fill:#ffd6e7;text-anchor:middle}
+    </style>
+  </defs>
+  <rect class="card" width="260" height="130" fill="#1a0a12" rx="14" stroke="#FF6B9D" stroke-width="2"/>
+  <text class="em" x="130" y="32">🪞</text>
+  <text class="title" x="130" y="52">MIXED ENDING</text>
+  <text class="tag"   x="130" y="67">🔱 Strange Fate</text>
+  <text class="body"  x="130" y="85">"Mia sees herself already</text>
+  <text class="body"  x="130" y="99">inside her own house...</text>
+  <text class="body"  x="130" y="113">looking back."</text>
+</svg>
