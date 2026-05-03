@@ -65,7 +65,7 @@
   <circle class="ring"  cx="90" cy="70" r="54" stroke="#00b4d8" stroke-width="3"/>
   <!-- photo circle -->
   <image
-    href="https://avatars.githubusercontent.com/u/79058390?s=400&u=b79a9f15e933490f2a7b90dacaeac6232c82bbb6&v=4"
+    href="angela.jpg"
     x="38" y="18" width="104" height="104"
     clip-path="url(#circle-clip)"
     preserveAspectRatio="xMidYMid slice"
