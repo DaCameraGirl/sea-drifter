@@ -14,7 +14,7 @@
 
 <div align="center">
 
-## 🌊🐚 The Sunken Tale 🐚🌊
+<img src="assets/header-tale.svg" width="100%" alt="The Sunken Tale"/>
 
 **🧜‍♀️ An interactive branching story game about a lost little girl**
 **trying to find her way home through whispering waves and coral mazes.**
@@ -29,7 +29,7 @@
 
 <div align="center">
 
-## 🦑 Enchanted Ocean Features 🦑
+<img src="assets/header-features.svg" width="100%" alt="Enchanted Ocean Features"/>
 
 <img src="assets/ending-badge.svg" width="100%" alt="endings"/>
 
@@ -56,7 +56,7 @@
 
 <div align="center">
 
-## 🗺️ Ocean Path Map 🗺️
+<img src="assets/header-map.svg" width="100%" alt="Ocean Path Map"/>
 
 ```mermaid
 graph TD
@@ -75,7 +75,7 @@ graph TD
 
 <div align="center">
 
-## 🚀 How to Dive In 🚀
+<img src="assets/header-dive.svg" width="100%" alt="How to Dive In"/>
 
 </div>
 
@@ -98,7 +98,7 @@ python -m http.server 8080
 
 <div align="center">
 
-## 📊 Ocean Stats 📊
+<img src="assets/header-stats.svg" width="100%" alt="Ocean Stats"/>
 
 ![Last Commit](https://img.shields.io/github/last-commit/DaCameraGirl/lost-little-girl-paths?style=for-the-badge&color=00b4d8&logo=git&logoColor=white&label=Last+Dive)
 ![Repo Size](https://img.shields.io/github/repo-size/DaCameraGirl/lost-little-girl-paths?style=for-the-badge&color=0096c7&label=Ocean+Depth)

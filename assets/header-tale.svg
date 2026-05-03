@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 60" width="800" height="60">
+  <defs>
+    <style>
+      @keyframes breathe { 0%,100%{filter:drop-shadow(0 0 4px #00b4d8) drop-shadow(0 0 8px #023e8a);opacity:1} 50%{filter:drop-shadow(0 0 20px #caf0f8) drop-shadow(0 0 40px #00b4d8);opacity:0.85} }
+      @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+      .txt{font-family:Georgia,serif;font-size:26px;font-weight:bold;fill:#caf0f8;animation:breathe 3s ease-in-out infinite;text-anchor:middle}
+      .em{animation:float 2.5s ease-in-out infinite;font-size:24px}
+      .em2{animation:float 3s ease-in-out infinite 0.5s;font-size:24px}
+    </style>
+  </defs>
+  <rect width="800" height="60" fill="#020617" rx="12"/>
+  <text class="em"  x="60"  y="42">🌊</text>
+  <text class="em2" x="100" y="42">🐚</text>
+  <text class="txt" x="400" y="42">The Sunken Tale</text>
+  <text class="em2" x="680" y="42">🐚</text>
+  <text class="em"  x="720" y="42">🌊</text>
+</svg>

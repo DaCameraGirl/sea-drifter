@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 60" width="800" height="60">
+  <defs>
+    <style>
+      @keyframes breathe { 0%,100%{filter:drop-shadow(0 0 4px #4CAF50) drop-shadow(0 0 8px #1b5e20);opacity:1} 50%{filter:drop-shadow(0 0 22px #a5d6a7) drop-shadow(0 0 44px #4CAF50);opacity:0.85} }
+      @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+      .txt{font-family:Georgia,serif;font-size:26px;font-weight:bold;fill:#a5d6a7;animation:breathe 3.2s ease-in-out infinite;text-anchor:middle}
+      .em{animation:float 2.8s ease-in-out infinite;font-size:24px}
+      .em2{animation:float 2.2s ease-in-out infinite 0.6s;font-size:24px}
+    </style>
+  </defs>
+  <rect width="800" height="60" fill="#020617" rx="12"/>
+  <text class="em"  x="60"  y="42">🗺️</text>
+  <text class="em2" x="105" y="42">🌊</text>
+  <text class="txt" x="400" y="42">Ocean Path Map</text>
+  <text class="em2" x="665" y="42">🌊</text>
+  <text class="em"  x="710" y="42">🗺️</text>
+</svg>

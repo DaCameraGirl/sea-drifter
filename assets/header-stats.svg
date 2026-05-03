@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 60" width="800" height="60">
+  <defs>
+    <style>
+      @keyframes breathe { 0%,100%{filter:drop-shadow(0 0 4px #7c3aed) drop-shadow(0 0 8px #3b0764);opacity:1} 50%{filter:drop-shadow(0 0 22px #ddd6fe) drop-shadow(0 0 44px #7c3aed);opacity:0.85} }
+      @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+      @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+      .txt{font-family:Georgia,serif;font-size:26px;font-weight:bold;fill:#ddd6fe;animation:breathe 3s ease-in-out infinite;text-anchor:middle}
+      .em{animation:float 2.5s ease-in-out infinite;font-size:24px}
+      .em2{animation:pulse 2s ease-in-out infinite 0.4s;font-size:24px}
+    </style>
+  </defs>
+  <rect width="800" height="60" fill="#020617" rx="12"/>
+  <text class="em"  x="60"  y="42">📊</text>
+  <text class="em2" x="105" y="42">🧠</text>
+  <text class="txt" x="400" y="42">Ocean Stats</text>
+  <text class="em2" x="665" y="42">🧠</text>
+  <text class="em"  x="710" y="42">📊</text>
+</svg>

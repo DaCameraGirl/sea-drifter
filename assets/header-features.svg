@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 60" width="800" height="60">
+  <defs>
+    <style>
+      @keyframes breathe { 0%,100%{filter:drop-shadow(0 0 4px #FF6B9D) drop-shadow(0 0 8px #8b0057);opacity:1} 50%{filter:drop-shadow(0 0 22px #ffb3d1) drop-shadow(0 0 44px #FF6B9D);opacity:0.85} }
+      @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+      @keyframes spin { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+      .txt{font-family:Georgia,serif;font-size:26px;font-weight:bold;fill:#ffb3d1;animation:breathe 2.8s ease-in-out infinite;text-anchor:middle}
+      .em{animation:float 2s ease-in-out infinite;font-size:26px}
+      .em2{animation:float 2.5s ease-in-out infinite 0.7s;font-size:26px}
+    </style>
+  </defs>
+  <rect width="800" height="60" fill="#020617" rx="12"/>
+  <text class="em"  x="55"  y="42">🦑</text>
+  <text class="em2" x="100" y="42">✨</text>
+  <text class="txt" x="400" y="42">Enchanted Ocean Features</text>
+  <text class="em2" x="670" y="42">✨</text>
+  <text class="em"  x="715" y="42">🦑</text>
+</svg>
