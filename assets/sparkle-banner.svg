@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 120" width="800" height="120">
+  <defs>
+    <style>
+      @keyframes spin   { from{transform-origin:50% 50%;transform:rotate(0deg)}   to{transform-origin:50% 50%;transform:rotate(360deg)} }
+      @keyframes spin2  { from{transform-origin:50% 50%;transform:rotate(360deg)} to{transform-origin:50% 50%;transform:rotate(0deg)} }
+      @keyframes pulse  { 0%,100%{opacity:1;r:8} 50%{opacity:0.2;r:3} }
+      @keyframes pulse2 { 0%,100%{opacity:0.4;r:5} 50%{opacity:1;r:10} }
+      @keyframes float  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+      @keyframes blink  { 0%,100%{opacity:1} 45%{opacity:1} 50%{opacity:0} 55%{opacity:1} }
+      @keyframes glow   { 0%,100%{filter:drop-shadow(0 0 4px #00b4d8)} 50%{filter:drop-shadow(0 0 16px #caf0f8)} }
+      .sp1{animation:pulse 1.5s ease-in-out infinite}
+      .sp2{animation:pulse2 2s ease-in-out infinite 0.4s}
+      .sp3{animation:pulse 2.5s ease-in-out infinite 0.8s}
+      .sp4{animation:pulse2 1.8s ease-in-out infinite 1.2s}
+      .title{font-family:Georgia,serif;font-size:28px;font-weight:bold;fill:#caf0f8;animation:glow 2s ease-in-out infinite}
+      .sub{font-family:Georgia,serif;font-size:13px;fill:#90e0ef;animation:blink 4s ease-in-out infinite}
+      .mf{animation:float 3s ease-in-out infinite;font-size:28px}
+      .mf2{animation:float 2.5s ease-in-out infinite 0.6s;font-size:22px}
+      .star4{animation:spin 8s linear infinite}
+      .star4b{animation:spin2 6s linear infinite}
+    </style>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#023e8a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#020617" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="120" fill="url(#bg)" rx="16"/>
+
+  <!-- sparkle dots -->
+  <circle class="sp1" cx="60"  cy="30" r="8"  fill="#00b4d8" opacity="0.8"/>
+  <circle class="sp2" cx="150" cy="80" r="5"  fill="#90e0ef" opacity="0.6"/>
+  <circle class="sp3" cx="250" cy="25" r="7"  fill="#caf0f8" opacity="0.7"/>
+  <circle class="sp4" cx="680" cy="35" r="6"  fill="#00b4d8" opacity="0.8"/>
+  <circle class="sp1" cx="740" cy="85" r="8"  fill="#90e0ef" opacity="0.6"/>
+  <circle class="sp2" cx="560" cy="20" r="5"  fill="#caf0f8" opacity="0.7"/>
+  <circle class="sp3" cx="340" cy="95" r="7"  fill="#00b4d8" opacity="0.5"/>
+  <circle class="sp4" cx="460" cy="15" r="4"  fill="#caf0f8" opacity="0.9"/>
+
+  <!-- 4-point stars -->
+  <g class="star4" style="transform-box:fill-box">
+    <path d="M100,60 L103,55 L106,60 L103,65 Z" fill="#caf0f8" opacity="0.9"/>
+    <path d="M97,60 L103,57 L109,60 L103,63 Z" fill="#caf0f8" opacity="0.9"/>
+  </g>
+  <g class="star4b" style="transform-box:fill-box">
+    <path d="M700,55 L703,50 L706,55 L703,60 Z" fill="#90e0ef" opacity="0.9"/>
+    <path d="M697,55 L703,52 L709,55 L703,58 Z" fill="#90e0ef" opacity="0.9"/>
+  </g>
+
+  <!-- floating emojis -->
+  <text class="mf"  x="30"  y="72">🧜‍♀️</text>
+  <text class="mf2" x="740" y="70">🌊</text>
+
+  <!-- main title -->
+  <text class="title" x="400" y="58" text-anchor="middle">🌊 Lost Little Girl Paths 🌊</text>
+  <text class="sub"   x="400" y="85" text-anchor="middle">✨ Every choice ripples like ocean currents ✨</text>
+  <text style="font-size:11px;fill:#48cae4;opacity:0.7" x="400" y="106" text-anchor="middle">🐚 branching story · multiple endings · infinite replayability 🐚</text>
+</svg>

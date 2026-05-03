@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 80" width="800" height="80">
+  <defs>
+    <style>
+      .star { fill: white; }
+      @keyframes twinkle1 { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.1;transform:scale(0.3)} }
+      @keyframes twinkle2 { 0%,100%{opacity:0.3;transform:scale(0.5)} 50%{opacity:1;transform:scale(1.2)} }
+      @keyframes twinkle3 { 0%,100%{opacity:0.8} 33%{opacity:0.1} 66%{opacity:1} }
+      @keyframes drift { 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-6px)} }
+      .s1{animation:twinkle1 1.4s ease-in-out infinite}
+      .s2{animation:twinkle2 2.1s ease-in-out infinite}
+      .s3{animation:twinkle3 1.8s ease-in-out infinite}
+      .s4{animation:twinkle1 2.6s ease-in-out infinite 0.3s}
+      .s5{animation:twinkle2 1.2s ease-in-out infinite 0.7s}
+      .s6{animation:twinkle3 3.0s ease-in-out infinite 0.5s}
+      .moji{animation:drift 3s ease-in-out infinite; font-size:18px;}
+      .moji2{animation:drift 2.4s ease-in-out infinite 0.8s; font-size:16px;}
+      .moji3{animation:drift 3.5s ease-in-out infinite 1.2s; font-size:20px;}
+    </style>
+  </defs>
+  <rect width="800" height="80" fill="#020617" rx="12"/>
+  <!-- stars -->
+  <circle class="star s1" cx="30" cy="15" r="2"/>
+  <circle class="star s2" cx="80" cy="35" r="1.5"/>
+  <circle class="star s3" cx="140" cy="12" r="2.5"/>
+  <circle class="star s4" cx="200" cy="40" r="1.5"/>
+  <circle class="star s5" cx="260" cy="20" r="2"/>
+  <circle class="star s6" cx="320" cy="50" r="1"/>
+  <circle class="star s1" cx="380" cy="10" r="2.5"/>
+  <circle class="star s2" cx="430" cy="45" r="1.5"/>
+  <circle class="star s3" cx="490" cy="18" r="2"/>
+  <circle class="star s4" cx="550" cy="38" r="1"/>
+  <circle class="star s5" cx="610" cy="8" r="2.5"/>
+  <circle class="star s6" cx="670" cy="30" r="1.5"/>
+  <circle class="star s1" cx="730" cy="55" r="2"/>
+  <circle class="star s2" cx="770" cy="20" r="1.5"/>
+  <circle class="star s3" cx="50" cy="60" r="1"/>
+  <circle class="star s4" cx="110" cy="48" r="2"/>
+  <circle class="star s5" cx="170" cy="65" r="1.5"/>
+  <circle class="star s6" cx="350" cy="68" r="2"/>
+  <circle class="star s1" cx="500" cy="62" r="1.5"/>
+  <circle class="star s2" cx="650" cy="70" r="1"/>
+  <!-- emoji row -->
+  <text class="moji"  x="20"  y="50">🌊</text>
+  <text class="moji2" x="90"  y="45">🧜‍♀️</text>
+  <text class="moji3" x="165" y="52">🐚</text>
+  <text class="moji"  x="240" y="46">✨</text>
+  <text class="moji2" x="315" y="52">🐬</text>
+  <text class="moji3" x="385" y="46">💎</text>
+  <text class="moji"  x="455" y="53">🌀</text>
+  <text class="moji2" x="525" y="46">🐙</text>
+  <text class="moji3" x="595" y="52">🦈</text>
+  <text class="moji"  x="665" y="46">🌊</text>
+  <text class="moji2" x="730" y="52">⚡</text>
+</svg>

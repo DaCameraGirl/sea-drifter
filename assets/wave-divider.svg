@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 40" width="800" height="40">
+  <defs>
+    <style>
+      @keyframes wave { 0%{d:path("M0,20 C200,5 400,35 600,20 S800,5 800,20 L800,40 L0,40 Z")} 50%{d:path("M0,20 C200,35 400,5 600,20 S800,35 800,20 L800,40 L0,40 Z")} 100%{d:path("M0,20 C200,5 400,35 600,20 S800,5 800,20 L800,40 L0,40 Z")} }
+      @keyframes wave2 { 0%{d:path("M0,25 C150,10 350,38 550,22 S750,8 800,25 L800,40 L0,40 Z")} 50%{d:path("M0,25 C150,38 350,10 550,28 S750,38 800,25 L800,40 L0,40 Z")} 100%{d:path("M0,25 C150,10 350,38 550,22 S750,8 800,25 L800,40 L0,40 Z")} }
+      .w1{animation:wave 4s ease-in-out infinite; fill:#0077be; opacity:0.7}
+      .w2{animation:wave2 3s ease-in-out infinite 0.5s; fill:#00b4d8; opacity:0.5}
+    </style>
+  </defs>
+  <rect width="800" height="40" fill="#020617"/>
+  <path class="w1" d="M0,20 C200,5 400,35 600,20 S800,5 800,20 L800,40 L0,40 Z"/>
+  <path class="w2" d="M0,25 C150,10 350,38 550,22 S750,8 800,25 L800,40 L0,40 Z"/>
+</svg>

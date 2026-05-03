@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 60" width="800" height="60">
+  <defs>
+    <style>
+      @keyframes slidein { 0%{opacity:0;transform:translateX(-30px)} 100%{opacity:1;transform:translateX(0)} }
+      @keyframes pop     { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
+      @keyframes colorshift { 0%{fill:#4CAF50} 33%{fill:#00b4d8} 66%{fill:#FF6B9D} 100%{fill:#4CAF50} }
+      .badge{rx:20;animation:slidein 0.8s ease forwards}
+      .bl{animation:pop 2s ease-in-out infinite; transform-box:fill-box; transform-origin:50% 50%}
+      .bc{animation:pop 2.3s ease-in-out infinite 0.3s; transform-box:fill-box; transform-origin:50% 50%}
+      .bd{animation:pop 1.8s ease-in-out infinite 0.6s; transform-box:fill-box; transform-origin:50% 50%}
+      .bt{font-family:Georgia,serif;font-size:12px;font-weight:bold;text-anchor:middle}
+      .rainbow{animation:colorshift 3s linear infinite}
+    </style>
+  </defs>
+  <rect width="800" height="60" fill="#020617" rx="10"/>
+  <!-- Beach ending -->
+  <rect class="bl" x="20"  y="8" width="220" height="44" fill="#4CAF50" rx="14" opacity="0.9"/>
+  <text class="bt" x="130" y="28" fill="white">🏖️ SUNNY BEACH</text>
+  <text class="bt" x="130" y="44" fill="#d4edda">Good Ending ✨</text>
+  <!-- Coral ending -->
+  <rect class="bc" x="290" y="8" width="220" height="44" fill="#FF6B9D" rx="14" opacity="0.9"/>
+  <text class="bt" x="400" y="28" fill="white">🏰 CORAL PALACE</text>
+  <text class="bt" x="400" y="44" fill="#ffd6e7">Mixed Ending 🔱</text>
+  <!-- Abyss ending -->
+  <rect class="bd" x="560" y="8" width="220" height="44" fill="#1a1a2e" rx="14" opacity="0.9" stroke="#f44336" stroke-width="2"/>
+  <text class="bt" x="670" y="28" fill="#ff6b6b">⚫ THE ABYSS</text>
+  <text class="bt" x="670" y="44" fill="#ff9999">Dark Ending 💀</text>
+</svg>
