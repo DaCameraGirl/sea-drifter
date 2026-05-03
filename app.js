@@ -1,91 +1,96 @@
 const scenes = {
   start: {
-    title: "A Quiet Road",
-    text: "Mia is lost at dusk. She sees a lit bakery street, a dark forest path, and a park with a fountain.",
+    title: "The Street With No Sound",
+    text: "Mia is lost at midnight. Seven paths stretch out in front of her.",
     choices: [
-      { text: "Follow the bakery street", next: "bakery" },
-      { text: "Take the forest path", next: "forest" },
-      { text: "Go to the park fountain", next: "park" },
-    ],
-  },
-  bakery: {
-    title: "Warm Lights",
-    text: "The baker offers help. Mia can ask to call home, keep walking, or check a bus map nearby.",
-    choices: [
-      { text: "Ask the baker to call home", next: "good_home_call" },
-      { text: "Keep walking alone", next: "bad_circle" },
-      { text: "Check the bus map", next: "bus_map" },
-    ],
-  },
-  forest: {
-    title: "Whispering Trees",
-    text: "The path is quiet and confusing. Mia hears a dog barking and sees a ranger station light far away.",
-    choices: [
-      { text: "Follow the barking dog", next: "dog_friend" },
-      { text: "Walk toward the ranger station", next: "ranger_help" },
-      { text: "Turn back quickly", next: "start" },
-    ],
-  },
-  park: {
-    title: "The Fountain",
-    text: "A map sign stands by the fountain. A musician nearby says he knows the neighborhood.",
-    choices: [
-      { text: "Use the map sign", next: "map_route" },
-      { text: "Ask the musician for help", next: "musician_tip" },
-      { text: "Sit and wait", next: "night_cold" },
-    ],
-  },
-  bus_map: {
-    title: "Route Numbers",
-    text: "Mia finds her street name on the map. She can take bus 7, or wait for her mom at the stop.",
-    choices: [
-      { text: "Take bus 7", next: "good_bus_home" },
-      { text: "Wait at the stop", next: "okay_wait" },
-    ],
-  },
-  dog_friend: {
-    title: "A Friendly Dog",
-    text: "The dog leads Mia to a family walking nearby. They offer to contact police support.",
-    choices: [
-      { text: "Accept their help", next: "good_police_reunion" },
-      { text: "Run away scared", next: "bad_deeper_forest" },
-    ],
-  },
-  ranger_help: {
-    title: "Ranger Cabin",
-    text: "The ranger recognizes Mia's school badge and calls her parents.",
-    choices: [{ text: "Stay and wait safely", next: "good_ranger_home" }],
-  },
-  map_route: {
-    title: "Street by Street",
-    text: "The map shows two routes: a short alley or a longer well-lit avenue.",
-    choices: [
-      { text: "Take the well-lit avenue", next: "good_walk_home" },
-      { text: "Take the short alley", next: "bad_wrong_turn" },
-    ],
-  },
-  musician_tip: {
-    title: "A Helpful Song",
-    text: "The musician points to a safe community center with a phone.",
-    choices: [
-      { text: "Go to the community center", next: "good_center_call" },
-      { text: "Ignore and wander", next: "bad_circle" },
+      { text: "Path 1: Old church road", next: "church" },
+      { text: "Path 2: Breathing woods trail", next: "woods" },
+      { text: "Path 3: Empty playground", next: "playground" },
+      { text: "Path 4: Foggy train station", next: "station" },
+      { text: "Path 5: Abandoned hospital gate", next: "hospital" },
+      { text: "Path 6: Riverside steps", next: "river" },
+      { text: "Path 7: Market alley lights", next: "market" },
     ],
   },
 
-  good_home_call: { title: "Ending: Home Call", text: "The baker calls Mia's mom. She is picked up safely. ??", ending: true },
-  good_bus_home: { title: "Ending: Bus Ride", text: "Mia rides the correct bus and reaches her block safely. ??", ending: true },
-  good_police_reunion: { title: "Ending: Reunion", text: "Support staff locate her family quickly. Mia gets home safely. ??", ending: true },
-  good_ranger_home: { title: "Ending: Ranger Rescue", text: "The ranger keeps Mia safe until her parents arrive. ??", ending: true },
-  good_walk_home: { title: "Ending: Safe Route", text: "Mia follows the lit streets and finds her front door. ??", ending: true },
-  good_center_call: { title: "Ending: Community Help", text: "At the center, Mia calls home and is reunited safely. ??", ending: true },
+  church: {
+    title: "Bells at Midnight",
+    text: "The church doors are half open. A phone booth flickers nearby.",
+    choices: [
+      { text: "Use the phone booth", next: "safe_call" },
+      { text: "Enter the church", next: "shadow_pew" },
+    ],
+  },
 
-  okay_wait: { title: "Ending: Long Wait", text: "Mia waits a long time but eventually gets help from a patrol officer. ??", ending: true },
-  night_cold: { title: "Ending: Cold Night", text: "Waiting too long makes things harder, but a jogger helps her get support. ??", ending: true },
+  woods: {
+    title: "The Breathing Trees",
+    text: "A lantern glows deeper in the forest and something walks behind Mia.",
+    choices: [
+      { text: "Follow the lantern", next: "lantern_man" },
+      { text: "Jump a broken fence", next: "safe_fence" },
+    ],
+  },
 
-  bad_circle: { title: "Ending: Lost Loop", text: "Mia circles the same blocks and gets more confused before outside help finds her. ??", ending: true },
-  bad_deeper_forest: { title: "Ending: Deeper Forest", text: "Mia runs deeper into the woods and needs a search team. ??", ending: true },
-  bad_wrong_turn: { title: "Ending: Wrong Turn", text: "The alley route leads away from home and delays rescue. ??", ending: true },
+  playground: {
+    title: "Swings That Move Alone",
+    text: "The swings creak in the windless dark. A tunnel waits under the slide.",
+    choices: [
+      { text: "Enter the tunnel", next: "tunnel" },
+      { text: "Follow a stray cat", next: "cat_path" },
+    ],
+  },
+
+  station: {
+    title: "Foggy Platform",
+    text: "A silent train arrives with empty windows. A guard waves from far away.",
+    choices: [
+      { text: "Run to the guard", next: "safe_guard" },
+      { text: "Board the empty train", next: "ghost_train" },
+    ],
+  },
+
+  hospital: {
+    title: "Broken Hospital Gate",
+    text: "The gate is open. A lit office says SECURITY, and a dark hallway whispers.",
+    choices: [
+      { text: "Go to security office", next: "safe_security" },
+      { text: "Walk the dark hallway", next: "ward_13" },
+    ],
+  },
+
+  river: {
+    title: "Riverside Steps",
+    text: "Water is black under the bridge. A rescue phone hangs on a pole.",
+    choices: [
+      { text: "Use the rescue phone", next: "safe_rescue" },
+      { text: "Follow the waterline", next: "drowned_path" },
+    ],
+  },
+
+  market: {
+    title: "Neon Market Alley",
+    text: "Shops are closed, but one light blinks OPEN. A side alley glows red.",
+    choices: [
+      { text: "Knock at the OPEN shop", next: "safe_shop" },
+      { text: "Take the red alley", next: "red_alley" },
+    ],
+  },
+
+  safe_call: { title: "Ending: Ringing Home", text: "Mia calls home and is picked up safely. The bells stop. ?", ending: true },
+  safe_fence: { title: "Ending: Streetlights", text: "Mia reaches a lit road and gets help. ?", ending: true },
+  safe_guard: { title: "Ending: Station Guard", text: "The guard radios police and Mia gets home safely. ?", ending: true },
+  safe_security: { title: "Ending: Security Desk", text: "Security verifies Mia and contacts her family. ?", ending: true },
+  safe_rescue: { title: "Ending: Riverside Rescue", text: "The rescue call brings help quickly. Mia returns home. ?", ending: true },
+  safe_shop: { title: "Ending: Kind Shopkeeper", text: "A shopkeeper gives Mia shelter and calls her parents. ?", ending: true },
+
+  shadow_pew: { title: "Ending: The Last Pew", text: "A whisper says Mia's name from the dark behind her. ?", ending: true },
+  lantern_man: { title: "Ending: Lantern Smile", text: "The lantern holder has no face, and the path vanishes. ?", ending: true },
+  tunnel: { title: "Ending: Chalk Tunnel", text: "A drawing on the wall shows Mia before she arrived. ?", ending: true },
+  cat_path: { title: "Ending: Mirror Window", text: "Mia sees herself already inside her own house. ?", ending: true },
+  ghost_train: { title: "Ending: Last Stop", text: "The train doors lock and never open again. ?", ending: true },
+  ward_13: { title: "Ending: Ward 13", text: "Every room is empty except one with her name on the bed. ?", ending: true },
+  drowned_path: { title: "Ending: Black Water", text: "Footsteps appear beside hers, but no one is there. ?", ending: true },
+  red_alley: { title: "Ending: Red Hall", text: "The alley loops forever back to the same red door. ?", ending: true },
 };
 
 const sceneTitle = document.getElementById("sceneTitle");
