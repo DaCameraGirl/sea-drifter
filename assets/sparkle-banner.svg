@@ -78,7 +78,7 @@
   <text class="mf"  x="158" y="90">✨</text>
 
   <!-- title text — pushed right to make room for photo -->
-  <text class="title" x="440" y="55" text-anchor="middle">🌊 Lost Little Girl Paths 🌊</text>
+  <text class="title" x="440" y="55" text-anchor="middle">🌊 Pick-A-Path 🌊</text>
   <text class="sub"   x="440" y="78" text-anchor="middle">✨ Every choice ripples like ocean currents ✨</text>
   <text style="font-family:Georgia,serif;font-size:11px;fill:#48cae4;opacity:0.8" x="440" y="98" text-anchor="middle">🐚 branching story · multiple endings · infinite replayability 🐚</text>
   <text style="font-family:Georgia,serif;font-size:10px;fill:#90e0ef;opacity:0.6;font-style:italic" x="440" y="118" text-anchor="middle">Built by DaCameraGirl 📸 — neon brains, bold vibes, ocean logic ⚡</text>
