@@ -2,102 +2,147 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>🌙 Find Your Way Home 🌙</title>
+<title>🧜‍♀️ Lost Little Girl Paths 🌊</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: 'Georgia', serif;
-  background: linear-gradient(135deg, #1a1a3e 0%, #2d1b4e 50%, #4a1942 100%);
+  background: linear-gradient(180deg, #001a33 0%, #003d66 30%, #0077be 60%, #00b4d8 100%);
   color: #fff;
   min-height: 100vh;
   overflow-x: hidden;
   cursor: none;
+  position: relative;
+}
+
+.bubble {
+  position: fixed;
+  bottom: -50px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatUp linear infinite;
+  z-index: 1;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-110vh) translateX(100px); opacity: 0; }
 }
 
 #mia-follower {
   position: fixed;
-  font-size: 45px;
+  font-size: 50px;
   pointer-events: none;
   z-index: 9999;
-  filter: drop-shadow(0 0 10px #ff69b4);
-  animation: bounce 0.6s infinite alternate;
+  filter: drop-shadow(0 0 15px #00ffff);
+  animation: swim 1s infinite alternate;
   transition: left 0.1s, top 0.1s;
 }
 
-@keyframes bounce {
-  0% { transform: translateY(0) rotate(-5deg); }
-  100% { transform: translateY(-8px) rotate(5deg); }
+@keyframes swim {
+  0% { transform: translateY(0) rotate(-8deg); }
+  100% { transform: translateY(-10px) rotate(8deg); }
 }
 
 .sparkle {
   position: fixed;
   pointer-events: none;
-  font-size: 18px;
+  font-size: 20px;
   z-index: 9998;
-  animation: sparkleFade 1s forwards;
+  animation: sparkleFade 1.2s forwards;
 }
 
 @keyframes sparkleFade {
-  0% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(0.3) translateY(30px); }
+  0% { opacity: 1; transform: scale(1) rotate(0deg); }
+  100% { opacity: 0; transform: scale(0.3) translateY(40px) rotate(360deg); }
+}
+
+.wave-divider {
+  text-align: center;
+  font-size: 2em;
+  margin: 20px 0;
+  letter-spacing: 5px;
+  animation: waveMove 3s ease-in-out infinite;
+}
+
+@keyframes waveMove {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(20px); }
 }
 
 header {
   text-align: center;
-  padding: 40px 20px;
+  padding: 50px 20px 30px;
+  position: relative;
+  z-index: 2;
 }
 
 header h1 {
-  font-size: 3.5em;
-  background: linear-gradient(90deg, #ff69b4, #ffd700, #87ceeb, #ff69b4);
+  font-size: 3.8em;
+  background: linear-gradient(90deg, #00ffff, #00b4d8, #FF6B9D, #00ffff);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: rainbow 3s linear infinite;
+  animation: oceanShimmer 4s linear infinite;
+  text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+  margin-bottom: 15px;
 }
 
-@keyframes rainbow {
+@keyframes oceanShimmer {
   0% { background-position: 0% 50%; }
   100% { background-position: 300% 50%; }
 }
 
 .subtitle {
   font-size: 1.3em;
-  margin-top: 15px;
-  color: #ffb6d9;
+  color: #90e0ef;
   font-style: italic;
+}
+
+.tagline {
+  margin-top: 15px;
+  font-size: 1.1em;
+  color: #FF6B9D;
+  font-weight: bold;
 }
 
 main {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 30px;
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 20px auto;
   padding: 20px;
+  position: relative;
+  z-index: 2;
 }
 
 #story {
-  background: rgba(255, 255, 255, 0.1);
-  border: 3px solid #ff69b4;
+  background: rgba(0, 30, 60, 0.6);
+  border: 3px solid #00b4d8;
   border-radius: 25px;
-  padding: 35px;
-  box-shadow: 0 0 40px rgba(255, 105, 180, 0.5);
+  padding: 40px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 50px rgba(0, 180, 216, 0.5), inset 0 0 30px rgba(0, 180, 216, 0.2);
 }
 
 #scene-title {
-  font-size: 2.2em;
+  font-size: 2.3em;
   margin-bottom: 20px;
-  color: #ffd700;
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+  color: #00ffff;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+  text-align: center;
 }
 
 #scene-text {
   font-size: 1.15em;
   line-height: 1.9;
-  margin-bottom: 25px;
-  color: #f0e6ff;
+  margin-bottom: 30px;
+  color: #caf0f8;
 }
 
 #choices {
@@ -107,38 +152,42 @@ main {
 }
 
 .choice-btn {
-  background: linear-gradient(135deg, #ff69b4, #c71585);
+  background: linear-gradient(135deg, #0077be, #00b4d8);
   color: white;
-  border: none;
-  padding: 16px 22px;
+  border: 2px solid #00ffff;
+  padding: 18px 25px;
   font-size: 1.15em;
   border-radius: 30px;
   cursor: pointer;
   font-family: inherit;
   text-align: left;
-  box-shadow: 0 4px 20px rgba(255, 105, 180, 0.5);
+  box-shadow: 0 4px 25px rgba(0, 180, 216, 0.6);
   transition: all 0.3s ease;
 }
 
 .choice-btn:hover {
   transform: translateX(15px) scale(1.05);
-  background: linear-gradient(135deg, #ffd700, #ff69b4);
-  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.7);
+  background: linear-gradient(135deg, #FF6B9D, #00ffff);
+  box-shadow: 0 8px 35px rgba(255, 107, 157, 0.8);
+  border-color: #FF6B9D;
 }
 
 #path-log-container {
-  background: rgba(255, 255, 255, 0.1);
-  border: 3px solid #87ceeb;
+  background: rgba(0, 30, 60, 0.6);
+  border: 3px solid #FF6B9D;
   border-radius: 25px;
   padding: 25px;
   height: fit-content;
-  box-shadow: 0 0 40px rgba(135, 206, 235, 0.5);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 50px rgba(255, 107, 157, 0.5);
 }
 
 #path-log-container h3 {
-  color: #87ceeb;
+  color: #FF6B9D;
   margin-bottom: 15px;
-  font-size: 1.6em;
+  font-size: 1.7em;
+  text-align: center;
+  text-shadow: 0 0 15px rgba(255, 107, 157, 0.7);
 }
 
 #path-log {
@@ -150,10 +199,11 @@ main {
 #path-log li {
   padding: 12px;
   margin-bottom: 10px;
-  background: rgba(255, 105, 180, 0.25);
-  border-left: 5px solid #ff69b4;
+  background: rgba(0, 180, 216, 0.25);
+  border-left: 5px solid #00ffff;
   border-radius: 10px;
   animation: slideIn 0.5s ease;
+  color: #caf0f8;
 }
 
 @keyframes slideIn {
@@ -163,15 +213,15 @@ main {
 
 #restart-btn {
   width: 100%;
-  background: linear-gradient(135deg, #87ceeb, #4682b4);
+  background: linear-gradient(135deg, #FF6B9D, #c71585);
   color: white;
-  border: none;
+  border: 2px solid #FF6B9D;
   padding: 14px;
   font-size: 1.1em;
   border-radius: 25px;
   cursor: pointer;
   font-family: inherit;
-  box-shadow: 0 4px 20px rgba(135, 206, 235, 0.5);
+  box-shadow: 0 4px 25px rgba(255, 107, 157, 0.6);
 }
 
 #restart-btn:hover {
@@ -180,42 +230,56 @@ main {
 
 footer {
   text-align: center;
-  padding: 25px;
-  color: #ffb6d9;
+  padding: 30px 20px;
+  color: #90e0ef;
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 20, 40, 0.5);
+  margin-top: 40px;
+}
+
+.emoji-parade {
+  font-size: 1.5em;
+  letter-spacing: 8px;
+  margin-top: 15px;
 }
 
 @media (max-width: 768px) {
   main { grid-template-columns: 1fr; }
-  header h1 { font-size: 2.2em; }
+  header h1 { font-size: 2.3em; }
 }
 </style>
 </head>
 <body>
 
-<div id="mia-follower">👧</div>
+<div id="mia-follower">🧜‍♀️</div>
 
 <header>
-  <h1>🌙 Find Your Way Home 🌙</h1>
-  <p class="subtitle">A branching story about a lost little girl choosing her way back home. 👧💖</p>
+  <h1>🌊🧜‍♀️ Lost Little Girl Paths 🧜‍♀️🌊</h1>
+  <p class="subtitle">The Sunken Tale 🐚</p>
+  <p class="tagline">🐬 "Swim with the currents, find your destiny!" 🐬</p>
 </header>
+
+<div class="wave-divider">🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊</div>
 
 <main>
   <section id="story">
-    <h2 id="scene-title">🌃 The Street With No Sound</h2>
+    <h2 id="scene-title">🌊 The Sea With No Shore</h2>
     <p id="scene-text">
-      👧 <strong>Mia</strong> is a small 9-year-old girl with shoulder-length dark hair, 
-      an oversized yellow raincoat 🧥 over a faded blue dress, scuffed red shoes 👟, 
-      and a tiny flashlight 🔦 in one hand and a worn stuffed rabbit 🐰 in the other. 
-      She is lost at midnight 🌙, and seven numbered paths stretch out in front of her. ✨
+      🧜‍♀️ <strong>Mia</strong> is a small 9-year-old mermaid with shoulder-length seaweed-green hair, 
+      a shimmering pearl crown 👑, a glowing seashell necklace 🐚, 
+      and a tiny bioluminescent jellyfish 🪼 in one hand and a worn stuffed seahorse 🐴 in the other. 
+      She is lost in the deep blue at midnight 🌙, and seven glowing currents stretch out before her through 
+      whispering waves and coral mazes. ✨🌊
     </p>
     <div id="choices">
-      <button class="choice-btn" data-path="1">⛪ Path 1: Old church road</button>
-      <button class="choice-btn" data-path="2">🌲 Path 2: Breathing woods trail</button>
-      <button class="choice-btn" data-path="3">🎠 Path 3: Empty playground</button>
-      <button class="choice-btn" data-path="4">🚂 Path 4: Foggy train station</button>
-      <button class="choice-btn" data-path="5">🏥 Path 5: Abandoned hospital gate</button>
-      <button class="choice-btn" data-path="6">🌊 Path 6: Riverside steps</button>
-      <button class="choice-btn" data-path="7">🏮 Path 7: Market alley lights</button>
+      <button class="choice-btn" data-path="1">🏰 Path 1: The Sunken Coral Palace</button>
+      <button class="choice-btn" data-path="2">🐙 Path 2: The Octopus Garden</button>
+      <button class="choice-btn" data-path="3">🦈 Path 3: The Shark Cave Tunnel</button>
+      <button class="choice-btn" data-path="4">🚢 Path 4: The Shipwreck Graveyard</button>
+      <button class="choice-btn" data-path="5">🌋 Path 5: The Underwater Volcano</button>
+      <button class="choice-btn" data-path="6">🐋 Path 6: The Whale Song Trench</button>
+      <button class="choice-btn" data-path="7">🏖️ Path 7: The Sunny Shore Reef</button>
     </div>
   </section>
 
@@ -226,49 +290,103 @@ footer {
   </aside>
 </main>
 
+<div class="wave-divider">🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊</div>
+
 <footer>
-  <p>💖 Made with magic by <strong>DaCameraGirl</strong> 🌙✨</p>
+  <p>🧜‍♀️ Made with Ocean Magic 💙 by <strong>DaCameraGirl</strong> 🧠✨</p>
+  <p style="margin-top:10px; font-style:italic; color:#FF6B9D;">"Lost paths lead to found treasures... 🌊🐚"</p>
+  <div class="emoji-parade">🌊🧜‍♀️🐚🐟🐳🐙🦀🐡🐬🦈✨💎🌀🌊🧜‍♀️🐚🐟🐳🐙🦀🐡🐬🦈✨💎🌀🌊</div>
 </footer>
 
 <script>
+function createBubbles() {
+  for (let i = 0; i < 25; i++) {
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    const size = Math.random() * 40 + 10;
+    bubble.style.width = size + 'px';
+    bubble.style.height = size + 'px';
+    bubble.style.left = Math.random() * 100 + 'vw';
+    bubble.style.animationDuration = (Math.random() * 10 + 8) + 's';
+    bubble.style.animationDelay = Math.random() * 5 + 's';
+    document.body.appendChild(bubble);
+  }
+}
+createBubbles();
+
 const mia = document.getElementById('mia-follower');
 let mouseX = 0, mouseY = 0, miaX = 0, miaY = 0;
 
 document.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;
-  if (Math.random() > 0.7) createSparkle(e.clientX, e.clientY);
+  if (Math.random() > 0.6) createSparkle(e.clientX, e.clientY);
 });
 
 function animateMia() {
-  miaX += (mouseX - miaX) * 0.15;
-  miaY += (mouseY - miaY) * 0.15;
-  mia.style.left = (miaX - 22) + 'px';
-  mia.style.top = (miaY - 22) + 'px';
+  miaX += (mouseX - miaX) * 0.12;
+  miaY += (mouseY - miaY) * 0.12;
+  mia.style.left = (miaX - 25) + 'px';
+  mia.style.top = (miaY - 25) + 'px';
   mia.style.transform = mouseX > miaX ? 'scaleX(1)' : 'scaleX(-1)';
   requestAnimationFrame(animateMia);
 }
 animateMia();
 
 function createSparkle(x, y) {
-  const sparkles = ['✨', '⭐', '💖', '🌟', '💫', '🌸'];
+  const sparkles = ['✨', '💎', '🫧', '🌊', '⭐', '💙', '🐚'];
   const s = document.createElement('div');
   s.className = 'sparkle';
   s.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
   s.style.left = (x + Math.random() * 20 - 10) + 'px';
   s.style.top = (y + Math.random() * 20 - 10) + 'px';
   document.body.appendChild(s);
-  setTimeout(() => s.remove(), 1000);
+  setTimeout(() => s.remove(), 1200);
 }
 
 const paths = {
-  1: { name: 'Old church road', emoji: '⛪', story: 'Mia walked toward the old stone church 🪨. The bells rang softly... a kind priest opened the door and offered her warm cocoa ☕. She felt safe.', ending: '✨ GOOD ENDING ✨' },
-  2: { name: 'Breathing woods trail', emoji: '🌲', story: 'The trees whispered her name 🍃. Mia followed glowing fireflies 🦋... but the woods grew darker, and her flashlight flickered. 🔦', ending: '🌙 MIXED ENDING 🌙' },
-  3: { name: 'Empty playground', emoji: '🎠', story: 'The swings creaked in the wind 🌬️. A friendly ghost child 👻 took her hand and led her to a kind old lady\'s house. 🏠', ending: '✨ GOOD ENDING ✨' },
-  4: { name: 'Foggy train station', emoji: '🚂', story: 'A mysterious train arrived 🚂💨. The conductor smiled... but the train went somewhere unknown. Mia waved goodbye to her old life. 👋', ending: '⚫ BAD ENDING ⚫' },
-  5: { name: 'Abandoned hospital gate', emoji: '🏥', story: 'Cold hands reached through the gate 🥶. Mia ran fast! 🏃‍♀️ She found a kind nurse 👩‍⚕️ who called her parents. 📞', ending: '🌙 MIXED ENDING 🌙' },
-  6: { name: 'Riverside steps', emoji: '🌊', story: 'The river sparkled like diamonds 💎. A magical mermaid 🧜‍♀️ rose from the water and showed Mia the way home through the moonlight. 🌙', ending: '✨ GOOD ENDING ✨' },
-  7: { name: 'Market alley lights', emoji: '🏮', story: 'Glowing lanterns danced 🏮✨. A kind shopkeeper 👨‍🍳 gave her dumplings 🥟 and walked her safely back home to her family. 💖', ending: '✨ GOOD ENDING ✨' }
+  1: { 
+    name: 'The Sunken Coral Palace', 
+    emoji: '🏰', 
+    story: '🏰 Mia swam through golden archways of coral 🪸. The Mermaid Queen 👑🧜‍♀️ welcomed her with a feast of sea-pearls and sang her a lullaby that guided her safely home through the tides. 🎶', 
+    ending: '🏰 CORAL PALACE ENDING 🏰' 
+  },
+  2: { 
+    name: 'The Octopus Garden', 
+    emoji: '🐙', 
+    story: '🐙 A wise old octopus 🐙 with eight glowing arms welcomed Mia into his garden of sea flowers 🌺. He gave her a magical pearl 🦪 that lit her way back to the shore. ✨', 
+    ending: '🏖️ SUNNY BEACH ENDING 🏖️' 
+  },
+  3: { 
+    name: 'The Shark Cave Tunnel', 
+    emoji: '🦈', 
+    story: '🦈 Sharp teeth gleamed in the dark tunnel 🕳️. Mia swam fast! 💨 A friendly hammerhead 🔨🦈 escorted her safely through to a glowing reef. 💚', 
+    ending: '🌙 MIXED ENDING 🌙' 
+  },
+  4: { 
+    name: 'The Shipwreck Graveyard', 
+    emoji: '🚢', 
+    story: '🚢 Ghost pirates 👻☠️ haunted the rusted ships. Mia got lost among the wreckage and the cold currents pulled her deeper... into the endless dark abyss. 🌀', 
+    ending: '⚫ THE ABYSS ENDING ⚫' 
+  },
+  5: { 
+    name: 'The Underwater Volcano', 
+    emoji: '🌋', 
+    story: '🌋 Hot bubbles burst around her 🫧🔥! Mia rode a lava-eel 🐍 to safety, where a warm thermal current carried her toward home. The seafloor glowed beneath her tail. ✨', 
+    ending: '🌙 MIXED ENDING 🌙' 
+  },
+  6: { 
+    name: 'The Whale Song Trench', 
+    emoji: '🐋', 
+    story: '🐋 A giant blue whale 🐋💙 sang a song of ancient oceans. Mia rode on his back through the moonlit waves 🌙 all the way back to her family\'s coral cove. 💖', 
+    ending: '🏖️ SUNNY BEACH ENDING 🏖️' 
+  },
+  7: { 
+    name: 'The Sunny Shore Reef', 
+    emoji: '🏖️', 
+    story: '🏖️ Golden sunbeams ☀️ sparkled through clear blue water. Dolphins 🐬🐬 leaped beside her, giggling, and led her straight home to her mermaid mama 🧜‍♀️. 💖', 
+    ending: '🏖️ SUNNY BEACH ENDING 🏖️' 
+  }
 };
 
 document.querySelectorAll('.choice-btn').forEach(btn => {
@@ -278,28 +396,28 @@ document.querySelectorAll('.choice-btn').forEach(btn => {
     mouseX = rect.left + rect.width / 2;
     mouseY = rect.top + rect.height / 2;
     
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 25; i++) {
       setTimeout(() => createSparkle(
         rect.left + Math.random() * rect.width,
         rect.top + Math.random() * rect.height
-      ), i * 40);
+      ), i * 30);
     }
     
     setTimeout(() => {
       const li = document.createElement('li');
-      li.innerHTML = `${p.emoji} <strong>${p.name}</strong> - ${p.ending}`;
+      li.innerHTML = `${p.emoji} <strong>${p.name}</strong><br><small>${p.ending}</small>`;
       document.getElementById('path-log').appendChild(li);
       document.getElementById('scene-title').textContent = `${p.emoji} ${p.name}`;
-      document.getElementById('scene-text').innerHTML = `${p.story}<br><br><strong style="color:#ffd700;font-size:1.2em;">${p.ending}</strong>`;
+      document.getElementById('scene-text').innerHTML = `${p.story}<br><br><strong style="color:#00ffff;font-size:1.3em;text-shadow:0 0 15px #00ffff;">${p.ending}</strong>`;
     }, 600);
   });
 });
 
 document.getElementById('restart-btn').addEventListener('click', () => {
   document.getElementById('path-log').innerHTML = '';
-  document.getElementById('scene-title').textContent = '🌃 The Street With No Sound';
-  document.getElementById('scene-text').innerHTML = `👧 <strong>Mia</strong> is a small 9-year-old girl with shoulder-length dark hair, an oversized yellow raincoat 🧥 over a faded blue dress, scuffed red shoes 👟, and a tiny flashlight 🔦 in one hand and a worn stuffed rabbit 🐰 in the other. She is lost at midnight 🌙, and seven numbered paths stretch out in front of her. ✨`;
-  for (let i = 0; i < 40; i++) {
+  document.getElementById('scene-title').textContent = '🌊 The Sea With No Shore';
+  document.getElementById('scene-text').innerHTML = `🧜‍♀️ <strong>Mia</strong> is a small 9-year-old mermaid with shoulder-length seaweed-green hair, a shimmering pearl crown 👑, a glowing seashell necklace 🐚, and a tiny bioluminescent jellyfish 🪼 in one hand and a worn stuffed seahorse 🐴 in the other. She is lost in the deep blue at midnight 🌙, and seven glowing currents stretch out before her through whispering waves and coral mazes. ✨🌊`;
+  for (let i = 0; i < 50; i++) {
     setTimeout(() => createSparkle(Math.random() * window.innerWidth, Math.random() * window.innerHeight), i * 25);
   }
 });
