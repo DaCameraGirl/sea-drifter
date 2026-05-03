@@ -1,3 +1,6 @@
+<h1>🌊🧜‍♀️ Sea Drifter 🧜‍♀️🌊</h1>
+
+
 <div align="center">
 
 <img src="assets/sparkle-banner.svg" width="100%" alt="Pick-A-Path"/>
