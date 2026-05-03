@@ -1,29 +1,308 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Find Your Way Home</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<title>🌙 Find Your Way Home 🌙</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Georgia', serif;
+  background: linear-gradient(135deg, #1a1a3e 0%, #2d1b4e 50%, #4a1942 100%);
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+#mia-follower {
+  position: fixed;
+  font-size: 45px;
+  pointer-events: none;
+  z-index: 9999;
+  filter: drop-shadow(0 0 10px #ff69b4);
+  animation: bounce 0.6s infinite alternate;
+  transition: left 0.1s, top 0.1s;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0) rotate(-5deg); }
+  100% { transform: translateY(-8px) rotate(5deg); }
+}
+
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  font-size: 18px;
+  z-index: 9998;
+  animation: sparkleFade 1s forwards;
+}
+
+@keyframes sparkleFade {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.3) translateY(30px); }
+}
+
+header {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+header h1 {
+  font-size: 3.5em;
+  background: linear-gradient(90deg, #ff69b4, #ffd700, #87ceeb, #ff69b4);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow 3s linear infinite;
+}
+
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+.subtitle {
+  font-size: 1.3em;
+  margin-top: 15px;
+  color: #ffb6d9;
+  font-style: italic;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+#story {
+  background: rgba(255, 255, 255, 0.1);
+  border: 3px solid #ff69b4;
+  border-radius: 25px;
+  padding: 35px;
+  box-shadow: 0 0 40px rgba(255, 105, 180, 0.5);
+}
+
+#scene-title {
+  font-size: 2.2em;
+  margin-bottom: 20px;
+  color: #ffd700;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+}
+
+#scene-text {
+  font-size: 1.15em;
+  line-height: 1.9;
+  margin-bottom: 25px;
+  color: #f0e6ff;
+}
+
+#choices {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.choice-btn {
+  background: linear-gradient(135deg, #ff69b4, #c71585);
+  color: white;
+  border: none;
+  padding: 16px 22px;
+  font-size: 1.15em;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(255, 105, 180, 0.5);
+  transition: all 0.3s ease;
+}
+
+.choice-btn:hover {
+  transform: translateX(15px) scale(1.05);
+  background: linear-gradient(135deg, #ffd700, #ff69b4);
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.7);
+}
+
+#path-log-container {
+  background: rgba(255, 255, 255, 0.1);
+  border: 3px solid #87ceeb;
+  border-radius: 25px;
+  padding: 25px;
+  height: fit-content;
+  box-shadow: 0 0 40px rgba(135, 206, 235, 0.5);
+}
+
+#path-log-container h3 {
+  color: #87ceeb;
+  margin-bottom: 15px;
+  font-size: 1.6em;
+}
+
+#path-log {
+  list-style: none;
+  margin-bottom: 20px;
+  min-height: 100px;
+}
+
+#path-log li {
+  padding: 12px;
+  margin-bottom: 10px;
+  background: rgba(255, 105, 180, 0.25);
+  border-left: 5px solid #ff69b4;
+  border-radius: 10px;
+  animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+#restart-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #87ceeb, #4682b4);
+  color: white;
+  border: none;
+  padding: 14px;
+  font-size: 1.1em;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 4px 20px rgba(135, 206, 235, 0.5);
+}
+
+#restart-btn:hover {
+  transform: scale(1.05);
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #ffb6d9;
+}
+
+@media (max-width: 768px) {
+  main { grid-template-columns: 1fr; }
+  header h1 { font-size: 2.2em; }
+}
+</style>
 </head>
 <body>
-  <main class="wrap">
-    <h1>Find Your Way Home</h1>
-    <p class="sub">A branching story about a lost little girl choosing her way back home.</p>
 
-    <section class="card">
-      <h2 id="sceneTitle">Start</h2>
-      <p id="sceneText"></p>
-      <div id="choices" class="choices"></div>
-      <button id="restartBtn" class="hidden">Play Again</button>
-    </section>
+<div id="mia-follower">👧</div>
 
-    <section class="card small">
-      <h3>Path Log</h3>
-      <ol id="pathLog"></ol>
-    </section>
-  </main>
+<header>
+  <h1>🌙 Find Your Way Home 🌙</h1>
+  <p class="subtitle">A branching story about a lost little girl choosing her way back home. 👧💖</p>
+</header>
 
-  <script src="app.js"></script>
+<main>
+  <section id="story">
+    <h2 id="scene-title">🌃 The Street With No Sound</h2>
+    <p id="scene-text">
+      👧 <strong>Mia</strong> is a small 9-year-old girl with shoulder-length dark hair, 
+      an oversized yellow raincoat 🧥 over a faded blue dress, scuffed red shoes 👟, 
+      and a tiny flashlight 🔦 in one hand and a worn stuffed rabbit 🐰 in the other. 
+      She is lost at midnight 🌙, and seven numbered paths stretch out in front of her. ✨
+    </p>
+    <div id="choices">
+      <button class="choice-btn" data-path="1">⛪ Path 1: Old church road</button>
+      <button class="choice-btn" data-path="2">🌲 Path 2: Breathing woods trail</button>
+      <button class="choice-btn" data-path="3">🎠 Path 3: Empty playground</button>
+      <button class="choice-btn" data-path="4">🚂 Path 4: Foggy train station</button>
+      <button class="choice-btn" data-path="5">🏥 Path 5: Abandoned hospital gate</button>
+      <button class="choice-btn" data-path="6">🌊 Path 6: Riverside steps</button>
+      <button class="choice-btn" data-path="7">🏮 Path 7: Market alley lights</button>
+    </div>
+  </section>
+
+  <aside id="path-log-container">
+    <h3>📜 Path Log</h3>
+    <ul id="path-log"></ul>
+    <button id="restart-btn">🔄 Restart Story</button>
+  </aside>
+</main>
+
+<footer>
+  <p>💖 Made with magic by <strong>DaCameraGirl</strong> 🌙✨</p>
+</footer>
+
+<script>
+const mia = document.getElementById('mia-follower');
+let mouseX = 0, mouseY = 0, miaX = 0, miaY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  if (Math.random() > 0.7) createSparkle(e.clientX, e.clientY);
+});
+
+function animateMia() {
+  miaX += (mouseX - miaX) * 0.15;
+  miaY += (mouseY - miaY) * 0.15;
+  mia.style.left = (miaX - 22) + 'px';
+  mia.style.top = (miaY - 22) + 'px';
+  mia.style.transform = mouseX > miaX ? 'scaleX(1)' : 'scaleX(-1)';
+  requestAnimationFrame(animateMia);
+}
+animateMia();
+
+function createSparkle(x, y) {
+  const sparkles = ['✨', '⭐', '💖', '🌟', '💫', '🌸'];
+  const s = document.createElement('div');
+  s.className = 'sparkle';
+  s.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+  s.style.left = (x + Math.random() * 20 - 10) + 'px';
+  s.style.top = (y + Math.random() * 20 - 10) + 'px';
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 1000);
+}
+
+const paths = {
+  1: { name: 'Old church road', emoji: '⛪', story: 'Mia walked toward the old stone church 🪨. The bells rang softly... a kind priest opened the door and offered her warm cocoa ☕. She felt safe.', ending: '✨ GOOD ENDING ✨' },
+  2: { name: 'Breathing woods trail', emoji: '🌲', story: 'The trees whispered her name 🍃. Mia followed glowing fireflies 🦋... but the woods grew darker, and her flashlight flickered. 🔦', ending: '🌙 MIXED ENDING 🌙' },
+  3: { name: 'Empty playground', emoji: '🎠', story: 'The swings creaked in the wind 🌬️. A friendly ghost child 👻 took her hand and led her to a kind old lady\'s house. 🏠', ending: '✨ GOOD ENDING ✨' },
+  4: { name: 'Foggy train station', emoji: '🚂', story: 'A mysterious train arrived 🚂💨. The conductor smiled... but the train went somewhere unknown. Mia waved goodbye to her old life. 👋', ending: '⚫ BAD ENDING ⚫' },
+  5: { name: 'Abandoned hospital gate', emoji: '🏥', story: 'Cold hands reached through the gate 🥶. Mia ran fast! 🏃‍♀️ She found a kind nurse 👩‍⚕️ who called her parents. 📞', ending: '🌙 MIXED ENDING 🌙' },
+  6: { name: 'Riverside steps', emoji: '🌊', story: 'The river sparkled like diamonds 💎. A magical mermaid 🧜‍♀️ rose from the water and showed Mia the way home through the moonlight. 🌙', ending: '✨ GOOD ENDING ✨' },
+  7: { name: 'Market alley lights', emoji: '🏮', story: 'Glowing lanterns danced 🏮✨. A kind shopkeeper 👨‍🍳 gave her dumplings 🥟 and walked her safely back home to her family. 💖', ending: '✨ GOOD ENDING ✨' }
+};
+
+document.querySelectorAll('.choice-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const p = paths[btn.dataset.path];
+    const rect = btn.getBoundingClientRect();
+    mouseX = rect.left + rect.width / 2;
+    mouseY = rect.top + rect.height / 2;
+    
+    for (let i = 0; i < 20; i++) {
+      setTimeout(() => createSparkle(
+        rect.left + Math.random() * rect.width,
+        rect.top + Math.random() * rect.height
+      ), i * 40);
+    }
+    
+    setTimeout(() => {
+      const li = document.createElement('li');
+      li.innerHTML = `${p.emoji} <strong>${p.name}</strong> - ${p.ending}`;
+      document.getElementById('path-log').appendChild(li);
+      document.getElementById('scene-title').textContent = `${p.emoji} ${p.name}`;
+      document.getElementById('scene-text').innerHTML = `${p.story}<br><br><strong style="color:#ffd700;font-size:1.2em;">${p.ending}</strong>`;
+    }, 600);
+  });
+});
+
+document.getElementById('restart-btn').addEventListener('click', () => {
+  document.getElementById('path-log').innerHTML = '';
+  document.getElementById('scene-title').textContent = '🌃 The Street With No Sound';
+  document.getElementById('scene-text').innerHTML = `👧 <strong>Mia</strong> is a small 9-year-old girl with shoulder-length dark hair, an oversized yellow raincoat 🧥 over a faded blue dress, scuffed red shoes 👟, and a tiny flashlight 🔦 in one hand and a worn stuffed rabbit 🐰 in the other. She is lost at midnight 🌙, and seven numbered paths stretch out in front of her. ✨`;
+  for (let i = 0; i < 40; i++) {
+    setTimeout(() => createSparkle(Math.random() * window.innerWidth, Math.random() * window.innerHeight), i * 25);
+  }
+});
+</script>
 </body>
 </html>
