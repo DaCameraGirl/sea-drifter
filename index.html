@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🧜‍♀️ Ocean Paths 🌊</title>
+<title>🧜‍♀️ Pick 🌊</title>
 <style>
   /* RESET EVERYTHING */
   *, *::before, *::after {
@@ -416,7 +416,7 @@
 <div id="mia-follower">🧜‍♀️</div>
 
 <header>
-  <h1>🌊🧜‍♀️ Lost Little Girl Paths 🧜‍♀️🌊</h1>
+  <h1>🌊🧜‍♀️ Pick 🧜‍♀️🌊</h1>
   <p class="subtitle">✨ The Sunken Tale 🐚 ✨</p>
   <p class="tagline">🐬 "Swim with the currents, find your destiny!" 🐬</p>
 </header>
@@ -434,7 +434,7 @@
       Seven glowing ocean currents stretch out before her through
       whispering waves and coral mazes... ✨🌊
       <br><br>
-      <strong style="color:#00ffff;">🐚 Which path does she choose? 🐚</strong>
+      <strong style="color:#00ffff;">🐚 Pick a path for her! 🐚</strong>
     </p>
     <div id="choices">
       <button class="choice-btn" data-path="1">🏰 Path 1: The Sunken Coral Palace</button>
@@ -448,11 +448,11 @@
   </section>
 
   <aside id="path-log-container">
-    <h3>📜 Path Log</h3>
+    <h3>📜 Pick Log</h3>
     <ul id="path-log">
-      <li style="opacity:0.5; font-style:italic;">🌊 No paths chosen yet...</li>
+      <li style="opacity:0.5; font-style:italic;">🌊 No picks made yet...</li>
     </ul>
-    <button id="restart-btn">🔄 Restart Story</button>
+    <button id="restart-btn">🔄 Restart Pick</button>
   </aside>
 </main>
 
@@ -460,7 +460,7 @@
 
 <footer>
   <p style="font-size:1.2em;">🧜‍♀️ Made with Ocean Magic 💙 by <strong style="color:#00ffff;">DaCameraGirl</strong> 🧠✨</p>
-  <p style="margin-top:10px; font-style:italic; color:#FF6B9D; font-size:1.1em;">"Lost paths lead to found treasures... 🌊🐚"</p>
+  <p style="margin-top:10px; font-style:italic; color:#FF6B9D; font-size:1.1em;">"Every Pick leads to a new treasure... 🌊🐚"</p>
   <div class="emoji-parade">
     <span>🌊🧜‍♀️🐚🐟🐳🐙🦀🐡🐬🦈✨💎🌀🪸🫧🐋🌊🧜‍♀️🐚🐟🐳🐙🦀🐡🐬🦈✨💎🌀🪸🫧🐋</span>
   </div>
@@ -692,7 +692,7 @@ document.querySelectorAll('.choice-btn').forEach(btn => {
         <strong class="ending-${p.type}">${p.ending}</strong>
         <br><br>
         <span style="color:#90e0ef; font-style:italic;">
-          🐚 Choose another path to explore a different fate...
+          🐚 Pick another path to explore a different fate...
         </span>
       `;
     }, 700);
@@ -701,7 +701,7 @@ document.querySelectorAll('.choice-btn').forEach(btn => {
 
 // 🔄 RESTART
 document.getElementById('restart-btn').addEventListener('click', () => {
-  pathLog.innerHTML = '<li style="opacity:0.5; font-style:italic;">🌊 No paths chosen yet...</li>';
+  pathLog.innerHTML = '<li style="opacity:0.5; font-style:italic;">🌊 No picks made yet...</li>';
   firstChoice = true;
 
   sceneTitle.textContent = '🌊 The Sea With No Shore';
@@ -713,7 +713,7 @@ document.getElementById('restart-btn').addEventListener('click', () => {
     Seven glowing ocean currents stretch out before her through
     whispering waves and coral mazes... ✨🌊
     <br><br>
-    <strong style="color:#00ffff;">🐚 Which path does she choose? 🐚</strong>
+    <strong style="color:#00ffff;">🐚 Pick a path for her! 🐚</strong>
   `;
 
   // 🎆 Celebration sparkle burst
