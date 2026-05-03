@@ -2,872 +2,392 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🧜‍♀️ Lost Little Girl Paths: The Sunken Tale 🌊</title>
+<title>🧜‍♀️ Lost Little Girl Paths 🌊</title>
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { width: 100%; min-height: 100vh; overflow-x: hidden; cursor: none; font-family: 'Georgia', serif; }
-  body {
-    background: linear-gradient(180deg, #000d1a 0%, #001a33 15%, #002a50 30%, #003d6e 50%, #0055a0 70%, #0077be 85%, #00a8cc 100%);
-    background-attachment: fixed;
-    color: #caf0f8;
-    min-height: 100vh;
-    transition: background 2s ease;
-  }
-
-  /* 🎨 MOOD BACKGROUNDS */
-  body.mood-happy { background: linear-gradient(180deg, #003d6e 0%, #0077be 30%, #00a8cc 60%, #ffd700 100%) fixed; }
-  body.mood-sad { background: linear-gradient(180deg, #0a0a1a 0%, #1a1a3a 30%, #2a2a5a 60%, #3a3a7a 100%) fixed; }
-  body.mood-scary { background: linear-gradient(180deg, #000000 0%, #0a0015 30%, #1a0025 60%, #2a0040 100%) fixed; }
-  body.mood-mystical { background: linear-gradient(180deg, #1a0033 0%, #330066 30%, #6600cc 60%, #cc00ff 100%) fixed; }
-  body.mood-warm { background: linear-gradient(180deg, #4a0e0e 0%, #8b2500 30%, #cc5500 60%, #ff8c00 100%) fixed; }
-  body.mood-peaceful { background: linear-gradient(180deg, #001a33 0%, #003d6e 30%, #b0e0e6 70%, #ffefd5 100%) fixed; }
-
-  #mia-follower {
-    position: fixed; font-size: 55px; pointer-events: none; z-index: 999999;
-    filter: drop-shadow(0 0 20px #00ffff);
-    left: -100px; top: -100px;
-    animation: swimBob 1.2s ease-in-out infinite alternate;
-    transition: filter 0.5s ease;
-  }
-  @keyframes swimBob {
-    0% { transform: translateY(0) rotate(-10deg); }
-    100% { transform: translateY(-12px) rotate(10deg); }
-  }
-
-  .sparkle {
-    position: fixed; pointer-events: none; z-index: 999998;
-    font-size: 22px; animation: fizzOut 1.4s ease-out forwards;
-  }
-  @keyframes fizzOut {
-    0% { opacity: 1; transform: scale(1.2) rotate(0deg); }
-    100% { opacity: 0; transform: scale(0.2) rotate(720deg) translateY(-50px); }
-  }
-
-  .bubble {
-    position: fixed; border-radius: 50%; pointer-events: none; z-index: 2;
-    border: 2px solid rgba(144, 224, 239, 0.6);
-    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), rgba(0,180,216,0.1));
-    animation: riseBubble linear infinite; bottom: -60px;
-  }
-  @keyframes riseBubble {
-    0% { transform: translateY(0) translateX(0); opacity: 0; }
-    10% { opacity: 1; }
-    100% { transform: translateY(-110vh) translateX(50px); opacity: 0; }
-  }
-
-  .fish {
-    position: fixed; pointer-events: none; z-index: 3;
-    font-size: 28px; animation: swimFish linear infinite;
-  }
-  @keyframes swimFish {
-    0% { transform: translateX(-100px); opacity: 0; }
-    5%, 95% { opacity: 1; }
-    100% { transform: translateX(110vw); opacity: 0; }
-  }
-
-  /* 💔 RAIN/TEARS for sad scenes */
-  .raindrop {
-    position: fixed; pointer-events: none; z-index: 2;
-    font-size: 18px; animation: rainFall linear infinite;
-    top: -30px;
-  }
-  @keyframes rainFall {
-    0% { transform: translateY(0); opacity: 0; }
-    10% { opacity: 0.8; }
-    100% { transform: translateY(110vh); opacity: 0; }
-  }
-
-  header { text-align: center; padding: 50px 20px 25px; position: relative; z-index: 10; }
-  header h1 {
-    font-size: clamp(2em, 5vw, 4em);
-    background: linear-gradient(90deg, #00ffff, #90e0ef, #FF6B9D, #ffd700, #00ffff);
-    background-size: 400% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shimmerTitle 5s linear infinite;
-    margin-bottom: 15px;
-  }
-  @keyframes shimmerTitle {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 400% 50%; }
-  }
-  .subtitle { font-size: 1.3em; color: #90e0ef; font-style: italic; margin-bottom: 10px; }
-  .tagline { font-size: 1.1em; color: #FF6B9D; font-weight: bold; animation: pulsePink 2s ease-in-out infinite; }
-  @keyframes pulsePink { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
-
-  /* 🔊 SOUND TOGGLE */
-  #sound-toggle {
-    position: fixed; top: 15px; right: 15px; z-index: 100000;
-    background: rgba(0, 20, 50, 0.85); border: 2px solid #00ffff;
-    color: #caf0f8; padding: 10px 16px; border-radius: 30px;
-    cursor: pointer; font-family: inherit; font-size: 1em;
-    backdrop-filter: blur(10px);
-  }
-  #sound-toggle:hover { background: rgba(0, 100, 150, 0.9); transform: scale(1.05); }
-
-  .wave-divider {
-    text-align: center; font-size: 1.6em; padding: 12px 0; letter-spacing: 8px;
-    color: #00b4d8; position: relative; z-index: 10;
-    animation: waveDrift 3s ease-in-out infinite;
-  }
-  @keyframes waveDrift {
-    0%, 100% { transform: translateX(-10px); }
-    50% { transform: translateX(10px); }
-  }
-
-  main {
-    display: grid; grid-template-columns: 2fr 1fr; gap: 30px;
-    max-width: 1400px; margin: 20px auto; padding: 0 20px 20px;
-    position: relative; z-index: 10;
-  }
-
-  /* 📊 STATS PANEL */
-  #stats-panel {
-    background: rgba(0, 20, 50, 0.85);
-    border: 3px solid #ffd700;
-    border-radius: 20px;
-    padding: 18px;
-    margin-bottom: 20px;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 0 30px rgba(255,215,0,0.3);
-  }
-  #stats-panel h4 {
-    color: #ffd700; text-align: center; margin-bottom: 12px;
-    text-shadow: 0 0 15px rgba(255,215,0,0.7);
-  }
-  .stat-row {
-    display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
-    font-size: 0.95em;
-  }
-  .stat-label { min-width: 90px; }
-  .stat-bar {
-    flex: 1; height: 14px; background: rgba(0,0,0,0.4);
-    border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.2);
-  }
-  .stat-fill {
-    height: 100%; transition: width 0.6s ease;
-    background: linear-gradient(90deg, #00ffff, #00b4d8);
-  }
-  .stat-fill.courage { background: linear-gradient(90deg, #ff4444, #ff8c00); }
-  .stat-fill.kindness { background: linear-gradient(90deg, #FF6B9D, #ff1493); }
-  .stat-fill.wisdom { background: linear-gradient(90deg, #9d00ff, #00ffff); }
-  .stat-fill.hope { background: linear-gradient(90deg, #ffd700, #ffff66); }
-  .stat-value { min-width: 35px; text-align: right; font-weight: bold; }
-
-  /* 🎒 INVENTORY */
-  #inventory-panel {
-    background: rgba(0, 20, 50, 0.85);
-    border: 3px solid #00ffcc;
-    border-radius: 20px;
-    padding: 18px;
-    margin-bottom: 20px;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 0 30px rgba(0,255,204,0.3);
-  }
-  #inventory-panel h4 {
-    color: #00ffcc; text-align: center; margin-bottom: 12px;
-    text-shadow: 0 0 15px rgba(0,255,204,0.7);
-  }
-  #inventory-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
-    min-height: 60px;
-  }
-  .inv-slot {
-    aspect-ratio: 1; background: rgba(0,0,0,0.3);
-    border: 2px dashed rgba(0,255,204,0.3); border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.6em; cursor: help; position: relative;
-    transition: all 0.3s ease;
-  }
-  .inv-slot.filled {
-    border: 2px solid #00ffcc; background: rgba(0,255,204,0.15);
-    box-shadow: 0 0 15px rgba(0,255,204,0.5);
-    animation: invPop 0.5s ease;
-  }
-  @keyframes invPop {
-    0% { transform: scale(0); }
-    60% { transform: scale(1.3); }
-    100% { transform: scale(1); }
-  }
-  .inv-slot:hover.filled { transform: scale(1.15); }
-  .inv-tooltip {
-    position: absolute; bottom: 110%; left: 50%; transform: translateX(-50%);
-    background: rgba(0,0,0,0.9); color: #fff; padding: 6px 10px;
-    border-radius: 8px; font-size: 0.7em; white-space: nowrap;
-    opacity: 0; pointer-events: none; transition: opacity 0.3s;
-    border: 1px solid #00ffcc; z-index: 100;
-  }
-  .inv-slot:hover .inv-tooltip { opacity: 1; }
-
-  #story {
-    background: rgba(0, 20, 50, 0.78);
-    border: 3px solid #00b4d8;
-    border-radius: 28px;
-    padding: 40px;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 60px rgba(0,180,216,0.4), inset 0 0 40px rgba(0,180,216,0.15);
-    animation: cardPulse 4s ease-in-out infinite;
-    position: relative;
-    overflow: hidden;
-  }
-  @keyframes cardPulse {
-    0%, 100% { box-shadow: 0 0 60px rgba(0,180,216,0.4), inset 0 0 40px rgba(0,180,216,0.15); }
-    50% { box-shadow: 0 0 80px rgba(0,255,255,0.6), inset 0 0 60px rgba(0,255,255,0.2); }
-  }
-
-  /* 🎭 MIA EXPRESSION */
-  #mia-mood {
-    position: absolute; top: 15px; right: 20px;
-    font-size: 2.5em;
-    animation: moodFloat 2s ease-in-out infinite alternate;
-    filter: drop-shadow(0 0 15px rgba(0,255,255,0.6));
-  }
-  @keyframes moodFloat {
-    0% { transform: translateY(0) rotate(-5deg); }
-    100% { transform: translateY(-8px) rotate(5deg); }
-  }
-
-  #scene-title {
-    font-size: 2em; margin-bottom: 20px; color: #00ffff;
-    text-shadow: 0 0 25px rgba(0,255,255,1);
-    text-align: center;
-    animation: glowTitle 2s ease-in-out infinite alternate;
-    padding-right: 60px;
-  }
-  @keyframes glowTitle {
-    0% { text-shadow: 0 0 20px rgba(0,255,255,0.8); }
-    100% { text-shadow: 0 0 40px rgba(0,255,255,1), 0 0 80px rgba(0,180,216,0.7); }
-  }
-
-  #scene-text {
-    font-size: 1.15em; line-height: 1.95; margin-bottom: 25px; color: #caf0f8;
-    animation: fadeIn 0.8s ease-in;
-  }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-  /* 🗝️ HIDDEN/SECRET TEXT */
-  .secret-text {
-    display: inline-block;
-    background: rgba(255,215,0,0.15);
-    border: 1px dashed #ffd700;
-    padding: 2px 8px; border-radius: 6px;
-    cursor: pointer; color: #ffd700;
-    font-style: italic;
-    transition: all 0.3s ease;
-  }
-  .secret-text:hover { background: rgba(255,215,0,0.3); transform: scale(1.05); }
-  .secret-text.revealed {
-    background: rgba(255,215,0,0.25);
-    color: #fff; cursor: default;
-    border-style: solid;
-  }
-
-  #stage-indicator {
-    text-align: center; color: #FF6B9D; font-style: italic;
-    margin-bottom: 20px; font-size: 1.1em;
-  }
-
-  #choices { display: flex; flex-direction: column; gap: 14px; }
-
-  .choice-btn {
-    background: linear-gradient(135deg, #003d6e, #0077be, #00a8cc);
-    color: #caf0f8;
-    border: 2px solid rgba(0,255,255,0.5);
-    padding: 18px 28px;
-    font-size: 1.05em;
-    border-radius: 50px;
-    cursor: pointer;
-    font-family: inherit;
-    text-align: left;
-    box-shadow: 0 4px 20px rgba(0,180,216,0.4);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    animation: slideIn 0.5s ease;
-    position: relative;
-  }
-  .choice-btn:hover {
-    transform: translateX(12px) scale(1.04);
-    background: linear-gradient(135deg, #FF6B9D, #ff1493, #00ffff);
-    border-color: #FF6B9D;
-    box-shadow: 0 8px 35px rgba(255,107,157,0.7);
-    color: white;
-  }
-  .choice-btn .hint {
-    display: block; font-size: 0.78em; opacity: 0.7;
-    margin-top: 4px; font-style: italic;
-  }
-  .choice-btn.locked {
-    opacity: 0.5; cursor: not-allowed;
-    background: linear-gradient(135deg, #333, #555);
-    border-color: #666;
-  }
-  .choice-btn.locked:hover { transform: none; }
-  .choice-btn.requires-item {
-    border-color: #00ffcc;
-    box-shadow: 0 4px 20px rgba(0,255,204,0.4);
-  }
-  .choice-btn.secret {
-    background: linear-gradient(135deg, #6600cc, #cc00ff, #ffd700);
-    border-color: #ffd700;
-    box-shadow: 0 4px 25px rgba(255,215,0,0.6);
-    animation: secretGlow 1.5s ease-in-out infinite alternate, slideIn 0.5s ease;
-  }
-  @keyframes secretGlow {
-    0% { box-shadow: 0 4px 25px rgba(255,215,0,0.6); }
-    100% { box-shadow: 0 4px 40px rgba(255,215,0,1); }
-  }
-
-  /* 🎁 EVENT POPUP */
-  .event-popup {
-    margin: 15px 0; padding: 15px 20px;
-    background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(0,255,204,0.2));
-    border: 2px solid #ffd700;
-    border-radius: 15px;
-    text-align: center;
-    animation: eventPop 0.6s ease;
-    box-shadow: 0 0 25px rgba(255,215,0,0.5);
-  }
-  @keyframes eventPop {
-    0% { opacity: 0; transform: scale(0.5); }
-    60% { transform: scale(1.05); }
-    100% { opacity: 1; transform: scale(1); }
-  }
-
-  /* 📜 SIDEBAR */
-  .sidebar { display: flex; flex-direction: column; gap: 20px; }
-
-  #path-log-container {
-    background: rgba(0, 20, 50, 0.85);
-    border: 3px solid #FF6B9D;
-    border-radius: 20px;
-    padding: 22px;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 0 40px rgba(255,107,157,0.4);
-  }
-  #path-log-container h3 {
-    color: #FF6B9D; margin-bottom: 14px; font-size: 1.4em; text-align: center;
-    text-shadow: 0 0 20px rgba(255,107,157,0.9);
-  }
-  #path-log {
-    list-style: none; margin-bottom: 18px; min-height: 50px;
-    max-height: 280px; overflow-y: auto;
-  }
-  #path-log li {
-    padding: 10px 12px; margin-bottom: 8px;
-    background: rgba(0,180,216,0.15);
-    border-left: 4px solid #00ffff;
-    border-radius: 10px;
-    animation: slideIn 0.5s ease;
-    color: #caf0f8; font-size: 0.85em;
-  }
-  @keyframes slideIn {
-    0% { opacity: 0; transform: translateX(-40px); }
-    100% { opacity: 1; transform: translateX(0); }
-  }
-
-  /* 🏆 ACHIEVEMENTS */
-  #achievements-panel {
-    background: rgba(0, 20, 50, 0.85);
-    border: 3px solid #ff8c00;
-    border-radius: 20px;
-    padding: 18px;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 0 30px rgba(255,140,0,0.3);
-  }
-  #achievements-panel h4 {
-    color: #ff8c00; text-align: center; margin-bottom: 10px;
-    text-shadow: 0 0 15px rgba(255,140,0,0.7);
-    font-size: 1.2em;
-  }
-  #achievement-counter {
-    text-align: center; color: #ffd700; font-weight: bold;
-    margin-bottom: 12px; font-size: 1.1em;
-  }
-  #achievements-list {
-    display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;
-    max-height: 220px; overflow-y: auto;
-  }
-  .ach-badge {
-    aspect-ratio: 1; background: rgba(0,0,0,0.4);
-    border: 2px solid rgba(255,140,0,0.3); border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.4em; cursor: help; position: relative;
-    filter: grayscale(1); opacity: 0.4;
-    transition: all 0.4s ease;
-  }
-  .ach-badge.unlocked {
-    filter: grayscale(0); opacity: 1;
-    border-color: #ffd700;
-    background: rgba(255,215,0,0.15);
-    box-shadow: 0 0 15px rgba(255,215,0,0.6);
-    animation: achPop 0.7s ease;
-  }
-  @keyframes achPop {
-    0% { transform: scale(0) rotate(-180deg); }
-    60% { transform: scale(1.4) rotate(20deg); }
-    100% { transform: scale(1) rotate(0deg); }
-  }
-  .ach-badge:hover { transform: scale(1.2); z-index: 10; }
-  .ach-tooltip {
-    position: absolute; bottom: 110%; left: 50%; transform: translateX(-50%);
-    background: rgba(0,0,0,0.95); color: #fff; padding: 8px 12px;
-    border-radius: 8px; font-size: 0.75em; white-space: nowrap;
-    opacity: 0; pointer-events: none; transition: opacity 0.3s;
-    border: 1px solid #ffd700; z-index: 100;
-  }
-  .ach-badge:hover .ach-tooltip { opacity: 1; }
-
-  #restart-btn {
-    width: 100%;
-    background: linear-gradient(135deg, #FF6B9D, #c71585);
-    color: white;
-    border: 2px solid rgba(255,107,157,0.6);
-    padding: 14px;
-    font-size: 1.05em;
-    border-radius: 50px;
-    cursor: pointer;
-    font-family: inherit;
-    box-shadow: 0 4px 25px rgba(255,107,157,0.5);
-    transition: all 0.3s ease;
-  }
-  #restart-btn:hover { transform: scale(1.06); box-shadow: 0 8px 40px rgba(255,107,157,0.8); }
-
-  .ending-banner {
-    text-align: center; padding: 25px;
-    border-radius: 20px; margin-top: 20px;
-    font-size: 1.5em; font-weight: bold;
-    animation: endingPulse 1.5s ease-in-out infinite alternate;
-  }
-  .ending-good { background: rgba(0,255,204,0.2); border: 3px solid #00ffcc; color: #00ffcc; }
-  .ending-mixed { background: rgba(255,215,0,0.2); border: 3px solid #ffd700; color: #ffd700; }
-  .ending-sad { background: rgba(147,112,219,0.25); border: 3px solid #9370db; color: #d8bfd8; }
-  .ending-bad { background: rgba(255,68,68,0.2); border: 3px solid #ff4444; color: #ff4444; }
-  .ending-secret { background: linear-gradient(135deg, rgba(255,215,0,0.3), rgba(204,0,255,0.3)); border: 3px solid #ffd700; color: #fff; }
-  @keyframes endingPulse {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.03); }
-  }
-
-  /* 🎉 ACHIEVEMENT TOAST */
-  .ach-toast {
-    position: fixed; top: 80px; right: 20px; z-index: 100001;
-    background: linear-gradient(135deg, #ff8c00, #ffd700);
-    color: #000; padding: 14px 22px; border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(255,215,0,0.7);
-    font-weight: bold; max-width: 300px;
-    animation: toastIn 0.5s ease, toastOut 0.5s ease 3.5s forwards;
-    border: 3px solid #fff;
-  }
-  @keyframes toastIn {
-    0% { transform: translateX(120%); }
-    100% { transform: translateX(0); }
-  }
-  @keyframes toastOut {
-    0% { transform: translateX(0); opacity: 1; }
-    100% { transform: translateX(120%); opacity: 0; }
-  }
-
-  footer {
-    text-align: center; padding: 40px 20px; color: #90e0ef;
-    position: relative; z-index: 10; background: rgba(0,10,25,0.6);
-    margin-top: 40px; border-top: 2px solid rgba(0,180,216,0.4);
-  }
-
-  @media (max-width: 768px) {
-    main { grid-template-columns: 1fr; }
-    header h1 { font-size: 2em; }
-    #achievements-list { grid-template-columns: repeat(6, 1fr); }
-  }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;min-height:100vh;overflow-x:hidden;cursor:none;font-family:Georgia,serif}
+body{background:linear-gradient(180deg,#000d1a,#003d6e,#00a8cc);background-attachment:fixed;color:#caf0f8;min-height:100vh;transition:background 2s ease}
+body.mood-happy{background:linear-gradient(180deg,#0077be,#00a8cc,#ffd700) fixed}
+body.mood-sad{background:linear-gradient(180deg,#0a0a1a,#2a2a5a,#3a3a7a) fixed}
+body.mood-scary{background:linear-gradient(180deg,#000,#1a0025,#2a0040) fixed}
+body.mood-mystical{background:linear-gradient(180deg,#1a0033,#6600cc,#cc00ff) fixed}
+body.mood-warm{background:linear-gradient(180deg,#4a0e0e,#cc5500,#ff8c00) fixed}
+body.mood-peaceful{background:linear-gradient(180deg,#001a33,#b0e0e6,#ffefd5) fixed}
+#mia-follower{position:fixed;font-size:55px;pointer-events:none;z-index:999999;filter:drop-shadow(0 0 20px #0ff);left:-100px;top:-100px;animation:swimBob 1.2s ease-in-out infinite alternate}
+@keyframes swimBob{0%{transform:translateY(0) rotate(-10deg)}100%{transform:translateY(-12px) rotate(10deg)}}
+.sparkle{position:fixed;pointer-events:none;z-index:999998;font-size:22px;animation:fizzOut 1.4s ease-out forwards}
+@keyframes fizzOut{0%{opacity:1;transform:scale(1.2) rotate(0)}100%{opacity:0;transform:scale(.2) rotate(720deg) translateY(-50px)}}
+.bubble{position:fixed;border-radius:50%;pointer-events:none;z-index:2;border:2px solid rgba(144,224,239,.6);background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.4),rgba(0,180,216,.1));animation:riseBubble linear infinite;bottom:-60px}
+@keyframes riseBubble{0%{transform:translateY(0);opacity:0}10%{opacity:1}100%{transform:translateY(-110vh) translateX(50px);opacity:0}}
+.fish{position:fixed;pointer-events:none;z-index:3;font-size:28px;animation:swimFish linear infinite}
+@keyframes swimFish{0%{transform:translateX(-100px);opacity:0}5%,95%{opacity:1}100%{transform:translateX(110vw);opacity:0}}
+.raindrop{position:fixed;pointer-events:none;z-index:2;font-size:18px;animation:rainFall linear infinite;top:-30px}
+@keyframes rainFall{0%{transform:translateY(0);opacity:0}10%{opacity:.8}100%{transform:translateY(110vh);opacity:0}}
+header{text-align:center;padding:50px 20px 25px;position:relative;z-index:10}
+header h1{font-size:clamp(2em,5vw,4em);background:linear-gradient(90deg,#0ff,#90e0ef,#FF6B9D,#ffd700,#0ff);background-size:400% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmerTitle 5s linear infinite;margin-bottom:15px}
+@keyframes shimmerTitle{0%{background-position:0 50%}100%{background-position:400% 50%}}
+.subtitle{font-size:1.3em;color:#90e0ef;font-style:italic;margin-bottom:10px}
+.tagline{font-size:1.1em;color:#FF6B9D;font-weight:bold;animation:pulsePink 2s ease-in-out infinite}
+@keyframes pulsePink{0%,100%{opacity:1}50%{opacity:.7}}
+#sound-toggle{position:fixed;top:15px;right:15px;z-index:100000;background:rgba(0,20,50,.85);border:2px solid #0ff;color:#caf0f8;padding:10px 16px;border-radius:30px;cursor:pointer;font-family:inherit}
+.wave-divider{text-align:center;font-size:1.6em;padding:12px 0;letter-spacing:8px;color:#00b4d8;position:relative;z-index:10}
+main{display:grid;grid-template-columns:2fr 1fr;gap:30px;max-width:1400px;margin:20px auto;padding:0 20px 20px;position:relative;z-index:10}
+#stats-panel,#inventory-panel,#path-log-container,#achievements-panel{background:rgba(0,20,50,.85);border-radius:20px;padding:18px;backdrop-filter:blur(15px);margin-bottom:20px}
+#stats-panel{border:3px solid #ffd700;box-shadow:0 0 30px rgba(255,215,0,.3)}
+#stats-panel h4{color:#ffd700;text-align:center;margin-bottom:12px}
+.stat-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:.9em}
+.stat-label{min-width:90px}
+.stat-bar{flex:1;height:14px;background:rgba(0,0,0,.4);border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.2)}
+.stat-fill{height:100%;transition:width .6s ease;background:linear-gradient(90deg,#0ff,#00b4d8)}
+.stat-fill.courage{background:linear-gradient(90deg,#f44,#ff8c00)}
+.stat-fill.kindness{background:linear-gradient(90deg,#FF6B9D,#ff1493)}
+.stat-fill.wisdom{background:linear-gradient(90deg,#9d00ff,#0ff)}
+.stat-fill.hope{background:linear-gradient(90deg,#ffd700,#ff6)}
+.stat-value{min-width:30px;text-align:right;font-weight:bold}
+#inventory-panel{border:3px solid #00ffcc;box-shadow:0 0 30px rgba(0,255,204,.3)}
+#inventory-panel h4{color:#00ffcc;text-align:center;margin-bottom:12px}
+#inventory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;min-height:60px}
+.inv-slot{aspect-ratio:1;background:rgba(0,0,0,.3);border:2px dashed rgba(0,255,204,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.6em;cursor:help;position:relative}
+.inv-slot.filled{border:2px solid #00ffcc;background:rgba(0,255,204,.15);box-shadow:0 0 15px rgba(0,255,204,.5);animation:invPop .5s ease}
+@keyframes invPop{0%{transform:scale(0)}60%{transform:scale(1.3)}100%{transform:scale(1)}}
+.inv-tooltip{position:absolute;bottom:110%;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.9);color:#fff;padding:6px 10px;border-radius:8px;font-size:.65em;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s;border:1px solid #00ffcc;z-index:100}
+.inv-slot:hover .inv-tooltip{opacity:1}
+#story{background:rgba(0,20,50,.78);border:3px solid #00b4d8;border-radius:28px;padding:40px;backdrop-filter:blur(20px);box-shadow:0 0 60px rgba(0,180,216,.4);position:relative}
+#mia-mood{position:absolute;top:15px;right:20px;font-size:2.5em;animation:moodFloat 2s ease-in-out infinite alternate;filter:drop-shadow(0 0 15px rgba(0,255,255,.6))}
+@keyframes moodFloat{0%{transform:translateY(0) rotate(-5deg)}100%{transform:translateY(-8px) rotate(5deg)}}
+#scene-title{font-size:2em;margin-bottom:20px;color:#0ff;text-shadow:0 0 25px rgba(0,255,255,1);text-align:center;padding-right:60px}
+#scene-text{font-size:1.15em;line-height:1.95;margin-bottom:25px;color:#caf0f8;animation:fadeIn .8s ease-in}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.secret-text{display:inline-block;background:rgba(255,215,0,.15);border:1px dashed #ffd700;padding:2px 8px;border-radius:6px;cursor:pointer;color:#ffd700;font-style:italic;transition:all .3s}
+.secret-text:hover{background:rgba(255,215,0,.3);transform:scale(1.05)}
+.secret-text.revealed{background:rgba(255,215,0,.25);color:#fff;cursor:default;border-style:solid}
+#stage-indicator{text-align:center;color:#FF6B9D;font-style:italic;margin-bottom:20px;font-size:1.1em}
+#choices{display:flex;flex-direction:column;gap:14px}
+.choice-btn{background:linear-gradient(135deg,#003d6e,#0077be,#00a8cc);color:#caf0f8;border:2px solid rgba(0,255,255,.5);padding:18px 28px;font-size:1.05em;border-radius:50px;cursor:pointer;font-family:inherit;text-align:left;box-shadow:0 4px 20px rgba(0,180,216,.4);transition:all .3s cubic-bezier(.175,.885,.32,1.275);animation:slideIn .5s ease}
+.choice-btn:hover{transform:translateX(12px) scale(1.04);background:linear-gradient(135deg,#FF6B9D,#ff1493,#0ff);border-color:#FF6B9D;box-shadow:0 8px 35px rgba(255,107,157,.7);color:#fff}
+.choice-btn .hint{display:block;font-size:.78em;opacity:.7;margin-top:4px;font-style:italic}
+.choice-btn.locked{opacity:.5;cursor:not-allowed;background:linear-gradient(135deg,#333,#555);border-color:#666}
+.choice-btn.locked:hover{transform:none}
+.choice-btn.requires-item{border-color:#00ffcc;box-shadow:0 4px 20px rgba(0,255,204,.4)}
+.choice-btn.secret{background:linear-gradient(135deg,#6600cc,#cc00ff,#ffd700);border-color:#ffd700;box-shadow:0 4px 25px rgba(255,215,0,.6)}
+.event-popup{margin:15px 0;padding:15px 20px;background:linear-gradient(135deg,rgba(255,215,0,.2),rgba(0,255,204,.2));border:2px solid #ffd700;border-radius:15px;text-align:center;animation:eventPop .6s ease;box-shadow:0 0 25px rgba(255,215,0,.5)}
+@keyframes eventPop{0%{opacity:0;transform:scale(.5)}60%{transform:scale(1.05)}100%{opacity:1;transform:scale(1)}}
+.sidebar{display:flex;flex-direction:column;gap:0}
+#path-log-container{border:3px solid #FF6B9D;box-shadow:0 0 40px rgba(255,107,157,.4)}
+#path-log-container h3{color:#FF6B9D;margin-bottom:14px;font-size:1.4em;text-align:center}
+#path-log{list-style:none;margin-bottom:18px;min-height:50px;max-height:280px;overflow-y:auto}
+#path-log li{padding:10px 12px;margin-bottom:8px;background:rgba(0,180,216,.15);border-left:4px solid #0ff;border-radius:10px;animation:slideIn .5s ease;color:#caf0f8;font-size:.85em}
+@keyframes slideIn{0%{opacity:0;transform:translateX(-40px)}100%{opacity:1;transform:translateX(0)}}
+#achievements-panel{border:3px solid #ff8c00;box-shadow:0 0 30px rgba(255,140,0,.3)}
+#achievements-panel h4{color:#ff8c00;text-align:center;margin-bottom:10px;font-size:1.2em}
+#achievement-counter{text-align:center;color:#ffd700;font-weight:bold;margin-bottom:12px}
+#achievements-list{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;max-height:220px;overflow-y:auto}
+.ach-badge{aspect-ratio:1;background:rgba(0,0,0,.4);border:2px solid rgba(255,140,0,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4em;cursor:help;position:relative;filter:grayscale(1);opacity:.4;transition:all .4s}
+.ach-badge.unlocked{filter:grayscale(0);opacity:1;border-color:#ffd700;background:rgba(255,215,0,.15);box-shadow:0 0 15px rgba(255,215,0,.6);animation:achPop .7s ease}
+@keyframes achPop{0%{transform:scale(0) rotate(-180deg)}60%{transform:scale(1.4) rotate(20deg)}100%{transform:scale(1) rotate(0)}}
+.ach-badge:hover{transform:scale(1.2);z-index:10}
+.ach-tooltip{position:absolute;bottom:110%;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.95);color:#fff;padding:8px 12px;border-radius:8px;font-size:.7em;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s;border:1px solid #ffd700;z-index:100}
+.ach-badge:hover .ach-tooltip{opacity:1}
+#restart-btn{width:100%;background:linear-gradient(135deg,#FF6B9D,#c71585);color:#fff;border:2px solid rgba(255,107,157,.6);padding:14px;font-size:1.05em;border-radius:50px;cursor:pointer;font-family:inherit;box-shadow:0 4px 25px rgba(255,107,157,.5);transition:all .3s}
+#restart-btn:hover{transform:scale(1.06)}
+.ending-banner{text-align:center;padding:25px;border-radius:20px;margin-top:20px;font-size:1.5em;font-weight:bold;animation:endingPulse 1.5s ease-in-out infinite alternate}
+.ending-good{background:rgba(0,255,204,.2);border:3px solid #00ffcc;color:#00ffcc}
+.ending-mixed{background:rgba(255,215,0,.2);border:3px solid #ffd700;color:#ffd700}
+.ending-sad{background:rgba(147,112,219,.25);border:3px solid #9370db;color:#d8bfd8}
+.ending-bad{background:rgba(255,68,68,.2);border:3px solid #f44;color:#f44}
+.ending-secret{background:linear-gradient(135deg,rgba(255,215,0,.3),rgba(204,0,255,.3));border:3px solid #ffd700;color:#fff}
+@keyframes endingPulse{0%{transform:scale(1)}100%{transform:scale(1.03)}}
+.ach-toast{position:fixed;top:80px;right:20px;z-index:100001;background:linear-gradient(135deg,#ff8c00,#ffd700);color:#000;padding:14px 22px;border-radius:15px;box-shadow:0 8px 30px rgba(255,215,0,.7);font-weight:bold;max-width:300px;animation:toastIn .5s ease,toastOut .5s ease 3.5s forwards;border:3px solid #fff}
+@keyframes toastIn{0%{transform:translateX(120%)}100%{transform:translateX(0)}}
+@keyframes toastOut{0%{opacity:1}100%{transform:translateX(120%);opacity:0}}
+footer{text-align:center;padding:40px 20px;color:#90e0ef;position:relative;z-index:10;background:rgba(0,10,25,.6);margin-top:40px;border-top:2px solid rgba(0,180,216,.4)}
+@media(max-width:768px){main{grid-template-columns:1fr}header h1{font-size:2em}#achievements-list{grid-template-columns:repeat(6,1fr)}}
 </style>
 </head>
 <body>
-
 <div id="mia-follower">🧜‍♀️</div>
-
 <button id="sound-toggle">🔊 Sound: ON</button>
-
 <header>
-  <h1>🌊🧜‍♀️ Lost Little Girl Paths 🧜‍♀️🌊</h1>
-  <p class="subtitle">✨ The Sunken Tale 🐚 ✨</p>
-  <p class="tagline">🐬 "Every choice echoes through the deep..." 🐬</p>
+<h1>🌊🧜‍♀️ Lost Little Girl Paths 🧜‍♀️🌊</h1>
+<p class="subtitle">✨ The Sunken Tale 🐚 ✨</p>
+<p class="tagline">🐬 "Every choice echoes through the deep..." 🐬</p>
 </header>
-
-<div class="wave-divider">🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊</div>
-
+<div class="wave-divider">🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊</div>
 <main>
-  <section id="story">
-    <div id="mia-mood">🧜‍♀️</div>
-    <div id="stage-indicator">🌊 Chapter 1: The Beginning 🌊</div>
-    <h2 id="scene-title">🌊 The Sea With No Shore</h2>
-    <p id="scene-text"></p>
-    <div id="event-area"></div>
-    <div id="choices"></div>
-  </section>
-
-  <aside class="sidebar">
-    <div id="stats-panel">
-      <h4>💫 Mia's Spirit 💫</h4>
-      <div class="stat-row">
-        <span class="stat-label">💪 Courage</span>
-        <div class="stat-bar"><div class="stat-fill courage" id="stat-courage" style="width:50%"></div></div>
-        <span class="stat-value" id="val-courage">5</span>
-      </div>
-      <div class="stat-row">
-        <span class="stat-label">💖 Kindness</span>
-        <div class="stat-bar"><div class="stat-fill kindness" id="stat-kindness" style="width:50%"></div></div>
-        <span class="stat-value" id="val-kindness">5</span>
-      </div>
-      <div class="stat-row">
-        <span class="stat-label">🧠 Wisdom</span>
-        <div class="stat-bar"><div class="stat-fill wisdom" id="stat-wisdom" style="width:50%"></div></div>
-        <span class="stat-value" id="val-wisdom">5</span>
-      </div>
-      <div class="stat-row">
-        <span class="stat-label">🌟 Hope</span>
-        <div class="stat-bar"><div class="stat-fill hope" id="stat-hope" style="width:100%"></div></div>
-        <span class="stat-value" id="val-hope">10</span>
-      </div>
-    </div>
-
-    <div id="inventory-panel">
-      <h4>🎒 Treasure Pouch 🎒</h4>
-      <div id="inventory-grid"></div>
-    </div>
-
-    <div id="path-log-container">
-      <h3>📜 Path Log</h3>
-      <ul id="path-log">
-        <li style="opacity:0.5; font-style:italic;">🌊 Your journey begins...</li>
-      </ul>
-      <button id="restart-btn">🔄 Restart Story</button>
-    </div>
-
-    <div id="achievements-panel">
-      <h4>🏆 Achievements 🏆</h4>
-      <div id="achievement-counter">0 / 15 unlocked</div>
-      <div id="achievements-list"></div>
-    </div>
-  </aside>
+<section id="story">
+<div id="mia-mood">🧜‍♀️</div>
+<div id="stage-indicator">🌊 Chapter 1 🌊</div>
+<h2 id="scene-title">🌊 The Sea With No Shore</h2>
+<p id="scene-text"></p>
+<div id="event-area"></div>
+<div id="choices"></div>
+</section>
+<aside class="sidebar">
+<div id="stats-panel">
+<h4>💫 Mia's Spirit 💫</h4>
+<div class="stat-row"><span class="stat-label">💪 Courage</span><div class="stat-bar"><div class="stat-fill courage" id="stat-courage" style="width:50%"></div></div><span class="stat-value" id="val-courage">5</span></div>
+<div class="stat-row"><span class="stat-label">💖 Kindness</span><div class="stat-bar"><div class="stat-fill kindness" id="stat-kindness" style="width:50%"></div></div><span class="stat-value" id="val-kindness">5</span></div>
+<div class="stat-row"><span class="stat-label">🧠 Wisdom</span><div class="stat-bar"><div class="stat-fill wisdom" id="stat-wisdom" style="width:50%"></div></div><span class="stat-value" id="val-wisdom">5</span></div>
+<div class="stat-row"><span class="stat-label">🌟 Hope</span><div class="stat-bar"><div class="stat-fill hope" id="stat-hope" style="width:100%"></div></div><span class="stat-value" id="val-hope">10</span></div>
+</div>
+<div id="inventory-panel"><h4>🎒 Treasure Pouch 🎒</h4><div id="inventory-grid"></div></div>
+<div id="path-log-container">
+<h3>📜 Path Log</h3>
+<ul id="path-log"><li style="opacity:.5;font-style:italic">🌊 Your journey begins...</li></ul>
+<button id="restart-btn">🔄 Restart Story</button>
+</div>
+<div id="achievements-panel">
+<h4>🏆 Achievements 🏆</h4>
+<div id="achievement-counter">0 / 15 unlocked</div>
+<div id="achievements-list"></div>
+</div>
+</aside>
 </main>
-
-<div class="wave-divider">🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊</div>
-
+<div class="wave-divider">🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊</div>
 <footer>
-  <p style="font-size:1.2em;">🧜‍♀️ Made with Ocean Magic 💙 by <strong style="color:#00ffff;">DaCameraGirl</strong> 🧠✨</p>
-  <p style="margin-top:10px; font-style:italic; color:#FF6B9D;">"Lost paths lead to found treasures... and sometimes, to the truth. 🌊🐚"</p>
+<p style="font-size:1.2em">🧜‍♀️ Made with Ocean Magic 💙 by <strong style="color:#0ff">DaCameraGirl</strong> 🧠✨</p>
+<p style="margin-top:10px;font-style:italic;color:#FF6B9D">"Lost paths lead to found treasures... 🌊🐚"</p>
 </footer>
-
 <script>
-// ============================================
-// 🔊 SOUND SYSTEM (Web Audio API - no files needed!)
-// ============================================
-let soundOn = true;
-let audioCtx = null;
-
-function getCtx() {
-  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  return audioCtx;
-}
-
-function playTone(freq, duration = 0.2, type = 'sine', vol = 0.15) {
-  if (!soundOn) return;
-  try {
-    const ctx = getCtx();
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.type = type;
-    osc.frequency.value = freq;
-    gain.gain.setValueAtTime(vol, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
-    osc.connect(gain); gain.connect(ctx.destination);
-    osc.start(); osc.stop(ctx.currentTime + duration);
-  } catch(e) {}
-}
-
-const sfx = {
-  bubble: () => { playTone(800, 0.1, 'sine'); setTimeout(() => playTone(1200, 0.08), 50); },
-  sparkle: () => { playTone(2000, 0.1, 'triangle', 0.08); setTimeout(() => playTone(2800, 0.08, 'triangle', 0.06), 60); },
-  click: () => playTone(600, 0.1, 'square', 0.1),
-  happy: () => { [523, 659, 784, 1047].forEach((f, i) => setTimeout(() => playTone(f, 0.2, 'triangle'), i * 100)); },
-  sad: () => { [392, 349, 294, 247].forEach((f, i) => setTimeout(() => playTone(f, 0.4, 'sine', 0.12), i * 200)); },
-  scary: () => { playTone(80, 0.5, 'sawtooth', 0.15); setTimeout(() => playTone(60, 0.6, 'sawtooth', 0.12), 200); },
-  achievement: () => { [659, 784, 1047, 1319].forEach((f, i) => setTimeout(() => playTone(f, 0.15, 'triangle'), i * 80)); },
-  item: () => { playTone(1200, 0.1, 'sine'); setTimeout(() => playTone(1800, 0.15, 'sine'), 80); },
-  whale: () => { playTone(120, 1.5, 'sine', 0.18); setTimeout(() => playTone(90, 1.2, 'sine', 0.15), 400); },
-  secret: () => { [523, 659, 784, 1047, 1319, 1568].forEach((f, i) => setTimeout(() => playTone(f, 0.2, 'triangle'), i * 70)); }
+// 🔊 SOUND
+let soundOn=true,audioCtx=null;
+function getCtx(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();return audioCtx}
+function playTone(f,d=.2,t='sine',v=.15){if(!soundOn)return;try{const c=getCtx(),o=c.createOscillator(),g=c.createGain();o.type=t;o.frequency.value=f;g.gain.setValueAtTime(v,c.currentTime);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+d);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+d)}catch(e){}}
+const sfx={
+  click:()=>playTone(600,.1,'square',.1),
+  happy:()=>[523,659,784,1047].forEach((f,i)=>setTimeout(()=>playTone(f,.2,'triangle'),i*100)),
+  sad:()=>[392,349,294,247].forEach((f,i)=>setTimeout(()=>playTone(f,.4,'sine',.12),i*200)),
+  scary:()=>{playTone(80,.5,'sawtooth',.15);setTimeout(()=>playTone(60,.6,'sawtooth',.12),200)},
+  achievement:()=>[659,784,1047,1319].forEach((f,i)=>setTimeout(()=>playTone(f,.15,'triangle'),i*80)),
+  item:()=>{playTone(1200,.1);setTimeout(()=>playTone(1800,.15),80)},
+  secret:()=>[523,659,784,1047,1319,1568].forEach((f,i)=>setTimeout(()=>playTone(f,.2,'triangle'),i*70)),
+  sparkle:()=>{playTone(2000,.1,'triangle',.08);setTimeout(()=>playTone(2800,.08,'triangle',.06),60)}
 };
+document.getElementById('sound-toggle').addEventListener('click',function(){soundOn=!soundOn;this.textContent=soundOn?'🔊 Sound: ON':'🔇 Sound: OFF';if(soundOn)sfx.sparkle()});
 
-document.getElementById('sound-toggle').addEventListener('click', function() {
-  soundOn = !soundOn;
-  this.textContent = soundOn ? '🔊 Sound: ON' : '🔇 Sound: OFF';
-  if (soundOn) sfx.sparkle();
-});
+// 🫧 BUBBLES
+for(let i=0;i<25;i++){const b=document.createElement('div');b.className='bubble';const s=Math.random()*45+8;b.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}vw;animation-duration:${Math.random()*12+7}s;animation-delay:${Math.random()*8}s`;document.body.appendChild(b)}
+const fishTypes=['🐟','🐠','🐡','🦑','🐙','🪼','🐬','🦈'];
+function spawnFish(){const f=document.createElement('div');f.className='fish';f.textContent=fishTypes[Math.floor(Math.random()*fishTypes.length)];const d=Math.random()*15+10;f.style.cssText=`top:${Math.random()*80+10}vh;animation-duration:${d}s;font-size:${Math.random()*20+20}px`;document.body.appendChild(f);setTimeout(()=>f.remove(),d*1000+500)}
+setInterval(spawnFish,2500);spawnFish();spawnFish();
 
-// 🫧 BUBBLES with occasional pop sound
-for (let i = 0; i < 30; i++) {
-  const b = document.createElement('div');
-  b.className = 'bubble';
-  const size = Math.random() * 45 + 8;
-  b.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}vw;animation-duration:${Math.random()*12+7}s;animation-delay:${Math.random()*8}s;`;
-  document.body.appendChild(b);
-}
+// 💧 RAIN
+let rainInt=null;
+function startRain(){if(rainInt)return;rainInt=setInterval(()=>{const d=document.createElement('div');d.className='raindrop';d.textContent=['💧','💧','🩵'][Math.floor(Math.random()*3)];d.style.left=Math.random()*100+'vw';d.style.animationDuration=(Math.random()*2+2)+'s';document.body.appendChild(d);setTimeout(()=>d.remove(),4500)},200)}
+function stopRain(){if(rainInt){clearInterval(rainInt);rainInt=null}}
 
-// 🐟 FISH
-const fishTypes = ['🐟','🐠','🐡','🦑','🐙','🪼','🐬','🦈'];
-function spawnFish() {
-  const f = document.createElement('div');
-  f.className = 'fish';
-  f.textContent = fishTypes[Math.floor(Math.random() * fishTypes.length)];
-  const duration = Math.random() * 15 + 10;
-  f.style.cssText = `top:${Math.random()*80+10}vh;animation-duration:${duration}s;font-size:${Math.random()*20+20}px;`;
-  document.body.appendChild(f);
-  setTimeout(() => f.remove(), duration * 1000 + 500);
-}
-setInterval(spawnFish, 2500);
-spawnFish(); spawnFish();
-
-// 💔 RAIN for sad scenes
-let rainInterval = null;
-function startRain() {
-  if (rainInterval) return;
-  rainInterval = setInterval(() => {
-    const drops = ['💧', '💧', '💧', '🩵'];
-    const d = document.createElement('div');
-    d.className = 'raindrop';
-    d.textContent = drops[Math.floor(Math.random() * drops.length)];
-    d.style.left = Math.random() * 100 + 'vw';
-    d.style.animationDuration = (Math.random() * 2 + 2) + 's';
-    document.body.appendChild(d);
-    setTimeout(() => d.remove(), 4500);
-  }, 200);
-}
-function stopRain() {
-  if (rainInterval) { clearInterval(rainInterval); rainInterval = null; }
-}
-
-// 🧜‍♀️ MERMAID CURSOR
-const mia = document.getElementById('mia-follower');
-let mouseX = window.innerWidth/2, mouseY = window.innerHeight/2;
-let miaX = mouseX, miaY = mouseY, lastX = mouseX;
-
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX; mouseY = e.clientY;
-  if (Math.random() > 0.55) spawnSparkle(e.clientX, e.clientY);
-});
-
-function animateMia() {
-  miaX += (mouseX - miaX) * 0.13;
-  miaY += (mouseY - miaY) * 0.13;
-  mia.style.left = (miaX - 27) + 'px';
-  mia.style.top = (miaY - 27) + 'px';
-  if (mouseX < lastX - 1) mia.style.transform = 'scaleX(-1)';
-  else if (mouseX > lastX + 1) mia.style.transform = 'scaleX(1)';
-  lastX = miaX;
-  requestAnimationFrame(animateMia);
-}
+// 🧜‍♀️ CURSOR
+const mia=document.getElementById('mia-follower');
+let mouseX=window.innerWidth/2,mouseY=window.innerHeight/2,miaX=mouseX,miaY=mouseY,lastX=mouseX;
+document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;if(Math.random()>.6)spawnSparkle(e.clientX,e.clientY)});
+function animateMia(){miaX+=(mouseX-miaX)*.13;miaY+=(mouseY-miaY)*.13;mia.style.left=(miaX-27)+'px';mia.style.top=(miaY-27)+'px';if(mouseX<lastX-1)mia.style.transform='scaleX(-1)';else if(mouseX>lastX+1)mia.style.transform='scaleX(1)';lastX=miaX;requestAnimationFrame(animateMia)}
 animateMia();
+const SPARKLES=['✨','💎','🫧','🌊','⭐','💙','🐚','🪸','💫','🌟'];
+function spawnSparkle(x,y){const s=document.createElement('div');s.className='sparkle';s.textContent=SPARKLES[Math.floor(Math.random()*SPARKLES.length)];s.style.left=(x+Math.random()*30-15)+'px';s.style.top=(y+Math.random()*30-15)+'px';document.body.appendChild(s);setTimeout(()=>s.remove(),1400)}
+function sparkleBurst(c=25,x=null,y=null){for(let i=0;i<c;i++)setTimeout(()=>spawnSparkle(x!==null?x+(Math.random()-.5)*200:Math.random()*window.innerWidth,y!==null?y+(Math.random()-.5)*200:Math.random()*window.innerHeight/1.5),i*25)}
 
-const SPARKLES = ['✨','💎','🫧','🌊','⭐','💙','🐚','🪸','💫','🌟'];
-function spawnSparkle(x, y) {
-  const s = document.createElement('div');
-  s.className = 'sparkle';
-  s.textContent = SPARKLES[Math.floor(Math.random() * SPARKLES.length)];
-  s.style.left = (x + Math.random()*30-15) + 'px';
-  s.style.top = (y + Math.random()*30-15) + 'px';
-  document.body.appendChild(s);
-  setTimeout(() => s.remove(), 1400);
-}
-
-function sparkleBurst(count = 25, x = null, y = null) {
-  for (let i = 0; i < count; i++) {
-    setTimeout(() => spawnSparkle(
-      x !== null ? x + (Math.random()-0.5)*200 : Math.random() * window.innerWidth,
-      y !== null ? y + (Math.random()-0.5)*200 : Math.random() * window.innerHeight / 1.5
-    ), i * 25);
-  }
-}
-
-// ============================================
-// 🎮 GAME STATE
-// ============================================
-const state = {
-  stats: { courage: 5, kindness: 5, wisdom: 5, hope: 10 },
-  inventory: [],
-  visitedScenes: [],
-  endingsFound: [],
-  achievements: new Set()
+// 🎮 STATE
+const state={stats:{courage:5,kindness:5,wisdom:5,hope:10},inventory:[],endingsFound:new Set(),pathsTaken:new Set(),achievements:new Set(),secretsFound:new Set()};
+const ITEMS={
+  jellyfish:{icon:'🪼',name:'Glowing Jellyfish',desc:'Lights the dark'},
+  seahorse:{icon:'🐴',name:"Mom's Seahorse",desc:'Made with love'},
+  pearl:{icon:'🦪',name:'Wishing Pearl',desc:'Grants one wish'},
+  shell:{icon:'🐚',name:'Compass Shell',desc:'Points home'},
+  locket:{icon:'💛',name:"Mom's Locket",desc:'Holds the truth'},
+  feather:{icon:'🪶',name:'Angel Feather',desc:'Brings luck'},
+  starfish:{icon:'⭐',name:'Wishing Star',desc:'A friend gave it'},
+  scale:{icon:'🐉',name:'Dragon Scale',desc:'Forged in lava'},
+  music:{icon:'🎵',name:'Whale Song',desc:'Echoes forever'},
+  treasure:{icon:'💰',name:'Pirate Gold',desc:'Heavy with stories'},
+  flower:{icon:'🌺',name:'Sea Bloom',desc:'Smells like dreams'},
+  map:{icon:'🗺️',name:'Lost Map',desc:'Shows hidden paths'}
+};
+const ACHIEVEMENTS={
+  first_step:{icon:'👣',name:'First Steps',desc:'Make your first choice'},
+  brave_heart:{icon:'💪',name:'Brave Heart',desc:'Reach 10 Courage'},
+  pure_soul:{icon:'💖',name:'Pure Soul',desc:'Reach 10 Kindness'},
+  wise_one:{icon:'🦉',name:'Wise One',desc:'Reach 10 Wisdom'},
+  collector:{icon:'🎒',name:'Collector',desc:'Hold 5 items'},
+  homecoming:{icon:'🏖️',name:'Homecoming',desc:'Reach a happy ending'},
+  heartbreak:{icon:'💔',name:'Heartbreak',desc:'Reach a sad ending'},
+  abyss:{icon:'⚫',name:'The Abyss',desc:'Reach a tragic ending'},
+  three_endings:{icon:'🌟',name:'Wanderer',desc:'Find 3 endings'},
+  seven_endings:{icon:'🏆',name:'Storyteller',desc:'Find 7 endings'},
+  all_paths:{icon:'🗺️',name:'Cartographer',desc:'Try all 7 paths'},
+  secret_keeper:{icon:'🗝️',name:'Secret Keeper',desc:'Find a hidden secret'},
+  whale_friend:{icon:'🐋',name:'Whale Friend',desc:'Sing with whales'},
+  shark_friend:{icon:'🦈',name:'Shark Whisperer',desc:'Befriend a shark'},
+  mother_truth:{icon:'💛',name:"Mother's Love",desc:'Find the truth'}
 };
 
-const ITEMS = {
-  jellyfish: { icon: '🪼', name: 'Glowing Jellyfish', desc: 'Lights the dark' },
-  seahorse: { icon: '🐴', name: 'Stuffed Seahorse', desc: 'Mom made it' },
-  pearl: { icon: '🦪', name: 'Wishing Pearl', desc: 'Grants one wish' },
-  shell: { icon: '🐚', name: 'Compass Shell', desc: 'Points home' },
-  locket: { icon: '💛', name: "Mom's Locket", desc: 'A piece of her heart' },
-  feather: { icon: '🪶', name: 'Sea Angel Feather', desc: 'Brings luck' },
-  starfish: { icon: '⭐', name: 'Wishing Star', desc: 'A friend made it' },
-  scale: { icon: '🐉', name: 'Dragon Scale', desc: 'Forged in lava' },
-  music: { icon: '🎵', name: 'Whale Song', desc: 'Echoes in your soul' },
-  treasure: { icon: '💰', name: 'Pirate Doubloon', desc: 'Heavy with stories' },
-  flower: { icon: '🌺', name: 'Sea Bloom', desc: 'Smells like sleep' }
-};
+function setMood(m){document.body.className='';if(m)document.body.classList.add('mood-'+m);if(m==='sad')startRain();else stopRain();const e={happy:'😊',sad:'😢',scary:'😨',mystical:'🤩',warm:'😅',peaceful:'😌',neutral:'🧜‍♀️'};document.getElementById('mia-mood').textContent=e[m]||'🧜‍♀️'}
 
-const ACHIEVEMENTS = {
-  first_step: { icon: '👣', name: 'First Steps', desc: 'Make your first choice' },
-  brave_heart: { icon: '💪', name: 'Brave Heart', desc: 'Reach 10 Courage' },
-  pure_soul: { icon: '💖', name: 'Pure Soul', desc: 'Reach 10 Kindness' },
-  wise_one: { icon: '🦉', name: 'Wise One', desc: 'Reach 10 Wisdom' },
-  collector: { icon: '🎒', name: 'Collector', desc: 'Hold 5 items at once' },
-  homecoming: { icon: '🏖️', name: 'Homecoming', desc: 'Reach a happy ending' },
-  heartbreak: { icon: '💔', name: 'Heartbreak', desc: 'Reach a sad ending' },
-  lost_forever: { icon: '⚫', name: 'The Abyss', desc: 'Reach a tragic ending' },
-  three_endings: { icon: '🌟', name: 'Wanderer', desc: 'Find 3 different endings' },
-  seven_endings: { icon: '🏆', name: 'Storyteller', desc: 'Find 7 different endings' },
-  all_paths: { icon: '🗺️', name: 'Cartographer', desc: 'Try all 7 starting paths' },
-  secret_keeper: { icon: '🗝️', name: 'Secret Keeper', desc: 'Find a hidden secret' },
-  whale_friend: { icon: '🐋', name: 'Whale Friend', desc: 'Sing with the whales' },
-  shark_friend: { icon: '🦈', name: 'Shark Whisperer', desc: 'Befriend a shark' },
-  mother_found: { icon: '💛', name: 'Mother\'s Love', desc: 'Find the truth about Mom' }
-};
+function modifyStat(s,a){state.stats[s]=Math.max(0,Math.min(10,state.stats[s]+a));updateStatsUI();if(state.stats.courage>=10)unlockAch('brave_heart');if(state.stats.kindness>=10)unlockAch('pure_soul');if(state.stats.wisdom>=10)unlockAch('wise_one')}
+function updateStatsUI(){['courage','kindness','wisdom','hope'].forEach(s=>{document.getElementById('stat-'+s).style.width=(state.stats[s]/10*100)+'%';document.getElementById('val-'+s).textContent=state.stats[s]})}
 
-// ============================================
-// 🎨 MOOD SYSTEM
-// ============================================
-function setMood(mood) {
-  document.body.className = '';
-  if (mood) document.body.classList.add('mood-' + mood);
-  if (mood === 'sad') startRain(); else stopRain();
+function addItem(id){if(state.inventory.includes(id))return;state.inventory.push(id);sfx.item();updateInvUI();showEvent(`🎁 Got: <strong>${ITEMS[id].icon} ${ITEMS[id].name}</strong>!<br><em>${ITEMS[id].desc}</em>`);if(state.inventory.length>=5)unlockAch('collector')}
+function hasItem(id){return state.inventory.includes(id)}
+function updateInvUI(){const g=document.getElementById('inventory-grid');g.innerHTML='';const sl=Math.max(8,state.inventory.length);for(let i=0;i<sl;i++){const s=document.createElement('div');s.className='inv-slot';if(state.inventory[i]){const it=ITEMS[state.inventory[i]];s.classList.add('filled');s.innerHTML=`${it.icon}<span class="inv-tooltip">${it.name}: ${it.desc}</span>`}g.appendChild(s)}}
 
-  const moodEmoji = {
-    happy: '😊', sad: '😢', scary: '😨', mystical: '🤩',
-    warm: '😅', peaceful: '😌', neutral: '🧜‍♀️'
-  };
-  document.getElementById('mia-mood').textContent = moodEmoji[mood] || '🧜‍♀️';
-}
+function unlockAch(id){if(state.achievements.has(id))return;state.achievements.add(id);sfx.achievement();const a=ACHIEVEMENTS[id];showToast(`🏆 ${a.icon} ${a.name}<br><small>${a.desc}</small>`);updateAchUI();sparkleBurst(40)}
+function showToast(h){const t=document.createElement('div');t.className='ach-toast';t.innerHTML=h;document.body.appendChild(t);setTimeout(()=>t.remove(),4500)}
+function updateAchUI(){const l=document.getElementById('achievements-list');l.innerHTML='';Object.entries(ACHIEVEMENTS).forEach(([id,a])=>{const b=document.createElement('div');b.className='ach-badge'+(state.achievements.has(id)?' unlocked':'');b.innerHTML=`${state.achievements.has(id)?a.icon:'❓'}<span class="ach-tooltip"><strong>${a.name}</strong><br>${a.desc}</span>`;l.appendChild(b)});document.getElementById('achievement-counter').textContent=`${state.achievements.size} / ${Object.keys(ACHIEVEMENTS).length} unlocked`}
 
-// ============================================
-// 📊 STATS SYSTEM
-// ============================================
-function modifyStat(stat, amount) {
-  state.stats[stat] = Math.max(0, Math.min(stat === 'hope' ? 10 : 10, state.stats[stat] + amount));
-  updateStatsUI();
-  if (state.stats.courage >= 10) unlockAchievement('brave_heart');
-  if (state.stats.kindness >= 10) unlockAchievement('pure_soul');
-  if (state.stats.wisdom >= 10) unlockAchievement('wise_one');
-}
+function showEvent(h){const a=document.getElementById('event-area');const e=document.createElement('div');e.className='event-popup';e.innerHTML=h;a.appendChild(e);sparkleBurst(20);setTimeout(()=>{e.style.transition='opacity 1s';e.style.opacity='0';setTimeout(()=>e.remove(),1000)},5000)}
 
-function updateStatsUI() {
-  ['courage', 'kindness', 'wisdom', 'hope'].forEach(s => {
-    const max = 10;
-    document.getElementById('stat-' + s).style.width = (state.stats[s] / max * 100) + '%';
-    document.getElementById('val-' + s).textContent = state.stats[s];
-  });
-}
+// 📖 STORY
+const story={
+start:{title:'🌊 The Sea With No Shore',chapter:'Chapter 1: The Beginning',mood:'neutral',
+text:`🧜‍♀️ <strong>Mia</strong> is a young mermaid lost in the deep blue at midnight 🌙. Her seaweed-green hair floats around her pearl crown 👑.<br><br>She doesn't remember how she got here. She only remembers Mom's voice: <em>"Whatever you choose, my little pearl, choose with your <span class="secret-text" data-secret="heart">heart</span>..."</em><br><br>Seven glowing currents stretch before her... 🐚`,
+onEnter:()=>{addItem('jellyfish');addItem('seahorse')},
+choices:[
+{text:'🏰 The Coral Palace',hint:'Royalty and rules',next:'palace1',path:'palace'},
+{text:'🐙 The Octopus Garden',hint:'Magic and mischief',next:'octopus1',path:'octopus'},
+{text:'🦈 The Shark Cave',hint:'Danger awaits',next:'shark1',path:'shark'},
+{text:'🚢 The Shipwreck',hint:'Ghosts and gold',next:'wreck1',path:'wreck'},
+{text:'🌋 The Volcano',hint:'Heat and risk',next:'volcano1',path:'volcano'},
+{text:'🐋 The Whale Trench',hint:'Ancient music',next:'whale1',path:'whale'},
+{text:'🏖️ The Sunny Reef',hint:'Warmth and light',next:'reef1',path:'reef'}
+]},
 
-// ============================================
-// 🎒 INVENTORY SYSTEM
-// ============================================
-function addItem(itemId) {
-  if (state.inventory.includes(itemId)) return;
-  state.inventory.push(itemId);
-  sfx.item();
-  updateInventoryUI();
-  showEvent(`🎁 You got: <strong>${ITEMS[itemId].icon} ${ITEMS[itemId].name}</strong>!<br><em>${ITEMS[itemId].desc}</em>`);
-  if (state.inventory.length >= 5) unlockAchievement('collector');
-}
+// 🏰 PALACE
+palace1:{title:'🏰 The Coral Palace',chapter:'Chapter 2: Royal Gates',mood:'mystical',
+text:`Mia swims through golden archways 🪸✨. The Mermaid Queen's guards approach.`,
+choices:[
+{text:'👑 Bow politely to the Queen',next:'palace_queen',stat:{kindness:1,wisdom:1}},
+{text:'🏃‍♀️ Sneak past into the throne room',next:'palace_sneak',stat:{courage:2,wisdom:-1}},
+{text:'💔 Cry and ask for your mom',next:'palace_cry',stat:{hope:-1,kindness:1}}
+]},
+palace_queen:{title:'👑 The Wise Queen',chapter:'Chapter 3',mood:'peaceful',
+text:`The Queen smiles warmly. "Lost child... I knew your mother." She presses a <strong>compass shell</strong> 🐚 into Mia's hand.`,
+onEnter:()=>{addItem('shell')},
+choices:[
+{text:'🐚 Use the shell to go home',next:'end_palace_home'},
+{text:'💛 Ask about Mom',next:'palace_mom',requires:{stat:'wisdom',min:6}},
+{text:'🏰 Stay and become a princess',next:'end_palace_princess'}
+]},
+palace_mom:{title:'💛 The Truth',chapter:'Chapter 4',mood:'sad',
+text:`The Queen's eyes fill with tears. "Your mother was my dearest friend. She gave her life to save you from the storm that took your village. She wanted you to live, brave little pearl."<br><br>Mia clutches the seahorse 🐴. <em>Now she remembers.</em>`,
+onEnter:()=>{addItem('locket');unlockAch('mother_truth')},
+choices:[
+{text:'💛 Honor Mom and go home',next:'end_mother_truth'},
+{text:'👑 Stay with the Queen forever',next:'end_palace_adopted'}
+]},
+palace_sneak:{title:'🚪 Caught!',chapter:'Chapter 3',mood:'scary',
+text:`The guards spot Mia! She's locked in the dungeon with the Queen's pet eel 🐍.`,
+choices:[
+{text:'🐍 Befriend the eel',next:'end_palace_eel',stat:{kindness:2}},
+{text:'💪 Try to escape',next:'palace_escape',requires:{stat:'courage',min:6}}
+]},
+palace_escape:{title:'💪 The Daring Escape',chapter:'Chapter 4',mood:'happy',
+text:`Mia uses her jellyfish to short-circuit the bars! She swims free, the guards far behind!`,
+choices:[{text:'🌊 Race home',next:'end_palace_freedom'}]},
+palace_cry:{title:'😢 The Queen\'s Heart',chapter:'Chapter 3',mood:'sad',
+text:`The Queen kneels down. "Oh, child..." She holds Mia close. The whole palace hears a little mermaid cry for her mother that night.`,
+choices:[
+{text:'💛 Let the Queen comfort you',next:'end_palace_adopted'},
+{text:'🌊 Run away into the dark',next:'end_palace_runaway'}
+]},
 
-function hasItem(itemId) { return state.inventory.includes(itemId); }
+// 🐙 OCTOPUS
+octopus1:{title:'🐙 The Octopus Garden',chapter:'Chapter 2',mood:'mystical',
+text:`A wise old octopus dances around Mia 🌈. "Three gifts I offer," he hums.`,
+choices:[
+{text:'🦪 Take the Wishing Pearl',next:'octopus_pearl',stat:{wisdom:1}},
+{text:'🌺 Eat the Sea Flower',next:'octopus_flower',stat:{courage:-1}},
+{text:'🗺️ Take the Old Map',next:'octopus_map',stat:{wisdom:2}}
+]},
+octopus_pearl:{title:'🦪 Pearl of Wishes',chapter:'Chapter 3',mood:'happy',
+text:`The pearl glows in Mia's hand. "One wish, little one!" the octopus says.`,
+onEnter:()=>{addItem('pearl')},
+choices:[
+{text:'🏖️ Wish to go home',next:'end_octopus_home'},
+{text:'💛 Wish to see Mom again',next:'end_octopus_mom_ghost'},
+{text:'💪 Save the wish for later',next:'octopus_save',stat:{wisdom:2}}
+]},
+octopus_save:{title:'🤔 Saving the Wish',chapter:'Chapter 4',mood:'mystical',
+text:`Mia tucks the pearl away. "I'll know when I need it." The octopus winks all eight eyes.`,
+choices:[
+{text:'🌊 Continue exploring',next:'octopus_explore'}
+]},
+octopus_explore:{title:'🌊 Deeper Still',chapter:'Chapter 5',mood:'peaceful',
+text:`Mia swims deeper and finds a secret garden of sea angels 🪶. One gives her a feather.`,
+onEnter:()=>{addItem('feather')},
+choices:[
+{text:'🦪 Use the wishing pearl now',next:'end_octopus_perfect',requires:{item:'pearl'}},
+{text:'🪶 Use the feather and fly home',next:'end_octopus_angel'}
+]},
+octopus_flower:{title:'🌺 Sleep Forever',chapter:'Chapter 3',mood:'sad',
+text:`The flower's perfume fills Mia's mind. She drifts into endless dreams of home... but never wakes.`,
+onEnter:()=>{addItem('flower')},
+choices:[{text:'💤 Dream forever',next:'end_octopus_dream'}]},
+octopus_map:{title:'🗺️ The Hidden Map',chapter:'Chapter 3',mood:'mystical',
+text:`The map glows! It shows a SECRET path no mermaid has taken in 100 years...`,
+onEnter:()=>{addItem('map');state.secretsFound.add('map');unlockAch('secret_keeper')},
+choices:[
+{text:'✨ Follow the secret path',next:'secret_atlantis',secret:true},
+{text:'🏖️ Use it to find home',next:'end_octopus_map_home'}
+]},
 
-function updateInventoryUI() {
-  const grid = document.getElementById('inventory-grid');
-  grid.innerHTML = '';
-  const slots = Math.max(8, state.inventory.length);
-  for (let i = 0; i < slots; i++) {
-    const slot = document.createElement('div');
-    slot.className = 'inv-slot';
-    if (state.inventory[i]) {
-      const item = ITEMS[state.inventory[i]];
-      slot.classList.add('filled');
-      slot.innerHTML = `${item.icon}<span class="inv-tooltip">${item.name}: ${item.desc}</span>`;
-    }
-    grid.appendChild(slot);
-  }
-}
+// 🦈 SHARK
+shark1:{title:'🦈 The Shark Tunnel',chapter:'Chapter 2',mood:'scary',
+text:`Rows of teeth gleam in the dark! A hammerhead 🔨🦈 stares at Mia.`,
+choices:[
+{text:'💨 Swim FAST',next:'shark_fast',stat:{courage:2}},
+{text:'🤝 Offer your hand in friendship',next:'shark_friend',stat:{kindness:2,courage:1}},
+{text:'😰 Hide in a coral cave',next:'shark_hide',stat:{courage:-1,wisdom:1}}
+]},
+shark_fast:{title:'💨 Speed of Light',chapter:'Chapter 3',mood:'scary',
+text:`Mia darts through faster than ever! But she crashes into something hard...`,
+choices:[
+{text:'😵 Open eyes',next:'end_shark_lost'},
+{text:'💪 Push through!',next:'end_shark_survivor',requires:{stat:'courage',min:7}}
+]},
+shark_friend:{title:'🤝 Finn the Friend',chapter:'Chapter 3',mood:'happy',
+text:`The hammerhead nuzzles her gently. His name is Finn. He's lonely too.`,
+onEnter:()=>{unlockAch('shark_friend')},
+choices:[
+{text:'🦈 Ride home on Finn\'s back',next:'end_shark_friend'},
+{text:'💖 Stay and be Finn\'s family',next:'end_shark_family'},
+{text:'🐚 Look for your real home together',next:'shark_journey'}
+]},
+shark_journey:{title:'🌊 Journey with Finn',chapter:'Chapter 4',mood:'peaceful',
+text:`Finn carries Mia for days. They find a glowing locket on the seafloor... 💛`,
+onEnter:()=>{addItem('locket');unlockAch('mother_truth')},
+choices:[
+{text:'💛 Open the locket',next:'end_mother_truth'},
+{text:'🏖️ Keep swimming home',next:'end_shark_friend'}
+]},
+shark_hide:{title:'😰 The Cave',chapter:'Chapter 3',mood:'sad',
+text:`Mia hides for hours. The sharks leave. But she's so deep now, so cold, so alone...`,
+choices:[
+{text:'😢 Cry and give up',next:'end_shark_alone'},
+{text:'💪 Find courage',next:'shark_brave',stat:{courage:3,hope:2}}
+]},
+shark_brave:{title:'💪 Inner Light',chapter:'Chapter 4',mood:'happy',
+text:`Mia remembers: <em>"Choose with your heart."</em> The jellyfish glows brighter than ever, lighting her way!`,
+choices:[{text:'✨ Swim toward the light',next:'end_shark_inner_light'}]},
 
-// ============================================
-// 🏆 ACHIEVEMENTS
-// ============================================
-function unlockAchievement(id) {
-  if (state.achievements.has(id)) return;
-  state.achievements.add(id);
-  sfx.achievement();
-  const ach = ACHIEVEMENTS[id];
-  showToast(`🏆 ${ach.icon} ${ach.name}<br><small>${ach.desc}</small>`);
-  updateAchievementsUI();
-  sparkleBurst(40);
-}
-
-function showToast(html) {
-  const toast = document.createElement('div');
-  toast.className = 'ach-toast';
-  toast.innerHTML = html;
-  document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 4500);
-}
-
-function updateAchievementsUI() {
-  const list = document.getElementById('achievements-list');
-  list.innerHTML = '';
-  Object.entries(ACHIEVEMENTS).forEach(([id, ach]) => {
-    const badge = document.createElement('div');
-    badge.className = 'ach-badge' + (state.achievements.has(id) ? ' unlocked' : '');
-    badge.innerHTML = `${state.achievements.has(id) ? ach.icon : '❓'}<span class="ach-tooltip"><strong>${ach.name}</strong><br>${ach.desc}</span>`;
-    list.appendChild(badge);
-  });
-  document.getElementById('achievement-counter').textContent =
-    `${state.achievements.size} / ${Object.keys(ACHIEVEMENTS).length} unlocked`;
-}
-
-// ============================================
-// 🎁 EVENTS & RANDOM ENCOUNTERS
-// ============================================
-function showEvent(html) {
-  const area = document.getElementById('event-area');
-  const evt = document.createElement('div');
-  evt.className = 'event-popup';
-  evt.innerHTML = html;
-  area.appendChild(evt);
-  sparkleBurst(20);
-  setTimeout(() => { evt.style.transition = 'opacity 1s'; evt.style.opacity = '0'; setTimeout(() => evt.remove(), 1000); }, 5000);
-}
-
-function maybeRandomEvent() {
-  if (Math.random() < 0.25) {
-    const events = [
-      () => { showEvent('🍾 A bottle floats by with a tiny note inside that says: <em>"Be brave."</em>'); modifyStat('courage', 1); },
-      () => { showEvent('🎵 A distant whale song stirs your heart...'); modifyStat('hope', 1); },
-      () => { showEvent('🌊 A gentle current carries you forward, easing your worries.'); modifyStat('hope', 1); },
-      () => { showEvent('🐚 You spot something shiny... <em>(pearl clue!)</em>'); modifyStat('wisdom', 1); },
-      () => { showEvent('🪼 A baby jellyfish nuzzles your hand. So sweet! 💖'); modifyStat('kindness', 1); }
-    ];
-    events[Math.floor(Math.random() * events.length)]();
-  }
-}
-
-// ============================================
-// 🌊 THE BIG STORY TREE
-// ============================================
-const story = {
-  start: {
-    title: '🌊 The Sea With No Shore',
-    chapter: 'Chapter 1: The Beginning',
-    mood: 'neutral',
-    text: `🧜‍♀️ <strong>Mia</strong> is a young mermaid girl lost in the deep blue at midnight 🌙. Her seaweed-green hair floats around her pearl crown 👑. She clutches a bioluminescent jellyfish 🪼 in one hand and a worn stuffed seahorse 🐴 her mother made her. <br><br>She doesn't remember how she got here. She only remembers Mom's voice: <em>"Whatever you choose, my little pearl, choose with your <span class="secret-text" data-secret="💛 ...heart. Always with your heart.">heart...</span>"</em><br><br>Seven glowing currents stretch before her... <strong style="color:#00ffff;">🐚 Which path does she choose? 🐚</strong>`,
-    onEnter: () => { addItem('jellyfish'); addItem('seahorse'); },
-    choices: [
-      { text: '🏰 The Sunken Coral Palace', hint: 'Royalty and rules', next: 'palace1' },
-      { text: '🐙 The Octopus Garden', hint: 'Magic and mischief', next: 'octopus1' },
-      { text: '🦈 The Shark Cave Tunnel', hint: 'Danger awaits', next: 'shark1' },
-      { text: '🚢 The Shipwreck Graveyard', hint: 'Ghosts and gold', next: 'wreck1' },
-      { text: '🌋 The Underwater Volcano', hint: 'Heat and risk', next: 'volcano1' },
-      { text: '🐋 The Whale Song Trench', hint: 'Ancient music', next: 'whale1' },
+// 🚢 SHIPWRECK
+wreck1:{title:'🚢 The Shipwreck',chapter:'Chapter 2',mood:'scary',
+text:`Ghost pirates moan ☠️. A skeleton captain 💀 grins. "Ahoy, lass! Pick yer prize!"`,
+choices:[
+{text:'💰 Take the cursed treasure',next:'wreck_curse',stat:{wisdom:-2}},
+{text:'🙏 Refuse politely',next:'wreck_refuse',stat:{wisdom:2,kindness:1}},
+{text:'⚔️ Steal the captain\'s sword',next:'wreck_sword',stat:{courage:3}}
+]},
+wreck_curse:{title:'💰 The Curse',chapter:'Chapter 3',mood:'scary',
+text:`The gold drags Mia DOWN... DOWN... into the black abyss. The ghosts welcome her home.`,
+onEnter:()=>{addItem('treasure')},
+choices:[{text:'⚫ Sink forever',next:'end_wreck_abyss'}]},
+wreck_refuse:{title:'🙏 Wisdom',chapter:'Chapter 3',mood:'mystical',
+text:`A friendly child ghost 👻 appears. "You're smart. I was greedy. Take this — it was my mother's." She hands Mia a glowing locket 💛.`,
+onEnter:()=>{addItem('locket');unlockAch('mother_truth')},
+choices:[
+{text:'💛 Open the locket',next:'end_mother_truth'},
+{text:'👻 Help the ghost find peace',next:'wreck_helper',stat:{kindness:3}}
+]},
+wreck_helper:{title:'👻 Setting Spirits Free',chapter:'Chapter 4',mood:'peaceful',
+text:`Mia sings the ghost child a lullaby. The little ghost smiles, fades into golden light, and goes home to the stars 🌟.`,
+choices:[{text:'💖 Continue your journey',next:'end_wreck_angel'}]},
+wreck_sword:{title:'⚔️ The Cursed Sword',chapter:'Chapter 3',mood
