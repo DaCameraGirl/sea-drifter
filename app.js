@@ -1,7 +1,7 @@
 const scenes = {
   start: {
     title: "The Street With No Sound",
-    text: "Mia is lost at midnight. Seven paths stretch out in front of her.",
+    text: "Mia is a small 9-year-old girl with shoulder-length dark hair, an oversized yellow raincoat over a faded blue dress, scuffed red shoes, and a tiny flashlight in one hand and a worn stuffed rabbit in the other. She is lost at midnight, and seven numbered paths stretch out in front of her.",
     choices: [
       { text: "Path 1: Old church road", next: "church" },
       { text: "Path 2: Breathing woods trail", next: "woods" },
@@ -143,3 +143,4 @@ restartBtn.addEventListener("click", () => {
 });
 
 render();
+
