@@ -4,7 +4,7 @@
 
 <img src="assets/twinkling.svg" width="100%" alt="twinkling ocean"/>
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Georgia&size=22&duration=3000&pause=800&color=00B4D8&center=true&vCenter=true&multiline=true&width=700&height=80&lines=🧜‍♀️+A+lost+girl...+a+whispering+ocean...+a+choice.;🌊+Will+she+find+the+shore%2C+the+palace%2C+or+the+deep%3F;✨+Every+path+ripples+like+ocean+currents...)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Georgia&size=22&duration=3000&pause=800&color=00B4D8&center=true&vCenter=true&multiline=true&width=700&height=120&lines=🧜‍♀️+A+lost+girl...+a+whispering+ocean...+a+choice.;🌊+Will+she+find+the+shore%2C+the+palace%2C+or+the+deep%3F;✨+Every+path+ripples+like+ocean+currents...)](https://git.io/typing-svg)
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:023e8a,50:0096c7,100:caf0f8&height=80&section=header&animation=twinkling" width="100%"/>
 
