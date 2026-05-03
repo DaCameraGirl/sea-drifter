@@ -437,13 +437,7 @@
       <strong style="color:#00ffff;">🐚 Pick a path for her! 🐚</strong>
     </p>
     <div id="choices">
-      <button class="choice-btn" data-path="1">🏰 Path 1: The Sunken Coral Palace</button>
-      <button class="choice-btn" data-path="2">🐙 Path 2: The Octopus Garden</button>
-      <button class="choice-btn" data-path="3">🦈 Path 3: The Shark Cave Tunnel</button>
-      <button class="choice-btn" data-path="4">🚢 Path 4: The Shipwreck Graveyard</button>
-      <button class="choice-btn" data-path="5">🌋 Path 5: The Underwater Volcano</button>
-      <button class="choice-btn" data-path="6">🐋 Path 6: The Whale Song Trench</button>
-      <button class="choice-btn" data-path="7">🏖️ Path 7: The Sunny Shore Reef</button>
+      <!-- choices rendered by JS -->
     </div>
   </section>
 
@@ -560,169 +554,420 @@ function spawnSparkle(x, y) {
 }
 
 // ============================================
-// 🎮 STORY DATA
+// 🎮 STORY SCENE GRAPH
 // ============================================
-const paths = {
-  1: {
-    name: 'The Sunken Coral Palace',
-    emoji: '🏰',
-    story: `🏰 Mia swam through golden archways of glowing coral 🪸✨.
-            The Mermaid Queen 👑🧜‍♀️ rose from her throne of sea-glass
-            and welcomed Mia with a feast of pearls and starfish cakes 🌟🍰.
-            She sang her a lullaby that rippled through the tides 🎶🌊
-            and guided her safely home by moonlight. 🌙`,
-    ending: '🏰 CORAL PALACE ENDING 🏰',
+const scenes = {
+
+  // ── OPENING ──────────────────────────────
+  start: {
+    title: '🌊 The Sea With No Shore',
+    text: `🧜‍♀️ <strong>Mia</strong> is a young mermaid girl lost in the deep blue at midnight 🌙.
+      Her seaweed-green hair floats around her pearl crown 👑.
+      She clutches a bioluminescent jellyfish 🪼 in one hand
+      and a worn stuffed seahorse 🐴 in the other.
+      Seven glowing ocean currents stretch out before her through
+      whispering waves and coral mazes... ✨🌊
+      <br><br>
+      <strong style="color:#00ffff;">🐚 Which path does Mia choose?</strong>`,
+    choices: [
+      { text: '🏰 Path 1: Swim toward the Sunken Coral Palace', next: 'palace_gate' },
+      { text: '🐙 Path 2: Drift into the Octopus Garden', next: 'octopus_meet' },
+      { text: '🦈 Path 3: Dart through the Shark Cave Tunnel', next: 'shark_dark' },
+      { text: '🚢 Path 4: Creep through the Shipwreck Graveyard', next: 'wreck_hall' },
+      { text: '🌋 Path 5: Rush past the Underwater Volcano', next: 'volcano_heat' },
+      { text: '🐋 Path 6: Dive into the Whale Song Trench', next: 'whale_eye' },
+      { text: '🏖️ Path 7: Follow the light to the Sunny Shore Reef', next: 'shore_shallow' }
+    ]
+  },
+
+  // ── PATH 1: CORAL PALACE ──────────────────
+  palace_gate: {
+    title: '🏰 The Palace Gates',
+    text: `🏰 Two enormous gates of living coral loom before Mia, guarded by
+      a pair of crab soldiers 🦀🦀 whose claws click in warning.
+      Beyond them, warm golden light pours from the palace windows
+      and the smell of starfish cakes drifts through the current 🌟.
+      <br><br>
+      <strong style="color:#00ffff;">What does Mia do?</strong>`,
+    choices: [
+      { text: '🎵 Sing a mermaid lullaby to charm the guards', next: 'palace_throne' },
+      { text: '🌿 Sneak quietly through the sea-garden side gate', next: 'palace_garden' }
+    ]
+  },
+  palace_throne: {
+    title: '👑 The Throne Room',
+    text: `🎵 Mia's voice rang out like a silver bell through the water 🔔.
+      The crab soldiers stopped clicking — then began to sway 🦀💃.
+      The gates swung open and the Mermaid Queen herself 👑🧜‍♀️
+      glided forward, eyes shining with recognition.
+      <em>"Child of the deep currents — I know your cove."</em>
+      She placed a glowing coral crown on Mia's head
+      and called her royal escort to swim her home. 🌙💎
+      <br><br>
+      Mia arrived at her coral cove just as dawn kissed the sea. 🌅`,
+    ending: '✨ ROYAL HOMECOMING ENDING ✨',
     type: 'good'
   },
-  2: {
-    name: 'The Octopus Garden',
-    emoji: '🐙',
-    story: `🐙 A wise old octopus 🐙 with eight glowing rainbow arms
-            danced Mia through a garden of luminous sea flowers 🌺💜.
-            He gifted her a magical navigation pearl 🦪
-            that hummed directions through the deep current
-            and guided her straight to the sunny surface. ☀️🫧`,
-    ending: '🏖️ SUNNY BEACH ENDING 🏖️',
-    type: 'good'
-  },
-  3: {
-    name: 'The Shark Cave Tunnel',
-    emoji: '🦈',
-    story: `🦈 Rows of gleaming teeth lined the dark tunnel walls 😰.
-            Mia's heart pounded like a drum 🥁💓...
-            but a friendly hammerhead named Finn 🔨🦈
-            nuzzled her gently and escorted her
-            safely through to a glowing bioluminescent reef. 💚🌿`,
-    ending: '🌙 MIXED ENDING 🌙',
+  palace_garden: {
+    title: '🌺 The Secret Sea-Garden',
+    text: `🌿 Mia slipped through a gap in the coral wall and found herself
+      in a garden of glowing anemones and dancing sea-flowers 🌺💜.
+      It was beautiful — but also a maze with no clear way out.
+      A tiny ghost shrimp 🦐 blinked at her nervously.
+      <em>"I know the way,"</em> it whispered, <em>"but I'm scared of the dark tunnels..."</em>
+      Mia took the shrimp's tiny claw and they found the exit together. 🤝
+      <br><br>
+      She emerged far from home but with a new friend — and a long swim ahead. 🌊`,
+    ending: '🌙 GARDEN DETOUR ENDING 🌙',
     type: 'mixed'
   },
-  4: {
-    name: 'The Shipwreck Graveyard',
-    emoji: '🚢',
-    story: `🚢 Ghost pirates 👻☠️ drifted through rusted hulls
-            moaning songs of lost treasure 💀.
-            The cold black current wrapped around Mia
-            like icy fingers 🥶 and pulled her
-            spinning down... down... down into the endless dark abyss. 🌀⚫`,
+
+  // ── PATH 2: OCTOPUS GARDEN ────────────────
+  octopus_meet: {
+    title: '🐙 The Garden of Arms',
+    text: `🐙 A magnificent old octopus fills the garden with rainbow bioluminescence,
+      eight arms weaving slow, hypnotic patterns through the water 💜✨.
+      He fixes one ancient amber eye on Mia and smiles.
+      <em>"Lost little current-rider — will you stay awhile, or shall I help you go?"</em>
+      <br><br>
+      <strong style="color:#00ffff;">What does Mia choose?</strong>`,
+    choices: [
+      { text: '💃 Accept his invitation and dance with him', next: 'octopus_dance' },
+      { text: '🧭 Ask him politely for directions home', next: 'octopus_pearl' }
+    ]
+  },
+  octopus_dance: {
+    title: '💃 The Deep-Sea Dance',
+    text: `🐙 Mia reached out and took two of his glowing arms 🤝.
+      They spun through the garden as the sea-flowers lit up one by one 🌺🌺🌺.
+      With each turn, the octopus hummed a low ancient song 🎵
+      — and Mia realised the dance was a <em>map</em>.
+      Every step pointed her closer to home.
+      When the music faded, she knew exactly which current to follow. ✨
+      <br><br>
+      She swam home laughing, still humming the song. 🎶🌊`,
+    ending: '💃 DANCE OF THE CURRENTS ENDING 💃',
+    type: 'good'
+  },
+  octopus_pearl: {
+    title: '🦪 The Navigation Pearl',
+    text: `🧭 Mia bowed politely. <em>"Please — can you point me home?"</em>
+      The octopus chuckled, a warm deep rumble, and reached into a hidden pouch
+      beneath his mantle 🎒. He produced a pearl that hummed like a compass needle.
+      <em>"It always points toward where your heart belongs."</em>
+      Mia held it to her chest — it tugged gently to the north-east.
+      <br><br>
+      She followed it through glittering open water straight to her cove. 🏠💙`,
+    ending: '🦪 COMPASS PEARL ENDING 🦪',
+    type: 'good'
+  },
+
+  // ── PATH 3: SHARK CAVE ────────────────────
+  shark_dark: {
+    title: '🦈 The Dark Tunnel',
+    text: `🦈 The cave was absolute midnight black 🖤.
+      Mia could hear slow, heavy breathing echoing off the walls.
+      Her jellyfish 🪼 pulsed nervously in her hand, its light dim but real.
+      Something huge shifted in the darkness ahead...
+      <br><br>
+      <strong style="color:#00ffff;">What does Mia do?</strong>`,
+    choices: [
+      { text: '🪼 Hold her jellyfish up high to light the way', next: 'shark_friend' },
+      { text: '🗣️ Call out softly: "Hello? I\'m just lost..."', next: 'shark_scary' }
+    ]
+  },
+  shark_friend: {
+    title: '🔦 Finn in the Light',
+    text: `🪼 The jellyfish bloomed bright blue — and Mia gasped 😲.
+      A hammerhead shark the size of a school bus filled the tunnel,
+      one great golden eye blinking in the sudden light.
+      Then — slowly — his tail began to wag. 🐕
+      <em>Finn</em> was friendly. Very friendly. He nudged her with his enormous flat nose
+      and turned, clearly wanting her to follow.
+      <br><br>
+      He led her through two more tunnels and deposited her gently at the reef's edge. 💚🌿`,
+    ending: '🦈 FINN\'S ESCORT ENDING 🦈',
+    type: 'mixed'
+  },
+  shark_scary: {
+    title: '😱 The Voice in the Dark',
+    text: `🗣️ <em>"Hello?"</em> Her voice bounced off the walls ten times.
+      The breathing stopped. Then started faster. 😰
+      A row of enormous gleaming teeth appeared in the darkness —
+      then another row — then another. Three sharks. Not Finn.
+      Mia turned and swam for her life 🏊‍♀️💨, the current roaring in her ears.
+      She burst out of the cave mouth and kept swimming until she hit open water. 🌊
+      <br><br>
+      She was safe — but completely lost, and the cave was far behind her. 🗺️`,
+    ending: '😰 THE GREAT ESCAPE ENDING 😰',
+    type: 'mixed'
+  },
+
+  // ── PATH 4: SHIPWRECK ─────────────────────
+  wreck_hall: {
+    title: '☠️ The Ghost Ship Hall',
+    text: `🚢 Ghost pirates drifted through rusted corridors, moaning softly ☠️👻.
+      A spectral captain with a barnacle beard pointed a bony finger
+      at two doors at the end of the hall.
+      One door glowed green. The other leaked a cold black current.
+      <em>"Choose, little fish,"</em> he rasped. <em>"Choose."</em>
+      <br><br>
+      <strong style="color:#00ffff;">Which door does Mia open?</strong>`,
+    choices: [
+      { text: '💚 Push open the glowing green door', next: 'wreck_treasure' },
+      { text: '⚫ Grab the ship\'s wheel and try to steer the whole wreck', next: 'wreck_abyss' }
+    ]
+  },
+  wreck_treasure: {
+    title: '💎 The Ghost Treasure Room',
+    text: `💚 The green door opened into a room piled high with ghost-gold 💰 —
+      coins that glowed like moonlight through fog.
+      A spectral parrot landed on Mia's shoulder 🦜.
+      <em>"Squawk — take one coin, find your way — squawk!"</em>
+      She picked up a single glowing doubloon and it pulled like a magnet
+      northward through the water... toward home.
+      <br><br>
+      She swam north, guided by the ghost coin, arriving home just before dawn. 🌅`,
+    ending: '💰 GHOST DOUBLOON ENDING 💰',
+    type: 'mixed'
+  },
+  wreck_abyss: {
+    title: '🌀 The Endless Spiral',
+    text: `⚫ Mia grabbed the crumbling ship's wheel and yanked hard 🌀.
+      The whole wreck groaned — then lurched — then began to spin.
+      Ghost pirates scattered like smoke ☠️💨.
+      The cold black current seized the ship and pulled it
+      down... down... down into the crushing dark.
+      Mia let go just in time, tumbling endlessly through nothing. 🌑
+      <br><br>
+      She woke up on the seafloor, alone, the wreck gone — 
+      but somehow, incredibly, alive. The surface was a long, long way up. 😮‍💨`,
     ending: '⚫ THE ABYSS ENDING ⚫',
     type: 'bad'
   },
-  5: {
-    name: 'The Underwater Volcano',
-    emoji: '🌋',
-    story: `🌋 Hot orange bubbles burst around her like fireworks 🫧🔥!
-            Mia grabbed the glowing tail of a lava-eel 🐍🌋
-            and held on tight as it rocketed upward
-            through a thermal current that shot her
-            all the way to a warm glittering reef. ♨️✨`,
-    ending: '🌙 MIXED ENDING 🌙',
+
+  // ── PATH 5: VOLCANO ───────────────────────
+  volcano_heat: {
+    title: '🌋 The Lava Fields',
+    text: `🌋 Orange and red bubbles exploded around Mia like a fireworks show 🎆🫧.
+      The water was warm — almost hot. Two options glowed before her:
+      a lava-eel 🐍 whose tail blazed like a torch,
+      and a thin ribbon of ice-cold spring water spiralling upward 💧.
+      <br><br>
+      <strong style="color:#00ffff;">What does Mia do?</strong>`,
+    choices: [
+      { text: '🐍 Grab the lava-eel\'s glowing tail and hold on tight', next: 'volcano_rocket' },
+      { text: '💧 Follow the cold spring water upward', next: 'volcano_spring' }
+    ]
+  },
+  volcano_rocket: {
+    title: '🚀 The Lava Launch',
+    text: `🐍 Mia grabbed the eel's blazing tail — and immediately regretted it 🔥😬.
+      The eel shot upward like a rocket 🚀, weaving between lava pillars,
+      corkscrewing through a thermal jet that launched them both
+      through the surface into the open night sky 🌙.
+      Mia splashed down miles from home, gasping and laughing. 😂
+      <br><br>
+      It took her three days to swim back — but what a story she had. ✨`,
+    ending: '🚀 ROCKET LAUNCH ENDING 🚀',
     type: 'mixed'
   },
-  6: {
-    name: 'The Whale Song Trench',
-    emoji: '🐋',
-    story: `🐋 A colossal blue whale 🐋💙 opened one enormous gentle eye
-            and sang a song so ancient the ocean itself went still 🎵🌊.
-            Mia climbed onto his back between barnacle mountains 🏔️
-            and he carried her on a moonlit voyage 🌙
-            all the way home to her coral cove. 💖🐚`,
-    ending: '🏖️ SUNNY BEACH ENDING 🏖️',
+  volcano_spring: {
+    title: '💧 The Cold Spring Path',
+    text: `💧 The cold spring was calm and quiet against the volcano's roar.
+      Mia followed its gentle pull upward, winding through black rock
+      lit by tiny glowing microbes 🌟.
+      The spring grew wider and warmer as it rose,
+      until it burst through a crack in the seafloor into open shining water —
+      and Mia could see her coral cove sparkling just ahead. 🏠💎
+      <br><br>
+      She was home. The spring had known the way all along. 💙`,
+    ending: '💧 SPRING WATER HOME ENDING 💧',
     type: 'good'
   },
-  7: {
-    name: 'The Sunny Shore Reef',
-    emoji: '🏖️',
-    story: `🏖️ Golden sunbeams ☀️ pierced the crystal-clear shallows
-            and painted everything turquoise and gold 💛💎.
-            A pod of dolphins 🐬🐬🐬 leaped beside her giggling
-            and raced her through warm foamy waves 🌊
-            straight home to her mermaid mama 🧜‍♀️💖.`,
-    ending: '🏖️ SUNNY BEACH ENDING 🏖️',
+
+  // ── PATH 6: WHALE TRENCH ──────────────────
+  whale_eye: {
+    title: '🐋 The Ancient Eye',
+    text: `🐋 From the absolute darkness of the trench, something immense rose slowly.
+      A blue whale — the biggest creature Mia had ever seen —
+      turned its gentle ancient eye toward her 👁️.
+      A single low note vibrated through her whole body. 🎵
+      The whale opened its enormous mouth... was it friendly or hungry? 😰
+      <br><br>
+      <strong style="color:#00ffff;">What does Mia do?</strong>`,
+    choices: [
+      { text: '🏔️ Climb up carefully onto the whale\'s back', next: 'whale_voyage' },
+      { text: '😬 Swim bravely into the whale\'s open mouth', next: 'whale_belly' }
+    ]
+  },
+  whale_voyage: {
+    title: '🌙 The Moonlit Voyage',
+    text: `🏔️ Mia swam up and settled between two barnacle mountains on the whale's back. 🌊
+      Immediately the whale began to move — slow, powerful, purposeful.
+      The ocean parted before them like a curtain 🎭.
+      Stars reflected on the black water as they surfaced 🌟.
+      The whale sang the whole way, a song that made the sea itself go still.
+      <br><br>
+      When Mia saw her coral cove glittering ahead, she burst into happy tears. 💖🐚`,
+    ending: '🌙 MOONLIT VOYAGE ENDING 🌙',
+    type: 'good'
+  },
+  whale_belly: {
+    title: '🫧 Inside the Whale',
+    text: `😬 Mia swam between the baleen plates and into the warm, echoing belly 🫧.
+      It was dark, and cavernous, and full of... other lost things.
+      A tiny lanternfish 🐠. A message-in-a-bottle 📜. A child's sandal.
+      She found the bottle. Inside: a map.
+      The map showed exactly where her cove was.
+      She tickled the whale's stomach wall until it sneezed — 
+      and she shot out into the open ocean, map in hand. 🗺️💨
+      <br><br>
+      The whale winked. She was sure of it. 🐋`,
+    ending: '🫧 SNEEZE ESCAPE ENDING 🫧',
+    type: 'mixed'
+  },
+
+  // ── PATH 7: SUNNY SHORE ───────────────────
+  shore_shallow: {
+    title: '☀️ The Golden Shallows',
+    text: `🏖️ Warm golden sunbeams pierced the crystal water, painting everything
+      turquoise and amber 💛. Mia could almost see the surface 🌊.
+      A pod of dolphins 🐬🐬🐬 circled her excitedly, clicking and leaping.
+      Far above, seabirds 🕊️ wheeled and dived, crying out.
+      <br><br>
+      <strong style="color:#00ffff;">Who does Mia follow?</strong>`,
+    choices: [
+      { text: '🐬 Race the laughing dolphins through the surf', next: 'shore_dolphins' },
+      { text: '🕊️ Follow the seabirds diving from above', next: 'shore_birds' }
+    ]
+  },
+  shore_dolphins: {
+    title: '🌊 The Dolphin Race',
+    text: `🐬 Mia kicked her tail and <em>flew</em> through the water 💨.
+      Three dolphins flanked her, clicking with delight, leaping in arcs of foam.
+      Faster, faster — past coral towers and waving sea grass —
+      until the water grew shallow and warm and familiar. 🌺
+      She heard it before she saw it: her mother's voice, calling from the cove. 🧜‍♀️💕
+      <br><br>
+      The dolphins spun in celebratory loops as Mia dived into her mama's arms. 💖`,
+    ending: '🐬 DOLPHIN RACE HOME ENDING 🐬',
+    type: 'good'
+  },
+  shore_birds: {
+    title: '🕊️ Following the Birds',
+    text: `🕊️ Mia followed the birds upward until she broke the surface 🌊 — 
+      gasping at open sky for the first time in what felt like forever 🌤️.
+      The birds circled and cried and pointed their beaks south.
+      She floated on her back, staring at stars beginning to fade in the dawn. 🌅
+      <em>South.</em> She knew south. South was almost home.
+      <br><br>
+      She swam all morning and arrived at her cove just as the sun rose fully. 🌞`,
+    ending: '🕊️ FOLLOWING THE BIRDS ENDING 🕊️',
     type: 'good'
   }
 };
 
 // ============================================
-// 🎮 GAME LOGIC
+// 🎮 GAME ENGINE
 // ============================================
-const pathLog = document.getElementById('path-log');
+const pathLog    = document.getElementById('path-log');
 const sceneTitle = document.getElementById('scene-title');
-const sceneText = document.getElementById('scene-text');
-let firstChoice = true;
+const sceneText  = document.getElementById('scene-text');
+const choicesDiv = document.getElementById('choices');
 
-document.querySelectorAll('.choice-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const p = paths[btn.dataset.path];
-    const rect = btn.getBoundingClientRect();
+let currentSceneId = 'start';
+let logEmpty = true;
 
-    // 🧜‍♀️ Swim mermaid to button
-    mouseX = rect.left + rect.width / 2;
-    mouseY = rect.top + rect.height / 2;
+function renderScene(sceneId, choiceLabel) {
+  const scene = scenes[sceneId];
+  if (!scene) return;
+  currentSceneId = sceneId;
 
-    // 💥 Burst sparkles at button
-    for (let i = 0; i < 30; i++) {
-      setTimeout(() => spawnSparkle(
-        rect.left + Math.random() * rect.width,
-        rect.top + Math.random() * rect.height
-      ), i * 25);
+  // 💥 Full-screen sparkle burst on transition
+  for (let i = 0; i < 40; i++) {
+    setTimeout(() => spawnSparkle(
+      Math.random() * window.innerWidth,
+      Math.random() * window.innerHeight
+    ), i * 18);
+  }
+
+  // 📜 Add step to log
+  if (choiceLabel) {
+    if (logEmpty) {
+      pathLog.innerHTML = '';
+      logEmpty = false;
     }
+    const li = document.createElement('li');
+    li.innerHTML = `🐚 <em>${choiceLabel}</em>`;
+    pathLog.appendChild(li);
+    pathLog.scrollTop = pathLog.scrollHeight;
+  }
 
-    setTimeout(() => {
-      // Clear placeholder
-      if (firstChoice) {
-        pathLog.innerHTML = '';
-        firstChoice = false;
-      }
+  // 📖 Update story panel
+  sceneTitle.textContent = scene.title;
 
-      // 📜 Add to log
+  if (scene.ending) {
+    // ── ENDING SCENE ──
+    const color = scene.type === 'good' ? '#00ffcc' : scene.type === 'mixed' ? '#ffd700' : '#ff4444';
+    sceneText.innerHTML = `
+      ${scene.text}
+      <br><br>
+      <strong style="color:${color}; font-size:1.3em;">${scene.ending}</strong>
+      <br><br>
+      <span style="color:#90e0ef; font-style:italic;">
+        🔄 Hit <strong>Restart Pick</strong> to play again and find a different fate!
+      </span>
+    `;
+    choicesDiv.innerHTML = '';
+
+    // Add ending to log
+    if (!logEmpty) {
       const li = document.createElement('li');
-      const endingColor = p.type === 'good' ? '#00ffcc' : p.type === 'mixed' ? '#ffd700' : '#ff4444';
-      li.innerHTML = `
-        ${p.emoji} <strong>${p.name}</strong><br>
-        <small style="color:${endingColor};">${p.ending}</small>
-      `;
+      li.innerHTML = `<strong style="color:${color};">${scene.ending}</strong>`;
       pathLog.appendChild(li);
       pathLog.scrollTop = pathLog.scrollHeight;
+    }
+  } else {
+    // ── CHOICE SCENE ──
+    sceneText.innerHTML = scene.text;
+    choicesDiv.innerHTML = '';
 
-      // 📖 Update scene
-      sceneTitle.textContent = `${p.emoji} ${p.name}`;
-      sceneText.innerHTML = `
-        ${p.story}
-        <br><br>
-        <strong class="ending-${p.type}">${p.ending}</strong>
-        <br><br>
-        <span style="color:#90e0ef; font-style:italic;">
-          🐚 Pick another path to explore a different fate...
-        </span>
-      `;
-    }, 700);
-  });
-});
+    scene.choices.forEach(choice => {
+      const btn = document.createElement('button');
+      btn.className = 'choice-btn';
+      btn.textContent = choice.text;
+      btn.addEventListener('click', () => {
+        const rect = btn.getBoundingClientRect();
+        mouseX = rect.left + rect.width / 2;
+        mouseY = rect.top + rect.height / 2;
+        for (let i = 0; i < 30; i++) {
+          setTimeout(() => spawnSparkle(
+            rect.left + Math.random() * rect.width,
+            rect.top + Math.random() * rect.height
+          ), i * 25);
+        }
+        setTimeout(() => renderScene(choice.next, choice.text), 600);
+      });
+      choicesDiv.appendChild(btn);
+    });
+  }
+}
+
+// Kick off the game
+renderScene('start', null);
 
 // 🔄 RESTART
 document.getElementById('restart-btn').addEventListener('click', () => {
+  logEmpty = true;
   pathLog.innerHTML = '<li style="opacity:0.5; font-style:italic;">🌊 No picks made yet...</li>';
-  firstChoice = true;
-
-  sceneTitle.textContent = '🌊 The Sea With No Shore';
-  sceneText.innerHTML = `
-    🧜‍♀️ <strong>Mia</strong> is a young mermaid girl lost in the deep blue at midnight 🌙.
-    Her seaweed-green hair floats around her pearl crown 👑.
-    She clutches a bioluminescent jellyfish 🪼 in one hand
-    and a worn stuffed seahorse 🐴 in the other.
-    Seven glowing ocean currents stretch out before her through
-    whispering waves and coral mazes... ✨🌊
-    <br><br>
-    <strong style="color:#00ffff;">🐚 Pick a path for her! 🐚</strong>
-  `;
-
-  // 🎆 Celebration sparkle burst
   for (let i = 0; i < 60; i++) {
     setTimeout(() => spawnSparkle(
       Math.random() * window.innerWidth,
       Math.random() * window.innerHeight
     ), i * 20);
   }
+  renderScene('start', null);
 });
 </script>
 </body>
