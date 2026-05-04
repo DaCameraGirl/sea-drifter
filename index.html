@@ -1203,6 +1203,7 @@ const scenes = {
 // ============================================
 const readBtn = document.getElementById('read-btn');
 let isSpeaking = false;
+let currentSpeakText = '';
 
 function stopSpeaking() {
   window.speechSynthesis.cancel();
@@ -1212,31 +1213,35 @@ function stopSpeaking() {
 }
 
 function speakText(text) {
-  stopSpeaking();
-  if (!window.speechSynthesis) return;
+  if (!window.speechSynthesis) {
+    readBtn.textContent = '🔇 Not supported';
+    return;
+  }
+  window.speechSynthesis.cancel();
 
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.rate = 0.88;
-  utter.pitch = 1.05;
-  utter.volume = 1;
+  // Chrome has a bug where long utterances stop after ~15s — chunk into sentences
+  const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+  let idx = 0;
 
-  // Pick a friendly female voice if available
-  function trySpeak() {
-    const voices = window.speechSynthesis.getVoices();
-    if (voices.length) {
-      const preferred = voices.find(v =>
-        /samantha|karen|victoria|zira|susan|female|woman|girl/i.test(v.name)
-      ) || voices.find(v => v.lang.startsWith('en')) || voices[0];
-      if (preferred) utter.voice = preferred;
-    }
-    isSpeaking = true;
-    readBtn.textContent = '⏹ Stop Reading';
-    readBtn.classList.add('reading');
-    utter.onend = () => {
+  function speakNext() {
+    if (idx >= sentences.length) {
       isSpeaking = false;
       readBtn.textContent = '🔊 Read to Me';
       readBtn.classList.remove('reading');
-    };
+      return;
+    }
+    const utter = new SpeechSynthesisUtterance(sentences[idx++]);
+    utter.rate = 0.88;
+    utter.pitch = 1.05;
+    utter.volume = 1;
+
+    const voices = window.speechSynthesis.getVoices();
+    const preferred = voices.find(v =>
+      /samantha|karen|victoria|zira|susan/i.test(v.name)
+    ) || voices.find(v => v.lang && v.lang.startsWith('en')) || voices[0];
+    if (preferred) utter.voice = preferred;
+
+    utter.onend = speakNext;
     utter.onerror = () => {
       isSpeaking = false;
       readBtn.textContent = '🔊 Read to Me';
@@ -1245,15 +1250,22 @@ function speakText(text) {
     window.speechSynthesis.speak(utter);
   }
 
-  // Voices may not be loaded yet
-  if (window.speechSynthesis.getVoices().length) {
-    trySpeak();
+  isSpeaking = true;
+  readBtn.textContent = '⏹ Stop Reading';
+  readBtn.classList.add('reading');
+
+  // Wait for voices to be ready
+  if (window.speechSynthesis.getVoices().length > 0) {
+    speakNext();
   } else {
-    window.speechSynthesis.onvoiceschanged = trySpeak;
+    window.speechSynthesis.addEventListener('voiceschanged', function handler() {
+      window.speechSynthesis.removeEventListener('voiceschanged', handler);
+      speakNext();
+    });
+    // Fallback: try after 300ms even if event never fires
+    setTimeout(() => { if (isSpeaking && idx === 0) speakNext(); }, 300);
   }
 }
-
-let currentSpeakText = '';
 
 readBtn.addEventListener('click', () => {
   if (isSpeaking) {
@@ -1356,8 +1368,7 @@ function renderScene(sceneId, choiceLabel) {
     });
   }
 
-  // Auto-read after short delay
-  setTimeout(() => speakText(currentSpeakText), 700);
+  // (auto-read removed — browser blocks audio without a user tap first)
 }
 
 // Kick off the game
