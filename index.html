@@ -757,6 +757,39 @@
     box-shadow: 0 0 12px rgba(0,229,255,0.4);
   }
 
+  /* 🐚 EASY MODE — bigger text */
+  body.diff-easy #scene-text {
+    font-size: 1.45em !important;
+    line-height: 2.4 !important;
+    letter-spacing: 0.02em;
+  }
+  body.diff-easy .choice-btn {
+    font-size: 1.15em !important;
+    padding: 22px 32px !important;
+  }
+
+  /* 🧩 HARD MODE — math challenge block */
+  #challenge-block {
+    background: rgba(0,30,70,0.75);
+    border: 2px solid #00b4d8;
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin-top: 22px;
+    animation: fadeIn 0.4s ease;
+  }
+  #challenge-block .challenge-label {
+    color: #ffd700;
+    font-weight: bold;
+    font-size: 1.05em;
+    display: block;
+    margin-bottom: 8px;
+  }
+  #challenge-block .challenge-q {
+    color: #00ffcc;
+    font-size: 1em;
+    line-height: 1.7;
+  }
+
   /* 🌊 OCEAN SOUNDS BUTTON */
   #sounds-btn {
     background: rgba(0,30,70,0.6);
@@ -2877,6 +2910,8 @@ function renderScene(sceneId, choiceLabel) {
         Hit Restart Pick to play again and find a different fate!
       </span>
     `;
+    const old = document.getElementById('challenge-block');
+    if (old) old.remove();
     choicesDiv.innerHTML = '';
 
     // Add ending to log
@@ -2891,6 +2926,7 @@ function renderScene(sceneId, choiceLabel) {
   } else {
     // ── CHOICE SCENE ──
     sceneText.innerHTML = scene.text;
+    updateChallengeBlock(sceneId);
     choicesDiv.innerHTML = '';
 
     const choiceTexts = scene.choices.map(c => c.text.replace(/^[^\w]*/, '')).join('. Or: ');
@@ -2939,6 +2975,9 @@ document.querySelectorAll('.diff-btn').forEach(btn => {
     document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     currentDifficulty = btn.dataset.diff;
+    document.body.classList.remove('diff-easy', 'diff-medium', 'diff-hard');
+    document.body.classList.add('diff-' + currentDifficulty);
+    if (currentSceneId) updateChallengeBlock(currentSceneId);
   });
 });
 
@@ -2965,6 +3004,20 @@ const hardFacts = {
   shore_shallow: ['🧩 Light travels 150 million km in 8 min. How fast in km/sec? (≈ 300,000 km/s!)'],
   shore_dolphins:['🧩 144 shells in 12 rows. How many per row? (12 — a perfect square!)'],
   shore_birds:   ['🧩 Jaxon counted 2,820 waves. Each wave = 4 seconds — how many minutes total? (188 min!)'],
+  palace_swim:   ['🧩 100 fish split into 4 equal groups — how many in each group? (25 fish!)'],
+  palace_library:['🧩 72 explorers came before Mia. She is #73. What is the next prime after 73? (79!)'],
+  octopus_approach:['🧩 77 jellyfish — half pulse fast, half pulse slow. How many of each? (38 and 39!)'],
+  octopus_rescue:['🧩 847 = 7 × 11 × 11. What are all three prime factors? (7, 11, 11!)'],
+  shark_entrance:['🧩 The cave breathes every 12 seconds. How many breaths in 1 minute? (5 breaths!)'],
+  shark_crab:    ['🧩 848 creatures guided safely. Round to the nearest hundred — what do you get? (800!)'],
+  wreck_approach:['🧩 47 portholes in 3 rows — can 47 divide evenly into 3? (No — 47 is prime!)'],
+  wreck_crow:    ['🧩 247 = 13 × 19. Is 247 prime or composite? (Composite — it has factors!)'],
+  volcano_approach:['🧩 30 metres closer = 3°C warmer. How warm at 100 metres closer? (10°C warmer!)'],
+  volcano_watch: ['🧩 27 hours waiting × 60 minutes = how many total minutes? (1,620 minutes!)'],
+  whale_descent: ['🧩 At 150m deep the pressure is 15× surface pressure. Pressure per 10m = ? (1 atmosphere!)'],
+  whale_sperm:   ['🧩 5 whales × 18m each = 90m total. How many school buses long? (Each bus = 12m, so 7.5 buses!)'],
+  shore_approach:['🧩 Thermocline jumps 8°C in 2 metres. How many °C per metre? (4°C per metre!)'],
+  shore_turtles: ['🧩 12 turtles + 1 mermaid = 13. What are all factors of 12? (1, 2, 3, 4, 6, 12!)'],
 };
 
 function getFactsForScene(sceneId) {
@@ -2973,6 +3026,19 @@ function getFactsForScene(sceneId) {
   if (currentDifficulty === 'easy') return base.slice(0, 1);
   if (currentDifficulty === 'hard') return [...base, ...(hardFacts[sceneId] || [])];
   return base;
+}
+
+function updateChallengeBlock(sceneId) {
+  const old = document.getElementById('challenge-block');
+  if (old) old.remove();
+  if (currentDifficulty !== 'hard') return;
+  const q = (hardFacts[sceneId] || [])[0];
+  if (!q) return;
+  const block = document.createElement('div');
+  block.id = 'challenge-block';
+  block.innerHTML = `<span class="challenge-label">🧩 Jaxon\'s Math Challenge!</span><span class="challenge-q">${q}</span>`;
+  const sceneTextEl = document.getElementById('scene-text');
+  sceneTextEl.after(block);
 }
 
 // ============================================
