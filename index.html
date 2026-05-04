@@ -402,6 +402,55 @@
     font-size: 1.4em !important;
   }
 
+  /* 🧮 JAXON'S FACT BOOK */
+  #factbook-container {
+    background: rgba(20, 15, 0, 0.75) !important;
+    border: 3px solid #ffd700 !important;
+    border-radius: 28px !important;
+    padding: 24px !important;
+    margin-top: 22px !important;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 50px rgba(255,215,0,0.35), inset 0 0 30px rgba(255,215,0,0.08) !important;
+  }
+  #factbook-container h3 {
+    color: #ffd700 !important;
+    margin-bottom: 6px !important;
+    font-size: 1.5em !important;
+    text-align: center;
+    text-shadow: 0 0 20px rgba(255,215,0,0.9);
+    animation: glowGold 2s ease-in-out infinite alternate;
+  }
+  @keyframes glowGold {
+    0%   { text-shadow: 0 0 12px rgba(255,215,0,0.7); }
+    100% { text-shadow: 0 0 30px rgba(255,215,0,1), 0 0 55px rgba(255,160,0,0.6); }
+  }
+  #factbook-count {
+    text-align: center;
+    color: #ffe066 !important;
+    font-size: 0.88em;
+    margin-bottom: 14px !important;
+    font-style: italic;
+  }
+  #factbook-list {
+    list-style: none;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  #factbook-list::-webkit-scrollbar { width: 5px; }
+  #factbook-list::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 3px; }
+  #factbook-list::-webkit-scrollbar-thumb { background: #ffd700; border-radius: 3px; }
+  #factbook-list li {
+    padding: 11px 13px !important;
+    margin-bottom: 9px !important;
+    background: rgba(255,215,0,0.12) !important;
+    border-left: 4px solid #ffd700 !important;
+    border-radius: 10px !important;
+    animation: slideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: #fff8dc !important;
+    font-size: 0.9em;
+    line-height: 1.45;
+  }
+
   /* 🔊 READ ALOUD BUTTON */
   #read-btn {
     display: flex !important;
@@ -474,6 +523,13 @@
       <li style="opacity:0.5; font-style:italic;">🌊 No picks made yet...</li>
     </ul>
     <button id="restart-btn">🔄 Restart Pick</button>
+    <div id="factbook-container">
+      <h3>🧮 Jaxon's Fact Book</h3>
+      <p id="factbook-count">Play to discover number facts!</p>
+      <ul id="factbook-list">
+        <li style="opacity:0.5; font-style:italic;">🌟 No facts found yet...</li>
+      </ul>
+    </div>
   </aside>
 </main>
 
@@ -1199,6 +1255,121 @@ const scenes = {
 };
 
 // ============================================
+// 🧮 JAXON'S NUMBER FACTS (per scene)
+// ============================================
+const sceneFacts = {
+  start: [
+    '⭐ 7 is a prime number — only divisible by 1 and 7 itself!',
+    '🌟 There are exactly 9,096 visible stars on a perfectly clear night',
+    '💤 Jaxon sorted 47 pebbles into a line before he fell asleep',
+  ],
+  palace_gate: [
+    '🏰 The palace has 49 windows — that\'s 7 × 7!',
+    '🦀 Crabs have 10 legs each — 2 guards = 20 legs clicking in the dark',
+  ],
+  palace_throne: [
+    '⏱️ 1,247 seconds = almost 21 minutes — Jaxon counted every one!',
+    '👑 The Mermaid Queen has ruled for over 500 years',
+    '🎶 A choir of exactly 100 mermaids sang in the throne room',
+  ],
+  palace_garden: [
+    '🦐 A ghost shrimp is only 2 cm long — smaller than your thumbnail!',
+    '🌺 The secret garden holds 1,000 glowing sea-anemones',
+    '🌀 The maze had exactly 33 turns — the shrimp counted them all',
+  ],
+  octopus_meet: [
+    '🐙 8 arms × 240 suckers = 1,920 suckers on one octopus!',
+    '🔢 8 is the only single-digit number that looks the same upside down',
+    '💜 Each octopus arm can taste AND feel what it touches',
+  ],
+  octopus_dance: [
+    '🌸 64 sea-flowers lit up — that\'s 8 × 8, a perfect square!',
+    '💡 64 = 4 × 4 × 4 = 2 to the power of 6 — so many ways to make 64!',
+  ],
+  octopus_pearl: [
+    '💓 A resting heart beats exactly 60 times per minute',
+    '🪨 Jaxon had 47 pebbles sorted into a perfect row while he waited',
+  ],
+  shark_dark: [
+    '💓 Your heart beats ~72 times/min normally — up to 140+ when scared!',
+    '📏 The shark cave tunnel is 300 metres long',
+    '🔢 Counting your heartbeats really does help calm you down!',
+  ],
+  shark_friend: [
+    '🦷 Sharks grow up to 300 teeth in a lifetime — new rows replace old ones!',
+    '📏 Finn the hammerhead is 4.5 metres long',
+    '🦈 Hammerhead sharks have eyes on each side of their wide heads',
+  ],
+  shark_scary: [
+    '🌟 9,096 stars are visible on a clear night — counting them helps you feel calm',
+    '🔊 Sound echoes many times inside a 300-metre tunnel',
+    '🏊 Mia swam 200 metres in 45 seconds — that\'s very fast!',
+  ],
+  wreck_hall: [
+    '⚓ The ship sank exactly 247 years ago',
+    '🐚 Barnacle layers show a ship\'s age — just like rings in a tree trunk!',
+    '👻 100 ghost pirates have haunted the wreck ever since it sank',
+  ],
+  wreck_treasure: [
+    '💰 The treasure room holds exactly 1,047 gold coins',
+    '🦜 The ghost parrot knows exactly 47 words — no more, no less',
+    '🪨 312 = 6 × 52 — Jaxon\'s perfect pebble rows!',
+  ],
+  wreck_abyss: [
+    '🌊 The Mariana Trench is 11 km deep — deeper than Mount Everest is tall!',
+    '💓 Counting heartbeats: 1, 2, 3... always makes scary things smaller',
+  ],
+  volcano_heat: [
+    '🥶 Deep ocean water is only 2–3°C — almost freezing!',
+    '🔢 13 is a prime number — only divisible by 1 and 13',
+    '🐍 The lava-eel is exactly 2 metres long',
+  ],
+  volcano_rocket: [
+    '🏊 Mia counted 47,000 swimming strokes on her 3-day journey home!',
+    '🚀 The thermal jet shot them upward at incredible speed',
+  ],
+  volcano_spring: [
+    '📏 The cold spring is 847 metres long from volcano to the surface',
+    '🔬 1,000 glowing microbes can fit across a single human hair!',
+    '🪨 Jaxon built a tower of exactly 100 flat stones while he waited',
+  ],
+  whale_eye: [
+    '📏 Blue whales are 30 m long — as long as 3 school buses end to end!',
+    '⚖️ A blue whale weighs 150,000 kilograms',
+    '👁️ A blue whale\'s eye is 15 cm across — bigger than a grapefruit!',
+    '🎂 Blue whales can live to 100 years old',
+  ],
+  whale_voyage: [
+    '🔊 Blue whales sing at 188 decibels — louder than a jet engine!',
+    '➗ 80 ÷ 20 = 4 hours exactly — the whale\'s travel time home',
+    '⭐ Jaxon counted 847 stars before falling asleep on the beach',
+  ],
+  whale_belly: [
+    '🌡️ Inside a whale is 37°C — the same as your own body temperature!',
+    '🗺️ The map inside the whale showed 12 landmarks',
+    '🤧 It took exactly 7 tickles to make the whale sneeze Mia out!',
+  ],
+  shore_shallow: [
+    '☀️ Sunlight takes 8 minutes to travel from the Sun to Earth!',
+    '🌊 The golden shallows are only 3 metres deep',
+    '🐬 A pod of 7 dolphins — that prime number keeps showing up!',
+    '🌍 Sunlight travels 150 million kilometres to reach the ocean',
+  ],
+  shore_dolphins: [
+    '🐬 Dolphins swim at 60 km/h — faster than a car on many roads!',
+    '💦 Dolphins can leap 5 metres out of the water',
+    '🐚 144 = 12 × 12, called a "gross" — a perfect square Jaxon arranged!',
+    '🔢 The dolphins leaped 23 times — Jaxon counted every single one',
+  ],
+  shore_birds: [
+    '🕊️ Jaxon counted 2,820 waves — writing a tally mark for each one!',
+    '🌅 The sun rises at exactly 5:47 AM',
+    '🐦 12 seabirds in the flock pointed Mia south toward home',
+    '⏰ Jaxon was awake since 4 AM — he doesn\'t sleep when things are important',
+  ],
+};
+
+// ============================================
 // 🔊 TEXT-TO-SPEECH ENGINE
 // ============================================
 const readBtn = document.getElementById('read-btn');
@@ -1278,17 +1449,42 @@ readBtn.addEventListener('click', () => {
 // ============================================
 // 🎮 GAME ENGINE
 // ============================================
-const pathLog    = document.getElementById('path-log');
-const sceneTitle = document.getElementById('scene-title');
-const sceneText  = document.getElementById('scene-text');
-const choicesDiv = document.getElementById('choices');
+const pathLog      = document.getElementById('path-log');
+const sceneTitle   = document.getElementById('scene-title');
+const sceneText    = document.getElementById('scene-text');
+const choicesDiv   = document.getElementById('choices');
+const factbookList = document.getElementById('factbook-list');
+const factbookCount = document.getElementById('factbook-count');
 
-let currentSceneId = 'start';
-let logEmpty = true;
+let currentSceneId  = 'start';
+let logEmpty        = true;
+let factbookEmpty   = true;
+const discoveredFacts = new Set();
+
+function addFacts(sceneId) {
+  const facts = sceneFacts[sceneId];
+  if (!facts) return;
+  facts.forEach(fact => {
+    if (discoveredFacts.has(fact)) return;
+    discoveredFacts.add(fact);
+    if (factbookEmpty) {
+      factbookList.innerHTML = '';
+      factbookEmpty = false;
+    }
+    const li = document.createElement('li');
+    li.textContent = fact;
+    factbookList.appendChild(li);
+    factbookList.scrollTop = factbookList.scrollHeight;
+  });
+  const n = discoveredFacts.size;
+  const total = Object.values(sceneFacts).flat().length;
+  factbookCount.textContent = `${n} of ${total} facts discovered!`;
+}
 
 function renderScene(sceneId, choiceLabel) {
   const scene = scenes[sceneId];
   if (!scene) return;
+  addFacts(sceneId);
   currentSceneId = sceneId;
 
   stopSpeaking();
@@ -1379,6 +1575,10 @@ document.getElementById('restart-btn').addEventListener('click', () => {
   stopSpeaking();
   logEmpty = true;
   pathLog.innerHTML = '<li style="opacity:0.5; font-style:italic;">🌊 No picks made yet...</li>';
+  factbookEmpty = true;
+  discoveredFacts.clear();
+  factbookList.innerHTML = '<li style="opacity:0.5; font-style:italic;">🌟 No facts found yet...</li>';
+  factbookCount.textContent = 'Play to discover number facts!';
   for (let i = 0; i < 60; i++) {
     setTimeout(() => spawnSparkle(
       Math.random() * window.innerWidth,
