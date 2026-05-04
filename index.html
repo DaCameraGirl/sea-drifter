@@ -1116,7 +1116,7 @@
     <p class="celeb-body">
       You swam every path, counted every number,<br>
       and explored every corner of the ocean.<br><br>
-      <strong>65 facts. 7 paths. 14 endings.</strong><br>
+      <strong>79 facts. 7 paths. 21 endings.</strong><br>
       Mia made it home — because of you. 🧜‍♀️💙<br><br>
       Jaxon is on the shore right now,<br>
       counting the waves just for you. 🌊
@@ -1298,13 +1298,13 @@ const scenes = {
       <strong style="color:#00ffff;">🐚 Which path does Mia choose?</strong>`,
     speak: `Mia is a young mermaid girl lost in the deep, dark blue at midnight. Her long seaweed-green hair floats all around her like ribbons in the current, and her pearl crown glows softly. In one hand she holds a glowing jellyfish lantern, and in the other she clutches her favourite stuffed seahorse. Mia has a best friend on land named Jaxon. He is 8 years old, brilliantly clever, and he loves numbers more than almost anything. He knows that there are exactly 9 thousand and 96 visible stars on a perfectly clear night. Right now Jaxon is asleep on the beach far above. Seven glowing ocean currents stretch out before Mia. Did you know that 7 is a very special number? It is prime — that means you can only divide it by 1 and by 7 itself. Jaxon told Mia that once, and she never forgot. Which path does Mia choose?`,
     choices: [
-      { text: '🏰 Path 1: Swim toward the Sunken Coral Palace', next: 'palace_gate' },
-      { text: '🐙 Path 2: Drift into the Octopus Garden', next: 'octopus_meet' },
-      { text: '🦈 Path 3: Dart through the Shark Cave Tunnel', next: 'shark_dark' },
-      { text: '🚢 Path 4: Creep through the Shipwreck Graveyard', next: 'wreck_hall' },
-      { text: '🌋 Path 5: Rush past the Underwater Volcano', next: 'volcano_heat' },
-      { text: '🐋 Path 6: Dive into the Whale Song Trench', next: 'whale_eye' },
-      { text: '🏖️ Path 7: Follow the light to the Sunny Shore Reef', next: 'shore_shallow' }
+      { text: '🏰 Path 1: Swim toward the Sunken Coral Palace', next: 'palace_swim' },
+      { text: '🐙 Path 2: Drift into the Octopus Garden', next: 'octopus_approach' },
+      { text: '🦈 Path 3: Dart through the Shark Cave Tunnel', next: 'shark_entrance' },
+      { text: '🚢 Path 4: Creep through the Shipwreck Graveyard', next: 'wreck_approach' },
+      { text: '🌋 Path 5: Rush past the Underwater Volcano', next: 'volcano_approach' },
+      { text: '🐋 Path 6: Dive into the Whale Song Trench', next: 'whale_descent' },
+      { text: '🏖️ Path 7: Follow the light to the Sunny Shore Reef', next: 'shore_approach' }
     ]
   },
 
@@ -1899,6 +1899,456 @@ const scenes = {
     ending: '🕊️ FOLLOWING THE BIRDS ENDING 🕊️',
     type: 'good',
     treasure: { emoji: '🕊️', name: 'Seabird Feather', desc: 'From the birds who showed you south' }
+  },
+
+  // ── NEW PRE-SCENES & BRANCH ENDINGS ────────
+
+  palace_swim: {
+    title: '🏰 Swimming Toward the Light',
+    text: `🏰 Mia swam toward the palace glow, and the water around her began to change.
+      Tiny flecks of golden light drifted past like underwater snowflakes —
+      fragments of coral dust the palace lights had stirred up over centuries.
+      <br><br>
+      Then she saw them. A school of <strong>100 silver fish</strong> 🐠 moving together
+      in one shimmering, rippling shape — like a single creature made of a hundred smaller ones.
+      Schools of fish can hold anywhere from <strong>10 to 10,000 individuals</strong>,
+      all moving as one through <em>collective sensing</em> —
+      no leader, no instructions, just listening to each other.
+      <br><br>
+      The school parted as Mia approached, swirling around her in a silver ring.
+      One fish — braver than the others — hovered right in front of her face.
+      It seemed to be pointing. Toward the palace gates. Then away from them.
+      <br><br>
+      <strong style="color:#00ffff;">What does Mia do?</strong>`,
+    speak: `Mia swam toward the palace glow, and the water began to change. Tiny flecks of golden light drifted past like underwater snowflakes. Then she saw them — a school of 100 silver fish moving together in one shimmering shape, like a single creature made of a hundred smaller ones. Schools of fish can hold anywhere from 10 to 10,000 individuals, all moving as one through collective sensing. No leader, no instructions. Just listening to each other. The school parted as Mia approached, swirling around her in a silver ring. One brave fish hovered right in front of her face. It seemed to be pointing — toward the palace gates, then away from them. What does Mia do?`,
+    choices: [
+      { text: '🏰 Follow the fish toward the grand front gates', next: 'palace_gate' },
+      { text: '📚 Follow the fish the other way — toward a hidden side entrance', next: 'palace_library' }
+    ]
+  },
+
+  palace_library: {
+    title: '📚 The Underwater Library',
+    text: `📚 The fish led Mia to a small circular door half-hidden by sea anemones.
+      It swung open at her touch.
+      <br><br>
+      Inside was the most extraordinary room she had ever seen —
+      a library, completely underwater, with shelves carved from living coral
+      stretching <strong>12 metres</strong> up to a domed ceiling of pale blue light.
+      Every shelf was packed with scrolls sealed in glass tubes.
+      Hundreds of them. Maybe <strong>1,000</strong>. Each one glowing faintly. ✨
+      <br><br>
+      A seahorse in tiny spectacles 🐴 floated at a reading desk.
+      Without looking up it said:
+      <em>"Lost? They always come here when they're lost.
+      Third shelf from the bottom, seventh scroll from the left. Ocean current maps."</em>
+      <br><br>
+      Third shelf. <strong>Seventh</strong> scroll. That number again.
+      Mia pulled it out. There — in perfect ink — was a map of every current
+      between here and her cove. Every single one.
+      <br><br>
+      The seahorse handed her a compass.
+      <em>"<strong>72</strong> explorers before you,"</em> it said.
+      <em>"You are number <strong>73</strong>."</em> And 73 is prime, Mia thought. Of course it is. 🧭
+      <br><br>
+      She swam home with the map and compass, never once getting lost.
+      <strong style="color:#ffd700;">Jaxon</strong> was waiting with
+      <strong>72 stones sorted by size</strong>.
+      <em>"72 is 8 times 9,"</em> he said immediately.
+      <em>"Or 6 times 12. Or 4 times 18. Lots of ways to make 72."</em> 💛`,
+    speak: `The fish led Mia to a small circular door half-hidden by sea anemones. Inside was the most extraordinary room — a library, completely underwater, with shelves carved from living coral stretching 12 metres to a domed ceiling of pale blue light. Every shelf was packed with scrolls in glass tubes. Maybe 1,000 of them. A seahorse in tiny spectacles floated at a reading desk. Without looking up it said: "Lost? They always come here when they're lost. Third shelf from the bottom, seventh scroll from the left. Ocean current maps." Third shelf. Seventh scroll. Mia pulled it out. There — in perfect ink — was a map of every current between here and her cove. The seahorse handed her a compass. "72 explorers before you. You are number 73." And 73 is prime, Mia thought. Of course it is. She swam home with the map and compass, never once getting lost. Jaxon was waiting with 72 stones sorted by size. "72 is 8 times 9," he said. "Or 6 times 12. Or 4 times 18. Lots of ways to make 72."`,
+    ending: '📚 LIBRARY COMPASS ENDING 📚',
+    type: 'good',
+    treasure: { emoji: '🧭', name: 'Seahorse Compass', desc: 'Given by the underwater librarian — you were explorer number 73' }
+  },
+
+  octopus_approach: {
+    title: '💜 The Bioluminescent Curtain',
+    text: `💜 Mia descended into the purple-blue glow, and the water grew warmer and stranger.
+      Then she saw them — a curtain of jellyfish hanging in the water like living lanterns. 🪼
+      <br><br>
+      She counted them automatically. Jaxon had made counting feel as natural as breathing.
+      <strong>77 jellyfish</strong>. Exactly 77.
+      <em>77 = 7 × 11.</em> And both 7 and 11 are prime numbers —
+      a number made of exactly two primes is called a <strong>semiprime</strong>.
+      Jaxon had explained semiprimes once. She hadn't fully understood. She'd liked the word.
+      <br><br>
+      Each jellyfish pulsed with its own rhythm —
+      some slow like a sleeping heartbeat, some quick like excitement.
+      <strong>Bioluminescence</strong> — making your own light with no battery, no flame,
+      no electricity. Just chemistry. Living light. ✨
+      <br><br>
+      But one jellyfish near the bottom was still. Not pulsing. Something was wrong.
+      <br><br>
+      <strong style="color:#00ffff;">What does Mia do?</strong>`,
+    speak: `Mia descended into the purple-blue glow, and the water grew warmer and stranger. Then she saw them — a curtain of jellyfish hanging in the water like living lanterns. She counted them automatically. Jaxon had made counting feel as natural as breathing. 77 jellyfish. Exactly 77. 77 = 7 times 11. And both 7 and 11 are prime numbers. A number made of exactly two primes is called a semiprime. Each jellyfish pulsed with its own rhythm — some slow like a sleeping heartbeat, some quick like excitement. Bioluminescence — making your own light with no battery, no flame, no electricity. Just chemistry. Living light. But one jellyfish near the bottom was still. Not pulsing. Something was wrong. What does Mia do?`,
+    choices: [
+      { text: '💜 Swim gently through the curtain toward the garden', next: 'octopus_meet' },
+      { text: '🪼 Stop and check on the still jellyfish', next: 'octopus_rescue' }
+    ]
+  },
+
+  octopus_rescue: {
+    title: '🪼 The Tangled One',
+    text: `🪼 Mia swam carefully to the still jellyfish at the bottom of the curtain.
+      A thin loop of old fishing line was wrapped twice around its bell, pressing tight.
+      The jellyfish couldn't pulse. Couldn't breathe.
+      <br><br>
+      Mia worked slowly and carefully, using all <strong>10 fingers</strong>.
+      She counted each movement the way Jaxon counted everything:
+      <em>one loop, slide — one loop, slide — pull gently —</em>
+      and on the <strong>7th movement</strong> the line came free. 🎉
+      <br><br>
+      The jellyfish pulsed once. Twice. Then again —
+      building, brightening, until it was blazing with cold blue light
+      brighter than all <strong>76</strong> others combined.
+      <br><br>
+      The light spread outward through the dark water in waves —
+      and in that wave of light Mia could see the ocean floor laid out like a map.
+      Every current, every reef, every familiar rock between here and home. 🌊
+      <br><br>
+      She swam home by the light of one grateful jellyfish.
+      <strong style="color:#ffd700;">Jaxon</strong> saw the glow from the beach
+      and ran counting pulses.
+      <em>"It pulsed <strong>847</strong> times before you surfaced,"</em> he yelled.
+      <em>"847 = 7 × 11 × 11. Three prime factors!"</em>
+      He sounded absolutely thrilled about this. 💙`,
+    speak: `Mia swam carefully to the still jellyfish. A thin loop of old fishing line was wrapped twice around its bell — it couldn't pulse, couldn't breathe. Mia worked slowly using all 10 fingers, counting each movement the way Jaxon counted everything. On the 7th movement the line came free. The jellyfish pulsed once — twice — then blazed with cold blue light brighter than all 76 others combined. The light spread outward through the dark water in waves, and in that light Mia could see the ocean floor laid out like a map. Every current, every reef, every familiar rock between here and home. She swam home by the light of one grateful jellyfish. Jaxon saw the glow from the beach and ran counting pulses. "It pulsed 847 times before you surfaced," he yelled. "847 = 7 times 11 times 11. Three prime factors!" He sounded absolutely thrilled.`,
+    ending: '🪼 JELLYFISH RESCUE ENDING 🪼',
+    type: 'good',
+    treasure: { emoji: '🪼', name: 'Bioluminescent Bell', desc: 'From the jellyfish who lit up the whole ocean for you' }
+  },
+
+  shark_entrance: {
+    title: '🦈 The Cave Mouth',
+    text: `🦈 The cave mouth was enormous.
+      Mia measured it the way Jaxon had taught her —
+      <strong>8 metres wide</strong> and <strong>6 metres tall</strong>.
+      That's an opening of <strong>48 square metres</strong> —
+      big enough to drive four buses through side by side. 🚌🚌🚌🚌
+      <br><br>
+      The cave was breathing.
+      Cold water rushed in — <em>whoooosh</em> —
+      then warm water breathed back out — <em>ahhhhh</em>.
+      Every <strong>12 seconds</strong>, regular as a clock.
+      Like the ocean itself had lungs.
+      <br><br>
+      A small <strong>hermit crab</strong> sat on a rock right at the cave's edge 🦀,
+      its painted shell the colours of a tiny flag.
+      It watched Mia with bright, intelligent eyes.
+      It looked from her — to the cave — to her again.
+      Then it began clicking.
+      <em>Click click. Click click click. Click. Click click click click.</em>
+      <br><br>
+      <strong style="color:#00ffff;">What does Mia do?</strong>`,
+    speak: `The cave mouth was enormous. Mia measured it the way Jaxon had taught her — 8 metres wide and 6 metres tall. That's 48 square metres of opening — big enough to drive four buses through side by side. The cave was breathing. Cold water rushed in, then warm water breathed back out, every 12 seconds, regular as a clock. Like the ocean itself had lungs. A small hermit crab sat on a rock right at the cave's edge, its painted shell the colours of a tiny flag. It watched Mia with bright intelligent eyes. It looked from her, to the cave, to her again. Then it began clicking. Click click. Click click click. Click. Click click click click. What does Mia do?`,
+    choices: [
+      { text: '🦈 Take a breath and swim into the cave', next: 'shark_dark' },
+      { text: '🦀 Crouch down and listen carefully to what the crab is clicking', next: 'shark_crab' }
+    ]
+  },
+
+  shark_crab: {
+    title: '🦀 The Cave Keeper',
+    text: `🦀 Mia crouched down slowly and listened.
+      After a moment she realised the clicking wasn't random — it was counted.
+      <em>Click click — pause. Click click click — pause. Click — pause. Click click click click.</em>
+      <br><br>
+      <strong>2 — 3 — 1 — 4.</strong>
+      <br><br>
+      Then the crab moved — down the outside of the cave wall,
+      pointing its tiny claw at a ledge running along the very <em>top</em> of the cave —
+      a narrow ridge, just <strong>60 centimetres wide</strong>.
+      Too narrow for a shark. Just right for a mermaid. 🌊
+      <br><br>
+      The crab had a notch carved in the rock for each creature it had guided this way.
+      Mia counted the notches: <strong>847</strong> of them.
+      She would be <strong>848</strong>.
+      <br><br>
+      She edged along the ridge for all <strong>300 metres</strong> of the tunnel,
+      sharks moving silently through the dark water below her,
+      completely unaware.
+      She emerged into open water on the far side, heart pounding —
+      but alive, unharmed, and free. 💪
+      <br><br>
+      She carried the little crab to a sunny rock on the other side.
+      <em>"Thank you,"</em> she whispered.
+      It clicked once — twice — and went back to watching its cave.
+      <br><br>
+      <strong style="color:#ffd700;">Jaxon</strong> had been on the beach since midnight.
+      When Mia told him about the 848 notches he said:
+      <em>"848 = 8 × 106 = 16 × 53. And 53 is prime!"</em> 🌟`,
+    speak: `Mia crouched down and listened. After a moment she realised the clicking wasn't random — it was counted. Click click — pause. Click click click — pause. Click — pause. Click click click click. 2, 3, 1, 4. Then the crab moved down the cave wall, pointing its tiny claw at a ledge running along the very top of the cave — 60 centimetres wide. Too narrow for a shark. Just right for a mermaid. The crab had a notch for each creature it had guided. Mia counted: 847 notches. She would be 848. She edged along the ridge for all 300 metres of the tunnel, sharks moving silently below her, completely unaware. She emerged on the far side — alive, unharmed, free. She carried the crab to a sunny rock. "Thank you," she whispered. It clicked once, twice, and went back to watching its cave. Jaxon had been on the beach since midnight. When Mia told him about the 848 notches he said: "848 = 16 times 53. And 53 is prime!"`,
+    ending: '🦀 CAVE KEEPER ENDING 🦀',
+    type: 'good',
+    treasure: { emoji: '🦀', name: "Cave Keeper's Claw", desc: 'From the crab who has guided 848 lost souls to safety' }
+  },
+
+  wreck_approach: {
+    title: '🚢 The Ghost Silhouette',
+    text: `🚢 The ship appeared out of the darkness the way a nightmare does —
+      slowly, detail by detail, until suddenly it was completely real.
+      <br><br>
+      Three masts. <strong>47 portholes</strong> —
+      Mia counted twice, because Jaxon would definitely ask.
+      One enormous crack running diagonally through the hull
+      where it had struck a reef on its final night —
+      <strong>exactly 1 metre wide</strong>,
+      just wide enough for a mermaid to slip through sideways. 🚢
+      <br><br>
+      The captain's grand entrance at the bow was sealed shut —
+      <strong>247 years</strong> of rust had fused the lock solid.
+      Nothing was getting through that door.
+      <br><br>
+      But far above, at the top of the tallest mast —
+      <strong>15 metres</strong> above the seafloor —
+      the crow's nest sat undamaged and perfect,
+      its old wood somehow still whole after two and a half centuries.
+      From up there, she thought, you could probably see the whole ocean.
+      <br><br>
+      <strong style="color:#00ffff;">What does Mia do?</strong>`,
+    speak: `The ship appeared out of the darkness the way a nightmare does — slowly, detail by detail. Three masts. 47 portholes — Mia counted twice, because Jaxon would definitely ask. One enormous crack running diagonally through the hull — exactly 1 metre wide, just wide enough for a mermaid to slip through sideways. The captain's entrance was sealed shut — 247 years of rust had fused the lock solid. But far above, at the top of the tallest mast — 15 metres above the seafloor — the crow's nest sat undamaged and perfect, somehow still whole after two and a half centuries. From up there, she thought, you could probably see the whole ocean. What does Mia do?`,
+    choices: [
+      { text: '🚢 Squeeze through the crack in the hull and explore inside', next: 'wreck_hall' },
+      { text: '🔭 Swim up to the crow\'s nest at the top of the mast', next: 'wreck_crow' }
+    ]
+  },
+
+  wreck_crow: {
+    title: '🔭 The View From the Crow\'s Nest',
+    text: `🔭 Mia swam upward, past barnacled rigging,
+      past the tattered flag that had hung there for <strong>247 years</strong>,
+      until she reached the crow's nest —
+      a small wooden platform with a railing just high enough to grip.
+      <br><br>
+      She looked out.
+      <br><br>
+      <em>Oh.</em>
+      <br><br>
+      From <strong>15 metres</strong> above the seafloor
+      she could see everything the darkness had been hiding.
+      The entire reef system stretched out below her like a map —
+      towers of coral, plains of sand, dark canyons, glowing shallows.
+      <br><br>
+      Ghost pirates drifted through the corridors far below.
+      Exactly <strong>100</strong> of them.
+      Mia counted even from up here. She couldn't stop counting now.
+      <br><br>
+      And then — her heart leapt —
+      a faint turquoise glow in the far distance. Her coral cove.
+      She could see exactly which current would carry her home.
+      <br><br>
+      She pushed off from the crow's nest, caught the current, and let it carry her.
+      She arrived just as the first light of dawn lit the horizon. 🌅
+      <br><br>
+      <strong style="color:#ffd700;">Jaxon</strong> was on the beach.
+      He'd been there for hours, sorting
+      <strong>247 flat stones</strong> by size.
+      <em>"247 = 13 × 19,"</em> he said immediately,
+      before she could even say hello.
+      <em>"Both prime. Beautiful number."</em> 💛`,
+    speak: `Mia swam upward, past barnacled rigging, past the tattered flag that had hung there for 247 years, until she reached the crow's nest. She looked out. Oh. From 15 metres above the seafloor she could see everything the darkness had been hiding. The entire reef system stretched out below her like a map. Ghost pirates drifted through the corridors far below — exactly 100 of them. Mia counted even from up here. She couldn't stop counting now. And then — a faint turquoise glow in the far distance. Her coral cove. She could see exactly which current would carry her home. She pushed off, caught the current, and arrived just as the first light of dawn lit the horizon. Jaxon was on the beach, sorting 247 flat stones by size. "247 = 13 times 19," he said immediately, before she could even say hello. "Both prime. Beautiful number."`,
+    ending: '🔭 CROW\'S NEST ENDING 🔭',
+    type: 'good',
+    treasure: { emoji: '🔭', name: "Sailor's Spyglass", desc: "From the crow's nest that showed the whole ocean" }
+  },
+
+  volcano_approach: {
+    title: '🌋 The Heat on the Water',
+    text: `🌋 Mia felt the warmth long before she saw the volcano.
+      The temperature was rising — <strong>1°C warmer for every 10 metres</strong> she swam closer.
+      She'd been swimming toward it for about <strong>30 metres</strong>,
+      so the water was already <strong>3°C warmer</strong> than normal.
+      <em>A rate of change</em>, Jaxon would say. <em>He would write it as an equation.</em>
+      <br><br>
+      The volcano loomed into view —
+      a massive black cone rising <strong>200 metres</strong> from the seafloor,
+      its peak glowing deep, pulsing orange. 🔥
+      <br><br>
+      A rumble moved through the water, vibrating in Mia's chest.
+      She counted — the volcano had last erupted <strong>12 days ago</strong>.
+      Its cycle was every <strong>13 days</strong> — prime, of course.
+      That meant <strong>one day</strong> until the next eruption.
+      <br><br>
+      Did she want to be far away when it happened — or did she want to <em>watch</em>?
+      <br><br>
+      <strong style="color:#00ffff;">What does Mia do?</strong>`,
+    speak: `Mia felt the warmth long before she saw the volcano. The temperature was rising — 1 degree warmer for every 10 metres she swam closer. She had been swimming toward it for about 30 metres, so the water was already 3 degrees warmer than normal. A rate of change, Jaxon would say. He would write it as an equation. The volcano loomed into view — a massive black cone rising 200 metres from the seafloor, its peak glowing deep pulsing orange. A rumble moved through the water, vibrating in Mia's chest. She counted — the volcano had last erupted 12 days ago. Its cycle was every 13 days — prime, of course. That meant one day until the next eruption. Did she want to be far away when it happened — or did she want to watch? What does Mia do?`,
+    choices: [
+      { text: '🌋 Swim into the lava fields to find a way through', next: 'volcano_heat' },
+      { text: '🪨 Find shelter and wait to watch the eruption', next: 'volcano_watch' }
+    ]
+  },
+
+  volcano_watch: {
+    title: '🪨 The Watcher',
+    text: `🪨 Mia found a broad flat basalt rock — still warm from the last eruption —
+      and settled behind it to wait.
+      <br><br>
+      She counted everything while she waited. Heartbeats. Fish. Bubbles from a nearby vent.
+      She counted to <strong>3,600</strong> (one hour's worth of seconds)
+      exactly <strong>27 times</strong>, so she'd know when the eruption came.
+      <em>27 = 3 × 3 × 3</em>, she thought. <em>A perfect cube. Jaxon loves cube numbers.</em>
+      <br><br>
+      Then — a groan deep in the earth. A tremor. A pause.
+      <br><br>
+      Then the eruption. 🌋
+      <br><br>
+      A column of superheated water and minerals shot <strong>200 metres</strong> straight up,
+      lighting everything orange and gold and blinding white.
+      The thermal blast carried something to Mia's feet —
+      a chunk of pale grey rock, full of tiny holes.
+      She picked it up. It weighed almost <em>nothing</em>.
+      <br><br>
+      <strong>Pumice stone</strong> — formed when lava cools so fast it traps gas bubbles inside.
+      It is the only rock in the world that <em>floats on water</em>. 🪨
+      <br><br>
+      Mia used it as a float. The thermal current carried her upward and upward.
+      A fishing boat was there — a grandfather and granddaughter — who knew her cove perfectly.
+      They took her straight home. ⛵
+      <br><br>
+      <strong style="color:#ffd700;">Jaxon</strong> was on the beach.
+      <em>"27 hours?"</em> he said when she told him.
+      <em>"27 = 3 cubed. That's a very good number to wait for."</em> 💙`,
+    speak: `Mia found a broad flat basalt rock and settled behind it to wait. She counted everything while she waited — heartbeats, fish, bubbles. She counted to 3,600 exactly 27 times, so she'd know when the eruption came. 27 = 3 times 3 times 3. A perfect cube. Jaxon loves cube numbers. Then — a groan deep in the earth. A tremor. A pause. Then the eruption. A column of superheated water shot 200 metres straight up, lighting everything orange and gold and blinding white. The thermal blast carried something to Mia's feet — a chunk of pale grey rock, full of tiny holes. It weighed almost nothing. Pumice stone — formed when lava cools so fast it traps gas bubbles inside. The only rock that floats on water. Mia used it as a float. The thermal current carried her upward. A fishing boat was there — a grandfather and granddaughter who knew her cove perfectly. They took her straight home. Jaxon was on the beach. "27 hours?" he said. "27 = 3 cubed. That's a very good number to wait for."`,
+    ending: '🌋 ERUPTION WATCHER ENDING 🌋',
+    type: 'good',
+    treasure: { emoji: '🪨', name: 'Pumice Stone', desc: "The only rock that floats — the eruption brought it right to Mia's feet" }
+  },
+
+  whale_descent: {
+    title: '🐋 The Long Dive Down',
+    text: `🐋 Mia descended into the Whale Song Trench.
+      <br><br>
+      <strong>50 metres</strong> — the water turned cold.
+      <strong>100 metres</strong> — the last sunlight disappeared completely.
+      Absolute darkness, except for her jellyfish lantern.
+      <strong>150 metres</strong> — the pressure was <strong>15 times greater</strong>
+      than at the surface. Every 10 metres adds another full atmosphere.
+      But she was a mermaid. She was built for this.
+      <br><br>
+      The song reached her before anything else —
+      a vibration at <strong>18 Hz</strong>,
+      too low for human ears but felt as a deep, slow shudder in her chest and bones. 🎵
+      <em>18 = 2 × 9. Or 3 × 6. Jaxon would list all the ways.</em>
+      <br><br>
+      Then the trench forked.
+      The main trench continued straight down — vast and dark and ancient.
+      A side channel branched left, and the song seemed to echo from both.
+      Different notes. Different rhythms.
+      <br><br>
+      <strong style="color:#00ffff;">Which way does Mia go?</strong>`,
+    speak: `Mia descended into the Whale Song Trench. 50 metres — the water turned cold. 100 metres — the last sunlight disappeared completely. Absolute darkness except for her jellyfish lantern. 150 metres — the pressure was 15 times greater than at the surface. Every 10 metres adds another full atmosphere. But she was a mermaid. She was built for this. The song reached her before anything else — a vibration at 18 Hz, too low for human ears but felt as a deep slow shudder in her chest and bones. 18 = 2 times 9. Or 3 times 6. Jaxon would list all the ways. Then the trench forked. The main trench continued straight down. A side channel branched left, and the song seemed to echo from both. Different notes. Different rhythms. Which way does Mia go?`,
+    choices: [
+      { text: '🐋 Follow the main trench down toward the deep rumble', next: 'whale_eye' },
+      { text: '🎵 Turn into the side channel toward the lighter clicking sound', next: 'whale_sperm' }
+    ]
+  },
+
+  whale_sperm: {
+    title: '🐋 The Clicking Family',
+    text: `🎵 Mia turned left, following the clicks.
+      The side channel opened into a wide bowl — and there they were.
+      <br><br>
+      <strong>5 sperm whales</strong>. 🐋🐋🐋🐋🐋
+      Each about <strong>18 metres long</strong>.
+      <em>5 × 18 = 90 metres of whale</em> — almost the length of a full football pitch.
+      <br><br>
+      They were talking in <strong>codas</strong> —
+      patterns of clicks unique to each family group,
+      passed down through generations like songs or favourite stories.
+      This family had lived in this trench for <strong>4 generations</strong>.
+      <br><br>
+      They noticed Mia. They were not alarmed. They were curious.
+      The youngest — barely <strong>20 years old</strong>,
+      still smaller than its parents — swam over slowly and clicked at her softly.
+      Then it began to rise. Pointing its whole body upward. Toward the surface. Toward home. 🌙
+      <br><br>
+      Mia grabbed its fin and held on.
+      Together they rose through <strong>150 metres</strong> of dark water
+      and broke the surface with a sound like the world taking a breath.
+      <br><br>
+      The young whale nudged her gently in the right direction
+      before diving back into the deep with a click
+      that sounded, somehow, exactly like <em>goodbye</em>.
+      <br><br>
+      <strong style="color:#ffd700;">Jaxon</strong> was on the beach.
+      <em>"Did you count their clicks?"</em> he asked.
+      She had: <strong>18</strong>.
+      <em>"18 = 2 × 3 × 3,"</em> he said. <em>"Three prime factors. Perfect."</em> 💙`,
+    speak: `Mia turned left, following the clicks. The side channel opened into a wide bowl — and there they were. 5 sperm whales, each about 18 metres long. 5 times 18 equals 90 metres of whale — almost the length of a full football pitch. They were talking in codas — patterns of clicks unique to each family group, passed down through generations like songs. This family had lived in this trench for 4 generations. The youngest — barely 20 years old — swam over slowly and clicked at Mia softly. Then it began to rise — pointing its whole body upward toward the surface, toward home. Mia grabbed its fin and held on. Together they rose through 150 metres of dark water and broke the surface with a sound like the world taking a breath. The young whale nudged her gently in the right direction before diving back into the deep with a click that sounded, somehow, exactly like goodbye. Jaxon was on the beach. "Did you count their clicks?" he asked. She had: 18. "18 = 2 times 3 times 3," he said. "Three prime factors. Perfect."`,
+    ending: '🐋 SPERM WHALE FAMILY ENDING 🐋',
+    type: 'good',
+    treasure: { emoji: '🔊', name: 'Whale Click Stone', desc: 'Tap it — it sounds just like a sperm whale coda' }
+  },
+
+  shore_approach: {
+    title: '☀️ The First Warmth',
+    text: `☀️ Mia felt it before she saw it.
+      <br><br>
+      <em>Warmth.</em>
+      <br><br>
+      After so long in the cold dark, that first thread of warmth
+      moving through the water made her gasp.
+      She was crossing the <strong>thermocline</strong> —
+      the invisible boundary where cold deep water meets warm surface water.
+      The temperature jumped <strong>8°C</strong> in just <strong>2 metres</strong>. 🌡️
+      <br><br>
+      Warm water floats on cold water because it is <em>less dense</em> —
+      and the two layers don't mix easily.
+      Jaxon had shown her once with a glass of water and food colouring.
+      The memory made her smile.
+      <br><br>
+      Light was appearing above her — first deep blue, then turquoise, then golden.
+      She was so close to the surface.
+      <br><br>
+      Then — a low, rhythmic humming from <em>within</em> the warm layer.
+      Not whale-song. Not current-noise. Something else. Something alive and gentle.
+      <br><br>
+      <strong style="color:#00ffff;">What does Mia do?</strong>`,
+    speak: `Mia felt it before she saw it. Warmth. After so long in the cold dark, that first thread of warmth moving through the water made her gasp. She was crossing the thermocline — the invisible boundary where cold deep water meets warm surface water. The temperature jumped 8 degrees in just 2 metres. Warm water floats on cold water because it is less dense, and the two layers don't mix easily. Jaxon had shown her once with a glass of water and food colouring. The memory made her smile. Light was appearing above her — first deep blue, then turquoise, then golden. She was so close to the surface. Then — a low, rhythmic humming from within the warm layer. Not whale-song. Not current-noise. Something else. Something alive and gentle. What does Mia do?`,
+    choices: [
+      { text: '☀️ Keep rising toward the golden light ahead', next: 'shore_shallow' },
+      { text: '🎵 Follow the mysterious humming sideways', next: 'shore_turtles' }
+    ]
+  },
+
+  shore_turtles: {
+    title: '🐢 The Turtle Circle',
+    text: `🎵 Mia followed the humming — and swam right into the middle of a circle of sea turtles.
+      <br><br>
+      <strong>12 of them</strong>.
+      Arranged somehow — improbably — in a rough circle in the warm water,
+      each one gently humming with eyes half-closed.
+      <br><br>
+      The oldest was enormous. Her shell alone was over a metre wide.
+      Sea turtles can live to <strong>100 years old</strong>.
+      This one looked at least <strong>80</strong>.
+      She opened one ancient amber eye and regarded Mia
+      with the patience of something that has seen everything twice.
+      Then closed it again.
+      <br><br>
+      A long minute passed. Then the old turtle opened both eyes,
+      looked directly at Mia, and began to swim. Slowly. Steadily.
+      All 11 others followed.
+      <br><br>
+      So did Mia.
+      <br><br>
+      They led her through a warm current that curved —
+      exactly, perfectly — toward her cove.
+      <strong>12 turtles + 1 mermaid = 13</strong>.
+      <em>13 is prime</em>, Mia thought with a glow of pride. <em>Jaxon would love that.</em>
+      <br><br>
+      They arrived as the sun came fully up. 🌅
+      <strong style="color:#ffd700;">Jaxon</strong> had been up all night
+      reading about sea turtles.
+      <em>"There are exactly <strong>7</strong> species,"</em> he said,
+      before she'd even spoken.
+      <em>"7. Again. I can't escape it."</em> 🐢💛`,
+    speak: `Mia followed the humming — and swam right into the middle of a circle of sea turtles. 12 of them. Arranged in a rough circle in the warm water, each one gently humming. The oldest was enormous — her shell alone was over a metre wide. Sea turtles can live to 100 years old. This one looked at least 80. She opened one ancient amber eye and regarded Mia with the patience of something that has seen everything twice. Then closed it again. A long minute passed. Then the old turtle opened both eyes, looked directly at Mia, and began to swim. All 11 others followed. So did Mia. They led her through a warm current that curved exactly toward her cove. 12 turtles plus 1 mermaid equals 13. 13 is prime, Mia thought with a glow of pride. Jaxon would love that. They arrived as the sun came fully up. Jaxon had been up all night reading about sea turtles. "There are exactly 7 species," he said, before she'd even spoken. "7. Again. I can't escape it."`,
+    ending: '🐢 TURTLE CIRCLE ENDING 🐢',
+    type: 'good',
+    treasure: { emoji: '🐢', name: 'Ancient Turtle Shell Fragment', desc: 'From a turtle older than most trees' }
   }
 };
 
@@ -2014,6 +2464,76 @@ const sceneFacts = {
     '🌅 The sun rises at exactly 5:47 AM',
     '🐦 12 seabirds in the flock pointed Mia south toward home',
     '⏰ Jaxon was awake since 4 AM — he doesn\'t sleep when things are important',
+  ],
+  palace_swim: [
+    '🐠 A school of 100 silver fish — schools can hold 10 to 10,000 individuals!',
+    '🌊 Fish schools use collective sensing — no leader, just listening to each other',
+    '✨ Coral dust drifts like underwater snowflakes near palace lights',
+  ],
+  palace_library: [
+    '📚 The underwater library has 1,000 scrolls sealed in glass tubes!',
+    '🧭 73 is a prime number — only divisible by 1 and 73 itself',
+    '🔢 72 = 8 × 9 = 6 × 12 = 4 × 18 — lots of ways to make 72!',
+  ],
+  octopus_approach: [
+    '🪼 77 = 7 × 11 — a number made of two primes is called a semiprime!',
+    '✨ Bioluminescence means making light with chemistry — no battery, no flame!',
+    '💜 Each jellyfish pulses with its own unique rhythm, like a heartbeat',
+  ],
+  octopus_rescue: [
+    '🪼 847 = 7 × 11 × 11 — three prime factors in one number!',
+    '🧵 Mia freed the jellyfish in exactly 7 careful movements',
+    '💡 One rescued jellyfish lit up brighter than all 76 others combined',
+  ],
+  shark_entrance: [
+    '📐 8 × 6 = 48 square metres — big enough for four buses side by side!',
+    '🌊 The cave breathes every 12 seconds, like the ocean has lungs',
+    '🦀 Hermit crabs borrow empty shells and change as they grow',
+  ],
+  shark_crab: [
+    '🦀 The cave keeper has guided 848 creatures to safety — 848 = 16 × 53!',
+    '📏 The safe ledge is exactly 60 cm wide — too narrow for a shark!',
+    '🔢 53 is a prime number — the crab keeper has great taste in numbers',
+  ],
+  wreck_approach: [
+    '⚓ The ship has exactly 47 portholes — Mia counted twice for Jaxon!',
+    '🚢 The hull crack is exactly 1 metre wide — just right for a mermaid',
+    '🕰️ 247 years of rust fused the captain\'s door completely shut',
+  ],
+  wreck_crow: [
+    '🔭 From 15 metres up, you can see the entire reef system laid out like a map',
+    '👻 100 ghost pirates still drift through the wreck\'s corridors',
+    '🔢 247 = 13 × 19 — both factors are prime numbers!',
+  ],
+  volcano_approach: [
+    '🌡️ The water is 1°C warmer for every 10 metres closer to the volcano!',
+    '🌋 The volcano rises 200 metres from the seafloor',
+    '🔢 13 is a prime number — the volcano\'s eruption cycle is always prime!',
+  ],
+  volcano_watch: [
+    '🪨 Pumice stone is the only rock in the world that floats on water!',
+    '🔢 27 = 3 × 3 × 3 — that\'s called a perfect cube number!',
+    '🌋 The thermal column shot 200 metres straight up during the eruption',
+  ],
+  whale_descent: [
+    '🌊 Pressure increases by 1 atmosphere for every 10 metres underwater',
+    '🎵 Whale song at 18 Hz is too low for human ears — felt as vibration!',
+    '🔢 18 = 2 × 9 = 3 × 6 — Jaxon would list every way to make 18',
+  ],
+  whale_sperm: [
+    '🐋 5 sperm whales × 18 metres = 90 metres — nearly a football pitch!',
+    '🔊 Sperm whales use codas — click patterns passed down through generations',
+    '🔢 18 = 2 × 3 × 3 — three prime factors!',
+  ],
+  shore_approach: [
+    '🌡️ The thermocline jumps 8°C in just 2 metres — warm water floats on cold!',
+    '🌊 Warm water is less dense than cold, so the two layers don\'t mix easily',
+    '☀️ Light shifts from deep blue to turquoise to gold as you rise to the surface',
+  ],
+  shore_turtles: [
+    '🐢 Sea turtles can live to 100 years old — some are older than your great-grandparents!',
+    '🔢 12 turtles + 1 mermaid = 13 — a prime number! Jaxon loves that',
+    '🐢 There are exactly 7 species of sea turtle in the world',
   ],
 };
 
@@ -2533,7 +3053,7 @@ document.getElementById('sounds-btn').addEventListener('click', () => {
 // 🏆 TREASURE COLLECTION
 // ============================================
 const collectedTreasures = new Set();
-const TOTAL_TREASURES = 14;
+const TOTAL_TREASURES = 21;
 
 function addTreasure(scene) {
   if (!scene.treasure || collectedTreasures.has(scene.treasure.name)) return;
@@ -2560,7 +3080,7 @@ const jaxonData = {
   mixed:   { face: '🤔', msg: "Not the safest ending, but Mia's OK. Could've been worse! 🌊" },
   bad:     { face: '😟', msg: "Oh no... but Mia is still counting. Counting always helps. 💙" },
   treasure:{ face: '🤩', msg: 'A TREASURE! Quick — how many is that total? I\'m counting! 🏆' },
-  allFacts:{ face: '🎉', msg: 'ALL 65 FACTS!! I can barely contain myself!! 🎉🔢💙' },
+  allFacts:{ face: '🎉', msg: 'ALL 79 FACTS!! I can barely contain myself!! 🎉🔢💙' },
 };
 
 function setJaxon(state) {
