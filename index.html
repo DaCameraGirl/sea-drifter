@@ -402,36 +402,6 @@
     font-size: 1.4em !important;
   }
 
-  /* 💛 JAXON'S NUMBER CORNER */
-  #jaxon-fact {
-    display: none;
-    background: linear-gradient(135deg, rgba(255,215,0,0.14), rgba(255,180,0,0.07)) !important;
-    border: 2px solid rgba(255,215,0,0.65) !important;
-    border-radius: 20px !important;
-    padding: 14px 18px 14px 18px !important;
-    margin: 0 0 22px 0 !important;
-    position: relative;
-    animation: factPop 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 0 20px rgba(255,215,0,0.25) !important;
-  }
-  #jaxon-fact-label {
-    font-weight: bold;
-    color: #ffd700 !important;
-    font-size: 0.9em !important;
-    margin-bottom: 7px !important;
-    text-shadow: 0 0 10px rgba(255,215,0,0.9);
-    display: block;
-  }
-  #jaxon-fact-text {
-    color: #fff8dc !important;
-    font-size: 0.97em !important;
-    line-height: 1.65 !important;
-  }
-  @keyframes factPop {
-    0%   { opacity: 0; transform: scale(0.88) translateY(12px); }
-    100% { opacity: 1; transform: scale(1) translateY(0); }
-  }
-
   /* 🌸 CUTE HEARTS floating */
   .heart {
     position: fixed !important;
@@ -536,10 +506,6 @@
   <section id="story">
     <h2 id="scene-title">🌊 The Sea With No Shore</h2>
     <button id="read-btn">🔊 Read to Me</button>
-    <div id="jaxon-fact">
-      <span id="jaxon-fact-label">🌟 Jaxon's Number Corner 🌟</span>
-      <span id="jaxon-fact-text"></span>
-    </div>
     <p id="scene-text"></p>
     <div id="choices">
       <!-- choices rendered by JS -->
@@ -681,10 +647,10 @@ const scenes = {
       Seven glowing ocean currents stretch out before Mia, each one lit by a different colour of the deep. 
       Did you know that <strong>7 is a very special number</strong>? It's prime — 
       that means you can only divide it by 1 and by 7 itself. No other number goes into it evenly.
-      Jaxon told Mia that once, and she never forgot.
+      Jaxon told Mia that once, and Mia never forgot.
       <br><br>
       <strong style="color:#00ffff;">🐚 Which path does Mia choose?</strong>`,
-    speak: `Mia is a young mermaid girl lost in the deep, dark blue at midnight. Her long seaweed-green hair floats all around her like ribbons in the current, and her pearl crown glows softly. In one hand she holds a glowing jellyfish lantern, and in the other she clutches her favourite stuffed seahorse. Mia has a best friend on land named Jaxon. He is 8 years old, brilliantly clever, and he loves numbers more than almost anything. He knows that there are exactly 9 thousand and 96 visible stars on a perfectly clear night. Right now Jaxon is asleep on the beach far above. Seven glowing ocean currents stretch out before Mia. Did you know that 7 is a very special number? It is prime — that means you can only divide it by 1 and by 7 itself. Jaxon told Mia that once, and she never forgot. Which path does Mia choose?`,
+    speak: `Mia is a young mermaid girl lost in the deep, dark blue at midnight. Her long seaweed-green hair floats all around her like ribbons in the current, and her pearl crown glows softly. In one hand she holds a glowing jellyfish lantern, and in the other she clutches her favourite stuffed seahorse. Mia has a best friend on land named Jaxon. He is 8 years old, brilliantly clever, and he loves numbers more than almost anything. He knows that there are exactly 9 thousand and 96 visible stars on a perfectly clear night. Right now Jaxon is asleep on the beach far above. Seven glowing ocean currents stretch out before Mia. Did you know that 7 is a very special number? It is prime — that means you can only divide it by 1 and by 7 itself. Jaxon told Mia that once, and Mia never forgot. Which path does Mia choose?`,
     jaxonFact: `7 is a prime number — you can only divide it by 1 and 7 itself! It's also the most popular "favourite number" in the world. More people pick 7 than any other number. Jaxon's favourite number is also 7. 💛`,
     choices: [
       { text: '🏰 Path 1: Swim toward the Sunken Coral Palace', next: 'palace_gate' },
@@ -1548,66 +1514,122 @@ const scenes = {
 // 🔊 TEXT-TO-SPEECH ENGINE
 // ============================================
 const readBtn = document.getElementById('read-btn');
-let isSpeaking = false;
+let isSpeaking   = false;
+let currentScene = null;
+let speechUnlocked = false;
+
+function clearBlinks() {
+  document.querySelectorAll('.blink-reading').forEach(el => el.classList.remove('blink-reading'));
+}
 
 function stopSpeaking() {
   window.speechSynthesis.cancel();
   isSpeaking = false;
   readBtn.textContent = '🔊 Read to Me';
   readBtn.classList.remove('reading');
+  readBtn.classList.add('read-btn-invite');
+  clearBlinks();
 }
 
-function speakText(text) {
+function pickVoice() {
+  const voices = window.speechSynthesis.getVoices();
+  return voices.find(v => /samantha|karen|victoria|zira|susan/i.test(v.name) && v.lang.startsWith('en'))
+      || voices.find(v => v.lang === 'en-US')
+      || voices.find(v => v.lang.startsWith('en'))
+      || voices[0]
+      || null;
+}
+
+function makeUtter(text) {
+  const u = new SpeechSynthesisUtterance(text);
+  u.rate  = 0.88;
+  u.pitch = 1.05;
+  u.volume = 1;
+  const v = pickVoice();
+  if (v) u.voice = v;
+  return u;
+}
+
+// Speak an ordered queue: [{text, onStart, onEnd}, ...]
+function runQueue(items) {
+  if (!isSpeaking || !items.length) {
+    clearBlinks();
+    isSpeaking = false;
+    readBtn.textContent = '🔊 Read to Me';
+    readBtn.classList.remove('reading');
+    readBtn.classList.add('read-btn-invite');
+    return;
+  }
+  const [item, ...rest] = items;
+  if (item.onStart) item.onStart();
+  const u = makeUtter(item.text);
+  u.onend  = () => { if (item.onEnd) item.onEnd(); runQueue(rest); };
+  u.onerror = () => { if (item.onEnd) item.onEnd(); runQueue(rest); };
+  window.speechSynthesis.speak(u);
+}
+
+function speakCurrentScene() {
+  if (!currentScene || !window.speechSynthesis) return;
   stopSpeaking();
-  if (!window.speechSynthesis) return;
+  isSpeaking = true;
+  readBtn.textContent = '⏹ Stop Reading';
+  readBtn.classList.add('reading');
+  readBtn.classList.remove('read-btn-invite');
 
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.rate = 0.88;
-  utter.pitch = 1.05;
-  utter.volume = 1;
+  const queue = [];
 
-  // Pick a friendly female voice if available
-  function trySpeak() {
-    const voices = window.speechSynthesis.getVoices();
-    if (voices.length) {
-      const preferred = voices.find(v =>
-        /samantha|karen|victoria|zira|susan|female|woman|girl/i.test(v.name)
-      ) || voices.find(v => v.lang.startsWith('en')) || voices[0];
-      if (preferred) utter.voice = preferred;
-    }
-    isSpeaking = true;
-    readBtn.textContent = '⏹ Stop Reading';
-    readBtn.classList.add('reading');
-    utter.onend = () => {
-      isSpeaking = false;
-      readBtn.textContent = '🔊 Read to Me';
-      readBtn.classList.remove('reading');
-    };
-    utter.onerror = () => {
-      isSpeaking = false;
-      readBtn.textContent = '🔊 Read to Me';
-      readBtn.classList.remove('reading');
-    };
-    window.speechSynthesis.speak(utter);
+  // 1. Story text
+  if (currentScene.speak) {
+    queue.push({ text: currentScene.speak });
   }
 
-  // Voices may not be loaded yet
+  // 2. Jaxon fact read aloud (no visual box)
+  if (currentScene.jaxonFact) {
+    const cleanFact = currentScene.jaxonFact.replace(/[^\w\s'!.,?-]/g, '').trim();
+    queue.push({ text: "Jaxon's Number Corner! " + cleanFact });
+  }
+
+  // 3. Each choice — button blinks while being read
+  if (currentScene.choices && currentScene.choices.length) {
+    queue.push({ text: 'Now, here are your choices!' });
+    currentScene.choices.forEach((choice, i) => {
+      const clean = choice.text.replace(/^\W+/, '').trim();
+      queue.push({
+        text: 'Choice ' + (i + 1) + ': ' + clean,
+        onStart: () => {
+          clearBlinks();
+          const btns = document.querySelectorAll('.choice-btn');
+          if (btns[i]) btns[i].classList.add('blink-reading');
+        },
+        onEnd: () => {
+          const btns = document.querySelectorAll('.choice-btn');
+          if (btns[i]) btns[i].classList.remove('blink-reading');
+        }
+      });
+    });
+  }
+
+  function go() { runQueue(queue); }
   if (window.speechSynthesis.getVoices().length) {
-    trySpeak();
+    go();
   } else {
-    window.speechSynthesis.onvoiceschanged = trySpeak;
+    window.speechSynthesis.onvoiceschanged = go;
   }
 }
-
-let currentSpeakText = '';
 
 readBtn.addEventListener('click', () => {
-  if (isSpeaking) {
-    stopSpeaking();
-  } else {
-    speakText(currentSpeakText);
-  }
+  if (isSpeaking) { stopSpeaking(); } else { speakCurrentScene(); }
 });
+
+// 🔓 Browsers block audio until user gesture — unlock on first tap/click
+function unlockAndRead() {
+  if (!speechUnlocked) {
+    speechUnlocked = true;
+    speakCurrentScene();
+  }
+}
+document.addEventListener('click',      unlockAndRead, { once: true });
+document.addEventListener('touchstart', unlockAndRead, { once: true });
 
 // ============================================
 // 💗 HEART BURST
@@ -1630,8 +1652,6 @@ const pathLog    = document.getElementById('path-log');
 const sceneTitle = document.getElementById('scene-title');
 const sceneText  = document.getElementById('scene-text');
 const choicesDiv = document.getElementById('choices');
-const jaxonFact  = document.getElementById('jaxon-fact');
-const jaxonFactText = document.getElementById('jaxon-fact-text');
 
 let currentSceneId = 'start';
 let logEmpty = true;
@@ -1669,18 +1689,6 @@ function renderScene(sceneId, choiceLabel) {
     pathLog.scrollTop = pathLog.scrollHeight;
   }
 
-  // 💛 Jaxon's Number Corner
-  if (scene.jaxonFact) {
-    jaxonFactText.textContent = scene.jaxonFact;
-    jaxonFact.style.display = 'block';
-    // Re-trigger animation
-    jaxonFact.style.animation = 'none';
-    jaxonFact.offsetHeight;
-    jaxonFact.style.animation = '';
-  } else {
-    jaxonFact.style.display = 'none';
-  }
-
   // 📖 Update story panel
   sceneTitle.textContent = scene.title;
 
@@ -1706,14 +1714,10 @@ function renderScene(sceneId, choiceLabel) {
       pathLog.scrollTop = pathLog.scrollHeight;
     }
 
-    currentSpeakText = (scene.speak || '') + ' ' + scene.ending + '. Hit Restart Pick to play again!';
   } else {
     // ── CHOICE SCENE ──
     sceneText.innerHTML = scene.text;
     choicesDiv.innerHTML = '';
-
-    const choiceTexts = scene.choices.map(c => c.text.replace(/^[^\w]*/, '')).join('. Or: ');
-    currentSpeakText = (scene.speak || '') + ' Your choices are: ' + choiceTexts + '.';
 
     scene.choices.forEach(choice => {
       const btn = document.createElement('button');
@@ -1742,8 +1746,12 @@ function renderScene(sceneId, choiceLabel) {
     });
   }
 
-  // Auto-read after short delay
-  setTimeout(() => speakText(currentSpeakText), 700);
+  // Store scene + auto-read if user already interacted
+  currentScene = scene;
+  readBtn.classList.add('read-btn-invite');
+  if (speechUnlocked) {
+    setTimeout(() => speakCurrentScene(), 500);
+  }
 }
 
 // Kick off the game
