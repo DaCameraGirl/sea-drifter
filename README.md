@@ -140,6 +140,25 @@ A few favourites:
 
 ---
 
+## 🧜‍♀️ About the Creator
+
+<div align="center">
+
+<img src="assets/angela.png" width="170" alt="Angela Hudson — DaCameraGirl"/>
+
+<br/><br/>
+
+**Angela Hudson** · DaCameraGirl
+
+Mum. Creator. Ocean lover. 💙
+
+Made this game for her son **Jaxon**, who is 8 years old, autistic,<br>
+and counts everything — including waves.
+
+</div>
+
+---
+
 <div align="center">
 
 <img src="assets/header-stats.svg" width="100%" alt="Ocean Stats"/>
