@@ -452,6 +452,30 @@
   #story { border-color: #90e0ef !important; }
   #story:hover { border-color: #FF9EC4 !important; transition: border-color 0.6s ease; }
 
+  /* ✨ CHOICE BUTTON BLINKING WHILE READ */
+  .choice-btn.blink-reading {
+    border-color: #FF9EC4 !important;
+    box-shadow: 0 0 28px rgba(255,158,196,0.9), 0 0 8px rgba(255,255,255,0.4) !important;
+    animation: choicePulse 0.65s ease-in-out infinite !important;
+    transform: scale(1.04) !important;
+    color: #fff !important;
+    background: linear-gradient(135deg, rgba(255,158,196,0.35), rgba(100,200,255,0.25)) !important;
+  }
+  @keyframes choicePulse {
+    0%,100% { box-shadow: 0 0 18px rgba(255,158,196,0.6), 0 0 4px rgba(255,255,255,0.2) !important; transform: scale(1.02) !important; }
+    50%      { box-shadow: 0 0 38px rgba(255,158,196,1.0), 0 0 14px rgba(255,255,255,0.5) !important; transform: scale(1.06) !important; }
+  }
+
+  /* 🔔 READ BUTTON PULSE ON LOAD */
+  .read-btn-invite {
+    animation: invitePulse 1.2s ease-in-out infinite !important;
+    border-color: #FF9EC4 !important;
+  }
+  @keyframes invitePulse {
+    0%,100% { box-shadow: 0 0 12px rgba(255,158,196,0.5) !important; }
+    50%      { box-shadow: 0 0 30px rgba(255,158,196,1.0), 0 0 10px rgba(255,255,255,0.4) !important; }
+  }
+
   /* 🔊 READ ALOUD BUTTON */
   #read-btn {
     display: flex !important;
