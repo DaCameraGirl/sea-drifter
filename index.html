@@ -404,29 +404,29 @@
 
   /* 🧮 JAXON'S FACT BOOK */
   #factbook-container {
-    background: rgba(20, 15, 0, 0.75) !important;
-    border: 3px solid #ffd700 !important;
+    background: rgba(0, 20, 50, 0.75) !important;
+    border: 3px solid #00e5ff !important;
     border-radius: 28px !important;
     padding: 24px !important;
     margin-top: 22px !important;
     backdrop-filter: blur(20px);
-    box-shadow: 0 0 50px rgba(255,215,0,0.35), inset 0 0 30px rgba(255,215,0,0.08) !important;
+    box-shadow: 0 0 50px rgba(0,229,255,0.3), inset 0 0 30px rgba(0,180,216,0.08) !important;
   }
   #factbook-container h3 {
-    color: #ffd700 !important;
+    color: #00e5ff !important;
     margin-bottom: 6px !important;
     font-size: 1.5em !important;
     text-align: center;
-    text-shadow: 0 0 20px rgba(255,215,0,0.9);
-    animation: glowGold 2s ease-in-out infinite alternate;
+    text-shadow: 0 0 20px rgba(0,229,255,0.9);
+    animation: glowCyan 2s ease-in-out infinite alternate;
   }
-  @keyframes glowGold {
-    0%   { text-shadow: 0 0 12px rgba(255,215,0,0.7); }
-    100% { text-shadow: 0 0 30px rgba(255,215,0,1), 0 0 55px rgba(255,160,0,0.6); }
+  @keyframes glowCyan {
+    0%   { text-shadow: 0 0 12px rgba(0,229,255,0.6); }
+    100% { text-shadow: 0 0 30px rgba(0,229,255,1), 0 0 55px rgba(0,180,216,0.7); }
   }
   #factbook-count {
     text-align: center;
-    color: #ffe066 !important;
+    color: #90e0ef !important;
     font-size: 0.88em;
     margin-bottom: 14px !important;
     font-style: italic;
@@ -438,15 +438,15 @@
   }
   #factbook-list::-webkit-scrollbar { width: 5px; }
   #factbook-list::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 3px; }
-  #factbook-list::-webkit-scrollbar-thumb { background: #ffd700; border-radius: 3px; }
+  #factbook-list::-webkit-scrollbar-thumb { background: #00b4d8; border-radius: 3px; }
   #factbook-list li {
     padding: 11px 13px !important;
     margin-bottom: 9px !important;
-    background: rgba(255,215,0,0.12) !important;
-    border-left: 4px solid #ffd700 !important;
+    background: rgba(0,180,216,0.15) !important;
+    border-left: 4px solid #00e5ff !important;
     border-radius: 10px !important;
     animation: slideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    color: #fff8dc !important;
+    color: #caf0f8 !important;
     font-size: 0.9em;
     line-height: 1.45;
   }
