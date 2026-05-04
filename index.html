@@ -2287,6 +2287,9 @@ function addFacts(sceneId) {
     }
     const li = document.createElement('li');
     li.textContent = fact;
+    li.style.cursor = 'pointer';
+    li.title = '🔊 Click to hear this fact!';
+    li.addEventListener('click', () => speakText(fact, null));
     factbookList.appendChild(li);
     factbookList.scrollTop = factbookList.scrollHeight;
     setTimeout(playBubblePop, discoveredFacts.size * 80);
