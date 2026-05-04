@@ -402,80 +402,6 @@
     font-size: 1.4em !important;
   }
 
-  /* 💛 JAXON'S NUMBER CORNER */
-  #jaxon-fact {
-    display: none;
-    background: linear-gradient(135deg, rgba(255,215,0,0.14), rgba(255,180,0,0.07)) !important;
-    border: 2px solid rgba(255,215,0,0.65) !important;
-    border-radius: 20px !important;
-    padding: 14px 18px 14px 18px !important;
-    margin: 0 0 22px 0 !important;
-    position: relative;
-    animation: factPop 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 0 20px rgba(255,215,0,0.25) !important;
-  }
-  #jaxon-fact-label {
-    font-weight: bold;
-    color: #ffd700 !important;
-    font-size: 0.9em !important;
-    margin-bottom: 7px !important;
-    text-shadow: 0 0 10px rgba(255,215,0,0.9);
-    display: block;
-  }
-  #jaxon-fact-text {
-    color: #fff8dc !important;
-    font-size: 0.97em !important;
-    line-height: 1.65 !important;
-  }
-  @keyframes factPop {
-    0%   { opacity: 0; transform: scale(0.88) translateY(12px); }
-    100% { opacity: 1; transform: scale(1) translateY(0); }
-  }
-
-  /* 🌸 CUTE HEARTS floating */
-  .heart {
-    position: fixed !important;
-    pointer-events: none !important;
-    z-index: 999997 !important;
-    font-size: 18px;
-    animation: heartFloat 1.8s ease-out forwards !important;
-  }
-  @keyframes heartFloat {
-    0%   { opacity: 1; transform: scale(1) translateY(0) rotate(-10deg); }
-    100% { opacity: 0; transform: scale(0.4) translateY(-70px) rotate(15deg); }
-  }
-
-  /* 🌊 CUTE wave divider tweak */
-  .wave-divider { color: #FF9EC4 !important; }
-
-  /* 🌸 Story card cute border glow */
-  #story { border-color: #90e0ef !important; }
-  #story:hover { border-color: #FF9EC4 !important; transition: border-color 0.6s ease; }
-
-  /* ✨ CHOICE BUTTON BLINKING WHILE READ */
-  .choice-btn.blink-reading {
-    border-color: #FF9EC4 !important;
-    box-shadow: 0 0 28px rgba(255,158,196,0.9), 0 0 8px rgba(255,255,255,0.4) !important;
-    animation: choicePulse 0.65s ease-in-out infinite !important;
-    transform: scale(1.04) !important;
-    color: #fff !important;
-    background: linear-gradient(135deg, rgba(255,158,196,0.35), rgba(100,200,255,0.25)) !important;
-  }
-  @keyframes choicePulse {
-    0%,100% { box-shadow: 0 0 18px rgba(255,158,196,0.6), 0 0 4px rgba(255,255,255,0.2) !important; transform: scale(1.02) !important; }
-    50%      { box-shadow: 0 0 38px rgba(255,158,196,1.0), 0 0 14px rgba(255,255,255,0.5) !important; transform: scale(1.06) !important; }
-  }
-
-  /* 🔔 READ BUTTON PULSE ON LOAD */
-  .read-btn-invite {
-    animation: invitePulse 1.2s ease-in-out infinite !important;
-    border-color: #FF9EC4 !important;
-  }
-  @keyframes invitePulse {
-    0%,100% { box-shadow: 0 0 12px rgba(255,158,196,0.5) !important; }
-    50%      { box-shadow: 0 0 30px rgba(255,158,196,1.0), 0 0 10px rgba(255,255,255,0.4) !important; }
-  }
-
   /* 🔊 READ ALOUD BUTTON */
   #read-btn {
     display: flex !important;
@@ -536,10 +462,6 @@
   <section id="story">
     <h2 id="scene-title">🌊 The Sea With No Shore</h2>
     <button id="read-btn">🔊 Read to Me</button>
-    <div id="jaxon-fact">
-      <span id="jaxon-fact-label">🌟 Jaxon's Number Corner 🌟</span>
-      <span id="jaxon-fact-text"></span>
-    </div>
     <p id="scene-text"></p>
     <div id="choices">
       <!-- choices rendered by JS -->
@@ -647,7 +569,7 @@ animateMia();
 // ============================================
 // ✨ SPARKLE TRAIL
 // ============================================
-const SPARKLES = ['✨','💎','🫧','🌊','⭐','💙','🐚','🪸','💫','🌟','💗','🌸','💕','🩷','🎀','💖'];
+const SPARKLES = ['✨','💎','🫧','🌊','⭐','💙','🐚','🪸','💫','🌟'];
 function spawnSparkle(x, y) {
   const s = document.createElement('div');
   s.className = 'sparkle';
@@ -685,7 +607,6 @@ const scenes = {
       <br><br>
       <strong style="color:#00ffff;">🐚 Which path does Mia choose?</strong>`,
     speak: `Mia is a young mermaid girl lost in the deep, dark blue at midnight. Her long seaweed-green hair floats all around her like ribbons in the current, and her pearl crown glows softly. In one hand she holds a glowing jellyfish lantern, and in the other she clutches her favourite stuffed seahorse. Mia has a best friend on land named Jaxon. He is 8 years old, brilliantly clever, and he loves numbers more than almost anything. He knows that there are exactly 9 thousand and 96 visible stars on a perfectly clear night. Right now Jaxon is asleep on the beach far above. Seven glowing ocean currents stretch out before Mia. Did you know that 7 is a very special number? It is prime — that means you can only divide it by 1 and by 7 itself. Jaxon told Mia that once, and she never forgot. Which path does Mia choose?`,
-    jaxonFact: `7 is a prime number — you can only divide it by 1 and 7 itself! It's also the most popular "favourite number" in the world. More people pick 7 than any other number. Jaxon's favourite number is also 7. 💛`,
     choices: [
       { text: '🏰 Path 1: Swim toward the Sunken Coral Palace', next: 'palace_gate' },
       { text: '🐙 Path 2: Drift into the Octopus Garden', next: 'octopus_meet' },
@@ -693,10 +614,7 @@ const scenes = {
       { text: '🚢 Path 4: Creep through the Shipwreck Graveyard', next: 'wreck_hall' },
       { text: '🌋 Path 5: Rush past the Underwater Volcano', next: 'volcano_heat' },
       { text: '🐋 Path 6: Dive into the Whale Song Trench', next: 'whale_eye' },
-      { text: '🏖️ Path 7: Follow the light to the Sunny Shore Reef', next: 'shore_shallow' },
-      { text: '🦀 Path 8: Scuttle through the Dancing Crab Kingdom', next: 'crab_kingdom' },
-      { text: '🌾 Path 9: Float through the Seahorse Meadow', next: 'seahorse_meadow' },
-      { text: '🐡 Path 10: Peek into the Pufferfish Village', next: 'puffer_village' }
+      { text: '🏖️ Path 7: Follow the light to the Sunny Shore Reef', next: 'shore_shallow' }
     ]
   },
 
@@ -1277,270 +1195,6 @@ const scenes = {
     speak: `Mia kicked upward and broke the surface with a gasp. Cold night air on her face. Open sky. Stars. A flock of 12 seabirds circled overhead, pointing their beaks firmly to the south. South, Mia thought. I know south. She floated on her back in the dark water, staring up. The sky was turning the colour that means dawn is coming in about 47 minutes. She had time. She swam south as the birds wheeled ahead, swooping low to show the way. The sun rose at exactly 5:47 in the morning, and when its first rays lit up the reef, she saw the silhouette of her cove. Jaxon had been awake since 4 AM. He had counted 2,820 waves hitting the beach while he waited — he wrote down a tally mark for each one in the sand. When Mia swam in, he was on wave 2,821. He noted it carefully, then looked up and said: "You were gone all night." "I know," said Mia. "I have stories." "Good," said Jaxon. "I want all the numbers."`,
     ending: '🕊️ FOLLOWING THE BIRDS ENDING 🕊️',
     type: 'good'
-  },
-
-  // ── PATH 8: CRAB KINGDOM ─────────────────
-  crab_kingdom: {
-    title: '🦀 The Dancing Crab Kingdom',
-    jaxonFact: `Crabs have exactly 10 legs — 2 big claws plus 8 walking legs! 10 is the base of our whole number system. That's why we count 0 to 9 (ten digits) before starting again. Without 10, maths would look very different! 🦀`,
-    text: `🦀 The seafloor lit up ahead like a carnival. 
-      Hundreds of lanterns made from glowing sea-glass swung between coral pillars,
-      and the most wonderful music Mia had ever heard drifted through the water — 
-      a clicking, clacking, rhythmic song made entirely by crab claws.
-      <br><br>
-      It was the <strong>Crab Kingdom's Annual Dance Festival</strong>! 🎉
-      There were <strong>100 market stalls</strong>, each run by a different crab family,
-      selling everything from pearl candy to seaweed scarves to bottled bioluminescence.
-      In the grand courtyard, <strong>64 crabs</strong> — that's <strong>8 rows of 8</strong>, 
-      a perfect square — were practising their synchronised swimming routine.
-      <br><br>
-      A tiny crab in a sparkly hat 🎩 skittered up to Mia.
-      <em>"Welcome, welcome, welcome! First time? You look lost! 
-      Are you lost? Would you like to dance? Or browse? Or both? 
-      Both is fine! Both is wonderful!"</em>
-      <br><br>
-      <strong style="color:#00ffff;">What does Mia do?</strong>`,
-    speak: `The seafloor lit up ahead like a carnival. Hundreds of lanterns made from glowing sea-glass swung between coral pillars, and the most wonderful clicking, clacking music drifted through the water. It was the Crab Kingdom's Annual Dance Festival! There were 100 market stalls, each run by a different crab family. In the grand courtyard, 64 crabs — that's 8 rows of 8, a perfect square — were practising their synchronised swimming routine. A tiny crab in a sparkly hat skittered up to Mia. "Welcome, welcome! First time? You look lost! Would you like to dance? Or browse? Or both? Both is wonderful!" What does Mia do?`,
-    choices: [
-      { text: '💃 Jump into the crab dance competition!', next: 'crab_dance' },
-      { text: '🛒 Browse the market stalls for something useful', next: 'crab_market' }
-    ]
-  },
-  crab_dance: {
-    title: '💃 First Prize!',
-    jaxonFact: `Crabs communicate by waving their claws in specific patterns. Some species can make over 20 different signals! That's like having a secret alphabet made entirely of arm waves. 🦀💃`,
-    text: `💃 Mia swam forward and joined the line of dancers without hesitation.
-      She didn't know the routine — but she watched the crab on her left,
-      then the crab on her right, and within <strong>8 beats</strong> she had it. 
-      Left, right, spin, dip, snap, snap, twirl, float. Eight moves. She repeated them perfectly.
-      <br><br>
-      The watching crabs went <em>absolutely wild</em>. 🦀🦀🦀
-      A mermaid had never joined the festival before!
-      She danced until her tail ached and her heart was full of happy,
-      and when the music finally stopped the sparkly-hatted crab presented her with
-      <strong>First Prize</strong> — a beautiful golden compass shell 🐚 
-      that always pointed toward where you most needed to go.
-      <br><br>
-      Mia held it up. The little needle inside spun once, twice...
-      and pointed northeast. Home.
-      <br><br>
-      She swam all the way with the compass warm in her palm,
-      singing the crab dance song the whole way 🎶. 
-      <strong style="color:#ffd700;">Jaxon</strong> was on the beach spinning a top he'd made from a flat stone.
-      He'd been timing it — it spun for exactly <strong>23 seconds</strong> each time, every time.
-      He looked up when Mia arrived, very satisfied about both things. 💛`,
-    speak: `Mia swam forward and joined the line of dancers without hesitation. She watched the crab on her left, then her right, and within 8 beats she had the routine. Left, right, spin, dip, snap, snap, twirl, float. Eight moves. She repeated them perfectly. The watching crabs went absolutely wild — a mermaid had never joined the festival before! When the music stopped, the sparkly-hatted crab presented her with First Prize — a golden compass shell that always pointed toward where you most needed to go. The little needle spun once, twice, and pointed northeast. Home. She swam the whole way singing the crab dance song. Jaxon was on the beach spinning a top he'd made from a flat stone. He'd been timing it — it spun for exactly 23 seconds each time, every time. He looked up when Mia arrived, very satisfied about both things.`,
-    ending: '🥇 FIRST PRIZE ENDING 🥇',
-    type: 'good'
-  },
-  crab_market: {
-    title: '🛒 The Market Stalls',
-    jaxonFact: `The Japanese spider crab has the longest leg span of any arthropod — up to 3.7 metres from claw tip to claw tip! That's longer than most cars. But its body is only about 40 centimetres wide. 🦀`,
-    text: `🛒 Mia drifted between the stalls, wide-eyed.
-      Stall 1 sold braided kelp bracelets. Stall 2 sold tiny glowing starfish on strings.
-      Stall 7 sold pearl lemonade. (She tried some. It tasted like the sea smelled at sunrise.)
-      <br><br>
-      Then — at Stall 47 — she found something extraordinary.
-      An ancient crab merchant, so old his shell was covered in its own barnacles, 
-      sat behind a table of old maps. 🗺️
-      <em>"A lost mermaid!"</em> he wheezed happily. <em>"I have just the thing."</em>
-      <br><br>
-      He produced a map — but it was written in <strong>mirror writing</strong>. 
-      Everything backwards. Jaxon had told Mia about mirror writing once —
-      Leonardo da Vinci wrote all his notebooks that way.
-      She held the map up to a passing lantern and read it in the reflection.
-      <br><br>
-      There was her cove. <strong>12 currents</strong> marked in dotted lines leading straight to it.
-      She counted them carefully — twice, like Jaxon always did — to make sure.
-      Twelve. Every time.
-      <br><br>
-      She followed them home, still thinking about the pearl lemonade. 🌊`,
-    speak: `Mia drifted between the stalls, wide-eyed. Stall 7 sold pearl lemonade — she tried some, and it tasted like the sea smelled at sunrise. Then at stall 47, she found an ancient crab merchant covered in his own barnacles sitting behind a table of old maps. "A lost mermaid!" he wheezed happily. "I have just the thing." He produced a map — but it was written in mirror writing. Everything backwards. Jaxon had told Mia about mirror writing once — Leonardo da Vinci wrote all his notebooks that way. She held the map up to a passing lantern and read it in the reflection. There was her cove — 12 currents marked in dotted lines leading straight to it. She counted them carefully, twice, like Jaxon always did. Twelve. Every time. She followed them home, still thinking about the pearl lemonade.`,
-    ending: '🗺️ MIRROR MAP ENDING 🗺️',
-    type: 'mixed'
-  },
-
-  // ── PATH 9: SEAHORSE MEADOW ──────────────
-  seahorse_meadow: {
-    title: '🌾 The Seahorse Meadow',
-    jaxonFact: `Male seahorses carry the babies! A papa seahorse can have between 100 and 2,000 babies at once. They are the ONLY animals on Earth where the fathers give birth. Jaxon thinks this is one of the best facts in biology. 🌟`,
-    text: `🌾 A gentle current carried Mia into a swaying meadow of long silver sea-grass
-      where the most magical creatures drifted past like living ornaments. 
-      Seahorses. Hundreds of them. Every size, every colour. 🌈
-      <br><br>
-      Tiny ones the size of a thumbnail. 
-      Big ones the size of Mia's hand.
-      Papa seahorses with round, full pouches — 
-      each one carrying somewhere between <strong>100 and 2,000 babies</strong> — 
-      drifted serenely past like the calmest dads in the entire ocean.
-      <br><br>
-      A cloud of <em>very tiny</em> seahorses — newly hatched fry, 
-      each one barely <strong>1 centimetre long</strong> — 
-      swirled around Mia's head like a glittery halo ✨,
-      pulling at her hair and patting her crown with their little curly tails.
-      <br><br>
-      One large, dignified papa seahorse floated up and studied her with his swivelling eyes.
-      He wrapped his tail around a piece of sea-grass and held very still — 
-      the way seahorses do when they want to look important.
-      <br><br>
-      <strong style="color:#00ffff;">What does Mia do?</strong>`,
-    speak: `A gentle current carried Mia into a swaying meadow of long silver sea-grass where seahorses drifted past like living ornaments. Every size, every colour. Papa seahorses with round, full pouches — each one carrying between 100 and 2,000 babies — drifted serenely past like the calmest dads in the entire ocean. A cloud of very tiny newly-hatched seahorses swirled around Mia's head like a glittery halo, pulling at her hair and patting her crown with their little curly tails. One large, dignified papa seahorse floated up and studied her with his swivelling eyes. He wrapped his tail around a piece of sea-grass and held very still — the way seahorses do when they want to look important. What does Mia do?`,
-    choices: [
-      { text: '🌱 Follow the trail of baby seahorses', next: 'seahorse_babies' },
-      { text: '🎩 Ask the dignified papa seahorse for directions', next: 'seahorse_papa' }
-    ]
-  },
-  seahorse_babies: {
-    title: '🌀 The Spiral Path',
-    jaxonFact: `Baby seahorses are called "fry." When papa sneezes them out into the world, there can be up to 2,000 of them — and every single one is immediately on their own! That's a LOT of babies learning to swim at the same time. 🐣`,
-    text: `🌱 The baby seahorses were playing. 
-      Mia could tell because they kept doing loops and bumping into each other
-      and then acting like they hadn't. 
-      Very relatable behaviour.
-      <br><br>
-      She followed them as they zigzagged through the sea-grass —
-      left, right, forward, spiral, spiral, deeper spiral —
-      and then something extraordinary happened.
-      The path they were tracing, without meaning to, was a <strong>perfect spiral</strong>.
-      Not just any spiral — a <em>nautilus shell spiral</em>. 
-      The golden ratio. <strong>1, 1, 2, 3, 5, 8, 13, 21</strong>...
-      each curve exactly <strong>1.618 times bigger</strong> than the one before it.
-      The most beautiful number in nature.
-      <br><br>
-      Jaxon called it the <em>"universe's favourite number."</em>
-      And right now it was pointing, as clear as anything, directly toward Mia's cove.
-      <br><br>
-      She followed the golden spiral through warm, glittering water
-      until the silhouette of home appeared ahead. 🏠
-      She looked back once at the baby seahorses, still zigzagging merrily.
-      They had no idea they'd just drawn a masterpiece. 💕`,
-    speak: `The baby seahorses were playing — Mia could tell because they kept doing loops and bumping into each other and acting like they hadn't. She followed as they zigzagged through the sea-grass. Then something extraordinary happened. The path they were tracing was a perfect spiral — a nautilus shell spiral, the golden ratio: 1, 1, 2, 3, 5, 8, 13, 21, each curve exactly 1.618 times bigger than the one before. Jaxon called it the universe's favourite number. And right now it was pointing directly toward Mia's cove. She followed the golden spiral through warm glittering water until the silhouette of home appeared. She looked back once at the baby seahorses, still zigzagging merrily. They had no idea they'd just drawn a masterpiece.`,
-    ending: '🌀 GOLDEN SPIRAL ENDING 🌀',
-    type: 'good'
-  },
-  seahorse_papa: {
-    title: '🎩 The Dignified Papa',
-    jaxonFact: `Seahorses swim upright using a tiny dorsal fin on their back that beats up to 35 times per second! That's faster than a hummingbird's wings. They use their pectoral fins (behind their head) to steer. 🌊`,
-    text: `🎩 <em>"Excuse me,"</em> said Mia, as politely as she could.
-      <em>"I'm a bit lost. Do you know the way to the northwest coral coves?"</em>
-      <br><br>
-      The papa seahorse considered this for a very long time.
-      He was carrying <strong>12 babies</strong> in his pouch, 
-      and every one of them seemed to be wriggling 
-      at exactly the wrong moment.
-      <br><br>
-      Then, slowly, he uncurled his tail from the sea-grass.
-      He wrapped it around Mia's little finger instead — very gently —
-      and began to swim. His tiny dorsal fin beat so fast it was just a blur,
-      up to <strong>35 times per second</strong>, humming like a small motor. 🐠
-      <br><br>
-      He was slow. Methodical. He stopped twice to investigate 
-      interesting pieces of sea-glass. 
-      He detoured around a sleeping hermit crab out of politeness.
-      But he knew exactly where he was going.
-      <br><br>
-      When Mia's cove came into view, he gave her finger one tiny squeeze —
-      his version of <em>"you're welcome"</em> — 
-      and drifted back toward the meadow, his 12 babies wriggling contentedly.
-      <strong style="color:#ffd700;">Jaxon</strong> had been watching the whole thing from the rocks, 
-      notebook in hand, absolutely speechless for the first time in recorded history.
-      <em>"Was that a seahorse?"</em> he finally managed. <em>"Did it hold your hand?"</em>
-      <em>"My finger,"</em> said Mia. <em>"But yes."</em> 💛`,
-    speak: `"Excuse me," said Mia politely. "I'm a bit lost. Do you know the way to the northwest coral coves?" The papa seahorse considered this for a very long time. He was carrying 12 babies in his pouch, and every one seemed to be wriggling at exactly the wrong moment. Then, slowly, he uncurled his tail from the sea-grass and wrapped it around Mia's little finger — very gently — and began to swim. His tiny dorsal fin beat up to 35 times per second, humming like a small motor. He was slow and methodical. He stopped twice to investigate interesting sea-glass and detoured around a sleeping hermit crab out of politeness. But he knew exactly where he was going. When Mia's cove came into view, he gave her finger one tiny squeeze — his version of "you're welcome" — and drifted back toward the meadow. Jaxon had been watching from the rocks, notebook in hand, absolutely speechless for the first time in recorded history. "Was that a seahorse?" he finally managed. "Did it hold your hand?" "My finger," said Mia. "But yes."`,
-    ending: '🎩 TINY HANDSHAKE ENDING 🎩',
-    type: 'good'
-  },
-
-  // ── PATH 10: PUFFERFISH VILLAGE ──────────
-  puffer_village: {
-    title: '🐡 The Pufferfish Village',
-    jaxonFact: `A pufferfish can inflate to 3 times its normal size in just seconds by swallowing water! If a pufferfish is normally 20 centimetres long, it can become 60 centimetres when puffed up. That's 20 multiplied by 3! 🐡`,
-    text: `🐡 Mia had never seen anything so wonderfully, perfectly, 
-      magnificently <em>round</em> in her entire life.
-      <br><br>
-      Round coral houses with round windows and round doors. 
-      Round stepping-stone paths made of round pebbles.
-      Round lanterns hanging from round arches.
-      Round little pufferfish families pottering about their round little gardens,
-      tending round little sea-flower patches. 🌺
-      <br><br>
-      A round pufferfish child — about the size of a tennis ball — 
-      bumped into Mia's ankle and immediately puffed up to three times its size
-      out of surprise, then deflated again looking embarrassed. 😳
-      It had <strong>3 friends</strong> who had been watching, 
-      and all <strong>3 of them</strong> puffed up in sympathy. And then deflated. 
-      All at the same time.
-      <br><br>
-      <em>3 × 3 = 9.</em> There were now nine pufferfish staring at her.
-      <br><br>
-      <strong style="color:#00ffff;">What does Mia do?</strong>`,
-    speak: `Mia had never seen anything so wonderfully, perfectly, magnificently round in her entire life. Round coral houses with round windows and round doors. Round stepping-stone paths. Round little pufferfish families tending round little sea-flower patches. A round pufferfish child — about the size of a tennis ball — bumped into Mia's ankle and immediately puffed up to three times its size out of surprise, then deflated again looking embarrassed. It had 3 friends watching, and all 3 of them puffed up in sympathy. And then deflated. All at the same time. 3 times 3 equals 9. There were now nine pufferfish staring at her. What does Mia do?`,
-    choices: [
-      { text: '🏠 Knock on the nearest door and ask a family for help', next: 'puffer_help' },
-      { text: '🔢 Challenge the little pufferfish to a counting contest', next: 'puffer_count' }
-    ]
-  },
-  puffer_help: {
-    title: '🏠 The Kindest Family',
-    jaxonFact: `Pufferfish are one of the most poisonous fish in the world — but only if you eat them! They are completely harmless otherwise. They puff up to look scary and warn predators away. It's all a very clever bluff. 🐡`,
-    text: `🏠 Mia knocked on the nearest round door. 
-      Knock, knock, knock. Three knocks. A good number.
-      <br><br>
-      The door opened to reveal the most welcoming pufferfish face imaginable —
-      a grandmother pufferfish with tiny spectacles perched on her snout
-      and an apron dusted with sea-flour. 👵
-      Behind her were her daughter, her son-in-law, and <strong>3 grandchildren</strong>,
-      all at different stages of puffing out of curiosity. 
-      Sizes: small, medium, slightly larger medium.
-      <br><br>
-      <em>"A mermaid! Come in, come in! You'll have some sea-biscuit, won't you? 
-      Of course you will. Sit down!"</em>
-      <br><br>
-      Over sea-biscuits and kelp tea, Grandma explained that she had visited 
-      Mia's coral cove exactly <strong>7 years ago</strong> to collect 
-      a very special pink sand that only exists there.
-      She still had <strong>14 grains</strong> of it in a tiny jar on her mantelpiece. 
-      She knew exactly the way.
-      <br><br>
-      She organised a lantern parade — <strong>15 pufferfish</strong>, 
-      all carrying round glowing sea-lanterns, waddling in a very dignified line —
-      and walked Mia all the way home. 
-      Every single one waved goodbye when they reached the cove. 
-      One by one. All 15. It took a while.
-      Mia didn't mind even slightly. 🌊💕`,
-    speak: `Mia knocked on the nearest round door. Three knocks — a good number. The door opened to reveal a grandmother pufferfish with tiny spectacles perched on her snout and an apron dusted with sea-flour. Behind her were her daughter, son-in-law, and 3 grandchildren at different stages of puffing out of curiosity. "A mermaid! Come in! You'll have some sea-biscuit!" Over sea-biscuits and kelp tea, Grandma explained she had visited Mia's coral cove exactly 7 years ago to collect a special pink sand that only exists there. She still had 14 grains of it in a tiny jar on her mantelpiece. She knew exactly the way. She organised a lantern parade — 15 pufferfish carrying round glowing sea-lanterns, waddling in a very dignified line — and walked Mia all the way home. Every single one waved goodbye. One by one. All 15. It took a while. Mia didn't mind even slightly.`,
-    ending: '🏮 LANTERN PARADE ENDING 🏮',
-    type: 'good'
-  },
-  puffer_count: {
-    title: '🔢 The Counting Contest',
-    jaxonFact: `The smallest pufferfish in the world is the dwarf puffer — only 2.5 centimetres long! The largest is the stellate puffer at 120 centimetres. That means the biggest is 48 times longer than the smallest. 120 divided by 2.5 equals 48! 🐡`,
-    text: `🔢 <em>"I challenge you,"</em> said Mia to the little pufferfish, 
-      <em>"to count all the pebbles in this village square."</em>
-      <br><br>
-      The pufferfish blinked. It had not expected this.
-      But it accepted. Immediately. Because pufferfish, it turns out,
-      take counting challenges very seriously. 
-      It began: <em>"One. Two. Three. Four..."</em>
-      <br><br>
-      Mia began too: <em>"One. Two. Three..."</em>
-      <br><br>
-      She got to <strong>847</strong> before she heard something amazing.
-      A voice from above — from the surface, far up but not impossibly far —
-      calm and steady and very, very familiar:
-      <br><br>
-      <em>"...eight hundred and forty-eight, eight hundred and forty-nine..."</em>
-      <br><br>
-      <strong style="color:#ffd700;">JAXON.</strong>
-      He was sitting on a rock directly above her, counting pebbles on the shoreline.
-      Mia burst upward through the water gasping and laughing.
-      <em>"JAXON! What are you counting?!"</em>
-      <em>"Pebbles,"</em> said Jaxon, completely unsurprised. <em>"I'm on 850. Don't interrupt."</em>
-      <br><br>
-      She was home. She had been right underneath home the whole time. 💛🐡`,
-    speak: `"I challenge you," said Mia to the little pufferfish, "to count all the pebbles in this village square." The pufferfish blinked. It had not expected this. But it accepted immediately, because pufferfish, it turns out, take counting challenges very seriously. It began: "One. Two. Three." Mia began too. She got to 847 before she heard something amazing. A voice from above — from the surface, far up but not impossibly far — calm and steady and very, very familiar: "Eight hundred and forty-eight, eight hundred and forty-nine..." JAXON. He was sitting on a rock directly above her, counting pebbles on the shoreline. Mia burst upward through the water gasping and laughing. "JAXON! What are you counting?!" "Pebbles," said Jaxon, completely unsurprised. "I'm on 850. Don't interrupt." She was home. She had been right underneath home the whole time.`,
-    ending: '🔢 COUNTING CONTEST ENDING 🔢',
-    type: 'good'
   }
 };
 
@@ -1610,28 +1264,12 @@ readBtn.addEventListener('click', () => {
 });
 
 // ============================================
-// 💗 HEART BURST
-// ============================================
-const HEARTS = ['💗','💕','💖','🩷','💓','✨','🌸','⭐'];
-function spawnHeart(x, y) {
-  const h = document.createElement('div');
-  h.className = 'heart';
-  h.textContent = HEARTS[Math.floor(Math.random() * HEARTS.length)];
-  h.style.left = (x + (Math.random() * 40 - 20)) + 'px';
-  h.style.top  = (y + (Math.random() * 20 - 10)) + 'px';
-  document.body.appendChild(h);
-  setTimeout(() => h.remove(), 1800);
-}
-
-// ============================================
 // 🎮 GAME ENGINE
 // ============================================
 const pathLog    = document.getElementById('path-log');
 const sceneTitle = document.getElementById('scene-title');
 const sceneText  = document.getElementById('scene-text');
 const choicesDiv = document.getElementById('choices');
-const jaxonFact  = document.getElementById('jaxon-fact');
-const jaxonFactText = document.getElementById('jaxon-fact-text');
 
 let currentSceneId = 'start';
 let logEmpty = true;
@@ -1643,18 +1281,12 @@ function renderScene(sceneId, choiceLabel) {
 
   stopSpeaking();
 
-  // 💥 Full-screen sparkle + heart burst on transition
+  // 💥 Full-screen sparkle burst on transition
   for (let i = 0; i < 40; i++) {
     setTimeout(() => spawnSparkle(
       Math.random() * window.innerWidth,
       Math.random() * window.innerHeight
     ), i * 18);
-  }
-  for (let i = 0; i < 8; i++) {
-    setTimeout(() => spawnHeart(
-      Math.random() * window.innerWidth,
-      Math.random() * (window.innerHeight * 0.7)
-    ), i * 60 + 100);
   }
 
   // 📜 Add step to log
@@ -1667,18 +1299,6 @@ function renderScene(sceneId, choiceLabel) {
     li.innerHTML = `🐚 <em>${choiceLabel}</em>`;
     pathLog.appendChild(li);
     pathLog.scrollTop = pathLog.scrollHeight;
-  }
-
-  // 💛 Jaxon's Number Corner
-  if (scene.jaxonFact) {
-    jaxonFactText.textContent = scene.jaxonFact;
-    jaxonFact.style.display = 'block';
-    // Re-trigger animation
-    jaxonFact.style.animation = 'none';
-    jaxonFact.offsetHeight;
-    jaxonFact.style.animation = '';
-  } else {
-    jaxonFact.style.display = 'none';
   }
 
   // 📖 Update story panel
@@ -1728,12 +1348,6 @@ function renderScene(sceneId, choiceLabel) {
             rect.left + Math.random() * rect.width,
             rect.top + Math.random() * rect.height
           ), i * 25);
-        }
-        for (let i = 0; i < 6; i++) {
-          setTimeout(() => spawnHeart(
-            rect.left + Math.random() * rect.width,
-            rect.top
-          ), i * 50);
         }
         stopSpeaking();
         setTimeout(() => renderScene(choice.next, choice.text), 600);
