@@ -490,6 +490,47 @@
     line-height: 1.45;
   }
 
+  /* 📖 STORY MODE BUTTON */
+  #story-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px auto 0;
+    background: rgba(0,180,216,0.12);
+    color: #90e0ef;
+    border: 2px solid rgba(0,229,255,0.35);
+    border-radius: 50px;
+    padding: 10px 26px;
+    font-size: 1em;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.25s;
+    letter-spacing: 0.02em;
+  }
+  #story-btn:hover {
+    background: rgba(0,180,216,0.25);
+    border-color: #00e5ff;
+    color: #00e5ff;
+  }
+  #story-btn.active {
+    background: rgba(0,80,160,0.35);
+    border-color: #00e5ff;
+    color: #00e5ff;
+    box-shadow: 0 0 22px rgba(0,229,255,0.45);
+    animation: storyPulse 2s ease-in-out infinite alternate;
+  }
+  @keyframes storyPulse {
+    0%   { box-shadow: 0 0 12px rgba(0,229,255,0.3); }
+    100% { box-shadow: 0 0 32px rgba(0,229,255,0.75); }
+  }
+  @keyframes choicesFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .choices-reveal {
+    animation: choicesFadeIn 0.7s ease forwards;
+  }
+
   /* 🎉 FACT BOOK COMPLETE CELEBRATION */
   #celebration-overlay {
     display: none;
@@ -642,6 +683,7 @@
   <section id="story">
     <h2 id="scene-title">🌊 The Sea With No Shore</h2>
     <button id="read-btn">🔊 Read to Me</button>
+    <button id="story-btn">📖 Story Mode</button>
     <p id="scene-text"></p>
     <div id="choices">
       <!-- choices rendered by JS -->
@@ -1533,7 +1575,31 @@ function stopSpeaking() {
   readBtn.classList.remove('reading');
 }
 
-function speakText(text) {
+let storyMode = false;
+const storyBtn = document.getElementById('story-btn');
+
+storyBtn.addEventListener('click', () => {
+  storyMode = !storyMode;
+  if (storyMode) {
+    storyBtn.textContent = '🎧 Story Mode ON';
+    storyBtn.classList.add('active');
+    // Auto-read the current scene immediately
+    speakText(currentSpeakText, revealChoices);
+  } else {
+    storyBtn.textContent = '📖 Story Mode';
+    storyBtn.classList.remove('active');
+    stopSpeaking();
+    revealChoices();
+  }
+});
+
+function revealChoices() {
+  choicesDiv.style.visibility = 'visible';
+  choicesDiv.classList.add('choices-reveal');
+  setTimeout(() => choicesDiv.classList.remove('choices-reveal'), 800);
+}
+
+function speakText(text, onComplete) {
   if (!window.speechSynthesis) {
     readBtn.textContent = '🔇 Not supported';
     return;
@@ -1549,6 +1615,7 @@ function speakText(text) {
       isSpeaking = false;
       readBtn.textContent = '🔊 Read to Me';
       readBtn.classList.remove('reading');
+      if (onComplete) onComplete();
       return;
     }
     const utter = new SpeechSynthesisUtterance(sentences[idx++]);
@@ -1567,6 +1634,7 @@ function speakText(text) {
       isSpeaking = false;
       readBtn.textContent = '🔊 Read to Me';
       readBtn.classList.remove('reading');
+      if (onComplete) onComplete();
     };
     window.speechSynthesis.speak(utter);
   }
@@ -1591,8 +1659,9 @@ function speakText(text) {
 readBtn.addEventListener('click', () => {
   if (isSpeaking) {
     stopSpeaking();
+    if (storyMode) revealChoices();
   } else {
-    speakText(currentSpeakText);
+    speakText(currentSpeakText, storyMode ? revealChoices : null);
   }
 });
 
@@ -1790,7 +1859,10 @@ function renderScene(sceneId, choiceLabel) {
     choicesDiv.innerHTML = '';
 
     const choiceTexts = scene.choices.map(c => c.text.replace(/^[^\w]*/, '')).join('. Or: ');
-    currentSpeakText = (scene.speak || '') + ' Your choices are: ' + choiceTexts + '.';
+    // In story mode speak just the scene, then reveal choices; in play mode include choices
+    currentSpeakText = storyMode
+      ? (scene.speak || '')
+      : (scene.speak || '') + ' Your choices are: ' + choiceTexts + '.';
 
     scene.choices.forEach(choice => {
       const btn = document.createElement('button');
@@ -1811,9 +1883,15 @@ function renderScene(sceneId, choiceLabel) {
       });
       choicesDiv.appendChild(btn);
     });
-  }
 
-  // (auto-read removed — browser blocks audio without a user tap first)
+    // Story Mode: hide choices until reading finishes, then fade them in
+    if (storyMode) {
+      choicesDiv.style.visibility = 'hidden';
+      speakText(currentSpeakText, revealChoices);
+    } else {
+      choicesDiv.style.visibility = 'visible';
+    }
+  }
 }
 
 // Kick off the game
