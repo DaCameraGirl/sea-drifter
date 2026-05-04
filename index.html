@@ -451,6 +451,98 @@
     line-height: 1.45;
   }
 
+  /* 🎉 FACT BOOK COMPLETE CELEBRATION */
+  #celebration-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 10, 30, 0.88);
+    backdrop-filter: blur(6px);
+    justify-content: center;
+    align-items: center;
+    animation: fadeInOverlay 0.5s ease;
+  }
+  #celebration-overlay.visible {
+    display: flex;
+  }
+  @keyframes fadeInOverlay {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  #celebration-card {
+    background: linear-gradient(160deg, rgba(0,30,70,0.97), rgba(0,15,40,0.97));
+    border: 3px solid #00e5ff;
+    border-radius: 36px;
+    padding: 50px 44px 42px;
+    max-width: 520px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 0 80px rgba(0,229,255,0.5), 0 0 30px rgba(255,107,157,0.3), inset 0 0 40px rgba(0,100,180,0.15);
+    animation: cardPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    z-index: 2;
+  }
+  @keyframes cardPop {
+    0%   { transform: scale(0.5) rotate(-3deg); opacity: 0; }
+    100% { transform: scale(1) rotate(0deg);   opacity: 1; }
+  }
+  #celebration-card h2 {
+    font-size: 2.2em;
+    color: #00e5ff;
+    text-shadow: 0 0 30px rgba(0,229,255,1), 0 0 60px rgba(0,180,255,0.6);
+    margin-bottom: 16px;
+    animation: glowCyan 1.5s ease-in-out infinite alternate;
+  }
+  #celebration-card .celeb-subtitle {
+    font-size: 1.25em;
+    color: #FF6B9D;
+    font-weight: bold;
+    margin-bottom: 18px;
+    text-shadow: 0 0 15px rgba(255,107,157,0.8);
+  }
+  #celebration-card .celeb-body {
+    font-size: 1.05em;
+    color: #caf0f8;
+    line-height: 1.7;
+    margin-bottom: 30px;
+  }
+  #celebration-card .celeb-body strong {
+    color: #00e5ff;
+  }
+  #celebration-close {
+    background: linear-gradient(135deg, #00b4d8, #0077b6);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 16px 40px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(0,180,216,0.6);
+    transition: transform 0.15s, box-shadow 0.15s;
+    font-family: inherit;
+  }
+  #celebration-close:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 50px rgba(0,229,255,0.8);
+  }
+  .confetti-piece {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    pointer-events: none;
+    z-index: 9998;
+    animation: confettiFall linear forwards;
+  }
+  @keyframes confettiFall {
+    0%   { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+    80%  { opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg) scale(0.5); opacity: 0; }
+  }
+
   /* 🔊 READ ALOUD BUTTON */
   #read-btn {
     display: flex !important;
@@ -532,6 +624,22 @@
     </div>
   </aside>
 </main>
+
+<div id="celebration-overlay">
+  <div id="celebration-card">
+    <h2>🎉 FACT BOOK COMPLETE! 🎉</h2>
+    <p class="celeb-subtitle">Jaxon found ALL 65 number facts!</p>
+    <p class="celeb-body">
+      You swam every path, counted every number,<br>
+      and explored every corner of the ocean.<br><br>
+      <strong>65 facts. 7 paths. 14 endings.</strong><br>
+      Mia made it home — because of you. 🧜‍♀️💙<br><br>
+      Jaxon is on the shore right now,<br>
+      counting the waves just for you. 🌊
+    </p>
+    <button id="celebration-close">🌊 Back to the Ocean!</button>
+  </div>
+</div>
 
 <div class="wave-divider">🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊</div>
 
@@ -1461,12 +1569,50 @@ let logEmpty        = true;
 let factbookEmpty   = true;
 const discoveredFacts = new Set();
 
+const TOTAL_FACTS = Object.values(sceneFacts).flat().length;
+const celebrationOverlay = document.getElementById('celebration-overlay');
+
+function spawnConfetti() {
+  const colors = ['#00e5ff','#FF6B9D','#ffffff','#7fffd4','#90e0ef','#caf0f8','#FF9DCC','#00b4d8','#48cae4'];
+  const shapes = ['circle','square'];
+  for (let i = 0; i < 90; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const size = 8 + Math.random() * 12;
+    el.style.cssText = `
+      left: ${Math.random() * 100}vw;
+      width: ${size}px;
+      height: ${size}px;
+      background: ${color};
+      border-radius: ${shapes[Math.floor(Math.random() * 2)] === 'circle' ? '50%' : '2px'};
+      animation-duration: ${2.5 + Math.random() * 2}s;
+      animation-delay: ${Math.random() * 1.5}s;
+      box-shadow: 0 0 6px ${color};
+    `;
+    document.body.appendChild(el);
+    el.addEventListener('animationend', () => el.remove());
+  }
+}
+
+function triggerCelebration() {
+  spawnConfetti();
+  celebrationOverlay.classList.add('visible');
+}
+
+document.getElementById('celebration-close').addEventListener('click', () => {
+  celebrationOverlay.classList.remove('visible');
+  spawnConfetti();
+});
+
 function addFacts(sceneId) {
   const facts = sceneFacts[sceneId];
   if (!facts) return;
+  let newFactFound = false;
   facts.forEach(fact => {
     if (discoveredFacts.has(fact)) return;
     discoveredFacts.add(fact);
+    newFactFound = true;
     if (factbookEmpty) {
       factbookList.innerHTML = '';
       factbookEmpty = false;
@@ -1477,8 +1623,12 @@ function addFacts(sceneId) {
     factbookList.scrollTop = factbookList.scrollHeight;
   });
   const n = discoveredFacts.size;
-  const total = Object.values(sceneFacts).flat().length;
-  factbookCount.textContent = `${n} of ${total} facts discovered!`;
+  if (n >= TOTAL_FACTS) {
+    factbookCount.textContent = `🎉 ALL ${TOTAL_FACTS} facts discovered!`;
+    if (newFactFound) setTimeout(triggerCelebration, 600);
+  } else {
+    factbookCount.textContent = `${n} of ${TOTAL_FACTS} facts discovered!`;
+  }
 }
 
 function renderScene(sceneId, choiceLabel) {
