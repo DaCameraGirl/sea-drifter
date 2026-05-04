@@ -428,8 +428,47 @@
     text-align: center;
     color: #90e0ef !important;
     font-size: 0.88em;
-    margin-bottom: 14px !important;
+    margin-bottom: 10px !important;
     font-style: italic;
+  }
+  #factbook-progress-track {
+    height: 11px;
+    background: rgba(0,180,216,0.15);
+    border-radius: 20px;
+    border: 1px solid rgba(0,229,255,0.25);
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  #factbook-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #0077b6, #00b4d8, #00e5ff);
+    border-radius: 20px;
+    transition: width 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(0,229,255,0.7);
+    position: relative;
+    overflow: hidden;
+  }
+  #factbook-progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -80%; width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent);
+    animation: shimmerBar 2s ease-in-out infinite;
+  }
+  @keyframes shimmerBar {
+    0%   { left: -80%; }
+    100% { left: 180%; }
+  }
+  #factbook-progress-fill.complete {
+    background: linear-gradient(90deg, #FF6B9D, #00e5ff, #FF6B9D);
+    box-shadow: 0 0 20px rgba(0,229,255,1), 0 0 8px rgba(255,107,157,0.8);
+    background-size: 200% 100%;
+    animation: rainbowBar 1.5s linear infinite;
+  }
+  @keyframes rainbowBar {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
   }
   #factbook-list {
     list-style: none;
@@ -618,6 +657,9 @@
     <div id="factbook-container">
       <h3>🧮 Jaxon's Fact Book</h3>
       <p id="factbook-count">Play to discover number facts!</p>
+      <div id="factbook-progress-track">
+        <div id="factbook-progress-fill"></div>
+      </div>
       <ul id="factbook-list">
         <li style="opacity:0.5; font-style:italic;">🌟 No facts found yet...</li>
       </ul>
@@ -1623,11 +1665,16 @@ function addFacts(sceneId) {
     factbookList.scrollTop = factbookList.scrollHeight;
   });
   const n = discoveredFacts.size;
+  const progressFill = document.getElementById('factbook-progress-fill');
+  const pct = Math.min(100, Math.round((n / TOTAL_FACTS) * 100));
+  progressFill.style.width = pct + '%';
   if (n >= TOTAL_FACTS) {
     factbookCount.textContent = `🎉 ALL ${TOTAL_FACTS} facts discovered!`;
+    progressFill.classList.add('complete');
     if (newFactFound) setTimeout(triggerCelebration, 600);
   } else {
     factbookCount.textContent = `${n} of ${TOTAL_FACTS} facts discovered!`;
+    progressFill.classList.remove('complete');
   }
 }
 
@@ -1729,6 +1776,9 @@ document.getElementById('restart-btn').addEventListener('click', () => {
   discoveredFacts.clear();
   factbookList.innerHTML = '<li style="opacity:0.5; font-style:italic;">🌟 No facts found yet...</li>';
   factbookCount.textContent = 'Play to discover number facts!';
+  const pf = document.getElementById('factbook-progress-fill');
+  pf.style.width = '0%';
+  pf.classList.remove('complete');
   for (let i = 0; i < 60; i++) {
     setTimeout(() => spawnSparkle(
       Math.random() * window.innerWidth,
