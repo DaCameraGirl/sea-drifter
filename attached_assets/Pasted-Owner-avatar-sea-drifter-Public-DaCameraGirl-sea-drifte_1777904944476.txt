@@ -1,0 +1,121 @@
+Owner avatar
+sea-drifter
+Public
+DaCameraGirl/sea-drifter
+Go to file
+t
+T
+Name		
+DaCameraGirl
+DaCameraGirl
+Update README.md
+41bbcd1
+ · 
+yesterday
+assets
+Update sparkle-banner.svg
+yesterday
+README.md
+Update README.md
+yesterday
+app.js
+Update app.js
+yesterday
+index.html
+Update index.html
+yesterday
+styles.css
+Initial commit: interactive branching story game
+2 days ago
+Repository files navigation
+README
+🌊🧜‍♀️ Sea Drifter 🧜‍♀️🌊
+Pick-A-Path twinkling ocean
+Typing SVG
+
+
+The Sunken Tale
+🧜‍♀️ An interactive branching story game about a lost little girl trying to find her way home through whispering waves and coral mazes.
+
+"Swim with the currents, find your destiny!" 🐬
+
+wave
+Enchanted Ocean Features Bright Ending Mixed Ending Dark Ending
+🌿 Feature	🎭 What It Does
+🌿 Branching Paths	Every choice splits the current — no two playthroughs are the same
+🎭 3 Distinct Endings	Sunny Beach 🏖️ · Coral Palace 🏰 · The Abyss ⚫
+📜 Path Log	Scrolling record of every decision you made
+🔄 Restart Magic	Instant reset — dive back in immediately
+🐬 Dolphin Guidance	Choices feel natural, not forced
+💎 Sea Treasures	Collectibles hidden along each path
+🧠 Journey Tracker	Visual map of where you've been
+⚡ Zero Load Time	Pure HTML/CSS/JS — opens instantly
+wave
+Ocean Path Map
+
+How to Dive In
+🐚 Clone the Depths:
+
+git clone https://github.com/DaCameraGirl/lost-little-girl-paths.git
+cd lost-little-girl-paths
+🌊 Open the Portal:
+
+# Option 1 — just double-click index.html 🧜‍♀️
+# Option 2 — serve locally:
+python -m http.server 8080
+🌀 Play & Replay Forever! ✨
+
+Ocean Stats
+Last Commit Repo Size Languages Stars
+
+
+JavaScript CSS HTML
+
+twinkling 
+🧜‍♀️ Made with Ocean Magic 💙 by DaCameraGirl 🧠✨
+
+"Lost paths lead to found treasures... 🌊🐚"
+
+Visitors
+
+🌊🧜‍♀️🐚🐟🐳🐙🦀🐡🐬🦈✨💎🌀🌊🧜‍♀️🐚🐟🐳🐙🦀🐡🐬🦈✨💎🌀🌊
+
+About
+dacameragirl.github.io/sea-drifter/
+Resources
+ Readme
+ Activity
+Stars
+ 0 stars
+Watchers
+ 0 watching
+Forks
+ 0 forks
+Releases
+No releases published
+Create a new release
+Deployments
+23
+ github-pages yesterday
++ 22 deployments
+Packages
+No packages published
+Publish your first package
+Contributors
+1
+@DaCameraGirl
+DaCameraGirl Angela Hudson
+Languages
+HTML
+78.9%
+ 
+JavaScript
+18.0%
+ 
+CSS
+3.1%
+Footer
+© 2026 GitHub, Inc.
+Footer navigation
+Terms
+Priv
