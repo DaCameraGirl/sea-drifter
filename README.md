@@ -32,7 +32,7 @@
 
 ## 🧠 Why This Exists
 
-I built this for my son **Jaxon**, who is 8 years old, autistic, and absolutely loves numbers. He wanted a mermaid story — but he also wanted it to have maths in it. So every scene in the game has real ocean number facts woven through it.
+I built this for my friend's son **Jaxon**, who is 8 years old, autistic, and absolutely loves numbers. He wanted a mermaid story — but he also wanted it to have maths in it. So every scene in the game has real ocean number facts woven through it.
 
 Things like:
 - *"8 arms × 240 suckers = 1,920 suckers on one octopus!"*
