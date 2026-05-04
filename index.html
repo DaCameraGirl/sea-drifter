@@ -664,6 +664,380 @@
     header h1 { font-size: 2em !important; }
     .choice-btn { font-size: 1em !important; padding: 14px 20px !important; }
   }
+
+  /* 👦 JAXON CHARACTER BOX */
+  #jaxon-box {
+    background: rgba(0,20,50,0.75) !important;
+    border: 3px solid #ffd700 !important;
+    border-radius: 24px !important;
+    padding: 16px 18px !important;
+    margin-bottom: 18px !important;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 40px rgba(255,215,0,0.2), inset 0 0 20px rgba(255,215,0,0.05) !important;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+  .jaxon-avatar {
+    font-size: 2.2em;
+    animation: jaxonBob 2.5s ease-in-out infinite alternate;
+    flex-shrink: 0;
+  }
+  @keyframes jaxonBob {
+    0%   { transform: translateY(0px) rotate(-3deg); }
+    100% { transform: translateY(-6px) rotate(3deg); }
+  }
+  .jaxon-speech {
+    background: rgba(255,215,0,0.1);
+    border: 1px solid rgba(255,215,0,0.35);
+    border-radius: 12px;
+    padding: 9px 12px;
+    color: #ffd700 !important;
+    font-size: 0.85em;
+    line-height: 1.5;
+    font-style: italic;
+    position: relative;
+  }
+  .jaxon-speech::before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 12px;
+    border: 5px solid transparent;
+    border-right-color: rgba(255,215,0,0.35);
+  }
+
+  /* 🎙️ VOICE & DIFFICULTY CONTROLS */
+  #voice-difficulty-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto 18px;
+  }
+  .control-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .control-label {
+    color: #90e0ef;
+    font-size: 0.82em;
+    white-space: nowrap;
+  }
+  #voice-select {
+    background: rgba(0,20,50,0.85);
+    color: #caf0f8;
+    border: 2px solid rgba(0,180,216,0.45);
+    border-radius: 20px;
+    padding: 7px 12px;
+    font-size: 0.85em;
+    font-family: inherit;
+    cursor: pointer;
+    max-width: 200px;
+  }
+  #voice-select:focus { outline: none; border-color: #00e5ff; }
+  .diff-btn {
+    background: rgba(0,20,50,0.7);
+    color: #90e0ef;
+    border: 2px solid rgba(0,180,216,0.3);
+    border-radius: 20px;
+    padding: 6px 13px;
+    font-size: 0.82em;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .diff-btn:hover { border-color: #00e5ff; color: #00e5ff; }
+  .diff-btn.active {
+    background: rgba(0,100,180,0.4);
+    border-color: #00e5ff;
+    color: #00e5ff;
+    box-shadow: 0 0 12px rgba(0,229,255,0.4);
+  }
+
+  /* 🌊 OCEAN SOUNDS BUTTON */
+  #sounds-btn {
+    background: rgba(0,30,70,0.6);
+    color: #90e0ef;
+    border: 2px solid rgba(0,180,216,0.3);
+    border-radius: 20px;
+    padding: 7px 16px;
+    font-size: 0.82em;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  #sounds-btn:hover { border-color: #00e5ff; color: #00e5ff; }
+  #sounds-btn.playing {
+    border-color: #00e5ff;
+    color: #00e5ff;
+    background: rgba(0,80,160,0.3);
+    animation: soundsPulse 2s ease-in-out infinite;
+  }
+  @keyframes soundsPulse {
+    0%,100% { box-shadow: 0 0 8px rgba(0,229,255,0.3); }
+    50%      { box-shadow: 0 0 22px rgba(0,229,255,0.7); }
+  }
+
+  /* 📖 WORD HIGHLIGHT READING PANEL */
+  #reading-panel {
+    display: none;
+    background: rgba(0,15,40,0.9);
+    border: 2px solid rgba(0,180,216,0.35);
+    border-radius: 14px;
+    padding: 13px 16px;
+    margin: -8px 0 20px;
+    font-size: 1em;
+    line-height: 1.85;
+    color: #7ab8c8;
+    max-height: 130px;
+    overflow-y: auto;
+  }
+  .hl-word { display: inline; border-radius: 3px; transition: all 0.1s; }
+  .hl-word.active {
+    color: #00ffff;
+    text-shadow: 0 0 10px rgba(0,255,255,0.8);
+    background: rgba(0,255,255,0.13);
+    padding: 1px 3px;
+    border-radius: 3px;
+  }
+
+  /* 📤 ACTION BUTTONS */
+  #action-buttons {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+    margin-bottom: 14px !important;
+  }
+  .action-btn {
+    flex: 1;
+    min-width: 68px;
+    background: rgba(0,20,50,0.7);
+    color: #90e0ef;
+    border: 2px solid rgba(0,180,216,0.3);
+    border-radius: 20px;
+    padding: 10px 6px;
+    font-size: 0.82em;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .action-btn:hover {
+    border-color: #00e5ff;
+    color: #00e5ff;
+    background: rgba(0,60,130,0.4);
+  }
+
+  /* 🏆 TREASURE CHEST */
+  #treasure-container {
+    background: rgba(0,20,50,0.75) !important;
+    border: 3px solid #ffd700 !important;
+    border-radius: 28px !important;
+    padding: 20px 22px !important;
+    margin-top: 20px !important;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 45px rgba(255,215,0,0.25), inset 0 0 25px rgba(255,215,0,0.05) !important;
+  }
+  #treasure-container h3 {
+    color: #ffd700 !important;
+    margin-bottom: 8px !important;
+    font-size: 1.4em !important;
+    text-align: center;
+    text-shadow: 0 0 18px rgba(255,215,0,0.9);
+    animation: glowGold 2s ease-in-out infinite alternate;
+  }
+  @keyframes glowGold {
+    0%   { text-shadow: 0 0 10px rgba(255,215,0,0.6); }
+    100% { text-shadow: 0 0 26px rgba(255,215,0,1), 0 0 48px rgba(255,165,0,0.5); }
+  }
+  #treasure-count {
+    text-align: center;
+    color: #ffd700 !important;
+    font-size: 0.82em;
+    margin-bottom: 12px !important;
+    font-style: italic;
+    opacity: 0.8;
+  }
+  #treasure-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-height: 44px;
+    justify-content: center;
+    align-items: center;
+  }
+  .treasure-badge {
+    font-size: 1.8em;
+    cursor: default;
+    position: relative;
+    transition: transform 0.2s;
+    filter: drop-shadow(0 0 5px rgba(255,215,0,0.6));
+    animation: treasurePop 0.5s cubic-bezier(0.175,0.885,0.32,1.275);
+  }
+  .treasure-badge:hover { transform: scale(1.35) rotate(8deg); }
+  .treasure-badge::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: 115%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,8,24,0.97);
+    color: #ffd700;
+    border: 1px solid rgba(255,215,0,0.4);
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 0.38em;
+    white-space: nowrap;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    font-family: Georgia, serif;
+  }
+  .treasure-badge:hover::after { opacity: 1; }
+  @keyframes treasurePop {
+    0%   { transform: scale(0) rotate(-18deg); opacity: 0; }
+    100% { transform: scale(1) rotate(0deg);  opacity: 1; }
+  }
+
+  /* 📊 PARENT DASHBOARD MODAL */
+  #dashboard-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9990;
+    background: rgba(0,4,14,0.93);
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+  }
+  #dashboard-modal.open { display: flex; }
+  #dashboard-card {
+    background: linear-gradient(160deg, rgba(0,22,56,0.99), rgba(0,10,28,0.99));
+    border: 3px solid #00b4d8;
+    border-radius: 32px;
+    padding: 38px 34px 34px;
+    max-width: 460px;
+    width: 92%;
+    box-shadow: 0 0 65px rgba(0,180,216,0.4), inset 0 0 28px rgba(0,100,180,0.08);
+  }
+  #dashboard-card h2 {
+    color: #00e5ff;
+    text-align: center;
+    font-size: 1.85em;
+    margin-bottom: 22px !important;
+    text-shadow: 0 0 20px rgba(0,229,255,0.9);
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 26px !important;
+  }
+  .stat-card {
+    background: rgba(0,45,90,0.4);
+    border: 2px solid rgba(0,180,216,0.25);
+    border-radius: 14px;
+    padding: 14px 10px;
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 1.9em;
+    color: #00e5ff;
+    font-weight: bold;
+    display: block;
+    text-shadow: 0 0 10px rgba(0,229,255,0.7);
+  }
+  .stat-label {
+    font-size: 0.75em;
+    color: #90e0ef;
+    margin-top: 4px !important;
+    display: block;
+  }
+  #dashboard-close {
+    width: 100%;
+    background: linear-gradient(135deg, #0077b6, #00b4d8);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 14px;
+    font-size: 1.1em;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  #dashboard-close:hover { transform: scale(1.03); box-shadow: 0 0 28px rgba(0,180,216,0.6); }
+
+  /* 🖨️ PRINT CERTIFICATE */
+  #certificate-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9991;
+    background: rgba(0,4,14,0.93);
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  #certificate-overlay.open { display: flex; }
+  #certificate {
+    background: linear-gradient(160deg, #001830, #002a50);
+    border: 4px solid #ffd700;
+    border-radius: 28px;
+    padding: 46px 42px;
+    max-width: 540px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 0 55px rgba(255,215,0,0.25);
+    margin: auto;
+  }
+  .cert-title { font-size: 2em; color: #ffd700; text-shadow: 0 0 18px rgba(255,215,0,0.8); margin-bottom: 6px !important; }
+  .cert-sub { color: #90e0ef; font-size: 0.95em; margin-bottom: 22px !important; font-style: italic; }
+  .cert-ending { font-size: 1.5em; color: #00ffff; text-shadow: 0 0 14px rgba(0,255,255,0.7); margin-bottom: 22px !important; }
+  .cert-path { background: rgba(0,40,90,0.4); border: 2px solid rgba(0,180,216,0.25); border-radius: 14px; padding: 16px; margin-bottom: 18px !important; text-align: left; }
+  .cert-path p { color: #caf0f8; font-size: 0.86em; line-height: 1.65; margin-bottom: 3px !important; }
+  .cert-stats { display: flex; justify-content: center; gap: 26px; margin: 18px 0 !important; flex-wrap: wrap; }
+  .cert-stat span:first-child { font-size: 1.9em; display: block; }
+  .cert-stat span:last-child { font-size: 0.78em; color: #90e0ef; }
+  .cert-footer { font-size: 0.85em; color: #FF6B9D; font-style: italic; margin-top: 18px !important; }
+  .cert-buttons { display: flex; gap: 10px; justify-content: center; margin-top: 22px !important; }
+  .cert-btn { background: rgba(0,20,50,0.7); color: #caf0f8; border: 2px solid rgba(0,180,216,0.4); border-radius: 50px; padding: 11px 22px; font-family: inherit; font-size: 0.95em; cursor: pointer; transition: all 0.2s; }
+  .cert-btn:hover { border-color: #00e5ff; color: #00e5ff; transform: scale(1.04); }
+  .cert-btn.primary { background: linear-gradient(135deg, #ffd700, #ff8c00); color: #001220; border-color: #ffd700; font-weight: bold; }
+  .cert-btn.primary:hover { box-shadow: 0 0 28px rgba(255,215,0,0.6); }
+  @media print {
+    body > *:not(#certificate-overlay) { display: none !important; }
+    #certificate-overlay { display: block !important; position: static !important; background: white !important; padding: 0 !important; }
+    #certificate { background: white !important; border-color: #888 !important; box-shadow: none !important; }
+    .cert-title { color: #003366 !important; text-shadow: none !important; }
+    .cert-ending { color: #0066cc !important; text-shadow: none !important; }
+    .cert-buttons { display: none !important; }
+  }
+
+  /* 🔔 TOAST */
+  #toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: rgba(0,15,40,0.97);
+    border: 2px solid #00e5ff;
+    border-radius: 50px;
+    padding: 12px 26px;
+    color: #00e5ff;
+    font-size: 0.95em;
+    z-index: 99999;
+    transition: transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 28px rgba(0,229,255,0.4);
+    white-space: nowrap;
+  }
+  #toast.show { transform: translateX(-50%) translateY(0); }
 </style>
 </head>
 <body>
@@ -682,8 +1056,22 @@
 <main>
   <section id="story">
     <h2 id="scene-title">🌊 The Sea With No Shore</h2>
+    <div id="voice-difficulty-panel">
+      <div class="control-row">
+        <span class="control-label">🎙️ Voice:</span>
+        <select id="voice-select"><option value="0">🧜‍♀️ Default Voice</option></select>
+        <button id="sounds-btn">🌊 Ocean Sounds</button>
+      </div>
+      <div class="control-row">
+        <span class="control-label">🎯 Level:</span>
+        <button class="diff-btn" data-diff="easy">🐚 Easy</button>
+        <button class="diff-btn active" data-diff="medium">🌊 Medium</button>
+        <button class="diff-btn" data-diff="hard">⚡ Hard</button>
+      </div>
+    </div>
     <button id="read-btn">🔊 Read to Me</button>
     <button id="story-btn">📖 Story Mode</button>
+    <div id="reading-panel"></div>
     <p id="scene-text"></p>
     <div id="choices">
       <!-- choices rendered by JS -->
@@ -691,10 +1079,19 @@
   </section>
 
   <aside id="path-log-container">
+    <div id="jaxon-box">
+      <div class="jaxon-avatar" id="jaxon-avatar">🧑</div>
+      <div class="jaxon-speech" id="jaxon-speech">Pick a path! There are numbers hiding in every one... 🔢</div>
+    </div>
     <h3>📜 Pick Log</h3>
     <ul id="path-log">
       <li style="opacity:0.5; font-style:italic;">🌊 No picks made yet...</li>
     </ul>
+    <div id="action-buttons">
+      <button class="action-btn" id="share-btn">📤 Share</button>
+      <button class="action-btn" id="print-btn">🖨️ Certificate</button>
+      <button class="action-btn" id="dashboard-btn">📊 Stats</button>
+    </div>
     <button id="restart-btn">🔄 Restart Pick</button>
     <div id="factbook-container">
       <h3>🧮 Jaxon's Fact Book</h3>
@@ -705,6 +1102,13 @@
       <ul id="factbook-list">
         <li style="opacity:0.5; font-style:italic;">🌟 No facts found yet...</li>
       </ul>
+    </div>
+    <div id="treasure-container">
+      <h3>🏆 Sea Treasures</h3>
+      <p id="treasure-count">Find endings to collect treasures!</p>
+      <div id="treasure-grid">
+        <span style="opacity:0.4; font-style:italic; font-size:0.85em; color:#90e0ef;">🔒 No treasures yet...</span>
+      </div>
     </div>
   </aside>
 </main>
@@ -724,6 +1128,48 @@
     <button id="celebration-close">🌊 Back to the Ocean!</button>
   </div>
 </div>
+
+<!-- 📊 PARENT DASHBOARD -->
+<div id="dashboard-modal">
+  <div id="dashboard-card">
+    <h2>📊 Adventure Stats</h2>
+    <div class="stat-grid">
+      <div class="stat-card"><span class="stat-num" id="stat-scenes">0</span><span class="stat-label">Scenes Visited</span></div>
+      <div class="stat-card"><span class="stat-num" id="stat-endings">0</span><span class="stat-label">Endings Found</span></div>
+      <div class="stat-card"><span class="stat-num" id="stat-facts">0</span><span class="stat-label">Facts Collected</span></div>
+      <div class="stat-card"><span class="stat-num" id="stat-treasures">0</span><span class="stat-label">Treasures Found</span></div>
+      <div class="stat-card"><span class="stat-num" id="stat-time">0m</span><span class="stat-label">Time Playing</span></div>
+      <div class="stat-card"><span class="stat-num" id="stat-visits">1</span><span class="stat-label">Sessions</span></div>
+    </div>
+    <button id="dashboard-close">🌊 Back to the Ocean!</button>
+  </div>
+</div>
+
+<!-- 🖨️ PRINT CERTIFICATE -->
+<div id="certificate-overlay">
+  <div id="certificate">
+    <div class="cert-title">🌊 Sea Drifter Certificate 🌊</div>
+    <div class="cert-sub">This certifies that a brave explorer completed their adventure</div>
+    <div class="cert-ending" id="cert-ending">🌊 Adventure in Progress!</div>
+    <div class="cert-path">
+      <p><strong style="color:#00e5ff;">🗺️ The Path Taken:</strong></p>
+      <div id="cert-choices"></div>
+    </div>
+    <div class="cert-stats">
+      <div class="cert-stat"><span id="cert-facts-count">0</span><span>Facts Found</span></div>
+      <div class="cert-stat"><span id="cert-treasures-count">0</span><span>Treasures</span></div>
+      <div class="cert-stat"><span id="cert-date"></span><span>Date</span></div>
+    </div>
+    <div class="cert-footer">"Lost paths lead to found treasures... 🌊🐚" — Sea Drifter by DaCameraGirl</div>
+    <div class="cert-buttons">
+      <button class="cert-btn primary" onclick="window.print()">🖨️ Print It!</button>
+      <button class="cert-btn" id="cert-close">🌊 Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- 🔔 TOAST -->
+<div id="toast">✨ Copied to clipboard!</div>
 
 <div class="wave-divider">🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊 〰️ 🌊</div>
 
@@ -913,7 +1359,8 @@ const scenes = {
       <em>"That's almost 21 minutes!"</em> Then he ran and hugged her so tight she squeaked. 💛`,
     speak: `Mia closed her eyes, took a deep breath, and sang. Her voice rang out like a silver bell, climbing high and clear through the current. The two crab soldiers froze. Their clicking slowed. Then their legs began to sway in time with the music. The great coral gates swung open all by themselves. Inside, a choir of 100 mermaids turned to stare in wonder. And at the far end of the room, on a throne made of sea-glass and moonstone, sat the Mermaid Queen — who had been queen for over 500 years. She rose and glided forward until she stood right in front of Mia. "Child of the deep currents," she said softly. "I know your cove. I know your name. Let me take you home." She placed a crown of glowing coral on Mia's head and together they swam through moonlit water all the way home. When Mia surfaced, who was sitting on the rocks counting stars? Jaxon. He leapt to his feet. "I counted 1,247 seconds you were underwater! That's almost 21 minutes!" Then he ran and hugged her so tight she squeaked.`,
     ending: '✨ ROYAL HOMECOMING ENDING ✨',
-    type: 'good'
+    type: 'good',
+    treasure: { emoji: '👑', name: 'Coral Crown', desc: 'Gift from the Mermaid Queen' }
   },
   palace_garden: {
     title: '🌺 The Secret Sea-Garden',
@@ -938,7 +1385,8 @@ const scenes = {
       But she was not alone. 🌊`,
     speak: `Mia spotted a narrow gap in the coral wall and slipped through sideways. On the other side was the most beautiful garden she had ever seen — 1,000 glowing sea anemones, each one a different colour, waving gently like tiny dancing fingers. But it was also a maze. Every path looked the same. Then she noticed something very small staring up at her — a ghost shrimp, only about 2 centimetres long, smaller than Mia's thumbnail. "I know the way out," it whispered. "I've counted every turn. There are 33 of them. But the tunnels are very dark and I am very small and very scared." Mia held out her finger. The shrimp climbed on. Together they found the exit. Mia emerged into open water, far from home, with a new tiny friend riding on her crown.`,
     ending: '🌙 GARDEN DETOUR ENDING 🌙',
-    type: 'mixed'
+    type: 'mixed',
+    treasure: { emoji: '🦐', name: 'Tiny Ghost Shrimp', desc: 'Your brave guide through the maze' }
   },
 
   // ── PATH 2: OCTOPUS GARDEN ────────────────
@@ -987,7 +1435,8 @@ const scenes = {
       <em>(It does — 64 is also 4 times 4 times 4, and 2 to the power of 6!)</em> 🎶🌊`,
     speak: `Mia smiled and reached out her hands. The octopus wrapped two glowing arms gently around hers and they began to dance — slowly at first, then faster, spinning and turning through the warm water. All around them, sea-flowers began to light up one by one. By the time the dance was over, 64 flowers glowed — that's 8 rows of 8, a perfect square, lighting the whole garden like a map. With every turn of the dance, the octopus had been pointing her home. When the music faded, Mia knew exactly which way to swim. She swam home laughing, humming the octopus's song all the way. She couldn't wait to tell Jaxon about the 64-flower map. She knew he would immediately want to know if 64 had any other special properties. It does — 64 is also 4 times 4 times 4, and 2 to the power of 6!`,
     ending: '💃 MAP DANCE ENDING 💃',
-    type: 'good'
+    type: 'good',
+    treasure: { emoji: '🌸', name: 'Glowing Sea Flower', desc: 'One of the 64 map flowers' }
   },
   octopus_pearl: {
     title: '🦪 The Navigation Pearl',
@@ -1012,7 +1461,8 @@ const scenes = {
       When he saw Mia, he scattered the pebbles everywhere and ran. 💛`,
     speak: `"Please," said Mia, bowing her head politely. "I just need to go home. Can you help me?" The octopus chuckled — a deep warm rolling sound — and reached into a hidden pouch beneath his mantle and produced a pearl, perfectly round and pure white. It was humming. A soft, steady pulse — exactly 60 beats per minute, the same as a calm resting heartbeat. "It always points toward where your heart belongs," the octopus said. Mia pressed the pearl to her chest. It tugged gently to the north-east. She followed it through open shining water until she saw her own cove twinkling ahead in the moonlight. On the rocks sat Jaxon, wide awake, 47 sorted pebbles in a neat line beside him. He had been counting them over and over to stay calm while he waited. When he saw Mia, he scattered the pebbles everywhere and ran.`,
     ending: '🦪 COMPASS PEARL ENDING 🦪',
-    type: 'good'
+    type: 'good',
+    treasure: { emoji: '🦪', name: 'Navigation Pearl', desc: 'Always points toward home' }
   },
 
   // ── PATH 3: SHARK CAVE ────────────────────
@@ -1068,7 +1518,8 @@ const scenes = {
       Mia was out of the cave — not exactly home yet, but safe, and no longer alone.`,
     speak: `Mia raised her jellyfish as high as she could. Its light bloomed outward — soft blue, then brighter, then brilliant. And there, filling the entire tunnel from wall to wall, was the biggest fish she had ever seen. A hammerhead shark — 4 and a half metres long. Hammerhead sharks can grow up to 300 teeth over their lifetime, growing new rows when old ones fall out. All of those teeth were currently very visible. But then Mia noticed the shark's tail. It was wagging. Slowly. Happily. Like a very large, very toothy dog. The shark — whose name would definitely be Finn — bumped Mia gently with his great flat nose and then turned, glancing back at her with one warm golden eye. He wanted her to follow. Finn led her through 3 more tunnels, each one slightly brighter than the last, until they emerged into a glittering reef where green and blue light danced off every surface. Mia was out of the cave — not exactly home yet, but safe.`,
     ending: '🦈 FINN\'S ESCORT ENDING 🦈',
-    type: 'mixed'
+    type: 'mixed',
+    treasure: { emoji: '🦷', name: "Finn's Shark Tooth", desc: 'From your friendly hammerhead escort' }
   },
   shark_scary: {
     title: '😱 Three Sharks',
@@ -1098,7 +1549,8 @@ const scenes = {
       Counting helped. It always helped. 🌟`,
     speak: `"Hello?" Mia's voice bounced off the cave walls, then bounced again, then again. In a tunnel that is 300 metres long, sound echoes many times. The heavy breathing stopped. Then it started again, faster. Then a second set of breathing joined it. Then a third. Three rows of teeth appeared in the darkness — three sharks, definitely not Finn. Mia turned and swam faster than she had ever swum in her life. She burst out of the cave mouth and into open water and kept going until the sharks had given up. She floated on her back, completely lost, but safe. She started counting the faint stars she could see through the water. Jaxon had told her there were 9,096 on a clear night. Counting helped. It always helped.`,
     ending: '😰 THE GREAT ESCAPE ENDING 😰',
-    type: 'mixed'
+    type: 'mixed',
+    treasure: { emoji: '🌟', name: 'Counting Star', desc: 'Counting always helps — 9,096 stars strong' }
   },
 
   // ── PATH 4: SHIPWRECK ─────────────────────
@@ -1155,7 +1607,8 @@ const scenes = {
       Then he said hello, and handed her a pebble to keep. 💛`,
     speak: `Mia pushed the green door open with both hands. Inside was a room filled — floor to ceiling, wall to wall — with gold coins. 1,047 coins, to be precise. Every single one glowed with a soft ghostly light. A spectral parrot swooped down and landed on her shoulder. He ruffled his ghost feathers and fixed her with a beady eye. "Squawk! Take one coin! One coin finds the way! Squawk!" He knew 47 words. That was all. But he knew which ones mattered. Mia took a single gold coin. The moment it touched her palm, it began to pull northward through the dark water. She followed it all the way home, arriving just as the first pink light of dawn touched the surface. Jaxon was on the beach with 312 pebbles sorted into perfect rows. "6 rows of 52!" he called out, before he even said hello. Then he said hello, and handed her a pebble to keep.`,
     ending: '💰 GHOST DOUBLOON ENDING 💰',
-    type: 'mixed'
+    type: 'mixed',
+    treasure: { emoji: '🪙', name: 'Ghost Doubloon', desc: 'The coin that found the way home' }
   },
   wreck_abyss: {
     title: '🌀 The Abyss',
@@ -1180,7 +1633,8 @@ const scenes = {
       Counting always helped. <em>One. Two. Three...</em> 🌑`,
     speak: `Mia grabbed the ship's ancient wooden wheel with both hands and pulled hard. The whole wreck shuddered — a deep groaning sound rang through every corridor, 100 ghost pirates wailing at once. Then the ship began to spin. The cold black current seized it, dragging it in a slow terrible spiral — down, down, down. The Mariana Trench, the deepest place in all the ocean, goes down 11 kilometres. That's deeper than Mount Everest is tall. Mia did not want to find out how deep this wreck would go. She let go and swam upward as the ship spiralled away into perfect darkness. She swam until her arms burned, until the dark became blue again. She landed face-first on the sandy seafloor — bruised, exhausted, completely lost. But alive. She lay still for a moment, then started counting her heartbeats. Counting always helped. One. Two. Three.`,
     ending: '⚫ THE ABYSS ENDING ⚫',
-    type: 'bad'
+    type: 'bad',
+    treasure: { emoji: '⚓', name: 'Rusty Anchor', desc: 'Souvenir of the spinning abyss' }
   },
 
   // ── PATH 5: VOLCANO ───────────────────────
@@ -1232,7 +1686,8 @@ const scenes = {
       But what a story she had. She told Jaxon every detail, and he made her repeat the numbers twice. 😂✨`,
     speak: `Mia grabbed the eel's blazing tail with both hands. It was warm, like holding a mug of hot chocolate. For exactly one second, nothing happened. Then the eel went. It shot upward, weaving between lava pillars, accelerating through a superheated jet of water that launched them both clear out of the ocean and into the night sky. Mia had time for exactly one thought: Jaxon is going to think this is the best story ever told. Then she splashed down into cold open ocean with an enormous splash. She was 3 kilometres from home, in the wrong direction. It took her 3 days to swim back, counting her strokes the whole way. She got to 47,000 before she lost count. But what a story she had. She told Jaxon every detail, and he made her repeat the numbers twice.`,
     ending: '🚀 ROCKET LAUNCH ENDING 🚀',
-    type: 'mixed'
+    type: 'mixed',
+    treasure: { emoji: '🔥', name: "Lava Eel's Scale", desc: 'From your rocket launch adventure' }
   },
   volcano_spring: {
     title: '💧 The Cold Spring',
@@ -1260,7 +1715,8 @@ const scenes = {
       He placed the last 3 stones, then turned around, and smiled the biggest smile. 💙`,
     speak: `Mia reached out and let the cold spring water curl around her fingers. It was clear as glass and cold as starlight, running upward through the warm chaos of the volcano like a quiet secret. She let it lead her. The spring wound through tunnels of black rock lit by billions of tiny glowing microbes — organisms so small you could fit 1,000 of them across the width of a human hair. But together they lit the walls like a galaxy. The spring was 847 metres long from the volcano to the surface. Mia counted every kick of her tail on the way up. She lost count around 400 and started again. That's okay. Starting again is fine. Then her coral cove appeared, glittering in the early morning light. Jaxon was already there, building a tower out of exactly 100 flat stones. When Mia surfaced he was on stone number 97. He placed the last 3 stones, turned around, and smiled the biggest smile.`,
     ending: '💧 SPRING WATER HOME ENDING 💧',
-    type: 'good'
+    type: 'good',
+    treasure: { emoji: '💧', name: 'Cold Spring Crystal', desc: 'Clear as glass, cold as starlight' }
   },
 
   // ── PATH 6: WHALE TRENCH ──────────────────
@@ -1318,7 +1774,8 @@ const scenes = {
       Jaxon sat back down, very satisfied. 💖🐚`,
     speak: `Mia swam upward and settled herself gently between two barnacle mountains on the whale's back. Some barnacles were as big as her fist, like a miniature mountain range running along the whale's spine. The moment she was settled, the whale began to move — about 20 kilometres per hour, like a very large, very calm bicycle. Mia's cove was 80 kilometres away. 80 divided by 20 is exactly 4 hours. Jaxon would have worked that out in about half a second. The whale sang the entire way. Blue whales can sing at 188 decibels — louder than a jet engine. But to Mia, it felt like the whole ocean was breathing. After exactly 4 hours, Mia saw her coral cove sparkling ahead. Jaxon had fallen asleep on the beach at 2 in the morning, having counted 847 stars before his eyes closed. He woke up at 6 AM — exactly as the whale arrived — and said, without missing a beat: "That's a blue whale. It's the biggest animal that has ever lived. Did you ride it?" "Yes," said Mia. Jaxon sat back down, very satisfied.`,
     ending: '🌙 MOONLIT VOYAGE ENDING 🌙',
-    type: 'good'
+    type: 'good',
+    treasure: { emoji: '🪸', name: 'Whale Barnacle', desc: 'From the barnacle mountains on his back' }
   },
   whale_belly: {
     title: '🫧 Inside the Whale',
@@ -1346,7 +1803,8 @@ const scenes = {
       Very slowly, it winked. She was sure of it. 🐋`,
     speak: `Mia swam between the baleen plates into the whale's mouth. It was — surprisingly — warm. 37 degrees Celsius inside. The same temperature as a human body. It was also enormous and dark and full of lost things: a tiny lanternfish, a glass bottle with something rolled up inside, one red child's sandal, and exactly 7 smooth river stones — which, as Jaxon would tell you, are impossible to explain inside a whale. Mia grabbed the bottle. Inside was a map showing 12 landmarks of the ocean floor leading straight to her cove. Now she needed to get out. She began to tickle the whale's stomach wall. Once — nothing. Twice — a small rumble. Seven times — and the whale made a sound like the world's largest sneeze, and Mia shot out into the open ocean like a cannonball, map clutched tight in her hands. She looked back. One enormous eye was watching her from the deep. Very slowly, it winked. She was sure of it.`,
     ending: '🫧 SNEEZE ESCAPE ENDING 🫧',
-    type: 'mixed'
+    type: 'mixed',
+    treasure: { emoji: '🗺️', name: 'Whale Belly Map', desc: 'Found inside the whale — 12 landmarks to home' }
   },
 
   // ── PATH 7: SUNNY SHORE ───────────────────
@@ -1408,7 +1866,8 @@ const scenes = {
       put the shells back in their rows. Everything was right with the world. 💖`,
     speak: `Mia grinned and kicked her tail as hard as she could. The dolphins went absolutely wild. Dolphins can swim at 60 kilometres per hour when they really try — faster than a car on many roads. They leap 5 metres out of the water when they're happy. These 7 dolphins were swimming and leaping and spinning in what could only be described as pure joy. They raced through the shallows, past coral towers, past long meadows of sea grass, past the rock where Mia always used to sit and watch the sunset with her mother. Then she heard it. A voice she would know anywhere. "Mia! Mia!" And then another voice, lower, steady, very precise: "The dolphins have jumped 23 times since I started counting. I have been here since 4 AM." Jaxon. Standing on the beach with 144 shells sorted into 12 neat rows of 12 — a perfect square, because 12 times 12 is 144, which is also called a gross. He had needed something to count while he waited. Mia dived into her mama's arms, and Jaxon carefully put the shells back in their rows. Everything was right with the world.`,
     ending: '🐬 DOLPHIN RACE HOME ENDING 🐬',
-    type: 'good'
+    type: 'good',
+    treasure: { emoji: '🐬', name: 'Dolphin Whistle', desc: 'From the fastest race in the sea' }
   },
   shore_birds: {
     title: '🕊️ Following the Birds',
@@ -1442,7 +1901,8 @@ const scenes = {
       <em>"Good,"</em> said Jaxon. <em>"I want all the numbers."</em> 🌞`,
     speak: `Mia kicked upward and broke the surface with a gasp. Cold night air on her face. Open sky. Stars. A flock of 12 seabirds circled overhead, pointing their beaks firmly to the south. South, Mia thought. I know south. She floated on her back in the dark water, staring up. The sky was turning the colour that means dawn is coming in about 47 minutes. She had time. She swam south as the birds wheeled ahead, swooping low to show the way. The sun rose at exactly 5:47 in the morning, and when its first rays lit up the reef, she saw the silhouette of her cove. Jaxon had been awake since 4 AM. He had counted 2,820 waves hitting the beach while he waited — he wrote down a tally mark for each one in the sand. When Mia swam in, he was on wave 2,821. He noted it carefully, then looked up and said: "You were gone all night." "I know," said Mia. "I have stories." "Good," said Jaxon. "I want all the numbers."`,
     ending: '🕊️ FOLLOWING THE BIRDS ENDING 🕊️',
-    type: 'good'
+    type: 'good',
+    treasure: { emoji: '🕊️', name: 'Seabird Feather', desc: 'From the birds who showed you south' }
   }
 };
 
@@ -1568,11 +2028,42 @@ const readBtn = document.getElementById('read-btn');
 let isSpeaking = false;
 let currentSpeakText = '';
 
+// 📖 Word highlight helpers
+let wordHighlightSpans = [];
+let currentHighlightIdx = -1;
+
+function setupWordHighlight(text) {
+  const panel = document.getElementById('reading-panel');
+  panel.innerHTML = '';
+  wordHighlightSpans = [];
+  const tokens = text.split(/(\s+)/);
+  tokens.forEach(token => {
+    if (/^\s+$/.test(token)) {
+      panel.appendChild(document.createTextNode(token));
+    } else {
+      const span = document.createElement('span');
+      span.className = 'hl-word';
+      span.textContent = token;
+      wordHighlightSpans.push(span);
+      panel.appendChild(span);
+    }
+  });
+  panel.style.display = 'block';
+  currentHighlightIdx = -1;
+}
+
+function clearWordHighlight() {
+  document.getElementById('reading-panel').style.display = 'none';
+  wordHighlightSpans.forEach(s => s.classList.remove('active'));
+  currentHighlightIdx = -1;
+}
+
 function stopSpeaking() {
   window.speechSynthesis.cancel();
   isSpeaking = false;
   readBtn.textContent = '🔊 Read to Me';
   readBtn.classList.remove('reading');
+  clearWordHighlight();
 }
 
 let storyMode = false;
@@ -1605,35 +2096,56 @@ function speakText(text, onComplete) {
     return;
   }
   window.speechSynthesis.cancel();
+  setupWordHighlight(text);
 
-  // Chrome has a bug where long utterances stop after ~15s — chunk into sentences
   const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+  const sentenceWordCounts = sentences.map(s => s.trim().split(/\s+/).filter(Boolean).length);
   let idx = 0;
+  let globalWordOffset = 0;
 
   function speakNext() {
     if (idx >= sentences.length) {
       isSpeaking = false;
       readBtn.textContent = '🔊 Read to Me';
       readBtn.classList.remove('reading');
+      clearWordHighlight();
       if (onComplete) onComplete();
       return;
     }
+    const sentIdx = idx;
+    const wordOffset = globalWordOffset;
+    globalWordOffset += sentenceWordCounts[sentIdx] || 0;
     const utter = new SpeechSynthesisUtterance(sentences[idx++]);
     utter.rate = 0.88;
     utter.pitch = 1.05;
     utter.volume = 1;
 
-    const voices = window.speechSynthesis.getVoices();
-    const preferred = voices.find(v =>
-      /samantha|karen|victoria|zira|susan/i.test(v.name)
-    ) || voices.find(v => v.lang && v.lang.startsWith('en')) || voices[0];
-    if (preferred) utter.voice = preferred;
+    // Use selected voice from picker
+    const enVoices = window.speechSynthesis.getVoices().filter(v => v.lang && v.lang.startsWith('en'));
+    const selIdx = parseInt(document.getElementById('voice-select').value) || 0;
+    const chosen = enVoices[selIdx] || enVoices.find(v => /samantha|karen|victoria|zira|susan/i.test(v.name)) || enVoices[0];
+    if (chosen) utter.voice = chosen;
+
+    // Word boundary highlighting
+    utter.addEventListener('boundary', e => {
+      if (e.name !== 'word') return;
+      const spokenSoFar = sentences[sentIdx].substring(0, e.charIndex);
+      const wordNum = spokenSoFar.trim().split(/\s+/).filter(Boolean).length;
+      const globalIdx = wordOffset + wordNum;
+      if (wordHighlightSpans[currentHighlightIdx]) wordHighlightSpans[currentHighlightIdx].classList.remove('active');
+      currentHighlightIdx = globalIdx;
+      if (wordHighlightSpans[globalIdx]) {
+        wordHighlightSpans[globalIdx].classList.add('active');
+        wordHighlightSpans[globalIdx].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
 
     utter.onend = speakNext;
     utter.onerror = () => {
       isSpeaking = false;
       readBtn.textContent = '🔊 Read to Me';
       readBtn.classList.remove('reading');
+      clearWordHighlight();
       if (onComplete) onComplete();
     };
     window.speechSynthesis.speak(utter);
@@ -1643,7 +2155,6 @@ function speakText(text, onComplete) {
   readBtn.textContent = '⏹ Stop Reading';
   readBtn.classList.add('reading');
 
-  // Wait for voices to be ready
   if (window.speechSynthesis.getVoices().length > 0) {
     speakNext();
   } else {
@@ -1651,7 +2162,6 @@ function speakText(text, onComplete) {
       window.speechSynthesis.removeEventListener('voiceschanged', handler);
       speakNext();
     });
-    // Fallback: try after 300ms even if event never fires
     setTimeout(() => { if (isSpeaking && idx === 0) speakNext(); }, 300);
   }
 }
@@ -1764,8 +2274,8 @@ document.getElementById('celebration-close').addEventListener('click', () => {
 });
 
 function addFacts(sceneId) {
-  const facts = sceneFacts[sceneId];
-  if (!facts) return;
+  const facts = getFactsForScene(sceneId);
+  if (!facts || facts.length === 0) return;
   let newFactFound = false;
   facts.forEach(fact => {
     if (discoveredFacts.has(fact)) return;
@@ -1779,8 +2289,8 @@ function addFacts(sceneId) {
     li.textContent = fact;
     factbookList.appendChild(li);
     factbookList.scrollTop = factbookList.scrollHeight;
-    // stagger bubble pops so multiple facts don't all fire at once
     setTimeout(playBubblePop, discoveredFacts.size * 80);
+    setJaxon('fact');
   });
   const n = discoveredFacts.size;
   const progressFill = document.getElementById('factbook-progress-fill');
@@ -1790,6 +2300,7 @@ function addFacts(sceneId) {
     factbookCount.textContent = `🎉 ALL ${TOTAL_FACTS} facts discovered!`;
     progressFill.classList.add('complete');
     if (newFactFound) {
+      setJaxon('allFacts');
       setTimeout(playCompleteChime, 200);
       setTimeout(triggerCelebration, 800);
     }
@@ -1804,6 +2315,7 @@ function renderScene(sceneId, choiceLabel) {
   if (!scene) return;
   addFacts(sceneId);
   currentSceneId = sceneId;
+  visitedScenes.add(sceneId);
 
   stopSpeaking();
 
@@ -1832,6 +2344,10 @@ function renderScene(sceneId, choiceLabel) {
 
   if (scene.ending) {
     // ── ENDING SCENE ──
+    endingsFound.add(scene.ending);
+    addTreasure(scene);
+    setJaxon(scene.type || 'good');
+    saveProgress();
     const color = scene.type === 'good' ? '#00ffcc' : scene.type === 'mixed' ? '#ffd700' : '#ff4444';
     sceneText.innerHTML = `
       ${scene.text}
@@ -1894,6 +2410,266 @@ function renderScene(sceneId, choiceLabel) {
   }
 }
 
+// ============================================
+// 🎯 DIFFICULTY
+// ============================================
+let currentDifficulty = 'medium';
+
+document.querySelectorAll('.diff-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentDifficulty = btn.dataset.diff;
+  });
+});
+
+const hardFacts = {
+  start:         ['🧩 Challenge: What are the first 5 prime numbers? (2, 3, 5, 7, 11)'],
+  palace_gate:   ['🧩 If each tower has 7 windows, how many total? (7 × 7 = 49 ✓)'],
+  palace_throne: ['🧩 1,247 seconds — how many full minutes is that? (20 min 47 sec)'],
+  palace_garden: ['🧩 The maze had 33 turns. Half left, half right — how many right turns? (16 or 17!)'],
+  octopus_meet:  ['🧩 If each sucker is 1mm, how long is one arm? (240mm = 24cm!)'],
+  octopus_dance: ['🧩 Is 64 divisible by 4? By 8? By 16? (Yes, yes, yes!)'],
+  octopus_pearl: ['🧩 60 beats per min × 60 min = how many beats per hour? (3,600!)'],
+  shark_dark:    ['🧩 Your heart speeds from 72 to 140 bpm. How much faster? (68 bpm more!)'],
+  shark_friend:  ['🧩 Finn is 4.5m long. You are 1m tall. How many of you = Finn? (4.5!)'],
+  shark_scary:   ['🧩 9,096 stars ÷ 7 paths = about how many stars per path? (≈ 1,299!)'],
+  wreck_hall:    ['🧩 The ship sank 247 years ago. What year was that? (2026 − 247 = 1779)'],
+  wreck_treasure:['🧩 1,047 coins ÷ 3 = how many each? (349 each!)'],
+  wreck_abyss:   ['🧩 The Mariana Trench is 11 km deep. How many metres is that? (11,000 m!)'],
+  volcano_heat:  ['🧩 Volcano erupts every 13 days — how many times per year? (365 ÷ 13 ≈ 28 times!)'],
+  volcano_rocket:['🧩 3 km from home in the wrong direction — that\'s how many metres? (3,000 m!)'],
+  volcano_spring:['🧩 Spring is 847m long. Swim 10m/min — how long to swim it? (84.7 minutes!)'],
+  whale_eye:     ['🧩 The whale weighs 150,000 kg. A car is ~1,500 kg. How many cars equal the whale? (100!)'],
+  whale_voyage:  ['🧩 80 km ÷ 20 km/h = ? hours exactly. Can you show your working? (4 hours ✓)'],
+  whale_belly:   ['🧩 7 tickles made the whale sneeze. What is the next prime after 7? (11!)'],
+  shore_shallow: ['🧩 Light travels 150 million km in 8 min. How fast in km/sec? (≈ 300,000 km/s!)'],
+  shore_dolphins:['🧩 144 shells in 12 rows. How many per row? (12 — a perfect square!)'],
+  shore_birds:   ['🧩 Jaxon counted 2,820 waves. Each wave = 4 seconds — how many minutes total? (188 min!)'],
+};
+
+function getFactsForScene(sceneId) {
+  const base = sceneFacts[sceneId];
+  if (!base) return [];
+  if (currentDifficulty === 'easy') return base.slice(0, 1);
+  if (currentDifficulty === 'hard') return [...base, ...(hardFacts[sceneId] || [])];
+  return base;
+}
+
+// ============================================
+// 🎙️ VOICE PICKER
+// ============================================
+const voiceSelect = document.getElementById('voice-select');
+const voiceLabels = [
+  '🧜‍♀️ Mermaid', '🌊 Ocean Sprite', '🧙‍♀️ Sea Witch', '🐚 Shell Whisperer',
+  '🪸 Coral Fairy', '🐋 Deep Diver', '💎 Pearl Keeper', '🌙 Tide Caller',
+  '⚡ Wave Rider', '🌟 Star Fisher', '🎵 Storm Singer', '🦈 Shark Whisperer'
+];
+
+function populateVoices() {
+  const enVoices = window.speechSynthesis.getVoices().filter(v => v.lang && v.lang.startsWith('en'));
+  if (enVoices.length === 0) return;
+  voiceSelect.innerHTML = '';
+  enVoices.forEach((v, i) => {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = voiceLabels[i % voiceLabels.length] + ' (' + v.name.split(' ')[0] + ')';
+    voiceSelect.appendChild(opt);
+  });
+}
+if (window.speechSynthesis) {
+  populateVoices();
+  window.speechSynthesis.addEventListener('voiceschanged', populateVoices);
+}
+
+// ============================================
+// 🌊 OCEAN AMBIENT SOUNDS
+// ============================================
+let oceanPlaying = false;
+let oceanNodes = [];
+
+function startOceanSounds() {
+  try {
+    const ctx = getAudioCtx();
+    const sr = ctx.sampleRate;
+    const buf = ctx.createBuffer(1, sr * 4, sr);
+    const data = buf.getChannelData(0);
+    for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+    const noise = ctx.createBufferSource();
+    noise.buffer = buf; noise.loop = true;
+    const filt = ctx.createBiquadFilter();
+    filt.type = 'lowpass'; filt.frequency.value = 380; filt.Q.value = 0.7;
+    const lfo = ctx.createOscillator();
+    const lfoG = ctx.createGain();
+    lfo.frequency.value = 0.14; lfoG.gain.value = 0.28;
+    lfo.connect(lfoG);
+    const master = ctx.createGain(); master.gain.value = 0.06;
+    lfoG.connect(master.gain);
+    noise.connect(filt); filt.connect(master); master.connect(ctx.destination);
+    const rumble = ctx.createOscillator();
+    const rumbleG = ctx.createGain();
+    rumble.type = 'sine'; rumble.frequency.value = 52; rumbleG.gain.value = 0.025;
+    rumble.connect(rumbleG); rumbleG.connect(ctx.destination);
+    lfo.start(); noise.start(); rumble.start();
+    oceanNodes = [noise, lfo, rumble];
+    oceanPlaying = true;
+    document.getElementById('sounds-btn').classList.add('playing');
+    document.getElementById('sounds-btn').textContent = '🌊 Sounds ON';
+  } catch(e) {}
+}
+
+function stopOceanSounds() {
+  oceanNodes.forEach(n => { try { n.stop(); } catch(e) {} });
+  oceanNodes = [];
+  oceanPlaying = false;
+  document.getElementById('sounds-btn').classList.remove('playing');
+  document.getElementById('sounds-btn').textContent = '🌊 Ocean Sounds';
+}
+
+document.getElementById('sounds-btn').addEventListener('click', () => {
+  if (oceanPlaying) stopOceanSounds(); else startOceanSounds();
+});
+
+// ============================================
+// 🏆 TREASURE COLLECTION
+// ============================================
+const collectedTreasures = new Set();
+const TOTAL_TREASURES = 14;
+
+function addTreasure(scene) {
+  if (!scene.treasure || collectedTreasures.has(scene.treasure.name)) return;
+  collectedTreasures.add(scene.treasure.name);
+  const grid = document.getElementById('treasure-grid');
+  if (grid.querySelector('span:not(.treasure-badge)')) grid.innerHTML = '';
+  const badge = document.createElement('span');
+  badge.className = 'treasure-badge';
+  badge.textContent = scene.treasure.emoji;
+  badge.dataset.tip = scene.treasure.name + ' — ' + scene.treasure.desc;
+  grid.appendChild(badge);
+  const n = collectedTreasures.size;
+  document.getElementById('treasure-count').textContent = n + ' of ' + TOTAL_TREASURES + ' treasures found!';
+  setJaxon('treasure');
+}
+
+// ============================================
+// 👦 JAXON REACTIONS
+// ============================================
+const jaxonData = {
+  start:   { face: '🧑', msg: 'Pick a path! Numbers are hiding in every one... 🔢' },
+  fact:    { face: '🤩', msg: 'Oh WOW — did you catch that number? I love this one!! 📖' },
+  good:    { face: '😄', msg: "YES! A happy ending! I'm so glad Mia got home! 💛" },
+  mixed:   { face: '🤔', msg: "Not the safest ending, but Mia's OK. Could've been worse! 🌊" },
+  bad:     { face: '😟', msg: "Oh no... but Mia is still counting. Counting always helps. 💙" },
+  treasure:{ face: '🤩', msg: 'A TREASURE! Quick — how many is that total? I\'m counting! 🏆' },
+  allFacts:{ face: '🎉', msg: 'ALL 65 FACTS!! I can barely contain myself!! 🎉🔢💙' },
+};
+
+function setJaxon(state) {
+  const d = jaxonData[state] || jaxonData.start;
+  document.getElementById('jaxon-avatar').textContent = d.face;
+  document.getElementById('jaxon-speech').textContent = d.msg;
+}
+
+// ============================================
+// 💾 SAVE / LOAD PROGRESS
+// ============================================
+const SAVE_KEY = 'seaDrifterSave_v2';
+const visitedScenes = new Set();
+const endingsFound  = new Set();
+const playStartTime = Date.now();
+let   prevMinutes   = 0;
+
+function saveProgress() {
+  try {
+    localStorage.setItem(SAVE_KEY, JSON.stringify({
+      facts:    [...discoveredFacts],
+      treasures:[...collectedTreasures],
+      visited:  [...visitedScenes],
+      endings:  [...endingsFound],
+      minutes:  Math.round((Date.now() - playStartTime) / 60000) + prevMinutes,
+      ts: Date.now()
+    }));
+  } catch(e) {}
+}
+
+(function loadSavedProgress() {
+  try {
+    const raw = localStorage.getItem(SAVE_KEY);
+    if (!raw) return;
+    const s = JSON.parse(raw);
+    if (s.visited)   s.visited.forEach(v => visitedScenes.add(v));
+    if (s.endings)   s.endings.forEach(e => endingsFound.add(e));
+    prevMinutes = s.minutes || 0;
+  } catch(e) {}
+})();
+
+const sessionCount = (parseInt(localStorage.getItem('seaDrifterVisits') || '0')) + 1;
+localStorage.setItem('seaDrifterVisits', sessionCount);
+
+// ============================================
+// 📊 PARENT DASHBOARD
+// ============================================
+document.getElementById('dashboard-btn').addEventListener('click', () => {
+  const mins = Math.round((Date.now() - playStartTime) / 60000) + prevMinutes;
+  document.getElementById('stat-scenes').textContent    = visitedScenes.size;
+  document.getElementById('stat-endings').textContent   = endingsFound.size;
+  document.getElementById('stat-facts').textContent     = discoveredFacts.size;
+  document.getElementById('stat-treasures').textContent = collectedTreasures.size;
+  document.getElementById('stat-time').textContent      = mins < 60 ? mins + 'm' : Math.floor(mins/60) + 'h ' + (mins%60) + 'm';
+  document.getElementById('stat-visits').textContent    = sessionCount;
+  document.getElementById('dashboard-modal').classList.add('open');
+});
+document.getElementById('dashboard-close').addEventListener('click', () => {
+  document.getElementById('dashboard-modal').classList.remove('open');
+});
+
+// ============================================
+// 🖨️ PRINT CERTIFICATE
+// ============================================
+document.getElementById('print-btn').addEventListener('click', () => {
+  const lastEnding = [...endingsFound].pop() || '🌊 Adventure in Progress!';
+  document.getElementById('cert-ending').textContent = lastEnding;
+  const choices = [...pathLog.querySelectorAll('li')]
+    .map(li => li.textContent.replace(/^🐚\s*/, '').trim())
+    .filter(t => t && !t.includes('picks made'));
+  const certChoices = document.getElementById('cert-choices');
+  certChoices.innerHTML = choices.length
+    ? choices.map(c => '<p>🐚 ' + c + '</p>').join('')
+    : '<p style="opacity:0.5">Finish a path first, then come back!</p>';
+  document.getElementById('cert-facts-count').textContent    = discoveredFacts.size;
+  document.getElementById('cert-treasures-count').textContent = collectedTreasures.size;
+  document.getElementById('cert-date').textContent = new Date().toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+  document.getElementById('certificate-overlay').classList.add('open');
+});
+document.getElementById('cert-close').addEventListener('click', () => {
+  document.getElementById('certificate-overlay').classList.remove('open');
+});
+
+// ============================================
+// 📤 SHARE
+// ============================================
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+document.getElementById('share-btn').addEventListener('click', async () => {
+  const ending = [...endingsFound].pop() || 'the deep ocean';
+  const msg = `🌊🧜‍♀️ I played Sea Drifter!\n\nI found ${discoveredFacts.size} number facts, collected ${collectedTreasures.size} sea treasures, and reached: ${ending}\n\nPlay free at dacameragirl.github.io/sea-drifter/`;
+  try {
+    if (navigator.share) {
+      await navigator.share({ title: '🌊 Sea Drifter', text: msg, url: 'https://dacameragirl.github.io/sea-drifter/' });
+    } else {
+      await navigator.clipboard.writeText(msg);
+      showToast('✨ Copied to clipboard!');
+    }
+  } catch(e) {
+    try { await navigator.clipboard.writeText(msg); showToast('✨ Copied!'); } catch(e2) {}
+  }
+});
+
 // Kick off the game
 renderScene('start', null);
 
@@ -1909,6 +2685,12 @@ document.getElementById('restart-btn').addEventListener('click', () => {
   const pf = document.getElementById('factbook-progress-fill');
   pf.style.width = '0%';
   pf.classList.remove('complete');
+  // Reset treasure chest
+  collectedTreasures.clear();
+  document.getElementById('treasure-grid').innerHTML = '<span style="opacity:0.4; font-style:italic; font-size:0.85em; color:#90e0ef;">🔒 No treasures yet...</span>';
+  document.getElementById('treasure-count').textContent = 'Find endings to collect treasures!';
+  // Reset Jaxon
+  setJaxon('start');
   for (let i = 0; i < 60; i++) {
     setTimeout(() => spawnSparkle(
       Math.random() * window.innerWidth,
