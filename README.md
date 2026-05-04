@@ -152,7 +152,7 @@ A few favourites:
 
 Mum. Creator. Ocean lover. 💙
 
-Made this game for her son **Jaxon**, who is 8 years old, autistic,<br>
+Made this game for her friend's son **Jaxon**, who is 8 years old, autistic,<br>
 and counts everything — including waves.
 
 </div>
