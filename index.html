@@ -843,6 +843,58 @@
     box-shadow: 0 0 12px rgba(0,229,255,0.4);
   }
 
+  /* 🎯 MODE BANNER */
+  #mode-banner {
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-size: 0.85em;
+    text-align: center;
+    margin-bottom: 14px;
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+  #mode-banner.easy { display: block; border: 1px solid #00ffcc; color: #00ffcc; background: rgba(0,255,200,0.08); }
+  #mode-banner.hard { display: block; border: 1px solid #ffd700; color: #ffd700; background: rgba(255,215,0,0.08); }
+
+  /* 🐚 EASY MODE — highlight math numbers in the story text */
+  body.diff-easy #scene-text strong {
+    background: rgba(0,255,180,0.18) !important;
+    border-radius: 4px;
+    padding: 1px 5px;
+    color: #00ffcc !important;
+  }
+
+  /* ⚡ HARD MODE — gold math numbers in story text */
+  body.diff-hard #scene-text strong {
+    color: #ffd700 !important;
+    text-shadow: 0 0 8px rgba(255,215,0,0.5);
+  }
+
+  /* 🔊 VOLUME SLIDER */
+  #volume-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 110px;
+    height: 5px;
+    background: rgba(0,180,216,0.3);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+  }
+  #volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px; height: 15px;
+    border-radius: 50%;
+    background: #00b4d8;
+    cursor: pointer;
+    box-shadow: 0 0 6px rgba(0,180,216,0.6);
+  }
+  #volume-label {
+    color: #90e0ef;
+    font-size: 0.8em;
+    min-width: 36px;
+  }
+
   /* 🧩 HARD MODE — math challenge block */
   #challenge-block {
     background: rgba(0,30,70,0.75);
@@ -1172,6 +1224,7 @@
 <main>
   <section id="story">
     <h2 id="scene-title">🌊 The Sea With No Shore</h2>
+    <div id="mode-banner"></div>
     <div id="voice-difficulty-panel">
       <div class="control-row">
         <span class="control-label">🎙️ Voice:</span>
@@ -1179,10 +1232,15 @@
         <button id="sounds-btn">🌊 Ocean Sounds</button>
       </div>
       <div class="control-row">
-        <span class="control-label">🎯 Level:</span>
-        <button class="diff-btn" data-diff="easy">🐚 Easy</button>
-        <button class="diff-btn active" data-diff="medium">🌊 Medium</button>
-        <button class="diff-btn" data-diff="hard">⚡ Hard</button>
+        <span class="control-label">🔊 Volume:</span>
+        <input type="range" id="volume-slider" min="0" max="100" value="80">
+        <span id="volume-label">80%</span>
+      </div>
+      <div class="control-row">
+        <span class="control-label">🎯 Mode:</span>
+        <button class="diff-btn" data-diff="easy" title="Story reads itself aloud — numbers glow teal">🐚 Easy</button>
+        <button class="diff-btn active" data-diff="medium" title="Standard explorer mode">🌊 Medium</button>
+        <button class="diff-btn" data-diff="hard" title="Math numbers glow gold + Jaxon challenge questions appear">⚡ Hard</button>
       </div>
     </div>
     <button id="read-btn">🔊 Read to Me</button>
@@ -2770,7 +2828,7 @@ function speakText(text, onComplete) {
     const utter = new SpeechSynthesisUtterance(sentences[idx++]);
     utter.rate = 0.88;
     utter.pitch = 1.05;
-    utter.volume = 1;
+    utter.volume = speechVolume;
 
     // Use selected voice from picker
     const enVoices = window.speechSynthesis.getVoices().filter(v => v.lang && v.lang.startsWith('en'));
@@ -3078,6 +3136,30 @@ function renderScene(sceneId, choiceLabel) {
 // 🎯 DIFFICULTY
 // ============================================
 let currentDifficulty = 'medium';
+let speechVolume = 0.8;
+let oceanMasterGain = null;
+
+// 🔊 VOLUME SLIDER
+document.getElementById('volume-slider').addEventListener('input', function() {
+  const val = parseInt(this.value) / 100;
+  speechVolume = val;
+  document.getElementById('volume-label').textContent = this.value + '%';
+  if (oceanMasterGain) oceanMasterGain.gain.value = 0.06 * val;
+});
+
+const modeBannerMsgs = {
+  easy: '📖 Read-Aloud Mode — story auto-narrates &amp; math numbers glow teal',
+  hard: '🧮 Math Challenge Mode — numbers glow gold &amp; Jaxon\'s challenges appear',
+};
+
+function updateModeBanner(diff) {
+  const banner = document.getElementById('mode-banner');
+  banner.className = '';
+  if (modeBannerMsgs[diff]) {
+    banner.innerHTML = modeBannerMsgs[diff];
+    banner.classList.add(diff);
+  }
+}
 
 document.querySelectorAll('.diff-btn').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -3086,6 +3168,7 @@ document.querySelectorAll('.diff-btn').forEach(btn => {
     currentDifficulty = btn.dataset.diff;
     document.body.classList.remove('diff-easy', 'diff-medium', 'diff-hard');
     document.body.classList.add('diff-' + currentDifficulty);
+    updateModeBanner(currentDifficulty);
     if (currentSceneId) updateChallengeBlock(currentSceneId);
   });
 });
@@ -3197,7 +3280,8 @@ function startOceanSounds() {
     const lfoG = ctx.createGain();
     lfo.frequency.value = 0.14; lfoG.gain.value = 0.28;
     lfo.connect(lfoG);
-    const master = ctx.createGain(); master.gain.value = 0.06;
+    const master = ctx.createGain(); master.gain.value = 0.06 * speechVolume;
+    oceanMasterGain = master;
     lfoG.connect(master.gain);
     noise.connect(filt); filt.connect(master); master.connect(ctx.destination);
     const rumble = ctx.createOscillator();
