@@ -2,8 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🧜‍♀️ Pick 🌊</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Sea Drifter 🧜‍♀️ — An Ocean Adventure Story Game</title>
+<meta name="description" content="An interactive ocean branching story game starring Mia the mermaid and Jaxon, her math-loving friend. Pick your path, collect treasures, and discover number facts!">
+<!-- Open Graph for social sharing preview -->
+<meta property="og:title" content="Sea Drifter 🧜‍♀️ — Ocean Adventure Story Game">
+<meta property="og:description" content="Pick Mia's path through 7 ocean adventures! Collect 21 sea treasures and discover 79 number facts. Interactive story game for kids.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dacameragirl.github.io/sea-drifter/">
+<!-- PWA / Add to Home Screen -->
+<meta name="theme-color" content="#001a33">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Sea Drifter">
+<link rel="manifest" href="manifest.json">
+<!-- Inline SVG icon as apple-touch-icon (fallback) -->
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%23001a33'/%3E%3Ctext y='130' x='15' font-size='130'%3E🧜%E2%80%8D♀️%3C/text%3E%3C/svg%3E">
 <style>
   /* RESET EVERYTHING */
   *, *::before, *::after {
@@ -531,6 +546,77 @@
     animation: choicesFadeIn 0.7s ease forwards;
   }
 
+  /* 🧜‍♀️ NAME ENTRY WELCOME SCREEN */
+  #name-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #000d1a 0%, #002a50 60%, #0077be 100%);
+  }
+  #name-overlay.hidden { display: none; }
+  #name-card {
+    background: rgba(0,20,60,0.92);
+    border: 2px solid rgba(0,180,216,0.6);
+    border-radius: 24px;
+    padding: 42px 40px;
+    text-align: center;
+    max-width: 420px;
+    width: 90%;
+    box-shadow: 0 0 60px rgba(0,180,216,0.3);
+    animation: fadeIn 0.6s ease;
+  }
+  #name-card .name-mia { font-size: 5em; margin-bottom: 10px; }
+  #name-card h2 { color: #00ffff; font-size: 1.8em; margin-bottom: 6px; }
+  #name-card p { color: #90e0ef; font-size: 1.1em; margin-bottom: 24px; }
+  #player-name-input {
+    width: 100%;
+    background: rgba(0,40,90,0.8);
+    border: 2px solid #00b4d8;
+    border-radius: 12px;
+    color: #caf0f8;
+    font-family: inherit;
+    font-size: 1.2em;
+    padding: 12px 18px;
+    text-align: center;
+    outline: none;
+    margin-bottom: 18px;
+  }
+  #player-name-input::placeholder { color: rgba(144,224,239,0.5); }
+  #player-name-input:focus { border-color: #00ffff; box-shadow: 0 0 14px rgba(0,255,255,0.3); }
+  #name-start-btn {
+    background: linear-gradient(135deg, #0077be, #00b4d8);
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    padding: 14px 36px;
+    font-size: 1.2em;
+    font-family: inherit;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(0,180,216,0.4);
+  }
+  #name-start-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,255,255,0.5); }
+
+  /* 🆕 FACTBOOK NEW-FACTS BADGE */
+  #factbook-badge {
+    display: inline-block;
+    background: #FF6B9D;
+    color: #fff;
+    font-size: 0.7em;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 8px;
+    vertical-align: middle;
+    animation: pulse 1s infinite alternate;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  #factbook-badge.visible { opacity: 1; }
+
   /* 🎉 FACT BOOK COMPLETE CELEBRATION */
   #celebration-overlay {
     display: none;
@@ -755,17 +841,6 @@
     border-color: #00e5ff;
     color: #00e5ff;
     box-shadow: 0 0 12px rgba(0,229,255,0.4);
-  }
-
-  /* 🐚 EASY MODE — bigger text */
-  body.diff-easy #scene-text {
-    font-size: 1.45em !important;
-    line-height: 2.4 !important;
-    letter-spacing: 0.02em;
-  }
-  body.diff-easy .choice-btn {
-    font-size: 1.15em !important;
-    padding: 22px 32px !important;
   }
 
   /* 🧩 HARD MODE — math challenge block */
@@ -1074,6 +1149,18 @@
 <!-- 🧜‍♀️ Mermaid cursor -->
 <div id="mia-follower">🧜‍♀️</div>
 
+<!-- 🧜‍♀️ NAME ENTRY WELCOME SCREEN -->
+<div id="name-overlay">
+  <div id="name-card">
+    <div class="name-mia">🧜‍♀️</div>
+    <h2>Hi! I'm Mia!</h2>
+    <p>What's your name, brave explorer?</p>
+    <input type="text" id="player-name-input" placeholder="Type your name here..." maxlength="20" autocomplete="off" />
+    <br>
+    <button id="name-start-btn">🌊 Let's Dive In!</button>
+  </div>
+</div>
+
 <header>
   <h1>🌊🧜‍♀️ Pick 🧜‍♀️🌊</h1>
   <p class="subtitle">✨ The Sunken Tale 🐚 ✨</p>
@@ -1123,7 +1210,7 @@
     </div>
     <button id="restart-btn">🔄 Restart Pick</button>
     <div id="factbook-container">
-      <h3>🧮 Jaxon's Fact Book</h3>
+      <h3>🧮 Jaxon's Fact Book <span id="factbook-badge">NEW!</span></h3>
       <p id="factbook-count">Play to discover number facts!</p>
       <div id="factbook-progress-track">
         <div id="factbook-progress-fill"></div>
@@ -1178,7 +1265,7 @@
 <div id="certificate-overlay">
   <div id="certificate">
     <div class="cert-title">🌊 Sea Drifter Certificate 🌊</div>
-    <div class="cert-sub">This certifies that a brave explorer completed their adventure</div>
+    <div class="cert-sub">This certifies that <strong id="cert-explorer-name">a brave explorer</strong> completed their adventure</div>
     <div class="cert-ending" id="cert-ending">🌊 Adventure in Progress!</div>
     <div class="cert-path">
       <p><strong style="color:#00e5ff;">🗺️ The Path Taken:</strong></p>
@@ -1205,10 +1292,26 @@
 <footer>
   <p style="font-size:1.2em;">🧜‍♀️ Made with Ocean Magic 💙 by <strong style="color:#00ffff;">DaCameraGirl</strong> 🧠✨</p>
   <p style="margin-top:10px; font-style:italic; color:#FF6B9D; font-size:1.1em;">"Every Pick leads to a new treasure... 🌊🐚"</p>
+  <div style="margin: 28px auto 0; text-align:center; max-width:220px;">
+    <p style="color:#90e0ef; font-size:0.9em; margin-bottom:10px;">📱 Scan to play on any device!</p>
+    <div id="qr-code" style="background:#fff; border-radius:12px; padding:10px; display:inline-block;"></div>
+    <p style="color:#90e0ef; font-size:0.75em; margin-top:8px; opacity:0.7;">dacameragirl.github.io/sea-drifter</p>
+  </div>
   <div class="emoji-parade">
     <span>🌊🧜‍♀️🐚🐟🐳🐙🦀🐡🐬🦈✨💎🌀🪸🫧🐋🌊🧜‍♀️🐚🐟🐳🐙🦀🐡🐬🦈✨💎🌀🪸🫧🐋</span>
   </div>
 </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  new QRCode(document.getElementById('qr-code'), {
+    text: 'https://dacameragirl.github.io/sea-drifter/',
+    width: 180,
+    height: 180,
+    colorDark: '#001a33',
+    colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.H
+  });
+</script>
 
 <script>
 // ============================================
@@ -2732,6 +2835,8 @@ const sceneTitle   = document.getElementById('scene-title');
 const sceneText    = document.getElementById('scene-text');
 const choicesDiv   = document.getElementById('choices');
 const factbookList = document.getElementById('factbook-list');
+factbookList.addEventListener('click',  () => document.getElementById('factbook-badge').classList.remove('visible'));
+factbookList.addEventListener('scroll', () => document.getElementById('factbook-badge').classList.remove('visible'));
 const factbookCount = document.getElementById('factbook-count');
 
 let currentSceneId  = 'start';
@@ -2843,6 +2948,7 @@ function addFacts(sceneId) {
     factbookList.scrollTop = factbookList.scrollHeight;
     setTimeout(playBubblePop, discoveredFacts.size * 80);
     setJaxon('fact');
+    document.getElementById('factbook-badge').classList.add('visible');
   });
   const n = discoveredFacts.size;
   const progressFill = document.getElementById('factbook-progress-fill');
@@ -2955,10 +3061,13 @@ function renderScene(sceneId, choiceLabel) {
       choicesDiv.appendChild(btn);
     });
 
-    // Story Mode: hide choices until reading finishes, then fade them in
+    // Story Mode or Easy mode: auto-read aloud
     if (storyMode) {
       choicesDiv.style.visibility = 'hidden';
       speakText(currentSpeakText, revealChoices);
+    } else if (currentDifficulty === 'easy') {
+      choicesDiv.style.visibility = 'visible';
+      setTimeout(() => speakText(currentSpeakText, null), 800);
     } else {
       choicesDiv.style.visibility = 'visible';
     }
@@ -3139,18 +3248,19 @@ function addTreasure(scene) {
 // ============================================
 // 👦 JAXON REACTIONS
 // ============================================
-const jaxonData = {
-  start:   { face: '🧑', msg: 'Pick a path! Numbers are hiding in every one... 🔢' },
-  fact:    { face: '🤩', msg: 'Oh WOW — did you catch that number? I love this one!! 📖' },
-  good:    { face: '😄', msg: "YES! A happy ending! I'm so glad Mia got home! 💛" },
-  mixed:   { face: '🤔', msg: "Not the safest ending, but Mia's OK. Could've been worse! 🌊" },
-  bad:     { face: '😟', msg: "Oh no... but Mia is still counting. Counting always helps. 💙" },
-  treasure:{ face: '🤩', msg: 'A TREASURE! Quick — how many is that total? I\'m counting! 🏆' },
-  allFacts:{ face: '🎉', msg: 'ALL 79 FACTS!! I can barely contain myself!! 🎉🔢💙' },
-};
-
 function setJaxon(state) {
-  const d = jaxonData[state] || jaxonData.start;
+  const n = playerName || 'explorer';
+  const hey = playerName ? `${playerName}` : 'explorer';
+  const msgs = {
+    start:   { face: '🧑', msg: `Pick a path, ${hey}! Numbers are hiding in every one... 🔢` },
+    fact:    { face: '🤩', msg: `Oh WOW — did you catch that number, ${hey}? I love this one!! 📖` },
+    good:    { face: '😄', msg: `YES! A happy ending! Great pick, ${hey}! 💛` },
+    mixed:   { face: '🤔', msg: `Not the safest ending, ${hey} — but Mia's OK! 🌊` },
+    bad:     { face: '😟', msg: `Oh no, ${hey}... but counting always helps. 💙` },
+    treasure:{ face: '🤩', msg: `A TREASURE, ${hey}! How many is that total? I'm counting! 🏆` },
+    allFacts:{ face: '🎉', msg: `ALL 79 FACTS, ${hey}!! I can barely contain myself!! 🎉🔢💙` },
+  };
+  const d = msgs[state] || msgs.start;
   document.getElementById('jaxon-avatar').textContent = d.face;
   document.getElementById('jaxon-speech').textContent = d.msg;
 }
@@ -3221,6 +3331,7 @@ document.getElementById('print-btn').addEventListener('click', () => {
   certChoices.innerHTML = choices.length
     ? choices.map(c => '<p>🐚 ' + c + '</p>').join('')
     : '<p style="opacity:0.5">Finish a path first, then come back!</p>';
+  document.getElementById('cert-explorer-name').textContent = playerName || 'a brave explorer';
   document.getElementById('cert-facts-count').textContent    = discoveredFacts.size;
   document.getElementById('cert-treasures-count').textContent = collectedTreasures.size;
   document.getElementById('cert-date').textContent = new Date().toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
@@ -3255,8 +3366,27 @@ document.getElementById('share-btn').addEventListener('click', async () => {
   }
 });
 
-// Kick off the game
-renderScene('start', null);
+// ============================================
+// 🧜‍♀️ PLAYER NAME — welcome screen
+// ============================================
+let playerName = '';
+
+function startGame() {
+  document.getElementById('name-overlay').classList.add('hidden');
+  renderScene('start', null);
+}
+
+document.getElementById('name-start-btn').addEventListener('click', () => {
+  const val = document.getElementById('player-name-input').value.trim();
+  playerName = val.length > 0 ? val : '';
+  startGame();
+});
+document.getElementById('player-name-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('name-start-btn').click();
+});
+
+// Focus the input on load
+setTimeout(() => document.getElementById('player-name-input').focus(), 300);
 
 // 🔄 RESTART
 document.getElementById('restart-btn').addEventListener('click', () => {
@@ -3266,6 +3396,7 @@ document.getElementById('restart-btn').addEventListener('click', () => {
   factbookEmpty = true;
   discoveredFacts.clear();
   factbookList.innerHTML = '<li style="opacity:0.5; font-style:italic;">🌟 No facts found yet...</li>';
+  document.getElementById('factbook-badge').classList.remove('visible');
   factbookCount.textContent = 'Play to discover number facts!';
   const pf = document.getElementById('factbook-progress-fill');
   pf.style.width = '0%';
