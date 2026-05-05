@@ -2550,6 +2550,473 @@ const scenes = {
 };
 
 // ============================================
+// 🐚 EASY MODE STORY (ages 5–8, simple words, basic math)
+// ============================================
+const scenesEasy = {
+  start: {
+    title: '🧜‍♀️ Mia Is Lost!',
+    text: `🧜‍♀️ Mia the little mermaid swam out to play — and got turned around!
+      The big blue ocean looked the same in every direction. 🌊
+      <br><br>
+      Mia took a deep breath and counted to <strong>3</strong> to feel brave.
+      <em>1... 2... 3!</em> Counting always helps! ✨
+      <br><br>
+      Her best friend <strong style="color:#ffd700;">Jaxon</strong> spotted her from the beach and waved.
+      <em>"I can see <strong>3</strong> paths from here!"</em> he called.
+      <em>"<strong>3</strong> is a prime number — nothing divides into it except <strong>1</strong> and <strong>3</strong>!"</em>
+      <br><br>
+      <strong style="color:#00ffff;">Which path should Mia try?</strong>`,
+    speak: `Mia the little mermaid swam out to play and got turned around! The big blue ocean looked the same in every direction. Mia took a deep breath and counted to 3 to feel brave. 1, 2, 3! Counting always helps! Her best friend Jaxon spotted her from the beach and waved. "I can see 3 paths from here!" he called. "3 is a prime number — nothing divides into it except 1 and 3!" Which path should Mia try?`,
+    choices: [
+      { text: '🐬 Follow the friendly dolphin family', next: 'easy_dolphin' },
+      { text: '🌸 Swim through the glowing sea garden', next: 'easy_garden' },
+      { text: '🐚 Follow the trail of pink seashells', next: 'easy_shells' },
+    ]
+  },
+  easy_dolphin: {
+    title: '🐬 The Dolphin Family',
+    text: `🐬 A family of dolphins swam right up to Mia!
+      She counted them: <strong>1, 2, 3, 4</strong> dolphins.
+      A mama, a papa, and <strong>2</strong> babies.
+      <br><br>
+      <em><strong>4</strong> is an even number</em> — it splits perfectly in half!
+      <strong>2 + 2 = 4</strong>. Two grown-ups and two babies. 💙
+      <br><br>
+      The mama dolphin clicked and chirped in a friendly way.
+      Jaxon called from shore:
+      <em>"She's saying she knows the way home!"</em>
+      <br><br>
+      <strong style="color:#00ffff;">How should Mia travel with them?</strong>`,
+    speak: `A family of dolphins swam right up to Mia! She counted them: 1, 2, 3, 4 dolphins. A mama, a papa, and 2 babies. 4 is an even number — it splits perfectly in half! 2 plus 2 equals 4. The mama dolphin clicked and chirped in a friendly way. Jaxon called from shore: "She's saying she knows the way home!" How should Mia travel with them?`,
+    choices: [
+      { text: '🏊 Swim alongside the dolphins', next: 'easy_dolphin_swim' },
+      { text: '🤸 Ride on the mama dolphin\'s back', next: 'easy_dolphin_ride' },
+    ]
+  },
+  easy_dolphin_swim: {
+    title: '🐬 Swimming Together!',
+    text: `🐬 Mia swam alongside the dolphins all the way home!
+      The baby dolphins jumped and played around her the whole way. 🌟
+      <br><br>
+      Jaxon counted their jumps from the beach:
+      <em>"They jumped <strong>10</strong> times!"</em>
+      <em>"<strong>10</strong> is special — you have <strong>10</strong> fingers AND <strong>10</strong> toes!"</em>
+      <br><br>
+      Mia gave each dolphin a tail-wave goodbye.
+      <strong>4</strong> dolphins × <strong>1</strong> wave each = <strong>4</strong> waves! 💙`,
+    speak: `Mia swam alongside the dolphins all the way home! The baby dolphins jumped and played around her the whole way. Jaxon counted their jumps from the beach: "They jumped 10 times! 10 is special — you have 10 fingers AND 10 toes!" Mia gave each dolphin a tail-wave goodbye. 4 dolphins times 1 wave each equals 4 waves!`,
+    ending: '🐬 DOLPHIN FRIENDS ENDING 🐬',
+    type: 'good',
+    treasure: { emoji: '🐬', name: 'Dolphin Friendship Token', desc: 'From a family of 4 — 2 grown-ups and 2 babies — who knew the way home' }
+  },
+  easy_dolphin_ride: {
+    title: '🤸 The Best Ride Ever!',
+    text: `🤸 Mia held on tight as the mama dolphin zoomed through the water!
+      It was the fastest Mia had ever moved — much faster than swimming! 💨
+      <br><br>
+      <em>"<strong>5</strong> minutes!"</em> said Jaxon when she arrived home.
+      <em>"That's <strong>300</strong> seconds!"</em>
+      <em>"<strong>60</strong> seconds × <strong>5</strong> minutes = <strong>300</strong> seconds!"</em>
+      <br><br>
+      The mama dolphin nudged Mia gently onto the sand
+      and flipped back into the waves with a happy splash. 🌟`,
+    speak: `Mia held on tight as the mama dolphin zoomed through the water! It was the fastest Mia had ever moved. "5 minutes!" said Jaxon when she arrived home. "That's 300 seconds! 60 seconds times 5 minutes equals 300 seconds!" The mama dolphin nudged Mia gently onto the sand and flipped back into the waves with a happy splash.`,
+    ending: '🤸 DOLPHIN RIDE ENDING 🤸',
+    type: 'good',
+    treasure: { emoji: '🌊', name: 'Dolphin Wave Shell', desc: 'The fastest ride in the ocean — 5 minutes, 300 seconds!' }
+  },
+  easy_garden: {
+    title: '🌸 The Glowing Garden',
+    text: `🌸 Mia swam into a garden of glowing sea flowers!
+      Pink ones, purple ones, orange ones — all softly lit from inside. ✨
+      <br><br>
+      She counted:
+      <strong>2</strong> pink + <strong>2</strong> purple + <strong>2</strong> orange.
+      <em>"That's <strong>3</strong> pairs!"</em> called Jaxon.
+      <em>"<strong>2 + 2 + 2 = 6</strong>! Or: <strong>3 × 2 = 6</strong>! Same answer, two ways!"</em>
+      <br><br>
+      A little sea turtle peeked out from behind an orange flower 🐢.
+      It had something shiny in its mouth!
+      <br><br>
+      <strong style="color:#00ffff;">What should Mia do?</strong>`,
+    speak: `Mia swam into a garden of glowing sea flowers! Pink ones, purple ones, orange ones — all softly lit from inside. She counted: 2 pink plus 2 purple plus 2 orange. "That's 3 pairs!" called Jaxon. "2 plus 2 plus 2 equals 6! Or: 3 times 2 equals 6! Same answer, two ways!" A little sea turtle peeked out from behind an orange flower. It had something shiny in its mouth! What should Mia do?`,
+    choices: [
+      { text: '💎 Look at the shiny thing in the turtle\'s mouth', next: 'easy_garden_pearl' },
+      { text: '🐢 Follow the turtle — it looks like it knows the way!', next: 'easy_garden_turtle' },
+    ]
+  },
+  easy_garden_pearl: {
+    title: '💎 The Magic Pearl',
+    text: `💎 The turtle dropped a perfectly round glowing pearl into Mia's hands!
+      It was warm, and it glowed <em>brighter</em> when Mia pointed it toward home —
+      like a compass made of light! ✨
+      <br><br>
+      <em>"A sphere!"</em> said Jaxon when Mia got home.
+      <em>"Every point on the outside is the <strong>exact same distance</strong> from the centre!
+      That's what makes it perfectly round!"</em>
+      <br><br>
+      Mia followed the pearl's glow all the way back to her cove. 🌟`,
+    speak: `The turtle dropped a perfectly round glowing pearl into Mia's hands! It was warm, and it glowed brighter when Mia pointed it toward home — like a compass made of light! "A sphere!" said Jaxon when Mia got home. "Every point on the outside is the exact same distance from the centre! That's what makes it perfectly round!" Mia followed the pearl's glow all the way back to her cove.`,
+    ending: '💎 MAGIC PEARL ENDING 💎',
+    type: 'good',
+    treasure: { emoji: '💎', name: 'Glowing Pearl Compass', desc: 'A perfect sphere that always points toward home' }
+  },
+  easy_garden_turtle: {
+    title: '🐢 Slow and Steady!',
+    text: `🐢 The turtle moved slowly — but it knew <em>exactly</em> where it was going!
+      Step by patient step, it led Mia through the garden and into a warm current. 🌊
+      <br><br>
+      Mia looked at the turtle's shell. It had <strong>13</strong> sections!
+      <em>"<strong>13</strong> is a prime number!"</em> said Jaxon when Mia arrived home.
+      <em>"Nothing divides evenly into <strong>13</strong>
+      except <strong>1</strong> and <strong>13</strong> itself."</em>
+      <em>"Turtles have great taste in numbers!"</em>
+      <br><br>
+      Slow and steady really does win the race. 🌟`,
+    speak: `The turtle moved slowly — but it knew exactly where it was going! Step by patient step, it led Mia through the garden and into a warm current. Mia looked at the turtle's shell. It had 13 sections! "13 is a prime number!" said Jaxon when Mia arrived home. "Nothing divides evenly into 13 except 1 and 13 itself. Turtles have great taste in numbers!" Slow and steady really does win the race.`,
+    ending: '🐢 TURTLE GUIDE ENDING 🐢',
+    type: 'good',
+    treasure: { emoji: '🐢', name: 'Lucky Turtle Token', desc: '13 sections on its shell — a prime number on the wisest guide' }
+  },
+  easy_shells: {
+    title: '🐚 The Seashell Trail',
+    text: `🐚 A trail of pretty pink seashells curved through the water like a dotted line on a map!
+      <br><br>
+      Mia counted them as she swam:
+      <strong>5... 10... 15... 20!</strong>
+      The shells came in groups of <strong>5</strong>. 🐚🐚🐚🐚🐚
+      <br><br>
+      <em>"Counting by 5s is easy!"</em> Jaxon called from shore.
+      <em>"One hand = <strong>5</strong> fingers. Two hands = <strong>10</strong> fingers!"</em>
+      <br><br>
+      The trail split into two paths ahead.
+      <strong style="color:#00ffff;">Which way should Mia go?</strong>`,
+    speak: `A trail of pretty pink seashells curved through the water like a dotted line on a map! Mia counted them as she swam: 5, 10, 15, 20! The shells came in groups of 5. "Counting by 5s is easy!" Jaxon called from shore. "One hand equals 5 fingers. Two hands equals 10 fingers!" The trail split into two paths ahead. Which way should Mia go?`,
+    choices: [
+      { text: '🌑 Follow the shells toward the cozy cave', next: 'easy_shells_cave' },
+      { text: '☀️ Follow the shells toward the bright sunlight', next: 'easy_shells_sun' },
+    ]
+  },
+  easy_shells_cave: {
+    title: '🌑 The Glowing Cave',
+    text: `🌑 The cave was dark — but inside it, <strong>12</strong> rocks glowed soft blue!
+      Mia counted each one as she swam through. They lit her way perfectly. 💙
+      <br><br>
+      A tiny crab waved from a ledge.
+      <em>"<strong>12</strong>!"</em> it said cheerfully.
+      <em>"<strong>12 = 3 × 4</strong>! Or <strong>2 × 6</strong>! Or <strong>1 × 12</strong>!
+      I've counted these rocks for <strong>100</strong> years!"</em>
+      <br><br>
+      The cave opened right out onto Mia's home cove. She was back! 🌟`,
+    speak: `The cave was dark — but inside it, 12 rocks glowed soft blue! Mia counted each one as she swam through. A tiny crab waved from a ledge. "12!" it said cheerfully. "12 = 3 times 4! Or 2 times 6! Or 1 times 12! I've counted these rocks for 100 years!" The cave opened right out onto Mia's home cove. She was back!`,
+    ending: '🌑 GLOWING CAVE ENDING 🌑',
+    type: 'good',
+    treasure: { emoji: '🪨', name: 'Glowing Cave Rock', desc: 'One of 12 rocks that lit the way — counted by a crab for 100 years' }
+  },
+  easy_shells_sun: {
+    title: '☀️ Into the Sunlight!',
+    text: `☀️ The shells led Mia straight up toward golden sunlight!
+      Up, up, up — the water got warmer and brighter with every stroke.
+      <br><br>
+      She burst through the surface right next to the beach! 🌟
+      <br><br>
+      Jaxon was counting the shells she'd followed:
+      <em>"<strong>20</strong> shells in groups of <strong>5</strong> —
+      that's <strong>4</strong> groups! <strong>4 × 5 = 20</strong>!"</em>
+      <em>"You can count big numbers by making smaller groups first!"</em>
+      <br><br>
+      Mia was home — warm, safe, and happy. 🌞`,
+    speak: `The shells led Mia straight up toward golden sunlight! Up, up, up — the water got warmer and brighter with every stroke. She burst through the surface right next to the beach! Jaxon was counting the shells she'd followed: "20 shells in groups of 5 — that's 4 groups! 4 times 5 equals 20! You can count big numbers by making smaller groups first!" Mia was home — warm, safe, and happy.`,
+    ending: '☀️ SUNLIGHT ENDING ☀️',
+    type: 'good',
+    treasure: { emoji: '☀️', name: 'Sunbeam Shell', desc: '20 shells in 4 groups of 5 — the trail that led straight home' }
+  },
+};
+
+// ============================================
+// ⚡ HARD MODE STORY (ages 10+, real math in the narrative)
+// ============================================
+const scenesHard = {
+  start: {
+    title: '🧮 Lost at 400 Metres',
+    text: `🧮 Mia was <strong>400 metres</strong> below sea level.
+      At that depth, pressure is <strong>41 atmospheres</strong> —
+      <em>40 from the water column plus 1 from the air above the surface</em>.
+      <br><br>
+      The safe ascent rate is no more than <strong>10 metres per minute</strong>
+      to avoid decompression problems.
+      <strong>400 ÷ 10 = 40 minutes</strong> to surface at that rate.
+      <br><br>
+      But Mia's oxygen supply would only last <strong>35 minutes</strong>.
+      She had a <strong>5-minute shortfall</strong>. She needed a faster route.
+      <br><br>
+      Jaxon had spotted <strong>4</strong> possible routes from the shore.
+      <em>Each one is a different calculation.</em>
+      <br><br>
+      <strong style="color:#00ffff;">Which route does Mia take?</strong>`,
+    speak: `Mia was 400 metres below sea level. At that depth, pressure is 41 atmospheres — 40 from the water column plus 1 from the air above. The safe ascent rate is no more than 10 metres per minute. 400 divided by 10 equals 40 minutes to surface. But Mia's oxygen supply would only last 35 minutes. She had a 5-minute shortfall. She needed a faster route. Jaxon had spotted 4 possible routes from the shore. Each one is a different calculation. Which route does Mia take?`,
+    choices: [
+      { text: '🌊 Route A: Ocean current — 200m, adds 5 m/min to speed', next: 'hard_current' },
+      { text: '🌋 Route B: Thermal vent — 350m but 30% faster from heat', next: 'hard_thermal' },
+      { text: '🐋 Route C: Whale lift — hitch a ride at 25 m/min for 280m', next: 'hard_whale' },
+      { text: '🧲 Route D: Magnetic current — 320m but needs an 8-min safety stop', next: 'hard_magnetic' },
+    ]
+  },
+  hard_current: {
+    title: '🌊 Route A: The Ocean Current',
+    text: `🌊 Mia caught the rising ocean current.
+      Her own speed: <strong>10 m/min</strong>.
+      Current boost: <strong>+5 m/min</strong>.
+      Combined: <strong>15 m/min</strong>.
+      <br><br>
+      <em>200m ÷ 15 m/min = <strong>13.3 minutes</strong> — well under her 35-min limit!</em>
+      <br><br>
+      But at <strong>180 metres</strong> she hit a thermocline — temperature jumped from
+      <strong>4°C to 18°C</strong> in just 2 metres. The density change created turbulence,
+      dropping her speed to <strong>8 m/min</strong>. She had <strong>20 metres</strong> left.
+      <br><br>
+      Push through in <em>20 ÷ 8 = <strong>2.5 minutes</strong></em>.
+      Total if she pushes: <strong>13.3 + 2.5 = 15.8 minutes</strong>.
+      Oxygen remaining: <strong>35 − 15.8 = 19.2 minutes</strong>. ✅
+      <br><br>
+      Or wait <strong>3 minutes</strong> for turbulence to pass, then cover 20m.
+      <br><br>
+      <strong style="color:#00ffff;">Push through or wait?</strong>`,
+    speak: `Mia caught the rising ocean current. Her own speed: 10 metres per minute. Current boost: plus 5. Combined: 15 metres per minute. 200 divided by 15 equals 13.3 minutes — well under her 35-minute limit! But at 180 metres she hit a thermocline. Temperature jumped from 4 to 18 degrees in 2 metres. The density change created turbulence, dropping her speed to 8 metres per minute. She had 20 metres left. Push through in 2.5 minutes. Total if she pushes: 15.8 minutes. Oxygen remaining: 19.2 minutes. Or wait 3 minutes for turbulence to pass. Push through or wait?`,
+    choices: [
+      { text: '💪 Push through — 15.8 min total, 19.2 min of oxygen left', next: 'hard_current_push' },
+      { text: '⏳ Wait 3 minutes for the turbulence to ease', next: 'hard_current_wait' },
+    ]
+  },
+  hard_current_push: {
+    title: '💪 Calculated and Clear',
+    text: `💪 Mia pushed through the turbulence.
+      Total ascent: <strong>15.8 minutes</strong>.
+      Oxygen remaining: <strong>19.2 minutes</strong> — a comfortable margin.
+      <br><br>
+      She surfaced <strong>340 metres</strong> from shore. Jaxon had a stopwatch.
+      <em>"Predicted: 15.8 min. Actual: <strong>15 min 47 sec</strong> = 15.78 min."</em>
+      <em>"Percentage error: (15.8 − 15.78) ÷ 15.8 × 100 = <strong>0.13%</strong>."</em>
+      <em>"That is nearly perfect."</em> He almost smiled. 💙`,
+    speak: `Mia pushed through the turbulence. Total ascent: 15.8 minutes. Oxygen remaining: 19.2 minutes — a comfortable margin. She surfaced 340 metres from shore. Jaxon had a stopwatch. "Predicted: 15.8 minutes. Actual: 15 minutes 47 seconds, which equals 15.78 minutes. Percentage error: 15.8 minus 15.78, divided by 15.8, times 100 equals 0.13 percent. That is nearly perfect." He almost smiled.`,
+    ending: '🌊 OPTIMAL ROUTE ENDING 🌊',
+    type: 'good',
+    treasure: { emoji: '📐', name: "Navigator's Protractor", desc: '0.13% error — nearly perfect calculation under 41 atmospheres of pressure' }
+  },
+  hard_current_wait: {
+    title: '⏳ Safe But Costly',
+    text: `⏳ Mia waited. The turbulence eased after exactly <strong>3 minutes</strong>.
+      Total: <strong>13.3 + 3 + 2.5 = 18.8 minutes</strong>.
+      Oxygen remaining: <strong>35 − 18.8 = 16.2 minutes</strong>.
+      <br><br>
+      Safe — but Jaxon ran the numbers immediately.
+      <em>"16.2 ÷ 35 × 100 = <strong>46%</strong> oxygen remaining."</em>
+      <em>"Safe threshold is 50%. You went below it."</em>
+      <em>"Was the 3-minute wait actually needed? Calculate next time."</em>
+      <br><br>
+      <em>Was it?</em> At 8 m/min, 20m takes 2.5 minutes — still fine with 19.2 min left.
+      The wait wasn't necessary. But Mia was home. 🌊`,
+    speak: `Mia waited. The turbulence eased after exactly 3 minutes. Total: 13.3 plus 3 plus 2.5 equals 18.8 minutes. Oxygen remaining: 35 minus 18.8 equals 16.2 minutes. "16.2 divided by 35 times 100 equals 46 percent oxygen remaining. Safe threshold is 50%. You went below it. Was the 3-minute wait actually needed?" Was it? At 8 metres per minute, 20 metres takes 2.5 minutes — still fine with 19.2 minutes left. The wait wasn't necessary. But Mia was home.`,
+    ending: '⏳ CAUTIOUS CALCULATION ENDING ⏳',
+    type: 'mixed',
+    treasure: { emoji: '⏱️', name: 'Calculation Stopwatch', desc: 'A reminder to always run the numbers before deciding to wait' }
+  },
+  hard_thermal: {
+    title: '🌋 Route B: The Thermal Vent',
+    text: `🌋 The thermal vent route: <strong>350 metres</strong>.
+      Normal time: <strong>350 ÷ 10 = 35 minutes</strong>.
+      The heat cuts travel time by <strong>30%</strong>:
+      <strong>35 × 0.70 = 24.5 minutes</strong>. ✅
+      <br><br>
+      Mia entered the thermal column. The core was <strong>180°C</strong> 🔥 —
+      but the outer layer where she swam was <strong>38°C</strong>,
+      just <strong>1°C</strong> above body temperature.
+      <br><br>
+      At <strong>200 metres</strong> remaining, the vent forked:
+      a <strong>wider cooler channel</strong> (adds 4 min, safer)
+      and a <strong>narrow hot core</strong> at <strong>55°C</strong>
+      (doubles speed, but physically demanding).
+      <br><br>
+      <strong style="color:#00ffff;">Which channel does Mia take?</strong>`,
+    speak: `The thermal vent route: 350 metres. Normal time: 35 minutes. The heat cuts travel time by 30%: 35 times 0.70 equals 24.5 minutes. Mia entered the thermal column. The core was 180 degrees, but the outer layer was 38 degrees Celsius — just 1 degree above body temperature. At 200 metres remaining, the vent forked: a wider cooler channel adding 4 minutes, safer; and a narrow hot core at 55 degrees, doubling speed but physically demanding. Which channel does Mia take?`,
+    choices: [
+      { text: '🌡️ Take the wide cool channel — safe, adds 4 min', next: 'hard_thermal_wide' },
+      { text: '🔥 Take the narrow hot core — double speed, hard on the body', next: 'hard_thermal_core' },
+    ]
+  },
+  hard_thermal_wide: {
+    title: '🌡️ Wide Channel Home',
+    text: `🌡️ The wide channel added <strong>4 minutes</strong> — but Mia stayed cool and in control.
+      Final time: <strong>24.5 + 4 = 28.5 minutes</strong>.
+      Oxygen remaining: <strong>35 − 28.5 = 6.5 minutes</strong>. Tight but fine. ✅
+      <br><br>
+      As she surfaced, a steam bubble deposited something on her palm:
+      a disc of <strong>obsidian</strong> — volcanic glass formed when lava hits seawater
+      and cools in under <strong>1 second</strong>.
+      Rate of cooling: <strong>(900 − 20)°C ÷ 1s = 880°C per second</strong>.
+      <br><br>
+      Jaxon stared at it for a long moment.
+      <em>"880 degrees per second,"</em> he said. <em>"That's remarkable."</em> 💙`,
+    speak: `The wide channel added 4 minutes — but Mia stayed cool and in control. Final time: 28.5 minutes. Oxygen remaining: 6.5 minutes. Tight but fine. As she surfaced, a steam bubble deposited a disc of obsidian on her palm — volcanic glass formed when lava hits seawater and cools in under 1 second. Rate of cooling: 900 minus 20 degrees, divided by 1 second, equals 880 degrees per second. Jaxon stared at it for a long moment. "880 degrees per second," he said. "That's remarkable."`,
+    ending: '🌋 THERMAL VENT ENDING 🌋',
+    type: 'good',
+    treasure: { emoji: '🪨', name: 'Obsidian Disc', desc: 'Volcanic glass — cooled at 880°C per second when lava hit the sea' }
+  },
+  hard_thermal_core: {
+    title: '🔥 Core Rush',
+    text: `🔥 The narrow core shot Mia upward at <strong>20 m/min</strong> — double speed!
+      Remaining 200m ÷ 20 = <strong>10 minutes</strong>.
+      Total: <strong>14.5 minutes</strong>. Oxygen remaining: <strong>20.5 minutes</strong>! 🚀
+      <br><br>
+      But at <strong>55°C</strong> she used <strong>3× the normal energy</strong> fighting the heat.
+      She arrived fast — but exhausted and flushed.
+      <br><br>
+      <em>"Time saved: 14 minutes,"</em> Jaxon said flatly.
+      <em>"Estimated recovery time: 2 hours."</em>
+      <em>"Energy cost per minute saved: high."</em>
+      He paused. <em>"But the math was correct. I'll give you that."</em> 🔥`,
+    speak: `The narrow core shot Mia upward at 20 metres per minute — double speed! 200 metres divided by 20 equals 10 minutes. Total: 14.5 minutes. Oxygen remaining: 20.5 minutes! But at 55 degrees she used 3 times the normal energy fighting the heat. She arrived fast — but exhausted. "Time saved: 14 minutes," Jaxon said. "Estimated recovery time: 2 hours. Energy cost per minute saved: high." He paused. "But the math was correct. I'll give you that."`,
+    ending: '🔥 CORE RUSH ENDING 🔥',
+    type: 'mixed',
+    treasure: { emoji: '🌋', name: 'Thermal Core Shard', desc: 'Fastest route — 14.5 minutes — but 3× the energy cost' }
+  },
+  hard_whale: {
+    title: '🐋 Route C: Whale Lift',
+    text: `🐋 A sperm whale was ascending — speed <strong>25 m/min</strong>, that's <strong>2.5×</strong> Mia's normal pace.
+      <strong>280m ÷ 25 = 11.2 minutes</strong>. Oxygen remaining: <strong>23.8 minutes</strong>. ✅
+      <br><br>
+      Mia grabbed its pectoral fin. The whale weighed <strong>40,000 kg</strong>.
+      Mia: <strong>52 kg</strong>. That's <em>52 ÷ 40,000 = <strong>0.13%</strong></em> of its body weight.
+      The whale did not notice.
+      <br><br>
+      At <strong>140m depth</strong> the whale echolocated — a burst at <strong>174 dB</strong>
+      (louder than a rocket launch). The click returned in <strong>0.53 seconds</strong>.
+      <em>Speed of sound in water: 1,500 m/s.</em>
+      Distance to nearest object: <em>1,500 × 0.53 ÷ 2 = <strong>397.5m</strong></em>.
+      <br><br>
+      Something large was at 397.5 metres.
+      <strong style="color:#00ffff;">Ride the whale up, or investigate the echo?</strong>`,
+    speak: `A sperm whale was ascending at 25 metres per minute — 2.5 times Mia's normal pace. 280 metres divided by 25 equals 11.2 minutes. Oxygen remaining: 23.8 minutes. Mia grabbed its pectoral fin. The whale weighed 40,000 kilograms. Mia: 52 kilograms. That's 0.13 percent of its body weight. The whale did not notice. At 140 metres depth the whale echolocated at 174 decibels. The click returned in 0.53 seconds. Distance: 1,500 times 0.53 divided by 2 equals 397.5 metres. Something large was there. Ride the whale up, or investigate the echo?`,
+    choices: [
+      { text: '🐋 Stay on — ride the whale all the way to the surface', next: 'hard_whale_up' },
+      { text: '🔍 Let go and investigate what\'s at 397.5m', next: 'hard_whale_echo' },
+    ]
+  },
+  hard_whale_up: {
+    title: '🐋 All The Way Up',
+    text: `🐋 Mia held on. The whale surfaced with a <strong>9-metre</strong> blow of warm mist. 🌊
+      <br><br>
+      It had exhaled <strong>2,500 litres of air</strong> in <strong>0.3 seconds</strong>,
+      replacing <strong>90%</strong> of its lung capacity in one breath.
+      (Humans replace only <strong>15%</strong> per breath.)
+      Flow rate: <em>2,500 ÷ 0.3 = <strong>8,333 litres per second</strong></em>.
+      <br><br>
+      Total ascent: <strong>11.2 minutes</strong>.
+      Oxygen used: <strong>11.2 ÷ 35 × 100 = 32%</strong> of her supply.
+      <br><br>
+      Jaxon was on the beach with a notebook.
+      <em>"Exhale velocity: approximately <strong>160 km/h</strong>."</em>
+      He had already written three pages of notes. 💙`,
+    speak: `Mia held on. The whale surfaced with a 9-metre blow of warm mist. It had exhaled 2,500 litres of air in 0.3 seconds, replacing 90 percent of its lung capacity in one breath. Humans replace only 15 percent per breath. Flow rate: 2,500 divided by 0.3 equals 8,333 litres per second. Total ascent: 11.2 minutes. Oxygen used: 32 percent of her supply. Jaxon was on the beach with a notebook. "Exhale velocity: approximately 160 kilometres per hour." He had already written three pages of notes.`,
+    ending: '🐋 WHALE LIFT ENDING 🐋',
+    type: 'good',
+    treasure: { emoji: '🐋', name: 'Whale Breath Crystal', desc: '2,500 litres in 0.3 seconds — 8,333 litres per second, crystallised' }
+  },
+  hard_whale_echo: {
+    title: '🔍 The Echo Object',
+    text: `🔍 Mia dove to <strong>397.5m</strong> — a sunken research buoy, still transmitting.
+      Display: <strong>847 days</strong> since sinking.
+      <em>847 = 7 × 11 × 11. Three prime factors.</em> Jaxon would love that.
+      <br><br>
+      The buoy held a sealed breathing unit: <strong>+15 minutes</strong> of oxygen.
+      New total: <strong>23.8 + 15 = 38.8 minutes</strong>. Plenty.
+      <br><br>
+      Current depth from dive: Mia descended from <strong>140m</strong> to <strong>~145m</strong>.
+      Remaining ascent: <strong>145m ÷ 8 m/min (balloon) = 18.1 minutes</strong>.
+      Oxygen remaining after ascent: <strong>38.8 − 18.1 = 20.7 minutes</strong>. ✅
+      <br><br>
+      She surfaced with <strong>20+ minutes</strong> of oxygen to spare —
+      and a piece of data-logging equipment that had recorded ocean temperature
+      every hour for <strong>847</strong> days straight. 🌟`,
+    speak: `Mia dove to 397.5 metres — a sunken research buoy, still transmitting. Display: 847 days since sinking. 847 = 7 times 11 times 11. Three prime factors. The buoy held a sealed breathing unit: plus 15 minutes of oxygen. New total: 38.8 minutes. Remaining ascent: 145 metres divided by 8 equals 18.1 minutes. Oxygen remaining after ascent: 20.7 minutes. She surfaced with 20 minutes of oxygen to spare — and a data logger that had recorded ocean temperature every hour for 847 days straight.`,
+    ending: '🔍 ECHO DISCOVERY ENDING 🔍',
+    type: 'good',
+    treasure: { emoji: '📡', name: 'Research Buoy Beacon', desc: 'Sank 847 days ago — 7 × 11 × 11. The echo that saved the day' }
+  },
+  hard_magnetic: {
+    title: '🧲 Route D: Magnetic Current',
+    text: `🧲 The magnetic current: <strong>18 m/min</strong>.
+      Required: an <strong>8-minute safety stop</strong> at <strong>15m depth</strong>
+      to equalise nitrogen in the bloodstream.
+      <br><br>
+      Calculation:
+      <em>(320 − 15)m ÷ 18 = 305 ÷ 18 = <strong>16.9 min</strong></em>
+      + <strong>8 min</strong> stop
+      + <em>15 ÷ 18 = <strong>0.8 min</strong></em> final stretch
+      = <strong>25.7 minutes total</strong>. Oxygen remaining: <strong>9.3 min</strong>. ✅
+      <br><br>
+      The current glowed deep blue-purple, fizzing with charged particles.
+      At <strong>200m</strong> it split: main current upward,
+      and a <strong>glowing secondary vein</strong> branching sideways
+      — moving at <strong>32 m/min</strong>, emerging closer to shore.
+      <br><br>
+      <strong style="color:#00ffff;">Main current (known) or secondary vein (faster, unknown)?</strong>`,
+    speak: `The magnetic current moved at 18 metres per minute, but required an 8-minute safety stop at 15 metres depth. Calculation: 305 divided by 18 equals 16.9 minutes, plus 8-minute stop, plus 0.8 minutes final stretch equals 25.7 minutes total. Oxygen remaining: 9.3 minutes. The current glowed deep blue-purple, fizzing with charged particles. At 200 metres it split: main current upward, and a glowing secondary vein at 32 metres per minute, emerging closer to shore. Main current or secondary vein?`,
+    choices: [
+      { text: '⬆️ Stay on the main current — 25.7 min, calculated and safe', next: 'hard_magnetic_main' },
+      { text: '✨ Take the glowing secondary vein — 32 m/min, unknown exit', next: 'hard_magnetic_vein' },
+    ]
+  },
+  hard_magnetic_main: {
+    title: '⬆️ By The Numbers',
+    text: `⬆️ Mia stayed on the main current.
+      At <strong>15m</strong> she stopped — exactly <strong>8 minutes</strong>,
+      counting every second: <em>480 seconds</em>.
+      <br><br>
+      Surfaced at <strong>25.7 min</strong>. Oxygen remaining: <strong>9.3 min</strong>.
+      Margin: <em>9.3 ÷ 35 × 100 = <strong>26.6%</strong></em>. Acceptable.
+      <br><br>
+      Jaxon had his instruments out.
+      <em>"Predicted: 25.7 min. Actual: <strong>25 min 41 sec</strong> = 25.68 min."</em>
+      <em>"Error: <strong>0.47%</strong>."</em>
+      <em>"The magnetic field here is <strong>62 microteslas</strong> —
+      Earth average is 25–65. You were in a strong zone."</em> 💙`,
+    speak: `Mia stayed on the main current. At 15 metres she stopped — exactly 8 minutes, counting every second: 480 seconds. Surfaced at 25.7 minutes. Oxygen remaining: 9.3 minutes. Margin: 26.6 percent. "Predicted: 25.7 minutes. Actual: 25 minutes 41 seconds equals 25.68 minutes. Error: 0.47 percent. The magnetic field here is 62 microteslas — Earth average is 25 to 65. You were in a strong zone."`,
+    ending: '🧲 MAGNETIC CURRENT ENDING 🧲',
+    type: 'good',
+    treasure: { emoji: '🧲', name: 'Magnetite Crystal', desc: '62 microteslas — from the strongest magnetic zone in the ocean' }
+  },
+  hard_magnetic_vein: {
+    title: '✨ The Magnetite Vein',
+    text: `✨ The secondary vein was pure <strong>magnetite</strong> —
+      the same mineral migratory birds use to navigate.
+      <strong>4× denser</strong> than the main current. Speed: <strong>32 m/min</strong>.
+      <br><br>
+      From branch at ~200m: <em>200 ÷ 32 = 6.25 min</em>
+      + <strong>8-min stop</strong> + <em>15 ÷ 32 = 0.47 min</em>
+      = <strong>14.7 min</strong> from branch.
+      First leg: <em>~200 ÷ 18 = 11.1 min</em>.
+      Total: <strong>25.8 min</strong> — almost identical to the main route. 🌀
+      <br><br>
+      But she emerged <strong>180m from shore</strong> instead of 340m,
+      saving a long surface swim.
+      The water around her glowed faint blue.
+      <em>"Magnetite seam,"</em> said Jaxon. <em>"My compass is spinning."</em>
+      He was extremely pleased about this. 💙`,
+    speak: `The secondary vein was pure magnetite — 4 times denser than the main current. Speed: 32 metres per minute. Total time came to 25.8 minutes — almost identical to the main route. But she emerged 180 metres from shore instead of 340, saving a long surface swim. The water around her glowed faint blue. "Magnetite seam," said Jaxon. "My compass is spinning." He was extremely pleased about this.`,
+    ending: '✨ MAGNETITE VEIN ENDING ✨',
+    type: 'good',
+    treasure: { emoji: '🔮', name: 'Magnetite Sphere', desc: 'From the vein where compass needles spin — same mineral birds use to navigate' }
+  },
+};
+
+function getActiveScenes() {
+  if (currentDifficulty === 'easy') return scenesEasy;
+  if (currentDifficulty === 'hard') return scenesHard;
+  return scenes;
+}
+
+// ============================================
 // 🧮 JAXON'S NUMBER FACTS (per scene)
 // ============================================
 const sceneFacts = {
@@ -3030,7 +3497,7 @@ function addFacts(sceneId) {
 }
 
 function renderScene(sceneId, choiceLabel) {
-  const scene = scenes[sceneId];
+  const scene = getActiveScenes()[sceneId];
   if (!scene) return;
   addFacts(sceneId);
   currentSceneId = sceneId;
@@ -3172,7 +3639,9 @@ document.querySelectorAll('.diff-btn').forEach(btn => {
     document.body.classList.remove('diff-easy', 'diff-medium', 'diff-hard');
     document.body.classList.add('diff-' + currentDifficulty);
     updateModeBanner(currentDifficulty);
-    if (currentSceneId) updateChallengeBlock(currentSceneId);
+    updateChallengeBlock(currentSceneId);
+    // Restart into the new story
+    document.getElementById('restart-btn').click();
   });
 });
 
@@ -3315,7 +3784,11 @@ document.getElementById('sounds-btn').addEventListener('click', () => {
 // 🏆 TREASURE COLLECTION
 // ============================================
 const collectedTreasures = new Set();
-const TOTAL_TREASURES = 21;
+function TOTAL_TREASURES() {
+  if (currentDifficulty === 'easy') return 6;
+  if (currentDifficulty === 'hard') return 10;
+  return 21;
+}
 
 function addTreasure(scene) {
   if (!scene.treasure || collectedTreasures.has(scene.treasure.name)) return;
@@ -3328,7 +3801,7 @@ function addTreasure(scene) {
   badge.dataset.tip = scene.treasure.name + ' — ' + scene.treasure.desc;
   grid.appendChild(badge);
   const n = collectedTreasures.size;
-  document.getElementById('treasure-count').textContent = n + ' of ' + TOTAL_TREASURES + ' treasures found!';
+  document.getElementById('treasure-count').textContent = n + ' of ' + TOTAL_TREASURES() + ' treasures found!';
   setJaxon('treasure');
 }
 
