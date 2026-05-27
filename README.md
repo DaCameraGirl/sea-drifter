@@ -1,4 +1,4 @@
-<h1>🌊🧜‍♀️ Pick — The Sunken Tale 🧜‍♀️🌊</h1>
+<h1>🌊🧜‍♀️ Pick — The Sunken Tale 🧜‍♀️🌊</h1> 
 
 
 <div align="center">
