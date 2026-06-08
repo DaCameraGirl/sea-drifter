@@ -46,13 +46,13 @@ const paths = {
   1: { 
     name: '⛪ Old church road', 
     emoji: '⛪',
-    story: 'Mia walked toward the old stone church 🪨. The bells rang softly... a kind priest opened the door and offered her warm cocoa ☕. She felt safe.',
+    story: 'Michaela walked toward the old stone church 🪨. The bells rang softly... a kind priest opened the door and offered her warm cocoa ☕. She felt safe.',
     ending: '✨ GOOD ENDING ✨'
   },
   2: { 
     name: '🌲 Breathing woods trail', 
     emoji: '🌲',
-    story: 'The trees whispered her name 🍃. Mia followed glowing fireflies 🦋... but the woods grew darker, and her flashlight flickered. 🔦',
+    story: 'The trees whispered her name 🍃. Michaela followed glowing fireflies 🦋... but the woods grew darker, and her flashlight flickered. 🔦',
     ending: '🌙 MIXED ENDING 🌙'
   },
   3: { 
@@ -64,19 +64,19 @@ const paths = {
   4: { 
     name: '🚂 Foggy train station', 
     emoji: '🚂',
-    story: 'A mysterious train arrived 🚂💨. The conductor smiled... but the train went somewhere unknown. Mia waved goodbye to her old life. 👋',
+    story: 'A mysterious train arrived 🚂💨. The conductor smiled... but the train went somewhere unknown. Michaela waved goodbye to her old life. 👋',
     ending: '⚫ BAD ENDING ⚫'
   },
   5: { 
     name: '🏥 Abandoned hospital gate', 
     emoji: '🏥',
-    story: 'Cold hands reached through the gate 🥶. Mia ran fast! 🏃‍♀️ She found a kind nurse 👩‍⚕️ who called her parents. 📞',
+    story: 'Cold hands reached through the gate 🥶. Michaela ran fast! 🏃‍♀️ She found a kind nurse 👩‍⚕️ who called her parents. 📞',
     ending: '🌙 MIXED ENDING 🌙'
   },
   6: { 
     name: '🌊 Riverside steps', 
     emoji: '🌊',
-    story: 'The river sparkled like diamonds 💎. A magical mermaid 🧜‍♀️ rose from the water and showed Mia the way home through the moonlight. 🌙',
+    story: 'The river sparkled like diamonds 💎. A magical mermaid 🧜‍♀️ rose from the water and showed Michaela the way home through the moonlight. 🌙',
     ending: '✨ GOOD ENDING ✨'
   },
   7: { 
@@ -98,7 +98,7 @@ choiceButtons.forEach(btn => {
     const pathNum = btn.dataset.path;
     const pathData = paths[pathNum];
     
-    // 🚶‍♀️ Walk Mia to the button
+    // 🚶‍♀️ Walk Michaela to the button
     btn.classList.add('walking');
     const rect = btn.getBoundingClientRect();
     mouseX = rect.left + rect.width / 2;
@@ -131,7 +131,7 @@ choiceButtons.forEach(btn => {
 document.getElementById('restart-btn').addEventListener('click', () => {
   pathLog.innerHTML = '';
   sceneTitle.textContent = '🌃 The Street With No Sound';
-  sceneText.innerHTML = `👧 <strong>Mia</strong> is a small 9-year-old girl with shoulder-length dark hair, 
+  sceneText.innerHTML = `👧 <strong>Michaela</strong> is a small 9-year-old girl with shoulder-length dark hair,
     an oversized yellow raincoat 🧥 over a faded blue dress, scuffed red shoes 👟, 
     and a tiny flashlight 🔦 in one hand and a worn stuffed rabbit 🐰 in the other. 
     She is lost at midnight 🌙, and seven numbered paths stretch out in front of her. ✨`;

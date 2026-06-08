@@ -7,7 +7,7 @@
 
 <img src="assets/twinkling.svg" width="100%" alt="twinkling ocean"/>
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Georgia&size=22&duration=3000&pause=800&color=00B4D8&center=true&vCenter=true&multiline=true&width=700&height=120&lines=Help+Mia+the+mermaid+find+her+way+home...;✨+7+paths+·+14+endings+·+65+number+facts)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Georgia&size=22&duration=3000&pause=800&color=00B4D8&center=true&vCenter=true&multiline=true&width=700&height=120&lines=Help+Michaela+the+mermaid+find+her+way+home...;✨+7+paths+·+14+endings+·+65+number+facts)](https://git.io/typing-svg)
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:023e8a,50:0096c7,100:caf0f8&height=80&section=header&animation=twinkling" width="100%"/>
 
@@ -80,7 +80,7 @@ The **Read to Me** button was added so he can have it read aloud while he follow
 
 ```mermaid
 graph TD
-    A["🧜‍♀️ Mia is lost... 🌊"] --> B{"Where does she go?"}
+    A["🧜‍♀️ Michaela is lost... 🌊"] --> B{"Where does she go?"}
     B --> C["🏰 Coral Palace"]
     B --> D["🐙 Octopus Valley"]
     B --> E["🦈 Shark Caves"]
