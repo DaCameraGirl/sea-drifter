@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Sea Drifter 🧜‍♀️ — An Ocean Adventure Story Game</title>
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+<meta name="theme-color" content="#2aa9d6" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Sea Drifter" />
 <meta name="description" content="An interactive ocean branching story game starring Michaela the mermaid and Jaxon, her math-loving friend. Pick your path, collect treasures, and discover number facts!">
 <!-- Open Graph for social sharing preview -->
 <meta property="og:title" content="Sea Drifter 🧜‍♀️ — Ocean Adventure Story Game">
@@ -3975,6 +3983,13 @@ document.getElementById('restart-btn').addEventListener('click', () => {
   }
   renderScene('start', null);
 });
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('sw.js').catch(function () {});
+  });
+}
 </script>
 </body>
 </html>
